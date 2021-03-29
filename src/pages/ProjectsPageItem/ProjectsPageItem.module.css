@@ -1,0 +1,58 @@
+.projectInfo {
+  position: relative;
+}
+
+.projectTitle {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  margin-bottom: 6px;
+  width: 110px;
+}
+
+.projectDescription {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 12px;
+  color: #ffffff;
+}
+
+.btnDelete {
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 50%;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 200ms ease;
+
+  position: absolute;
+  top: 86px;
+  left: 86px;
+}
+
+.btnDelete:hover,
+.btnDelete:focus {
+  background-color: #8c72df;
+}
+
+.btnDeleteIcon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  /* stroke-width: 0;
+  stroke: currentColor; */
+  fill: #8c72df;
+  margin-top: 4px;
+}
+
+.btnDeleteIcon:hover,
+.btnDeleteIcon:focus {
+  fill: #fff;
+}
