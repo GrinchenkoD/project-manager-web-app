@@ -12,6 +12,7 @@ import {
   registerFormText,
   // errorMessage
 } from './RegisterPage.module.css';
+import { NavLink } from "react-router-dom";
 
 const regSchema = Yup.object().shape({
   email: Yup.string().required().email(),
@@ -62,9 +63,7 @@ export default function Registration() {
           </button>
           <p className={registerFormText}>
             Уже есть аккаунт?{' '}
-            <a className={registerFormText} href="/">
-              Войти
-            </a>
+              <NavLink className={registerFormText} to="/login">Войти</NavLink>
           </p>
         </Form>
       </Formik>

@@ -45,9 +45,12 @@
 //     </>
 //   );
 // }
-import RegistrationPage from '../pages/RegistrationPage';
+// import RegistrationPage from '../pages/RegistrationPage';
 import ProjectsPage from '../pages/ProjectsPage/ProjectsPage';
 import SprintsPage from '../pages/sprintsPage/SprintsPage';
+// import Authentification from '../pages/authentification/authentification';
+import LoginPage from '../pages/loginPage/LoginPage';
+import RegistrationPage from '../pages/registrationPage/RegistrationPage';
 
 const mainRoutes = [
   {
@@ -62,7 +65,7 @@ const mainRoutes = [
     name: 'login',
     path: '/login',
     exact: true,
-    component: RegistrationPage,
+    component: LoginPage,
     private: false,
     restricted: true,
   },
