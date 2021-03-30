@@ -86,7 +86,7 @@ const mainRoutes = [
     name: 'projects',
     path: '/projects/:projectId/sprints',
     exact: true,
-    component: ProjectsPage,
+    component: SprintsPage,
     private: true,
     restricted: false,
   },
