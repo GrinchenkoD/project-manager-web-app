@@ -63,6 +63,7 @@
     .tb_text {
         display: inline;
         margin-left: 10px;
+        border: none;
     }
 }
 
