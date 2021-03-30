@@ -1,10 +1,24 @@
-import React from 'react';
-import ProjectsPage from 'pages/ProjectsPage/ProjectsPage';
+import React, { useState, useEffect } from 'react';
+import { useHistory, useLocation } from 'react-router';
+import Main from '../Main/Main';
+import Header from 'components/Header/Header';
+import RegistrationPage from '../../pages/RegistrationPage';
 
-export default function App() {
+const App = function () {
+  const history = useHistory();
+
+  useEffect(() => {
+    if (history.location.pathname === '/') {
+      history.push('/registration');
+    }
+  }, [history]);
+
   return (
     <div>
-      <ProjectsPage />
+      <Header />
+      <Main />
     </div>
   );
-}
+};
+
+export default App;
