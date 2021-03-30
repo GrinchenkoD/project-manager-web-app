@@ -1,5 +1,6 @@
 import React from "react";
-import axios from 'axios'
+import { useDispatch } from "react-redux";
+import {login} from '../../redux/auth/auth-operations'
 import { Formik, Form, Field, /*ErrorMessage*/ } from "formik";
 import * as Yup from "yup";
 import {
@@ -16,15 +17,15 @@ const loginSchema = Yup.object().shape({
   password: Yup.string().required(),
 });
 export default function Login() {
+  const dispatch = useDispatch();
   return (
     <main>
       <Formik
         initialValues={{ email: "", password: "",}}
         validationSchema={loginSchema}
         onSubmit={(values) => {
-          // const {email,password} = values
-          // console.log(values)
-          axios.post('https://sbc-backend.goit.global/auth/login', values).then(response => console.log(response));
+          const {email,password} = values
+          dispatch(login({email, password}));
         }}
       >
         <Form className={registerForm}>

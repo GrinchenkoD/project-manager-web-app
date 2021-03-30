@@ -1,11 +1,11 @@
-
-import React,{ useState, useEffect } from 'react';
-  import { useHistory } from 'react-router';
-import Main from '../Main/Main';
-import Register from '../../pages/registrationPage/RegistrationPage';
-import AuthBackground from 'pages/registrationPage/AuthBackground';
-import Modal from '../Madal/Modal';
+import React/*,{ useState, useEffect }*/ from 'react';
+// import { useHistory } from 'react-router';
+// import Main from '../Main/Main';
+// import Modal from '../Modal/Modal';
 import Header from 'components/Header/Header';
+// import style from './App.module.css'
+import AuthBackground from 'components/AuthBackground/AuthBackground';
+import Auth from 'pages/authentification/authentification';
 
 
 const App = function () {
@@ -18,14 +18,15 @@ const App = function () {
 //     }
 //   }, []);
   
-  return (<div>
-            <Header/>
-          <Register />
-            <AuthBackground/>
-          <Main />
-            <Modal />
-          </div>);
-
+  return (
+  <div>
+    <Header/>
+    <Auth />
+    <AuthBackground/>
+    {/* <Main />
+    <Modal /> */}
+  </div>
+  );
 };
 
 export default App;
