@@ -37,31 +37,52 @@
   left: 86px;
 }
 
-.btnDelete:hover .btnDeleteIcon, 
-.btnDelete:focus .btnDeleteIcon
-{
-fill: white;
-}
-
-.btnDelete:hover, 
-.btnDelete:focus {
-   background-color: #8c72df;
-}
-
- 
-
-
 .btnDeleteIcon {
   display: inline-block;
   width: 16px;
   height: 16px;
-  /* stroke-width: 0;
-  stroke: currentColor; */
   fill: #8c72df;
   margin-top: 4px;
 }
 
-.btnDeleteIcon:hover,
-.btnDeleteIcon:focus {
-  fill: #fff;
+.btnDelete:hover .btnDeleteIcon,
+.btnDelete:focus .btnDeleteIcon {
+  fill: white;
+}
+
+.btnDelete:hover,
+.btnDelete:focus {
+  background-color: #8c72df;
+}
+
+/* !  ------------------TABLET ver.------------------ */
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .projectTitle {
+    font-size: 26px;
+    line-height: 32px;
+
+    margin-bottom: 10px;
+    width: 176px;
+  }
+  .projectDescription {
+    font-size: 14px;
+    line-height: 17px;
+  }
+  .btnDelete {
+    width: 34px;
+    height: 34px;
+
+    position: absolute;
+    top: 152px;
+    left: 152px;
+  }
+
+  .btnDeleteIcon {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* ! ------------------DESKTOP ver.------------------ */
+@media screen and (min-width: 1280px) {
 }

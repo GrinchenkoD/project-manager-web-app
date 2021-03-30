@@ -14,10 +14,9 @@ import styles from './ProjectsPage.module.css';
 
 export default function ProjectsPage() {
   // const dispatch = useDispatch();
-const generateColor = () => {
-  return '#' + Math.floor(Math.random()*16777215).toString(16)
-}
-
+  const generateColor = () => {
+    return '#' + Math.floor(Math.random() * 16777215).toString(16);
+  };
 
   return (
     <div className={styles.container}>
@@ -30,6 +29,7 @@ const generateColor = () => {
         </svg>
       </div>
       {/* end of header draft */}
+
       <div className="projects">
         <h2 className={styles.title}>Проекти</h2>
 
@@ -41,7 +41,11 @@ const generateColor = () => {
                 timeout={200}
                 classNames={popTransition}
               >
-                <li className={styles.projectsListItem} key={nanoid()} style={{backgroundColor: generateColor()}}>
+                <li
+                  className={styles.projectsListItem}
+                  key={nanoid()}
+                  style={{ backgroundColor: generateColor() }}
+                >
                   <ProjectsPageItem {...project} />
                 </li>
               </CSSTransition>
@@ -54,8 +58,8 @@ const generateColor = () => {
           // onClick={event => dispatch(addProject())}
           className={styles.btnAdd}
         >
-          {/* <svg className={styles.btnAddIcon} width="24px" height="24px">
-            <use href={sprite + '#icon-cross'} />
+          {/* <svg className={styles.btnAddIcon} width="32px" height="32px">
+            <use href={sprite + '#icon-plus'} />
           </svg> */}
           <p className={styles.btnAddIcon}>+</p>
         </button>

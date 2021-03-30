@@ -74,6 +74,7 @@
   justify-content: space-evenly;
   /* align-items: baseline; */
   /* padding-left: calc(100% - ((136 + 10) * 2)) / 2; */
+  padding-left: 8px;
   margin-bottom: 74px;
 }
 
@@ -99,17 +100,12 @@
   right: 20px;
   /* top: 504px; */
 
-  background: rgb(255, 107, 8); /* orange */
+  background: #ff6b08; /* orange */
 
   box-shadow: 0px 3px 4px rgba(255, 107, 8, 0.3);
   border-radius: 50%;
   border: none;
   cursor: pointer;
-}
-
-.btnAdd:hover,
-.btnAdd:focus {
-  background-color: rgb(160, 75, 8);
 }
 
 .btnAddIcon {
@@ -125,6 +121,19 @@
   /* z-index: 10; */
 }
 
+.btnAdd:hover .btnAddIcon,
+.btnAdd:focus .btnAddIcon {
+  color: #ff6b08;
+  position: absolute;
+  left: 9px;
+  top: -5px;
+}
+
+.btnAdd:hover,
+.btnAdd:focus {
+  background-color: #fff;
+  border: 2px solid #ff6b08;
+}
 /* ! icon-exit svg */
 
 .iconExit {
@@ -134,4 +143,52 @@
   stroke-width: 0;
   stroke: currentColor;
   fill: currentColor;
+}
+
+/* !  ------------------TABLET ver.------------------ */
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .container {
+    width: 100vw;
+    height: 100vh;
+    padding: 20px;
+  }
+
+  .title {
+    margin-top: 40px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+
+    font-size: 36px;
+    line-height: 44px;
+  }
+
+  .projectsList {
+    justify-content: flex-start;
+    padding-left: 20px;
+    margin-bottom: 100px;
+  }
+
+  .projectsListItem {
+    width: 216px;
+    height: 216px;
+
+    margin: 20px 20px 0 0;
+    padding: 20px;
+
+    box-shadow: 8px 8px 5px 1px rgba(0, 0, 0, 0.4);
+    background: #8c72df;
+    border-radius: 5px;
+  }
+
+  /*! button - add project */
+
+  .btnAdd {
+    position: absolute;
+    right: 40px;
+    top: 120px;
+  }
+}
+
+/* ! ------------------DESKTOP ver.------------------ */
+@media screen and (min-width: 1280px) {
 }
