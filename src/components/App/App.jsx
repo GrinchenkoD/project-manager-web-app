@@ -22,4 +22,8 @@ const App = function () {
   );
 };
 
+<<<<<<< HEAD
 export default App;
+=======
+export default App;
+>>>>>>> 0760206c130762efd17553330ee0297791dad832
