@@ -1,11 +1,10 @@
-
 import React from 'react';
-import Modal from '../Madal/Modal';
+import ProjectsPage from 'pages/ProjectsPage/ProjectsPage';
 
-const App = function () {
-  return (<div>
-            <Modal />
-          </div>);
-};
-
-export default App;
+export default function App() {
+  return (
+    <div>
+      <ProjectsPage />
+    </div>
+  );
+}
