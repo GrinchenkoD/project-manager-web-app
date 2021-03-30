@@ -23,8 +23,6 @@ const styles = {
 };
   return (
     <div>
-      {/* <AuthBackground /> */}
-      {/* <Auth /> */}
       <Header />
       <Main />
       {/* <div style={styles}>

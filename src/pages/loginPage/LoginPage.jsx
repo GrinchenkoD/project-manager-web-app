@@ -12,6 +12,9 @@ import {
   // errorMessage
 } from './LoginPage.module.css';
 import { NavLink } from "react-router-dom";
+import AuthBackground from "components/AuthBackground/AuthBackground";
+
+
 
 const loginSchema = Yup.object().shape({
   email: Yup.string().required().email(),
@@ -43,6 +46,7 @@ export default function Login() {
         </p>
         </Form>
       </Formik>
+      <AuthBackground />
     </main>
   );
 }

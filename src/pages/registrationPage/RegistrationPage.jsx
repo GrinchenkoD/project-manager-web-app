@@ -3,7 +3,6 @@ import { Formik, Form, Field, /*ErrorMessage*/ } from "formik";
 import {register} from '../../redux/auth/auth-operations'
 import { useDispatch } from "react-redux";
 import * as Yup from "yup";
-
 import {
   registerForm,
   registerFormInput,
@@ -13,6 +12,10 @@ import {
   // errorMessage
 } from './RegisterPage.module.css';
 import { NavLink } from "react-router-dom";
+import AuthBackground from "components/AuthBackground/AuthBackground";
+
+
+
 
 const regSchema = Yup.object().shape({
   email: Yup.string().required().email(),
@@ -67,6 +70,7 @@ export default function Registration() {
           </p>
         </Form>
       </Formik>
+      <AuthBackground/>
     </main>
   );
 }

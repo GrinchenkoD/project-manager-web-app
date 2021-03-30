@@ -7,11 +7,11 @@ import UserNav from './UserNav';
 
 const Header = () => {
     // const isAuthenticated = useSelector(authSelectors.isAuthenticated)
-    const isAuth = false;
+    const isAuth = true;
     return(
         <>
         <header>
-            {isAuth ? <AuthNav/> : <UserNav/>}   
+            {isAuth ? <UserNav/> : <AuthNav/>}   
         </header>
         </>            
     )
