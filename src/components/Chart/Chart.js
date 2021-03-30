@@ -51,8 +51,6 @@ const data = {
 
 
 export default class Chart extends Component {
-
-
   redner() {
       return (
       <div>
@@ -66,5 +64,3 @@ export default class Chart extends Component {
     console.log(datasets[0].data);
   }
 }
-
-export default Chart;
