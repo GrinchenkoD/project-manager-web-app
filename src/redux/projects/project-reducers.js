@@ -1,20 +1,10 @@
 import { createReducer } from '@reduxjs/toolkit';
 import {
-  // addProjectRequest,
-  addProjectSuccess, //
-  // addProjectError,
-  // addContributorRequest,
+  addProjectSuccess, 
   addContributorSuccess,
-  // addContributorError,
-  // getProjectRequest,
-  getProjectSuccess, //
-  // getProjectError,
-  // deleteProjectRequest,
-  deleteProjectSuccess, //
-  // deleteProjectError,
-  // changeProjectTitleRequest,
+  getProjectSuccess, 
+  deleteProjectSuccess, 
   changeProjectTitleSuccess,
-  // changeProjectTitleError,
 } from './project-actions.js';
 
 const projectsReducer = createReducer([], {
@@ -24,41 +14,5 @@ const projectsReducer = createReducer([], {
     ...state.filter(contact => contact.id !== payload),
   ],
 });
-
-// const loadingReducer = createReducer(false, {
-//   [addProjectRequest]: () => true,
-//   [addContributorRequest]: () => true,
-//   [getProjectRequest]: () => true,
-//   [deleteProjectRequest]: () => true,
-//   [changeProjectTitleRequest]: () => true,
-
-//   [addProjectSuccess]: () => false,
-//   [addProjectError]: () => false,
-//   [addContributorSuccess]: () => false,
-//   [addContributorError]: () => false,
-//   [getProjectSuccess]: () => false,
-//   [getProjectError]: () => false,
-//   [deleteProjectSuccess]: () => false,
-//   [deleteProjectError]: () => false,
-//   [changeProjectTitleSuccess]: () => false,
-//   [changeProjectTitleError]: () => false,
-// });
-
-// const cleanError = () => null;
-// const handleError = (_, action) => action.payload;
-
-// const errorReducer = createReducer(null, {
-//   [addProjectRequest]: cleanError,
-//   [addContributorRequest]: cleanError,
-//   [getProjectRequest]: cleanError,
-//   [deleteProjectRequest]: cleanError,
-//   [changeProjectTitleRequest]: cleanError,
-
-//   [addProjectError]: handleError,
-//   [addContributorError]: handleError,
-//   [getProjectError]: handleError,
-//   [deleteProjectError]: handleError,
-//   [changeProjectTitleError]: handleError,
-// });
 
 export default projectsReducer;
