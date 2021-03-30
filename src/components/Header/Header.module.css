@@ -23,10 +23,37 @@
         width: 30px;
     }
 
-    .tb_text {
+    .headerButton {
+        cursor: pointer;
+        display: inline-block;
+        outline: none;
+        border: none;
+        font-size: 14px;
+        line-height: 17px;
+        letter-spacing: 0.04em;
+        color: rgba(24, 28, 39, 0.6);
+        text-align: center;
+        position: relative;
+    }
+       .headerButton:hover {
+        color: rgba(233, 168, 48, 0.589);
+ 
+    }
+  
+   .headerButton::before {
+       content: "";
+       background-image: url('../../icons/Header/LogOut.svg');
+       display: inline-block;
+       background-position: center;
+       background-size: contain;
+       width: 20px;
+       height: 20px;
+   }
+
+    .buttonText {
         display: none;
     }
-
+     
     .secOutImg {
         display: none;
     }
@@ -60,10 +87,25 @@
         display: inline-block;
     }
 
-    .tb_text {
+  .buttonText {
+        display: inline-block;
+        margin-left: 10px;
+    }
+
+
+    .headerButton {
         display: inline;
         margin-left: 10px;
         border: none;
+    }
+    .headerButton::before {
+        background-image: url('../../icons/Header/SecondLogOut.svg');
+        position: absolute;
+        left: -20px;
+        top: -2px;
+    }
+    .headerButton::before:hover {
+        background-color: yellow;
     }
 }
 
