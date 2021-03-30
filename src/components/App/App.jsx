@@ -1,12 +1,11 @@
-// import RegistrationPage from '../../pages/registrationPage/RegistrationPage'
-import LoginPage from '../../pages/loginPage/LoginPage'
+
+import React from 'react';
+import Modal from '../Madal/Modal';
+
 const App = function () {
-  return (
-    <div >
-{/* <RegistrationPage /> */}
-<LoginPage />
-    </div>
-  );
+  return (<div>
+            <Modal />
+          </div>);
 };
 
 export default App;
