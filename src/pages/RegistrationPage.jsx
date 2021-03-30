@@ -7,9 +7,7 @@ export default function RegistrationPage() {
   return (
     <div>
       <Register />
-      <div>
-        <AuthBackground />
-      </div>
+      <AuthBackground />
     </div>
   );
 }

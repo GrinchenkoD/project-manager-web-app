@@ -47,7 +47,7 @@
 // }
 import RegistrationPage from '../pages/RegistrationPage';
 import ProjectsPage from '../pages/ProjectsPage';
-import SprintsPage from '../pages/SprintsPage';
+import SprintsPage from '../pages/sprintsPage/SprintsPage';
 
 const mainRoutes = [
   {
@@ -55,36 +55,48 @@ const mainRoutes = [
     path: '/registration',
     exact: true,
     component: RegistrationPage,
+    private: false,
+    restricted: true,
   },
   {
     name: 'login',
     path: '/login',
     exact: true,
     component: RegistrationPage,
+    private: false,
+    restricted: true,
   },
   {
     name: 'projects',
     path: '/projects',
     exact: true,
     component: ProjectsPage,
+    private: true,
+    restricted: false,
   },
   {
     name: 'projects',
     path: '/projects/:projectId',
     exact: true,
     component: ProjectsPage,
+    private: true,
+    restricted: false,
   },
   {
     name: 'projects',
     path: '/projects/:projectId/sprints',
     exact: true,
     component: ProjectsPage,
+    private: true,
+    restricted: false,
   },
   {
     name: 'projects',
     path: '/projects/:projectId/sprints/:sprintId',
     exact: true,
     component: ProjectsPage,
+    private: true,
+    restricted: false,
   },
 ];
 
