@@ -54,16 +54,6 @@
   border: 2px solid #ff6b08;
 }
 
-<<<<<<< HEAD
-.btnDeleteIcon {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  /* stroke-width: 0;
-  stroke: currentColor; */
-  fill: #8c72df;
-  margin-top: 4px;
-=======
 /* !  ------------------TABLET ver.------------------ */
 @media screen and (min-width: 768px) {
   .projectTitle {
@@ -90,7 +80,6 @@
     width: 18px;
     height: 18px;
   }
->>>>>>> 0760206c130762efd17553330ee0297791dad832
 }
 
 /* ! ------------------DESKTOP ver.------------------ */
