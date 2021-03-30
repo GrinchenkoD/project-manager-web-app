@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import CustomConfirm from './CustomConfirm';
 // import { Button } from '../../shared/Button/Button';
 // import { Input } from '../../shared/Input/Input';
@@ -17,7 +18,7 @@ function Modal() {
         {openConfirm && (
           <CustomConfirm
             close={() => setOpenConfirm(false)}
-            confirm={() => console.log('Lets do it!')}
+            confirm={() => <Redirect to="/sprints" />}
             text={'Hello?'}
           />
         )}

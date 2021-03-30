@@ -2,8 +2,8 @@ import React from "react";
 import { Formik, Form, Field, /*ErrorMessage*/ } from "formik";
 import {register} from '../../redux/auth/auth-operations'
 import { useDispatch } from "react-redux";
-
 import * as Yup from "yup";
+
 import {
   registerForm,
   registerFormInput,
@@ -24,7 +24,7 @@ export default function Registration() {
   return (
     <main>
       <Formik
-        initialValues={{ email: "", password: "", confirmPassword: "" }}
+        initialValues={{ email: '', password: '', confirmPassword: '' }}
         validationSchema={regSchema}
         onSubmit={(values) => {
           const {email,password} = values
@@ -32,24 +32,40 @@ export default function Registration() {
         }}
       >
         <Form className={registerForm}>
-        <h2 className={registerFormTitle}>Регистрация</h2>
-          <Field autoComplete="on" className={registerFormInput} type="email" name="email" placeholder="email" />
+          <h2 className={registerFormTitle}>Регистрация</h2>
+          <Field
+            autoComplete="on"
+            className={registerFormInput}
+            type="email"
+            name="email"
+            placeholder="email"
+          />
           {/* <ErrorMessage name="email" component="span" className={errorMessage}/> */}
-          <Field autoComplete="on" className={registerFormInput} type="password" name="password" placeholder="password" />
+          <Field
+            autoComplete="on"
+            className={registerFormInput}
+            type="password"
+            name="password"
+            placeholder="password"
+          />
           {/* <ErrorMessage name="password" component="span" className={errorMessage}/> */}
-          <Field autoComplete="on" className={registerFormInput}
+          <Field
+            autoComplete="on"
+            className={registerFormInput}
             type="password"
             name="confirmPassword"
             placeholder="confirm password"
           />
           {/* <ErrorMessage name="confirmPassword" component="span" className={errorMessage}/> */}
-          <button className={registerPageButton} type="submit">Submit</button>
+          <button className={registerPageButton} type="submit">
+            Submit
+          </button>
           <p className={registerFormText}>
-          Уже есть аккаунт?{' '}
-          <a className={registerFormText} href="/">
-            Войти
-          </a>
-        </p>
+            Уже есть аккаунт?{' '}
+            <a className={registerFormText} href="/">
+              Войти
+            </a>
+          </p>
         </Form>
       </Formik>
     </main>

@@ -1,31 +1,28 @@
-import React/*,{ useState, useEffect }*/ from 'react';
-// import { useHistory } from 'react-router';
-// import Main from '../Main/Main';
-// import Modal from '../Modal/Modal';
+import React, { useState, useEffect } from 'react';
+import { useHistory, useLocation } from 'react-router';
+import Main from '../Main/Main';
 import Header from 'components/Header/Header';
-// import style from './App.module.css'
+import RegistrationPage from '../../pages/RegistrationPage';
 import AuthBackground from 'components/AuthBackground/AuthBackground';
 import Auth from 'pages/authentification/authentification';
 
 
 const App = function () {
-//    const isAuth = true;
-//   const history = useHistory();
+  const history = useHistory();
 
-//   useEffect(() => {
-//     if (!isAuth) {
-//       history.push('/registration');
-//     }
-//   }, []);
-  
+  useEffect(() => {
+    if (history.location.pathname === '/') {
+      history.push('/registration');
+    }
+  }, [history]);
+
   return (
-  <div>
-    <Header/>
-    <Auth />
-    <AuthBackground/>
-    {/* <Main />
-    <Modal /> */}
-  </div>
+    <div>
+      <AuthBackground />
+      <Auth />
+      <Header />
+      <Main />
+    </div>
   );
 };
 
