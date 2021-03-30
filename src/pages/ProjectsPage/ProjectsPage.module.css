@@ -23,8 +23,6 @@
 }
 
 .headerLogo {
-  font-family: Montserrat;
-  font-style: normal;
   font-weight: 900;
   font-size: 20px;
   line-height: 22px;
@@ -35,8 +33,6 @@
 }
 
 .headerTitle {
-  font-family: Montserrat;
-  font-style: normal;
   font-weight: 600;
   font-size: 14px;
   line-height: 17px;
@@ -52,8 +48,6 @@
   margin-left: 10px;
   margin-bottom: 26px;
 
-  font-family: Montserrat;
-  font-style: normal;
   font-weight: 500;
   font-size: 26px;
   line-height: 32px;
@@ -88,6 +82,9 @@
   box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.4);
   background: #8c72df;
   border-radius: 5px;
+
+  /* background: ((props) => props); */
+  /* background-color: ${props => props.theme.colors.background}; */
 }
 
 /*! button - add project */
@@ -113,7 +110,6 @@
   left: 11px;
   top: -3px;
 
-  font-family: Montserrat;
   font-weight: 200;
   font-size: 40px;
   line-height: 52px;
@@ -134,8 +130,8 @@
   background-color: #fff;
   border: 2px solid #ff6b08;
 }
-/* ! icon-exit svg */
 
+/* ! icon-exit svg */
 .iconExit {
   display: inline-block;
   width: 1em;
@@ -145,8 +141,12 @@
   fill: currentColor;
 }
 
+.addProjectText {
+  display: none;
+}
+
 /* !  ------------------TABLET ver.------------------ */
-@media screen and (min-width: 768px) and (max-width: 1279px) {
+@media screen and (min-width: 768px) {
   .container {
     width: 100vw;
     height: 100vh;
@@ -191,4 +191,68 @@
 
 /* ! ------------------DESKTOP ver.------------------ */
 @media screen and (min-width: 1280px) {
+  .container {
+    width: 100vw;
+    height: 100vh;
+    padding: 25px;
+  }
+
+  .title {
+    margin-left: 30px;
+    margin-bottom: 0;
+  }
+  .projectsList {
+    justify-content: flex-start;
+    padding-left: 30px;
+    margin-bottom: 150px;
+  }
+
+  .projectsListItem {
+    width: 270px;
+    height: 274px;
+
+    margin: 30px 30px 0 0;
+    padding: 28px 30px 10px 30px;
+
+    box-shadow: 10px 10px 5px 1px rgba(0, 0, 0, 0.4);
+    background: #8c72df;
+    border-radius: 5px;
+  }
+
+  /* .addProjectSection {
+  display: flex;
+} */
+
+  /*! button - add project */
+
+  .btnAdd {
+    position: absolute;
+    right: 281px;
+    top: 120px;
+  }
+
+  .addProjectText {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.04em;
+    color: #181c27;
+    /* margin-left: 20px; */
+
+    display: block;
+
+    position: absolute;
+    right: 120px;
+    top: 130px;
+  }
+
+  .projectDescription {
+    opacity: 0;
+  }
+  .projectsListItem:hover .projectDescription {
+    opacity: 1;
+    cursor: pointer;
+  }
 }

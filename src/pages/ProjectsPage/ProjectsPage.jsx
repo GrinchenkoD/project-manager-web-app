@@ -12,11 +12,27 @@ import popTransition from './transitions/pop.module.css';
 // import slideTransition from './transitions/slide.module.css';
 import styles from './ProjectsPage.module.css';
 
+const colors = ['#8c72df', '#FF765F', '#71DF87'];
+let currentColor = colors[0];
+let idx = 0;
+
+const getCurrentColor = () => {
+  if (idx < colors.length) {
+    currentColor = colors[idx];
+    idx += 1;
+    return currentColor;
+  } else {
+    currentColor = colors[0];
+    idx = 0;
+    return currentColor;
+  }
+};
+
 export default function ProjectsPage() {
   // const dispatch = useDispatch();
-  const generateColor = () => {
-    return '#' + Math.floor(Math.random() * 16777215).toString(16);
-  };
+  // const generateColor = () => {
+  //   return '#' + Math.floor(Math.random() * 16777215).toString(16);
+  // };
 
   return (
     <div className={styles.container}>
@@ -44,25 +60,32 @@ export default function ProjectsPage() {
                 <li
                   className={styles.projectsListItem}
                   key={nanoid()}
-                  style={{ backgroundColor: generateColor() }}
+                  style={{ backgroundColor: getCurrentColor() }}
                 >
-                  <ProjectsPageItem {...project} />
+                  <ProjectsPageItem {...project} color={currentColor}>
+                    <span className={styles.projectDescription}>
+                      {project.description}
+                    </span>
+                  </ProjectsPageItem>
                 </li>
               </CSSTransition>
             ))}
           </TransitionGroup>
         )}
 
-        <button
-          type="button"
-          // onClick={event => dispatch(addProject())}
-          className={styles.btnAdd}
-        >
-          {/* <svg className={styles.btnAddIcon} width="32px" height="32px">
+        <div className="addProjectSection">
+          <button
+            type="button"
+            // onClick={event => dispatch(addProject())}
+            className={styles.btnAdd}
+          >
+            {/* <svg className={styles.btnAddIcon} width="32px" height="32px">
             <use href={sprite + '#icon-plus'} />
           </svg> */}
-          <p className={styles.btnAddIcon}>+</p>
-        </button>
+            <p className={styles.btnAddIcon}>+</p>
+          </button>
+          <p className={styles.addProjectText}>Створити проект</p>
+        </div>
       </div>
     </div>
   );

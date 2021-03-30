@@ -3,8 +3,6 @@
 }
 
 .projectTitle {
-  font-family: Montserrat;
-  font-style: normal;
   font-weight: 800;
   font-size: 16px;
   line-height: 20px;
@@ -15,8 +13,6 @@
 }
 
 .projectDescription {
-  font-family: Montserrat;
-  font-style: normal;
   font-weight: normal;
   font-size: 10px;
   line-height: 12px;
@@ -47,27 +43,31 @@
 
 .btnDelete:hover .btnDeleteIcon,
 .btnDelete:focus .btnDeleteIcon {
-  fill: white;
+  /* fill: white; */
+  transform: scale(1.2);
 }
 
 .btnDelete:hover,
 .btnDelete:focus {
-  background-color: #8c72df;
+  /* background-color: #8c72df; */
+  /* background-color: white; */
+  border: 2px solid #ff6b08;
 }
 
 /* !  ------------------TABLET ver.------------------ */
-@media screen and (min-width: 768px) and (max-width: 1279px) {
+@media screen and (min-width: 768px) {
   .projectTitle {
     font-size: 26px;
     line-height: 32px;
 
-    margin-bottom: 10px;
     width: 176px;
+    margin-bottom: 10px;
   }
   .projectDescription {
     font-size: 14px;
     line-height: 17px;
   }
+
   .btnDelete {
     width: 34px;
     height: 34px;
@@ -76,7 +76,6 @@
     top: 152px;
     left: 152px;
   }
-
   .btnDeleteIcon {
     width: 18px;
     height: 18px;
@@ -85,4 +84,13 @@
 
 /* ! ------------------DESKTOP ver.------------------ */
 @media screen and (min-width: 1280px) {
+  .projectTitle {
+    width: 210px;
+    margin-bottom: 20px;
+  }
+  .btnDelete {
+    position: absolute;
+    top: 197px;
+    left: 194px;
+  }
 }
