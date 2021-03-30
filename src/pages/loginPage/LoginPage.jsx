@@ -1,5 +1,6 @@
 import React from "react";
-import axios from 'axios'
+import { useDispatch } from "react-redux";
+import {login} from '../../redux/auth/auth-operations'
 import { Formik, Form, Field, /*ErrorMessage*/ } from "formik";
 import * as Yup from "yup";
 import {
@@ -10,21 +11,22 @@ import {
   registerFormText,
   // errorMessage
 } from './LoginPage.module.css';
+import { NavLink } from "react-router-dom";
 
 const loginSchema = Yup.object().shape({
   email: Yup.string().required().email(),
   password: Yup.string().required(),
 });
 export default function Login() {
+  const dispatch = useDispatch();
   return (
     <main>
       <Formik
         initialValues={{ email: "", password: "",}}
         validationSchema={loginSchema}
         onSubmit={(values) => {
-          // const {email,password} = values
-          // console.log(values)
-          axios.post('https://sbc-backend.goit.global/auth/login', values).then(response => console.log(response));
+          const {email,password} = values
+          dispatch(login({email, password}));
         }}
       >
         <Form className={registerForm}>
@@ -36,10 +38,8 @@ export default function Login() {
           
           <button className={registerPageButton} type="submit">Submit</button>
           <p className={registerFormText}>
-          Уже есть аккаунт?{' '}
-          <a className={registerFormText} href="/">
-            Войти
-          </a>
+          Нет аккаунта?{' '}
+            <NavLink className={registerFormText} to='/registration'>Регистрация</NavLink>
         </p>
         </Form>
       </Formik>

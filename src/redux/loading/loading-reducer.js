@@ -17,6 +17,14 @@ import {
   changeProjectTitleSuccess,
   changeProjectTitleError,
 } from '../projects/project-actions';
+import {
+  registerRequest,
+  registerError,
+  registerSuccess,
+  loginRequest,
+  loginError,
+  loginSuccess,
+} from '../auth/auth-actions';
 
 const loadingReducer = createReducer(false, {
   [addProjectRequest]: () => true,
@@ -24,6 +32,8 @@ const loadingReducer = createReducer(false, {
   [getProjectRequest]: () => true,
   [deleteProjectRequest]: () => true,
   [changeProjectTitleRequest]: () => true,
+  [registerRequest]: () => true,
+  [loginRequest]: () => true,
 
   [addProjectSuccess]: () => false,
   [addProjectError]: () => false,
@@ -35,6 +45,10 @@ const loadingReducer = createReducer(false, {
   [deleteProjectError]: () => false,
   [changeProjectTitleSuccess]: () => false,
   [changeProjectTitleError]: () => false,
+  [registerError]: () => false,
+  [loginError]: () => false,
+  [registerSuccess]: () => false,
+  [loginSuccess]: () => false,
 });
 
 export default loadingReducer;
