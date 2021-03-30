@@ -11,6 +11,8 @@ import sprite from '../../icons/symbol-defs.svg';
 import popTransition from './transitions/pop.module.css';
 // import slideTransition from './transitions/slide.module.css';
 import styles from './ProjectsPage.module.css';
+import TemporaryModal from 'components/TemporaryModal/TemporaryModal';
+import ProjectForm from 'components/ProjectForm/ProjectForm';
 
 const colors = ['#8c72df', '#FF765F', '#71DF87'];
 let currentColor = colors[0];
@@ -86,6 +88,9 @@ export default function ProjectsPage() {
           </button>
           <p className={styles.addProjectText}>Створити проект</p>
         </div>
+        <TemporaryModal title="Створення проекту">
+          <ProjectForm/>
+        </TemporaryModal>
       </div>
     </div>
   );
