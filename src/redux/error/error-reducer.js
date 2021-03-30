@@ -12,10 +12,10 @@ import {
   changeProjectTitleError,
 } from '../projects/project-actions';
 
-const cleanError = () => null;
+const cleanError = () => false;
 const handleError = (_, action) => action.payload;
 
-const errorReducer = createReducer(null, {
+const errorReducer = createReducer(false, {
   [addProjectRequest]: cleanError,
   [addContributorRequest]: cleanError,
   [getProjectRequest]: cleanError,
