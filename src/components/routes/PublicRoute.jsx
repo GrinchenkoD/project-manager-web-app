@@ -8,10 +8,7 @@ export default function PublicRoute({
   redirectTo = '/projects',
   ...routeProps
 }) {
-  // const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-  // const isLoggedIn = false;
-  const isAuthentificated = useSelector(state => state.auth.isAuthentificated)
-
+  const isAuthentificated = useSelector(authSelectors.isAuthentificated)
   const shouldRedirect = !isAuthentificated && restricted;
   return (
     <>
@@ -24,4 +21,3 @@ export default function PublicRoute({
   );
 }
 
-// render={props => <Component {...props} />}

@@ -18,8 +18,6 @@ const App = function () {
 
   return (
     <div>
-      {/* <AuthBackground /> */}
-      {/* <Auth /> */}
       <Header />
       <Main />
     </div>
