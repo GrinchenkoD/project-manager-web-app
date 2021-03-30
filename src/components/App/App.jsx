@@ -1,15 +1,17 @@
-import Register from '../../pages/registrationPage/RegistrationPage'
-import Login from '../../pages/loginPage/LoginPage'
+
 import React from 'react';
-import Modal from '../Madal/Modal';
+import Register from '../../pages/registrationPage/RegistrationPage';
 import AuthBackground from 'pages/registrationPage/AuthBackground';
+import Modal from '../Madal/Modal';
+import Header from 'components/Header/Header';
+
 
 const App = function () {
   return (<div>
-            {/* <Modal /> */}
-            {/* <Login /> */}
-            <Register />
+            <Header/>
+          <Register />
             <AuthBackground/>
+            <Modal />
           </div>);
 };
 
