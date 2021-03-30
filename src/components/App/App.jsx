@@ -23,11 +23,12 @@ const styles = {
 };
   return (
     <div>
-      <Header />
-      <Main />
-      {/* <div style={styles}>
+      {/* <Header /> */}
+      {/* <Main /> */}
+      <div></div>
+      <div style={styles}>
         < Chart />
-      </div> */}
+      </div>
     </div>
   );
 };

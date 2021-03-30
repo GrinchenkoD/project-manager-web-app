@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Line } from 'react-chartjs-2';
 
 const data = {
-  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+  labels: ['30 Бер', '31 Бер','01 Квіт','02 Квіт'],
   datasets: [
     {
       label: 'My First dataset',
@@ -51,7 +51,7 @@ const data = {
 
 
 export default class Chart extends Component {
-  redner() {
+  render() {
       return (
       <div>
         <h2>Line Example</h2>
