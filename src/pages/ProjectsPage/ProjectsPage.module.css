@@ -136,6 +136,7 @@
 .btnAdd:focus {
   background-color: #fff;
   border: 2px solid #ff6b08;
+  box-shadow: 0 0 8px #ff6b08;
 }
 
 /* ! icon-exit svg */
