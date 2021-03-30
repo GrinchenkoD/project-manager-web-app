@@ -46,7 +46,7 @@
 //   );
 // }
 import RegistrationPage from '../pages/RegistrationPage';
-import ProjectsPage from '../pages/ProjectsPage';
+import ProjectsPage from '../pages/ProjectsPage/ProjectsPage';
 import SprintsPage from '../pages/sprintsPage/SprintsPage';
 
 const mainRoutes = [

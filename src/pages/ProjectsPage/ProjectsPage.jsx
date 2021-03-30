@@ -37,13 +37,13 @@ export default function ProjectsPage() {
   return (
     <div className={styles.container}>
       {/* start of header draft */}
-      <div className={styles.header}>
+      {/* <div className={styles.header}>
         <p className={styles.headerLogo}>GoIT </p>
         <p className={styles.headerTitle}>Username</p>
         <svg className={styles.iconExit}>
           <use href={sprite + '#icon-exit'} />
         </svg>
-      </div>
+      </div> */}
       {/* end of header draft */}
 
       <div className="projects">
