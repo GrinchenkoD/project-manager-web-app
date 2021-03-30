@@ -1,7 +1,9 @@
-import React from 'react';
-import axios from 'axios';
-import { Formik, Form, Field /*ErrorMessage*/ } from 'formik';
-import * as Yup from 'yup';
+import React from "react";
+import { Formik, Form, Field, /*ErrorMessage*/ } from "formik";
+import {register} from '../../redux/auth/auth-operations'
+import { useDispatch } from "react-redux";
+import * as Yup from "yup";
+
 import {
   registerForm,
   registerFormInput,
@@ -10,6 +12,7 @@ import {
   registerFormText,
   // errorMessage
 } from './RegisterPage.module.css';
+import { NavLink } from "react-router-dom";
 
 const regSchema = Yup.object().shape({
   email: Yup.string().required().email(),
@@ -17,19 +20,16 @@ const regSchema = Yup.object().shape({
   confirmPassword: Yup.string().required(),
 });
 export default function Registration() {
+  const dispatch = useDispatch();
+
   return (
     <main>
       <Formik
         initialValues={{ email: '', password: '', confirmPassword: '' }}
         validationSchema={regSchema}
-        onSubmit={values => {
-          const { email, password } = values;
-          axios
-            .post('https://sbc-backend.goit.global/auth/register', {
-              email,
-              password,
-            })
-            .then(response => console.log(response));
+        onSubmit={(values) => {
+          const {email,password} = values
+          dispatch(register({email, password}));
         }}
       >
         <Form className={registerForm}>
@@ -63,9 +63,7 @@ export default function Registration() {
           </button>
           <p className={registerFormText}>
             Уже есть аккаунт?{' '}
-            <a className={registerFormText} href="/">
-              Войти
-            </a>
+              <NavLink className={registerFormText} to="/login">Войти</NavLink>
           </p>
         </Form>
       </Formik>

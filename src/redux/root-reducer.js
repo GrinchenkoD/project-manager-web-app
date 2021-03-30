@@ -4,17 +4,15 @@ import storage from 'redux-persist/lib/storage';
 import errorReducer from './error/error-reducer';
 import loadingReducer from './loading/loading-reducer';
 import projectsReducer from './projects/project-reducers';
+import authReducer from './auth/auth-reducers';
 
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token'],
+  whitelist: ['token', 'user', 'isAuthentificated'],
 };
 
-const persistedAuthReducer = persistReducer(
-  authPersistConfig,
-  errorReducer, //  МЕСТО ДЛЯ AUTH-REDUCER
-);
+const persistedAuthReducer = persistReducer(authPersistConfig, authReducer);
 
 const reducer = {
   loader: loadingReducer,
