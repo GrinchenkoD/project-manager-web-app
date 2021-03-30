@@ -1,0 +1,258 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  padding: 10px;
+}
+
+/*! start of header draft  */
+.header {
+  border: 1px solid red;
+  width: 100%;
+  margin-top: 4px;
+  height: 46px;
+  padding: 0 10px 16px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.headerLogo {
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 22px;
+
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.04em;
+}
+
+.headerTitle {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.04em;
+}
+/*! end of header draft  */
+
+.title {
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-bottom: 26px;
+
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 32px;
+  /* identical to box height */
+
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.04em;
+
+  color: #181c27;
+}
+
+.projectsList {
+  list-style: none;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  /* align-items: baseline; */
+  /* padding-left: calc(100% - ((136 + 10) * 2)) / 2; */
+  padding-left: 8px;
+  margin-bottom: 74px;
+}
+
+.projectsListItem {
+  width: 136px;
+  height: 136px;
+
+  margin: 10px 10px 0 0;
+  padding: 10px;
+
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.4);
+  background: #8c72df;
+  border-radius: 5px;
+
+  /* background: ((props) => props); */
+  /* background-color: ${props => props.theme.colors.background}; */
+}
+
+/*! button - add project */
+
+.btnAdd {
+  width: 44px;
+  height: 44px;
+
+  position: absolute;
+  right: 20px;
+  /* top: 504px; */
+
+  background: #ff6b08; /* orange */
+
+  box-shadow: 0px 3px 4px rgba(255, 107, 8, 0.3);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+
+.btnAddIcon {
+  position: absolute;
+  left: 11px;
+  top: -3px;
+
+  font-weight: 200;
+  font-size: 40px;
+  line-height: 52px;
+  color: #fff;
+  /* z-index: 10; */
+}
+
+.btnAdd:hover .btnAddIcon,
+.btnAdd:focus .btnAddIcon {
+  color: #ff6b08;
+  position: absolute;
+  left: 9px;
+  top: -5px;
+}
+
+.btnAdd:hover,
+.btnAdd:focus {
+  background-color: #fff;
+  border: 2px solid #ff6b08;
+}
+
+/* ! icon-exit svg */
+.iconExit {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+.addProjectText {
+  display: none;
+}
+
+/* !  ------------------TABLET ver.------------------ */
+@media screen and (min-width: 768px) {
+  .container {
+    width: 100vw;
+    height: 100vh;
+    padding: 20px;
+  }
+
+  .title {
+    margin-top: 40px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+
+    font-size: 36px;
+    line-height: 44px;
+  }
+
+  .projectsList {
+    justify-content: flex-start;
+    padding-left: 20px;
+    margin-bottom: 100px;
+  }
+
+  .projectsListItem {
+    width: 216px;
+    height: 216px;
+
+    margin: 20px 20px 0 0;
+    padding: 20px;
+
+    box-shadow: 8px 8px 5px 1px rgba(0, 0, 0, 0.4);
+    background: #8c72df;
+    border-radius: 5px;
+  }
+
+  /*! button - add project */
+
+  .btnAdd {
+    position: absolute;
+    right: 40px;
+    top: 120px;
+  }
+}
+
+/* ! ------------------DESKTOP ver.------------------ */
+@media screen and (min-width: 1280px) {
+  .container {
+    width: 100vw;
+    height: 100vh;
+    padding: 25px;
+  }
+
+  .title {
+    margin-left: 30px;
+    margin-bottom: 0;
+  }
+  .projectsList {
+    justify-content: flex-start;
+    padding-left: 30px;
+    margin-bottom: 150px;
+  }
+
+  .projectsListItem {
+    width: 270px;
+    height: 274px;
+
+    margin: 30px 30px 0 0;
+    padding: 28px 30px 10px 30px;
+
+    box-shadow: 10px 10px 5px 1px rgba(0, 0, 0, 0.4);
+    background: #8c72df;
+    border-radius: 5px;
+  }
+
+  /* .addProjectSection {
+  display: flex;
+} */
+
+  /*! button - add project */
+
+  .btnAdd {
+    position: absolute;
+    right: 281px;
+    top: 120px;
+  }
+
+  .addProjectText {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.04em;
+    color: #181c27;
+    /* margin-left: 20px; */
+
+    display: block;
+
+    position: absolute;
+    right: 120px;
+    top: 130px;
+  }
+
+  .projectDescription {
+    opacity: 0;
+  }
+  .projectsListItem:hover .projectDescription {
+    opacity: 1;
+    cursor: pointer;
+  }
+}
