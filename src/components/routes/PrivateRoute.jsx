@@ -3,19 +3,12 @@ import { Route, Redirect } from 'react-router-dom';
 import { authSelectors } from '../../redux/auth/auth-selectors';
 
 export default function PrivateRoute({
-  restricted = false,
-  redirectTo = '/projects',
+  redirectTo = '/registration',
   ...routeProps
 }) {
-  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-  const shouldRedirect = !isLoggedIn && restricted;
+  // const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  const isLoggedIn = false;
   return (
-    <>
-      {shouldRedirect ? (
-        <Route {...routeProps} />
-      ) : (
-        <Redirect to={redirectTo} />
-      )}
-    </>
+    <>{isLoggedIn ? <Route {...routeProps} /> : <Redirect to={redirectTo} />}</>
   );
 }

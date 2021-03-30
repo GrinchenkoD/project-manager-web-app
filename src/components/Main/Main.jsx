@@ -1,6 +1,6 @@
-import PrivateRoute from 'components/routes/PrivateRoute';
-import PublicRoute from 'components/routes/PublicRoute';
 import React from 'react';
+import PrivateRoute from '../routes/PrivateRoute';
+import PublicRoute from '../routes/PublicRoute';
 import { Route, Switch } from 'react-router-dom';
 import mainRoutes from '../../routes/routes';
 
