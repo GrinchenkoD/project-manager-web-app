@@ -31,8 +31,13 @@ export default function Registration() {
         initialValues={{ email: '', password: '', confirmPassword: '' }}
         validationSchema={regSchema}
         onSubmit={(values) => {
-          const {email,password} = values
+          const {email,password,confirmPassword} = values
+          if (password === confirmPassword) {
           dispatch(register({email, password}));
+          } else {
+            alert("пароли не совпадают");
+            return
+          }
         }}
       >
         <Form className={registerForm}>
