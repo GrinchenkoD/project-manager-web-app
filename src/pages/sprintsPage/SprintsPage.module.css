@@ -1,0 +1,65 @@
+.sprintsSideBar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  color: #181c27;
+  border-right: 1px solid rgba(24, 28, 39, 0.1);
+  width: 255px;
+  height: calc(100vh - 100px);
+}
+
+.sprintsBackContainer {
+  position: relative;
+  margin-top: 20px;
+}
+
+.sprintsBackButton {
+  text-decoration: none;
+  width: 500px;
+  color: #181c27;
+}
+
+.sprintsBackButton::before {
+  content: '';
+  background-image: url('../../icons/Buttons/Arrow1.svg');
+  width: 30px;
+  height: 10px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 12px;
+  left: -40px;
+}
+
+.sprintsProjectList {
+  list-style: none;
+  font-size: 14px;
+}
+
+.sprintsProjectItem {
+  margin-bottom: 30px;
+}
+.sprintsItemBox {
+  width: 20px;
+  height: 20px;
+  background-color: tomato;
+}
+
+.buttonCont {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.sprintsButton {
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.buttonText {
+  margin-top: 5px;
+}
