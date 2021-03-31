@@ -1,22 +1,14 @@
 import React, { useState, useEffect } from 'react';
-// import { nanoid } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-
 import ProjectsPageItem from '../ProjectsPageItem/ProjectsPageItem';
-// import { addProject } from '/redux/projects/projects-operations';
-
-// import projects from './db.json';
-// import sprite from '../../icons/symbol-defs.svg';
-
 import popTransition from './transitions/pop.module.css';
-// import slideTransition from './transitions/slide.module.css';
 import styles from './ProjectsPage.module.css';
 import TemporaryModal from 'components/TemporaryModal/TemporaryModal';
 import ProjectForm from 'components/ProjectForm/ProjectForm';
 import { getProject } from 'redux/projects/project-operations';
 import { projectsSelector } from 'redux/projects/project-selectors';
-import { Link, NavLink, useHistory, useRouteMatch } from 'react-router-dom';
+import { useHistory, useRouteMatch } from 'react-router-dom';
 
 const colors = ['#8c72df', '#FF765F', '#71DF87'];
 let currentColor = colors[0];
@@ -58,13 +50,8 @@ export default function ProjectsPage() {
 
   const projects = useSelector(projectsSelector);
 
-  // const generateColor = () => {
-  //   return '#' + Math.floor(Math.random() * 16777215).toString(16);
-  // };
-
   return (
     <div className={styles.container}>
-
       <div className="projects">
         <h2 className={styles.title}>Проекти</h2>
 
@@ -96,19 +83,9 @@ export default function ProjectsPage() {
               </CSSTransition>
             ))}
           </TransitionGroup>
-        )  }
-
-        
-
-        <div className={styles.addProjectSection}>
-          <button
-            type="button"
-            className={styles.btnAdd}
-            onClick={onOpenModal}
-          >
-            {/* <svg className={styles.btnAddIcon} width="32px" height="32px">
-            <use href={sprite + '#icon-plus'} />
-          </svg> */}
+        )}
+        <div className="addProjectSection">
+          <button type="button" className={styles.btnAdd} onClick={onOpenModal}>
             <p className={styles.btnAddIcon}>+</p>
           </button>
           <p className={styles.addProjectText}>Створити проект</p>
