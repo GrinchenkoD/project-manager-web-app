@@ -27,6 +27,8 @@ const register = credential => async dispatch => {
   try {
     const response = await axios.post('/auth/register', credential);
     dispatch(registerSuccess(response.data));
+    const responseWithToken = await axios.post('/auth/login', credential);
+    dispatch(loginSuccess(responseWithToken.data));
   } catch (error) {
     dispatch(registerError(error.message));
   }
