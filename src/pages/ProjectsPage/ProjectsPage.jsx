@@ -50,15 +50,10 @@ export default function ProjectsPage() {
 
   const onHandleClick = e => {
     const isDelete = e.target.closest('[data-process="delete"]');
-    // const isDelete = e.currentTarget.closest('[data-process="delete"]');
-    console.log(isDelete);
-    console.log(e.target.id);
-    console.log(e.currentTarget.id);
     if (isDelete) {
       return;
     } else {
       history.push(`${match.url}/${e.currentTarget.id}`);
-      // history.push(`${match.url}/${e.target.id}`);
     }
   };
 
