@@ -6,7 +6,7 @@ import styles from "./FormControl.module.css"
 const FormControl = ({ label, ...props }) => {
   return (
       <div className={styles.container}>
-        {/* <div className> */}
+   
             <label htmlFor={props.id} className={styles.label}>
                 {label}
             </label>
@@ -14,9 +14,7 @@ const FormControl = ({ label, ...props }) => {
             <ErrorMessage
                 name={props.name}
                 className={styles.error}
-                // component="small"
               />
-        {/* </div> */}
     </div>
   );
 };
