@@ -270,4 +270,23 @@
     opacity: 1;
     cursor: pointer;
   }
+
+  .projectsNone{
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 1.222;
+    letter-spacing: 0.04em;
+
+    display: flex;
+    align-items: center;
+    color: grey;
+
+    display: block;
+
+    position: absolute;
+    left: 15%;
+    top: 45%;
+
+
+  }
 }
