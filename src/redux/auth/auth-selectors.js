@@ -1,7 +1,8 @@
 const isAuthentificated = state => state.auth.isAuthentificated;
-// const getUsername = state => state.auth.user.name;
+const getUserEmail = state => state.auth.user.email;
 // const getIsFetchingCurrent = state => state.auth.isFetchingCurrentUser;
 
 export const authSelectors = {
- isAuthentificated
+    isAuthentificated,
+    getUserEmail
 };

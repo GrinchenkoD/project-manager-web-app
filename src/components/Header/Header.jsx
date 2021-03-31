@@ -1,20 +1,21 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
+import { authSelectors } from '../../redux/auth/auth-selectors';
 import AuthNav from './AuthNav';
-// import {useSelector, useDispatch} from 'react-redux'
-// import {authSelectors} from 'redux/auth';
 import UserNav from './UserNav';
 
 
+
+
 const Header = () => {
-    // const isAuthenticated = useSelector(authSelectors.isAuthenticated)
-    const isAuth = true;
+    const isAuthentificated = useSelector(authSelectors.isAuthentificated)
     return(
         <>
         <header>
-            {isAuth ? <UserNav/> : <AuthNav/>}   
+            {isAuthentificated ? <UserNav/> : <AuthNav/>}   
         </header>
         </>            
     )
 }
 
-export default Header
+export default Header;

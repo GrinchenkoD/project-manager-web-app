@@ -1,23 +1,32 @@
 import React from 'react';
-// import {useSelector, useDispatch} from 'react-redux'
-// import {authSelectors} from 'redux/auth';
 import style from './Header.module.css';
 import logo from '../../icons/Header/Logo.svg';
-import logoutImg from '../../icons/Header/LogOut.svg';
-import secImg from '../../icons/Header/SecondLogOut.svg';
+import { authSelectors } from 'redux/auth/auth-selectors';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from "../../redux/auth/auth-operations";
+
+
+
+
 
 export default function UserNav() {
-  const email = 'sdsad@gmail.com';
-  const goit = 'https://goit.ua/'
+  const email = useSelector(authSelectors.getUserEmail);
+  const dispatch = useDispatch();
+
+  const OnLogOut = () => {
+    dispatch(logout());
+    
+}
+
   return (
     <>
       <div className={style.headerbg}>
-        <a href={goit} className={style.logoimg}><img src={logo}alt=""/></a>
+        <a href="/" className={style.logoimg}><img src={logo}alt=""/></a>
         <div className={style.user_cont}>
           <span className={style.name_contx}>{email}</span>
-          <object className={style.outImg} data={logoutImg}></object>
-          <object className={style.secOutImg} data={secImg}></object>
-          <button className={style.tb_text}>Log Out</button>
+          <button className={style.headerButton} onClick={OnLogOut}>
+            <p className={style.buttonText}>Log out</p>
+            </button>
         </div>
       </div>
     </>
