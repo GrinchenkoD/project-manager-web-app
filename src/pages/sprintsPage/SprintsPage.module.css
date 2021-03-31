@@ -108,6 +108,7 @@
   text-decoration-line: underline;
   outline: none;
   color: #181c27;
+  background-color: transparent;
 }
 
 .addButon::before {
@@ -197,12 +198,14 @@
     color: #181c27;
     border-right: 1px solid rgba(24, 28, 39, 0.1);
     width: 255px;
+    height: calc(100vh - 75px);
   }
   .sprintsButton {
     outline: none;
     cursor: pointer;
     border: none;
     transition: 0.3s;
+    background-color: transparent;
   }
   .sprintsButton:hover {
     -webkit-transform: scale(1.15);
@@ -244,6 +247,7 @@
     margin-bottom: 50px;
     text-align: center;
     display: block;
+    background-color: transparent;
   }
 
   .buttonText {

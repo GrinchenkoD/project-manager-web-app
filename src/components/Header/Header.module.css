@@ -38,6 +38,7 @@
     color: rgba(24, 28, 39, 0.6);
     text-align: center;
     position: relative;
+    background-color: transparent;
   }
   .headerButton:hover {
     color: rgba(233, 168, 48, 0.589);
