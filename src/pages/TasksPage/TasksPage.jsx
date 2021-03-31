@@ -48,8 +48,6 @@ export default function TasksPage(tasks, sprints) {
         </div>
 
 
-        
-
         <div  className={styles.datePicker}> 
           <p> lessThan  2 / 12   greaterThan </p>
           <p>date</p>

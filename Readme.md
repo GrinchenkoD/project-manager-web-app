@@ -8,3 +8,5 @@ how to hide & show text @media screen and (min-width: 1280px)
 how to trow hidden to Project Description deeper?
 
 http://localhost:3000/projects
+
+http://localhost:3000/projects/:projectId/sprints/:sprintId

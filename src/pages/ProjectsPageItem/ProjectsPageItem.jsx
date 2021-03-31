@@ -19,8 +19,8 @@ export default function ProjectsPageItem({
     <>
       {/* <div className={styles.project}> */}
       <div className={styles.projectInfo}>
-        <h4
-          // className={styles.projectTitle} style={ title.length > 10 ? { lineHeight: '18px' } : { lineHeight: '20px' } }
+        <h4 className={styles.projectTitle}
+          // style={ title.length > 10 ? { lineHeight: '18px' } : { lineHeight: '20px' } }
            
         >
           {title}

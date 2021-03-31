@@ -1,7 +1,8 @@
+import RegistrationPage from '../pages/registrationPage/RegistrationPage';
+import LoginPage from '../pages/loginPage/LoginPage';
 import ProjectsPage from '../pages/ProjectsPage/ProjectsPage';
 import SprintsPage from '../pages/sprintsPage/SprintsPage';
-import LoginPage from '../pages/loginPage/LoginPage';
-import RegistrationPage from '../pages/registrationPage/RegistrationPage';
+import TasksPage from '../pages/TasksPage/TasksPage';
 
 const mainRoutes = [
   {
@@ -48,7 +49,7 @@ const mainRoutes = [
     name: 'projects',
     path: '/projects/:projectId/sprints/:sprintId',
     exact: true,
-    component: SprintsPage,
+    component: TasksPage,
     private: true,
     restricted: false,
   },
