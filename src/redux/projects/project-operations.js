@@ -96,7 +96,6 @@ const patchTitle = (projectId, title) => async dispatch => {
 //    /project/{projectId}
 const deleteProject = id => async dispatch => {
   dispatch(deleteProjectRequest());
-
   try {
     await axios.delete(`/project/${id}`);
     dispatch(deleteProjectSuccess(id));

@@ -79,24 +79,22 @@ export default function ProjectsPage() {
           <TransitionGroup component="ul" className={styles.projectsList}>
             {projects.map(project => (
               <CSSTransition
-                key={nanoid()}
+                key={project._id}
                 timeout={200}
                 classNames={popTransition}
               >
                 <li
                   className={styles.projectsListItem}
-                  id={nanoid()}
-                  key={nanoid()}
+                  id={project._id}
+                  key={project._id}
                   style={{ backgroundColor: getCurrentColor() }}
                   onClick={onHandleClick}
                 >
-                  {/* <Link to={`/projects/asdasdasd`}> */}
                   <ProjectsPageItem {...project} color={currentColor}>
                     <span className={styles.projectDescription}>
                       {project.description}
                     </span>
                   </ProjectsPageItem>
-                  {/* </Link> */}
                 </li>
               </CSSTransition>
             ))}
