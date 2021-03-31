@@ -73,7 +73,7 @@ export default function ProjectsPage() {
           </TransitionGroup>
         )}
 
-        <div className="addProjectSection">
+        <div className={styles.addProjectSection}>
           <button
             type="button"
             // onClick={event => dispatch(addProject())}
