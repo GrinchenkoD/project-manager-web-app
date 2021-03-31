@@ -10,7 +10,7 @@ import {
 const projectsReducer = createReducer([], {
   [getProjectSuccess]: (_, { payload }) => [...payload],
   [addProjectSuccess]: (state, { payload }) => [...state, payload],
-  [deleteProjectSuccess]: (state, payload) => [
+  [deleteProjectSuccess]: (state, {payload}) => [
     ...state.filter(contact => contact.id !== payload),
   ],
 });
