@@ -57,6 +57,7 @@
     ]
   },
   "devDependencies": {
+    "prettier": "^2.2.1",
     "react-redux-modal-flex": "^2.0.2",
     "redux-devtools-extension": "^2.13.9"
   }
