@@ -4,11 +4,12 @@ import { nanoid } from '@reduxjs/toolkit';
 // import tasks from './db.json';
 
 import sprite from '../../icons/symbol-defs.svg';
-import sideBarButton from '../../icons/Buttons/sidebarButton.png';
+import addBtn from '../../icons/Buttons/addBtn.png';
+import analytics from '../../icons/Buttons/analytics.png'
 import styles from './TasksPage.module.css';
 
 export default function TasksPage() {
-  const sprints = useSelector(state => state.projects);
+  // const sprints = useSelector(state => state.projects);
   const tasks = useSelector(state => state.projects);
   const { id, title } = tasks
 
@@ -133,12 +134,13 @@ export default function TasksPage() {
           {/* )} */}
 
           <div className={styles.addTaskSection}>
-           {/* <button
+           <button
             type="button"
             className={styles.btnAdd}
           >
-            <p className={styles.btnAddIcon}>+</p>
-            </button> */}
+              {/* <p className={styles.btnAddIcon}>+</p> */}
+              <img src={addBtn} alt="" className={styles.btnAddIcon} />
+            </button> 
             {/* <p className={styles.addProjectText}>Створити задачу</p> */}
           </div>
 
@@ -146,8 +148,8 @@ export default function TasksPage() {
            <button
             type="button"
             className={styles.btnGraph}
-          >
-            <p className={styles.btnGraphIcon}>GraphIcon</p>
+            >
+            <img src={analytics} alt="" className={styles.btnGraphIcon} />
             </button>
             {/* <p className={styles.showGraphText}>Створити задачу</p> */}
           </div>
