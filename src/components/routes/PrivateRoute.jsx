@@ -6,8 +6,8 @@ export default function PrivateRoute({
   redirectTo = '/registration',
   ...routeProps
 }) {
-  // const isAuthentificated = useSelector(authSelectors.isAuthentificated);
-  const isAuthentificated = true;
+  const isAuthentificated = useSelector(authSelectors.isAuthentificated);
+  // const isAuthentificated = true;
   return (
     <>
       {isAuthentificated ? (

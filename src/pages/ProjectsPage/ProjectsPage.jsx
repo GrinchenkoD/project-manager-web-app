@@ -97,7 +97,6 @@ export default function ProjectsPage() {
         <div className={styles.addProjectSection}>
           <button
             type="button"
-            // onClick={event => dispatch(addProject())}
             className={styles.btnAdd}
             onClick={onOpenModal}
           >

@@ -1,24 +1,19 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-// import { deleteProject } from '/redux/projects/projects-operations';
+import { deleteProject } from '../../redux/projects/project-operations';
 
 import sprite from '../../icons/symbol-defs.svg';
 
 import styles from './ProjectsPageItem.module.css';
 
 export default function ProjectsPageItem({
-  id,
+  _id,
   title,
   // description,
   color,
   children,
 }) {
   const dispatch = useDispatch();
-
-  const onDeleteProject = e => {
-    // dispatch(deleteProject());
-    console.log(e);
-  };
 
   return (
     <>
@@ -36,8 +31,8 @@ export default function ProjectsPageItem({
         {/* {children} */}
 
         <button
-          data-id={id}
-          onClick={onDeleteProject}
+          data-id={_id}
+          onClick={event => dispatch(deleteProject(_id))}
           type="button"
           className={styles.btnDelete}
         >
