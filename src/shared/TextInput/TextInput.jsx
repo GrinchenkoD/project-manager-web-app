@@ -20,4 +20,4 @@ const TextInput = ({ className, ...props }) => {
   );
 };
 
-export default TextInput
+export default TextInput;
