@@ -5,7 +5,6 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import ProjectsPageItem from '../ProjectsPageItem/ProjectsPageItem';
 // import { addProject } from '/redux/projects/projects-operations';
-
 // import projects from './db.json';
 import sprite from '../../icons/symbol-defs.svg';
 
