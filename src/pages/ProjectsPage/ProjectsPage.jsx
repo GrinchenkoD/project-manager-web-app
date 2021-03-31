@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { nanoid } from '@reduxjs/toolkit';
 // import { useDispatch } from 'react-redux';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
@@ -31,6 +31,19 @@ const getCurrentColor = () => {
 };
 
 export default function ProjectsPage() {
+
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const onOpenModal = () => {
+    setModalOpen(true)
+  };
+  
+const onCloseModal = () => {
+    setModalOpen(false)
+  };
+
+
+
   // const dispatch = useDispatch();
   // const generateColor = () => {
   //   return '#' + Math.floor(Math.random() * 16777215).toString(16);
@@ -80,6 +93,7 @@ export default function ProjectsPage() {
             type="button"
             // onClick={event => dispatch(addProject())}
             className={styles.btnAdd}
+            onClick={onOpenModal}
           >
             {/* <svg className={styles.btnAddIcon} width="32px" height="32px">
             <use href={sprite + '#icon-plus'} />
@@ -88,9 +102,10 @@ export default function ProjectsPage() {
           </button>
           <p className={styles.addProjectText}>Створити проект</p>
         </div>
-        <TemporaryModal title="Створення проекту">
+        {modalOpen&& <TemporaryModal onClose={onCloseModal} title="Створення проекту">
           <ProjectForm/>
-        </TemporaryModal>
+        </TemporaryModal>}
+       ()
       </div>
     </div>
   );
