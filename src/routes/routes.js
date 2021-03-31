@@ -32,7 +32,7 @@ const mainRoutes = [
     name: 'projects',
     path: '/projects/:projectId',
     exact: true,
-    component: ProjectsPage,
+    component: SprintsPage,
     private: true,
     restricted: false,
   },
