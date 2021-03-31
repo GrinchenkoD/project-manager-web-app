@@ -18,7 +18,7 @@ import {
 } from './project-actions';
 
 //  https://sbc-backend.goit.global
-axios.defaults.baseURL = 'https://sbc-backend.goit.global';
+// axios.defaults.baseURL = 'https://sbc-backend.goit.global';
 
 // ======= post project=======
 //     /project

@@ -1,0 +1,19 @@
+.formControl {
+  margin: 0 auto;
+  background-color: transparent;
+  width: 280px;
+  height: 30px;
+  /* background-color: #fafafa; */
+  border: none;
+  outline: none;
+  border-bottom: 1px solid rgba(24, 28, 39, 0.2);
+}
+:global .isInvalid {
+  border-bottom: 1px solid rgb(255, 0, 55);
+}
+
+@media screen and (min-width: 768px) {
+  .formControl {
+    width: 430px;
+  }
+}
