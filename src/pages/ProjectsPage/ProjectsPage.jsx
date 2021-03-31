@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { nanoid } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
@@ -15,6 +15,7 @@ import TemporaryModal from 'components/TemporaryModal/TemporaryModal';
 import ProjectForm from 'components/ProjectForm/ProjectForm';
 import { getProject } from 'redux/projects/project-operations';
 import { projectsSelector } from 'redux/projects/project-selectors';
+import { Link, NavLink, useHistory, useRouteMatch } from 'react-router-dom';
 
 const colors = ['#8c72df', '#FF765F', '#71DF87'];
 let currentColor = colors[0];
@@ -33,25 +34,28 @@ const getCurrentColor = () => {
 };
 
 export default function ProjectsPage() {
-
-  
   const [modalOpen, setModalOpen] = useState(false);
-  
+  const history = useHistory();
   const dispatch = useDispatch();
+  const match = useRouteMatch();
 
   useEffect(() => {
-   dispatch(getProject())
-  }, [dispatch])
-  
+    dispatch(getProject());
+  }, [dispatch]);
+
   const onOpenModal = () => {
-    setModalOpen(true)
-  };
-  
-const onCloseModal = () => {
-    setModalOpen(false)
+    setModalOpen(true);
   };
 
-const projects = useSelector(projectsSelector)
+  const onCloseModal = () => {
+    setModalOpen(false);
+  };
+
+  const onHandleClick = e => {
+    history.push(`${match.url}/${e.target.id}`);
+  };
+
+  const projects = useSelector(projectsSelector);
 
   // const generateColor = () => {
   //   return '#' + Math.floor(Math.random() * 16777215).toString(16);
@@ -71,19 +75,20 @@ const projects = useSelector(projectsSelector)
 
       <div className="projects">
         <h2 className={styles.title}>Проекти</h2>
-
         {projects.length && (
           <TransitionGroup component="ul" className={styles.projectsList}>
             {projects.map(project => (
               <CSSTransition
-                key={nanoid()}
+                key={project._id}
                 timeout={200}
                 classNames={popTransition}
               >
                 <li
                   className={styles.projectsListItem}
-                  key={nanoid()}
+                  id={project._id}
+                  key={project._id}
                   style={{ backgroundColor: getCurrentColor() }}
+                  onClick={onHandleClick}
                 >
                   <ProjectsPageItem {...project} color={currentColor}>
                     <span className={styles.projectDescription}>
@@ -95,7 +100,6 @@ const projects = useSelector(projectsSelector)
             ))}
           </TransitionGroup>
         )}
-
         <div className="addProjectSection">
           <button
             type="button"
@@ -110,10 +114,12 @@ const projects = useSelector(projectsSelector)
           </button>
           <p className={styles.addProjectText}>Створити проект</p>
         </div>
-        {modalOpen&& <TemporaryModal onClose={onCloseModal} title="Створення проекту">
-          <ProjectForm/>
-        </TemporaryModal>}
-       ()
+        {modalOpen && (
+          <TemporaryModal onClose={onCloseModal} title="Створення проекту">
+            <ProjectForm />
+          </TemporaryModal>
+        )}
+        ()
       </div>
     </div>
   );

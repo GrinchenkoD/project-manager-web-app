@@ -22,6 +22,16 @@ import {
 
 // ======= post project=======
 //     /project
+
+const token = {
+  set(token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  },
+  unset() {
+    axios.defaults.headers.common.Authorization = '';
+  },
+};
+
 const addProject = project => async dispatch => {
   dispatch(addProjectRequest());
 
@@ -35,7 +45,11 @@ const addProject = project => async dispatch => {
 
 // =========get project========
 //     /project
-const getProject = () => async dispatch => {
+const getProject = () => async (dispatch, getState) => {
+  const {
+    auth: { token: accessToken },
+  } = getState();
+  token.set(accessToken);
   dispatch(getProjectRequest());
 
   try {
@@ -82,7 +96,6 @@ const patchTitle = (projectId, title) => async dispatch => {
 //    /project/{projectId}
 const deleteProject = id => async dispatch => {
   dispatch(deleteProjectRequest());
-
   try {
     await axios.delete(`/project/${id}`);
     dispatch(deleteProjectSuccess(id));
