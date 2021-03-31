@@ -58,7 +58,12 @@ export default function ProjectsPage() {
     <div className={styles.container}>
       <div className="projects">
         <h2 className={styles.title}>Проекти</h2>
-        {projects.length && (
+
+        {!projects.length ? (
+
+<p className={styles.projectsNone}>Ваша колекція проектів порожня, скористайтесь кнопкою "Створити проект"</p>
+
+        ) :  (
           <TransitionGroup component="ul" className={styles.projectsList}>
             {projects.map(project => (
               <CSSTransition
