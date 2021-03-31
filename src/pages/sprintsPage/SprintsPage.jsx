@@ -1,10 +1,26 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useSelector } from 'react-redux';
 import sideBarButton from '../../icons/Buttons/sidebarButton.png';
 import styles from './SprintsPage.module.css';
+import TemporaryModal from '../../components/TemporaryModal/TemporaryModal';
+import SprintForm from '../../components/SprintForm/SprintForm';
 
 export default function SprintsPage() {
+  const [modalOpen, setModalOpen] = useState(false);
   const projects = useSelector(state => state.projects);
+
+  // const handleModal = (e) => {
+  //   console.log('hello')
+  // }
+
+  
+  const onOpenModal = () => {
+  setModalOpen(true);
+  };
+
+  const onCloseModal = () => {
+    setModalOpen(false);
+  };
 
   return (
     <div className={styles.sprintsContainer}>
@@ -38,7 +54,7 @@ export default function SprintsPage() {
             <button type="button" className={styles.changeNameButton}></button>
           </div>
           <div className={styles.sprintSecondBlock}>
-            <button className={styles.sprintsButton}>
+            <button className={styles.sprintsButton} onClick={onOpenModal}>
               <img className="sprintsButtonImg" src={sideBarButton} alt="" />
             </button>
             <p className={styles.sprintUpperText}>Создать спринт</p>
@@ -49,7 +65,13 @@ export default function SprintsPage() {
             Добавить людей
           </button>
         </div>
-        <ul className={styles.sprintsCont}>
+        {modalOpen && (
+          <TemporaryModal onClose={onCloseModal} title="Створення спринта">
+            <SprintForm />
+          </TemporaryModal>
+        )}
+
+        {/* <ul className={styles.sprintsCont}>
           <li className={styles.sprintsItem}>
             <p className={styles.sprintTitle}>Sprint Burndown Chart 1</p>
             <div className={styles.sprintItemText}>
@@ -104,7 +126,7 @@ export default function SprintsPage() {
             </div>
             <button type="button" className={styles.deleteButton}></button>
           </li>
-        </ul>
+        </ul> */}
       </div>
     </div>
   );

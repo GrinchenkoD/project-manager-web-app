@@ -46,6 +46,7 @@ export default function ProjectsPage() {
 
   const onHandleClick = e => {
     history.push(`${match.url}/${e.target.id}`);
+    
   };
 
   const projects = useSelector(projectsSelector);
