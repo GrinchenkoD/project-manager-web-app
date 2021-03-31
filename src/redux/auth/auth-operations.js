@@ -8,7 +8,7 @@ import {
   loginError,
   logoutRequest,
   logoutSuccess,
-  logoutError
+  logoutError,
 } from './auth-actions';
 
 axios.defaults.baseURL = 'https://sbc-backend.goit.global';
@@ -30,6 +30,7 @@ const register = credential => async dispatch => {
     const responseWithToken = await axios.post('/auth/login', credential);
     dispatch(loginSuccess(responseWithToken.data));
   } catch (error) {
+    alert('Такий корыстувач вже зареєстрований!');
     dispatch(registerError(error.message));
   }
 };
@@ -41,13 +42,16 @@ const login = credential => async dispatch => {
     token.set(response.data.accessToken);
     dispatch(loginSuccess(response.data));
   } catch (error) {
+    alert('Помилка! Перевiрте даннi для входу!');
     dispatch(loginError(error.message));
   }
 };
 
 const logout = () => async (dispatch, getState) => {
   dispatch(logoutRequest());
-  const { auth: { token: accessToken } } = getState();
+  const {
+    auth: { token: accessToken },
+  } = getState();
   token.set(accessToken);
   try {
     await axios.post('/auth/logout');
