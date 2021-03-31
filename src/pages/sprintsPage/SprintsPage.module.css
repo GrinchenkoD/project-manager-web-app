@@ -1,30 +1,20 @@
-.sprintsContainer {
-  display: flex;
+.sprintsProjectList {
+  display: none;
 }
-
-.sprintsSideBar {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 14px;
-  line-height: 17px;
-  letter-spacing: 0.04em;
-  color: #181c27;
-  border-right: 1px solid rgba(24, 28, 39, 0.1);
-  width: 255px;
-  height: calc(100vh - 100px);
+.buttonCont {
+  display: none;
 }
-
 .sprintsBackContainer {
-  position: relative;
-  margin-top: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  border-bottom: 1px solid rgba(24, 28, 39, 0.1);
 }
-
 .sprintsBackButton {
   text-decoration: none;
   width: 500px;
   color: #181c27;
+  position: relative;
 }
 
 .sprintsBackButton::before {
@@ -35,87 +25,43 @@
   display: inline-block;
   background-repeat: no-repeat;
   position: absolute;
-  top: 12px;
   left: -40px;
+  top: 5px;
 }
-
-.sprintsProjectList {
-  list-style: none;
-  font-size: 14px;
+.projectText {
+  display: none;
 }
-
-.sprintsProjectItem {
-  margin-bottom: 30px;
-}
-.sprintsItemBox {
-  width: 20px;
-  height: 20px;
-  background-color: tomato;
-}
-
-.buttonCont {
-  margin-bottom: 50px;
-  text-align: center;
-}
-
-.sprintsButton {
-  outline: none;
-  border: none;
-  cursor: pointer;
-}
-
-.buttonText {
-  margin-top: 5px;
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .sprintsButton {
+    position: fixed;
+    bottom: 3vh;
+    right: 3vw;
+    z-index: 1;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+  }
 }
 
 .sprintMainCont {
-  width: 100vw;
-  padding-top: 40px;
-  padding-left: 70px;
-  padding-right: 85px;
-  padding-bottom: 40px;
-}
-
-.sprintUpperCont {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.sprintSecondBlock {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.sprintUpperText {
-  margin-left: 20px;
-  font-family: Montserrat;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 22px;
-  letter-spacing: 0.04em;
-  color: #181c27;
+  padding: 20px;
 }
 
 .mainblockTitle {
   font-family: Montserrat;
   font-style: normal;
   font-weight: 500;
-  font-size: 36px;
-  line-height: 44px;
-  display: flex;
-  align-items: center;
-  text-align: center;
+  font-size: 26px;
+  line-height: 32px;
   letter-spacing: 0.04em;
   color: #181c27;
-  margin-right: 20px;
+  margin-right: 8px;
 }
-
 .changeNameButton {
   background-image: url('../../icons/Buttons/changeicon.svg');
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   border: none;
   background-position: 50%;
   background-repeat: no-repeat;
@@ -124,15 +70,29 @@
   cursor: pointer;
   outline: none;
 }
-
-.firstBlockLeft {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .firstBlockLeft {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+  .addPeopleCont {
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+}
+.sprintUpperText {
+  display: none;
 }
 
 .addPeopleCont {
-  margin-top: 40px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .addButon {
@@ -162,34 +122,35 @@
   left: -30px;
   bottom: 2.5px;
 }
-
-.sprintsCont {
-  margin-top: 30px;
-  min-height: 600px;
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .sprintsCont {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
 .sprintsItem {
   position: relative;
-  width: 270px;
-  height: 224px;
+  width: 280px;
+  height: 170px;
   background: #ffffff;
   box-shadow: 0px 6px 26px rgba(0, 5, 97, 0.1);
   border-radius: 5px;
-  margin-right: 30px;
   padding-left: 30px;
   padding-top: 18px;
   padding-bottom: 10px;
   padding-right: 30px;
+  margin-bottom: 10px;
 }
 
 .sprintTitle {
   font-family: Montserrat;
-  width: 210px;
+  width: 240px;
   font-weight: 500;
-  font-size: 18px;
-  line-height: 22px;
+  font-size: 16px;
+  line-height: 20px;
   letter-spacing: 0.04em;
   color: #181c27;
   margin-bottom: 20px;
@@ -200,11 +161,11 @@
   justify-content: space-between;
   align-items: center;
   font-family: Montserrat;
-  font-size: 14px;
-  line-height: 17px;
+  font-size: 12px;
+  line-height: 12px;
   letter-spacing: 0.04em;
   color: #000000;
-  margin-bottom: 20px;
+  margin-bottom: 13px;
 }
 
 .deleteButton {
@@ -218,4 +179,180 @@
   background-color: #ffffff;
   position: absolute;
   right: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .sprintsContainer {
+    display: flex;
+  }
+
+  .sprintsSideBar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.04em;
+    color: #181c27;
+    border-right: 1px solid rgba(24, 28, 39, 0.1);
+    width: 255px;
+  }
+  .sprintsButton {
+    outline: none;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s;
+  }
+  .sprintsButton:hover {
+    -webkit-transform: scale(1.15);
+    -ms-transform: scale(1.15);
+    transform: scale(1.15);
+  }
+  .sprintsBackContainer {
+    width: 119px;
+    margin-top: 20px;
+    border-bottom: none;
+  }
+
+  .sprintsBackButton::before {
+    top: 13px;
+  }
+  .projectsLink {
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.04em;
+    color: #181c27;
+  }
+  .sprintsProjectList {
+    display: block;
+    list-style: none;
+    font-size: 14px;
+  }
+
+  .sprintsProjectItem {
+    margin-bottom: 30px;
+  }
+  .sprintsItemBox {
+    width: 20px;
+    height: 20px;
+    background-color: tomato;
+  }
+
+  .buttonCont {
+    margin-bottom: 50px;
+    text-align: center;
+    display: block;
+  }
+
+  .buttonText {
+    margin-top: 5px;
+  }
+
+  .sprintMainCont {
+    width: 100vw;
+    padding-top: 40px;
+    padding-left: 20px;
+    padding-right: 40px;
+  }
+
+  .sprintUpperCont {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .sprintSecondBlock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .sprintUpperText {
+    margin-left: 20px;
+    font-family: Montserrat;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0.04em;
+    color: #181c27;
+  }
+
+  .mainblockTitle {
+    font-size: 36px;
+    line-height: 44px;
+    margin-right: 20px;
+  }
+
+  .firstBlockLeft {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .addPeopleCont {
+    margin-bottom: 0px;
+    padding-top: 0px;
+    padding-bottom: 30px;
+  }
+
+  .sprintsCont {
+    width: 455px;
+    margin-top: 30px;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .sprintsItem {
+    position: relative;
+    width: 216px;
+    height: 255px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .sprintsItem:hover {
+    box-shadow: 0 7px 15px rgba(0, 0, 0, 0.452);
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  .sprintTitle {
+    font-family: Montserrat;
+    width: 210px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 20px;
+  }
+
+  .textCont {
+    font-size: 14px;
+    line-height: 17px;
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .sprintMainCont {
+    padding-top: 40px;
+    padding-left: 70px;
+    padding-right: 85px;
+    padding-bottom: 40px;
+  }
+  .sprintsCont {
+    width: 900px;
+    margin-top: -30px;
+  }
+  .sprintUpperText {
+    display: block;
+  }
+
+  .sprintsItem {
+    position: relative;
+    width: 270px;
+    height: 224px;
+    margin-right: 30px;
+    margin-top: 30px;
+  }
 }
