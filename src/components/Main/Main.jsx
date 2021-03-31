@@ -10,9 +10,9 @@ export default function Main() {
       <Switch>
         {mainRoutes.map(route =>
           route.private ? (
-            <PrivateRoute {...route} />
+            <PrivateRoute {...route} key={route.path} />
           ) : (
-            <PublicRoute {...route} />
+            <PublicRoute {...route} key={route.path} />
           ),
         )}
       </Switch>

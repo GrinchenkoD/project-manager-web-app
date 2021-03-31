@@ -13,7 +13,7 @@ export default function SprintsPage() {
   //   console.log('hello')
   // }
 
-  
+
   const onOpenModal = () => {
   setModalOpen(true);
   };
@@ -27,14 +27,13 @@ export default function SprintsPage() {
       <div className={styles.sprintsSideBar}>
         <div className={styles.sprintsBackContainer}>
           <a href="" className={styles.sprintsBackButton}>
-            Показать
-            <div>проекты</div>
+            Показать проекты
           </a>
         </div>
         <ul className={styles.sprintsProjectList}>
           {projects.map(project => (
             <li className={styles.sprintsProjectItem} key={project._id}>
-              <a className={styles.sprintsBackButton} href="">
+              <a className={styles.projectsLink} href="">
                 {project.title}
               </a>
             </li>
@@ -42,7 +41,7 @@ export default function SprintsPage() {
         </ul>
         <div className={styles.buttonCont}>
           <button className={styles.sprintsButton}>
-            <img className="sprintsButtonImg" src={sideBarButton} alt="" />
+            <img src={sideBarButton} alt="" />
           </button>
           <p className={styles.buttonText}>Создать проект</p>
         </div>
@@ -71,7 +70,7 @@ export default function SprintsPage() {
           </TemporaryModal>
         )}
 
-        {/* <ul className={styles.sprintsCont}>
+         <ul className={styles.sprintsCont}>
           <li className={styles.sprintsItem}>
             <p className={styles.sprintTitle}>Sprint Burndown Chart 1</p>
             <div className={styles.sprintItemText}>
@@ -90,43 +89,7 @@ export default function SprintsPage() {
             </div>
             <button type="button" className={styles.deleteButton}></button>
           </li>
-          <li className={styles.sprintsItem}>
-            <p className={styles.sprintTitle}>Sprint Burndown Chart 1</p>
-            <div className={styles.sprintItemText}>
-              <div className={styles.textCont}>
-                <p>Дата начала</p>
-                <p>31 марта</p>
-              </div>
-              <div className={styles.textCont}>
-                <p>Дата оконч.</p>
-                <p>07 апреля</p>
-              </div>
-              <div className={styles.textCont}>
-                <p>Длительность</p>
-                <p>1 час</p>
-              </div>
-            </div>
-            <button type="button" className={styles.deleteButton}></button>
-          </li>
-          <li className={styles.sprintsItem}>
-            <p className={styles.sprintTitle}>Sprint Burndown Chart 1</p>
-            <div className={styles.sprintItemText}>
-              <div className={styles.textCont}>
-                <p>Дата начала</p>
-                <p>31 марта</p>
-              </div>
-              <div className={styles.textCont}>
-                <p>Дата оконч.</p>
-                <p>07 апреля</p>
-              </div>
-              <div className={styles.textCont}>
-                <p>Длительность</p>
-                <p>1 час</p>
-              </div>
-            </div>
-            <button type="button" className={styles.deleteButton}></button>
-          </li>
-        </ul> */}
+        </ul>
       </div>
     </div>
   );

@@ -13,6 +13,10 @@
     width: 100px;
   }
 
+  .logo2img {
+    width: 100px;
+  }
+
   .user_cont {
     display: flex;
     align-items: center;
@@ -34,6 +38,7 @@
     color: rgba(24, 28, 39, 0.6);
     text-align: center;
     position: relative;
+    background-color: transparent;
   }
   .headerButton:hover {
     color: rgba(233, 168, 48, 0.589);
@@ -58,8 +63,14 @@
   }
 
   .name_contx {
-    display: none;
     margin-right: 20px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.04em;
+    color: #181c27;
   }
 }
 

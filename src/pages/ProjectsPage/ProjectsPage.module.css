@@ -11,7 +11,7 @@
 }
 
 /*! start of header draft  */
-.header {
+/* .header {
   border: 1px solid red;
   width: 100%;
   margin-top: 4px;
@@ -40,7 +40,7 @@
   display: flex;
   align-items: center;
   letter-spacing: 0.04em;
-}
+} */
 /*! end of header draft  */
 
 .title {
@@ -79,12 +79,17 @@
   margin: 10px 10px 0 0;
   padding: 10px;
 
-  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.4);
   background: #8c72df;
   border-radius: 5px;
+  transition: all 0.25s linear;
 
   /* background: ((props) => props); */
   /* background-color: ${props => props.theme.colors.background}; */
+}
+.projectsListItem:hover {
+  cursor: pointer;
+  transform: scale(1.03);
+  box-shadow: 1px 3px 5px 1px rgba(0, 0, 0, 0.4);
 }
 
 /*! button - add project */
@@ -102,7 +107,9 @@
   box-shadow: 0px 3px 4px rgba(255, 107, 8, 0.3);
   border-radius: 50%;
   border: none;
+  outline: none;
   cursor: pointer;
+  transition: all 0.25s linear;
 }
 
 .btnAddIcon {
@@ -115,6 +122,7 @@
   line-height: 52px;
   color: #fff;
   /* z-index: 10; */
+  transition: all 0.25s linear;
 }
 
 .btnAdd:hover .btnAddIcon,
@@ -129,6 +137,7 @@
 .btnAdd:focus {
   background-color: #fff;
   border: 2px solid #ff6b08;
+  box-shadow: 0 0 8px #ff6b08;
 }
 
 /* ! icon-exit svg */
@@ -175,9 +184,12 @@
     margin: 20px 20px 0 0;
     padding: 20px;
 
-    box-shadow: 8px 8px 5px 1px rgba(0, 0, 0, 0.4);
     background: #8c72df;
     border-radius: 5px;
+    transition: all 0.25s linear;
+  }
+  .projectsListItem:hover {
+    box-shadow: 3px 9px 5px 1px rgba(0, 0, 0, 0.4);
   }
 
   /*! button - add project */
@@ -214,9 +226,12 @@
     margin: 30px 30px 0 0;
     padding: 28px 30px 10px 30px;
 
-    box-shadow: 10px 10px 5px 1px rgba(0, 0, 0, 0.4);
     background: #8c72df;
     border-radius: 5px;
+    transition: all 0.25s linear;
+  }
+  .projectsListItem:hover {
+    box-shadow: 5px 10px 5px 1px rgba(0, 0, 0, 0.4);
   }
 
   /* .addProjectSection {
@@ -254,5 +269,24 @@
   .projectsListItem:hover .projectDescription {
     opacity: 1;
     cursor: pointer;
+  }
+
+  .projectsNone{
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 1.222;
+    letter-spacing: 0.04em;
+
+    display: flex;
+    align-items: center;
+    color: grey;
+
+    display: block;
+
+    position: absolute;
+    left: 15%;
+    top: 45%;
+
+
   }
 }

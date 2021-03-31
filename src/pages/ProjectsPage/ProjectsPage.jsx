@@ -37,6 +37,10 @@ export default function ProjectsPage() {
   }, [dispatch]);
 
   const onOpenModal = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
     setModalOpen(true);
   };
 
@@ -45,8 +49,17 @@ export default function ProjectsPage() {
   };
 
   const onHandleClick = e => {
-    history.push(`${match.url}/${e.target.id}`);
-    
+    const isDelete = e.target.closest('[data-process="delete"]');
+    // const isDelete = e.currentTarget.closest('[data-process="delete"]');
+    console.log(isDelete);
+    console.log(e.target.id);
+    console.log(e.currentTarget.id);
+    if (isDelete) {
+      return;
+    } else {
+      history.push(`${match.url}/${e.currentTarget.id}`);
+      // history.push(`${match.url}/${e.target.id}`);
+    }
   };
 
   const projects = useSelector(projectsSelector);
@@ -55,7 +68,13 @@ export default function ProjectsPage() {
     <div className={styles.container}>
       <div className="projects">
         <h2 className={styles.title}>Проекти</h2>
-        {projects.length && (
+
+        {!projects.length ? (
+          <p className={styles.projectsNone}>
+            Ваша колекція проектів порожня, скористайтесь кнопкою "Створити
+            проект"
+          </p>
+        ) : (
           <TransitionGroup component="ul" className={styles.projectsList}>
             {projects.map(project => (
               <CSSTransition
@@ -88,10 +107,9 @@ export default function ProjectsPage() {
         </div>
         {modalOpen && (
           <TemporaryModal onClose={onCloseModal} title="Створення проекту">
-            <ProjectForm />
+            <ProjectForm onClose={onCloseModal} />
           </TemporaryModal>
         )}
-        ()
       </div>
     </div>
   );
