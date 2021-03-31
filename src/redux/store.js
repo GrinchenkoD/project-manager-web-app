@@ -8,7 +8,7 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import logger from 'redux-logger';
+// import logger from 'redux-logger';
 import reducer from './root-reducer';
 
 const middleware = [
