@@ -1,0 +1,35 @@
+.formControlInput {
+  /* margin: 0 auto; */
+  background-color: transparent;
+  width: 100%;
+  height: 30px;
+  /* background-color: #fafafa; */
+  border: none;
+  outline: none;
+  border-bottom: 1px solid rgba(24, 28, 39, 0.2);
+
+font-size: 16px;
+line-height: 1.25;
+color: #181C27;
+
+}
+
+
+@media screen and (min-width: 768px){
+.formControlInput{
+    font-size: 18px;
+    line-height: 1.22;
+  }
+}
+
+:global .isInvalid {
+  border-bottom: 1px solid rgb(255, 0, 55);
+  
+ 
+}
+
+@media screen and (min-width: 768px) {
+  .formControlInput {
+            width: 430px;
+  }
+}

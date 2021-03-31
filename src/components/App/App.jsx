@@ -22,12 +22,12 @@ const App = function () {
       <Header />
       <Main />
       {/* < Chart /> */}
-      <button onClick={() => setIsOpenModal(true)}>
+      {/* <button onClick={() => setIsOpenModal(true)}>
         <svg>
           <use href={sprite + '#icon-analytics' }/>
         </svg>
       </button>
-      {isOpenModal && <ChartModal onClose={() => setIsOpenModal(false) }/>}
+      {isOpenModal && <ChartModal onClose={() => setIsOpenModal(false) }/>} */}
     </div>
   );
 };

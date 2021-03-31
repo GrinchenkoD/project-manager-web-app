@@ -1,17 +1,17 @@
 import { createReducer } from '@reduxjs/toolkit';
 import {
-  addProjectSuccess, 
+  addProjectSuccess,
   addContributorSuccess,
-  getProjectSuccess, 
-  deleteProjectSuccess, 
+  getProjectSuccess,
+  deleteProjectSuccess,
   changeProjectTitleSuccess,
 } from './project-actions.js';
 
 const projectsReducer = createReducer([], {
   [getProjectSuccess]: (_, { payload }) => [...payload],
   [addProjectSuccess]: (state, { payload }) => [...state, payload],
-  [deleteProjectSuccess]: (state, payload) => [
-    ...state.filter(contact => contact.id !== payload),
+  [deleteProjectSuccess]: (state, { payload }) => [
+    ...state.filter(project => project._id !== payload),
   ],
 });
 
