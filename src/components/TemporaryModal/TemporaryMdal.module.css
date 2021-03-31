@@ -1,0 +1,70 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 100;
+}
+.thumb {
+  background-color: #fafafa;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  padding: 0 20px;
+}
+@media screen and (min-width: 768px) {
+  .thumb {
+    padding: 0 30px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .thumb {
+    padding: 0 50px;
+  }
+}
+
+.closeBtn {
+  /* position: absolute; */
+  top: 10px;
+  right: 10px;
+  width: 22px;
+  height: 22px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  align-self: flex-end;
+}
+.closeSvg {
+  width: 18px;
+  height: 18px;
+}
+.title {
+  text-align: center;
+  color: #181c27;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 1.23;
+}
+@media screen and (min-width: 768px) {
+  .title {
+    font-size: 36px;
+    line-height: 44px;
+  }
+}
+.cancelBtn {
+  background-color: transparent;
+  font-size: 18px;
+  line-height: 1.22;
+  text-decoration: underline;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}

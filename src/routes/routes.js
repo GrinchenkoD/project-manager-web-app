@@ -1,8 +1,8 @@
-import RegistrationPage from '../pages/registrationPage/RegistrationPage';
-import LoginPage from '../pages/loginPage/LoginPage';
 import ProjectsPage from '../pages/ProjectsPage/ProjectsPage';
 import SprintsPage from '../pages/sprintsPage/SprintsPage';
 import TasksPage from '../pages/TasksPage/TasksPage';
+import LoginPage from '../pages/loginPage/LoginPage';
+import RegistrationPage from '../pages/registrationPage/RegistrationPage';
 
 const mainRoutes = [
   {
@@ -32,14 +32,6 @@ const mainRoutes = [
   {
     name: 'projects',
     path: '/projects/:projectId',
-    exact: true,
-    component: ProjectsPage,
-    private: true,
-    restricted: false,
-  },
-  {
-    name: 'projects',
-    path: '/projects/:projectId/sprints',
     exact: true,
     component: SprintsPage,
     private: true,
