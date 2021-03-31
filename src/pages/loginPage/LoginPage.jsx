@@ -1,20 +1,10 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import {login} from '../../redux/auth/auth-operations'
-import { Formik, Form, Field, /*ErrorMessage*/ } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import {
-  registerForm,
-  registerFormInput,
-  registerFormTitle,
-  registerPageButton,
-  registerFormText,
-  // errorMessage
-} from './LoginPage.module.css';
 import { NavLink } from "react-router-dom";
-import AuthBackground from "components/AuthBackground/AuthBackground";
-
-
+import styles from './LoginPage.module.css';
 
 const loginSchema = Yup.object().shape({
   email: Yup.string().required().email(),
@@ -32,21 +22,22 @@ export default function Login() {
           dispatch(login({email, password}));
         }}
       >
-        <Form className={registerForm}>
-        <h2 className={registerFormTitle}>Вход</h2>
-          <Field autoComplete="on" className={registerFormInput} type="email" name="email" placeholder="email" />
-          {/* <ErrorMessage name="email" component="span" className={errorMessage}/> */}
-          <Field autoComplete="on" className={registerFormInput} type="password" name="password" placeholder="password" />
-          {/* <ErrorMessage name="password" component="span" className={errorMessage}/> */}
+        <div className={styles.container}>
+        <Form className={styles.registerForm}>
+        <h2 className={styles.registerFormTitle}>Вхiд</h2>
+          <Field autoComplete="on" className={styles.registerFormInput} type="email" name="email" placeholder="E-mail" />
+          <ErrorMessage name="email" component="span" className={styles.errorMessageEmail}/>
+          <Field autoComplete="on" className={styles.registerFormInput} type="password" name="password" placeholder="Пароль" />
+          <ErrorMessage name="password" component="span" className={styles.errorMessagePassword}/>
           
-          <button className={registerPageButton} type="submit">Submit</button>
-          <p className={registerFormText}>
-          Нет аккаунта?{' '}
-            <NavLink className={registerFormText} to='/registration'>Регистрация</NavLink>
+          <button className={styles.registerPageButton} type="submit">Увійти</button>
+          <p className={styles.registerFormText}>
+          Немає акаунту? {' '}
+            <NavLink className={styles.registerFormText} to='/registration'>Зареєструватись</NavLink>
         </p>
         </Form>
+        </div>
       </Formik>
-      <AuthBackground />
     </main>
   );
 }

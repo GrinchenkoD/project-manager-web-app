@@ -33,10 +33,8 @@ const TemporaryModal = ({ onClose, title, children }) => {
   
     
     return (
-        // overlay
         <div className={styles.overlay}
         onClick={handleOverlay}>
-            {/* thumb */}
             <div className={styles.thumb}>
                 <button className={styles.closeBtn}
                 onClick={onClose}
@@ -47,7 +45,8 @@ const TemporaryModal = ({ onClose, title, children }) => {
                 </button>
                 <h3 className={styles.title}>{title}</h3>
                 {children}
-                <button className={styles.cancelBtn}>
+                <button className={styles.cancelBtn}
+                onClick={onClose}>
                     Вiдмiна
                 </button>
             </div>

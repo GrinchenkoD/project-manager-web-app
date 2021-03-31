@@ -8,7 +8,7 @@ const TextInput = ({ className, ...props }) => {
   return (
     <input
       className={cn(
-        `${styles.formControl}`,
+        `${styles.formControlInput}`,
         {
           "isInvalid": meta.error && meta.touched,
         },
