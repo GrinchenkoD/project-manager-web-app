@@ -8,9 +8,8 @@
   letter-spacing: 0.04em;
   color: #181c27;
   border-right: 1px solid rgba(24, 28, 39, 0.1);
-  height: 100%;
   width: 255px;
-  height: 100vh;
+  height: calc(100vh - 100px);
 }
 
 .sprintsBackContainer {
