@@ -8,6 +8,11 @@ const registerError = createAction('auth/register-error');
 const loginRequest = createAction('auth/login-request');
 const loginSuccess = createAction('auth/login-success');
 const loginError = createAction('auth/login-error');
+// =========  logout  ========
+const logoutRequest = createAction('auth/logout-request');
+const logoutSuccess = createAction('auth/logout-success');
+const logoutError = createAction('auth/logout-error');
+
 
 export {
   registerRequest,
@@ -16,4 +21,7 @@ export {
   loginRequest,
   loginSuccess,
   loginError,
+  logoutRequest,
+  logoutSuccess,
+  logoutError,
 };
