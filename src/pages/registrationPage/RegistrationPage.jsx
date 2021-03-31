@@ -1,20 +1,10 @@
 import React from "react";
-import { Formik, Form, Field, /*ErrorMessage*/ } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import {register} from '../../redux/auth/auth-operations'
 import { useDispatch } from "react-redux";
 import * as Yup from "yup";
-import {
-  registerForm,
-  registerFormInput,
-  registerFormTitle,
-  registerPageButton,
-  registerFormText,
-  // errorMessage
-} from './RegisterPage.module.css';
 import { NavLink } from "react-router-dom";
-import AuthBackground from "components/AuthBackground/AuthBackground";
-
-
+import styles from './RegisterPage.module.css';
 
 
 const regSchema = Yup.object().shape({
@@ -35,47 +25,48 @@ export default function Registration() {
           if (password === confirmPassword) {
           dispatch(register({email, password}));
           } else {
-            alert("пароли не совпадают");
+            alert("Паролi не спiвпадають!");
             return
           }
         }}
       >
-        <Form className={registerForm}>
-          <h2 className={registerFormTitle}>Регистрация</h2>
+        <div className={styles.container}>
+        <Form className={styles.registerForm}>
+          <h2 className={styles.registerFormTitle}>Реєстрація</h2>
           <Field
             autoComplete="on"
-            className={registerFormInput}
+            className={styles.registerFormInput}
             type="email"
             name="email"
-            placeholder="email"
+            placeholder="E-mail"
           />
-          {/* <ErrorMessage name="email" component="span" className={errorMessage}/> */}
+          <ErrorMessage name="email" component="span" className={styles.errorMessageEmail}/>
           <Field
             autoComplete="on"
-            className={registerFormInput}
+            className={styles.registerFormInput}
             type="password"
             name="password"
-            placeholder="password"
+            placeholder="Пароль"
           />
-          {/* <ErrorMessage name="password" component="span" className={errorMessage}/> */}
+          <ErrorMessage name="password" component="span" className={styles.errorMessagePassword}/>
           <Field
             autoComplete="on"
-            className={registerFormInput}
+            className={styles.registerFormInput}
             type="password"
             name="confirmPassword"
-            placeholder="confirm password"
+            placeholder="Повторiть пароль"
           />
-          {/* <ErrorMessage name="confirmPassword" component="span" className={errorMessage}/> */}
-          <button className={registerPageButton} type="submit">
-            Submit
+          <ErrorMessage name="confirmPassword" component="span" className={styles.errorMessageConfirmPassword}/>
+          <button className={styles.registerPageButton} type="submit">
+            Зареєструватися
           </button>
-          <p className={registerFormText}>
-            Уже есть аккаунт?{' '}
-              <NavLink className={registerFormText} to="/login">Войти</NavLink>
+          <p className={styles.registerFormText}>
+            Маєте акаунт?{' '}
+              <NavLink className={styles.registerFormText} to="/login">Увійти</NavLink>
           </p>
-        </Form>
+          </Form>
+          </div>
       </Formik>
-      <AuthBackground/>
     </main>
   );
 }
