@@ -37,6 +37,10 @@ export default function ProjectsPage() {
   }, [dispatch]);
 
   const onOpenModal = () => {
+     window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+     });
     setModalOpen(true);
   };
 
@@ -92,10 +96,9 @@ export default function ProjectsPage() {
         </div>
         {modalOpen && (
           <TemporaryModal onClose={onCloseModal} title="Створення проекту">
-            <ProjectForm />
+            <ProjectForm  onClose={onCloseModal}/>
           </TemporaryModal>
         )}
-        
       </div>
     </div>
   );

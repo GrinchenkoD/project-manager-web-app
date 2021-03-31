@@ -4,12 +4,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { addProject } from 'redux/projects/project-operations';
 import projectsSchema from "./projectsSchema.js"
 import FormControl from 'components/formControl/FormControl.jsx';
+import styles from "./ProjectForm.module.css"
+import isLoading from 'redux/loading/loading-selectors.js';
 
 
-const ProjectForm = () => {
+const ProjectForm = ({onClose}) => {
 
     const dispatch = useDispatch();
-      const addNeWProject = useCallback((values) => dispatch(addProject(values)), [dispatch]);
+    const loading = useSelector(isLoading)
+    const addNeWProject = useCallback((values) => { dispatch(addProject(values)); onClose()}, [dispatch]);
+    
 
     return (
         <Formik
@@ -22,28 +26,29 @@ const ProjectForm = () => {
     >
       <Form>
         <FormControl
-        //   label="Email"
+          label="Назва проекту"
           name="title"
           type="text"
           id="title"
-          placeholder="Назва проекту"
+        //   placeholder="Назва проекту"
         />
 
         <FormControl
-        //   label="Password"
+          label="Опис"
           name="description"
           type="text"
           id="description"
-          placeholder="Опис"
+        //   placeholder="Опис"
         />
-
-        <button
-          type="submit"
-        //   disabled={loading}
-          className=""
-        >
-          Готово
-        </button>
+        <div className={styles.btnThumb}>
+            <button
+            type="submit"
+              disabled={loading}
+            className={styles.acceptBtn}
+            >
+                            Готово
+            </button>
+        </div>
       </Form>
     </Formik>
     )
