@@ -22,6 +22,7 @@ export default function ProjectsPageItem({ _id, title, color, children }) {
           type="button"
           className={styles.btnDelete}
           onClick={onDeleteProject}
+          data-process="delete"
         >
           <svg className={styles.btnDeleteIcon} style={{ fill: color }}>
             <use href={sprite + '#icon-bin'} />
