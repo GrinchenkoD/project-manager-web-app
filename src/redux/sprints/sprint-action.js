@@ -12,14 +12,14 @@ const addSprintError = createAction('sprints/add-sprint-error');
 
 //=========== get project ==============
 
-const getSprintRequest = createAction('project/get-sprint-request');
-const getSprintSuccess = createAction('project/get-sprint-success');
-const getSprintError = createAction('project/get-sprint-error');
+const getSprintRequest = createAction('sprints/get-sprint-request');
+const getSprintSuccess = createAction('sprints/get-sprint-success');
+const getSprintError = createAction('sprints/get-sprint-error');
 
 //=========== delete contact ==============
-const deleteSprintRequest = createAction('project/delete-sprint-request');
-const deleteSprintSuccess = createAction('project/delete-sprint-success');
-const deleteSprintError = createAction('project/delete-sprint-error');
+const deleteSprintRequest = createAction('sprints/delete-sprint-request');
+const deleteSprintSuccess = createAction('sprints/delete-sprint-success');
+const deleteSprintError = createAction('sprints/delete-sprint-error');
 // =============== patch contact ==================
 
 // const changeProjectTitleRequest = createAction('project/patch-title-request');

@@ -1,3 +1,3 @@
-const getProjectId = state => state.projects._id;
+const getToken = state => state;
 
-export { getProjectId };
+export { getToken };

@@ -6,8 +6,8 @@ import {
 } from './sprint-action';
 
 const sprintsReducer = createReducer([], {
-  [getSprintSuccess]: (_, { payload }) => [...payload],
   [addSprintSuccess]: (state, { payload }) => [...state, payload],
+  [getSprintSuccess]: (_, { payload }) => [...payload],
   [deleteSprintSuccess]: (state, payload) => [
     ...state.filter(contact => contact.id !== payload),
   ],

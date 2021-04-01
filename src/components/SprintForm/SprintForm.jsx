@@ -1,16 +1,21 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useState } from 'react'
 import { Form, Formik } from "formik";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 import { addSprint } from '../../redux/sprints/sprint-operation';
 import sprintsSchema from "./sprintSchema"
 import FormControl from '../formControl/FormControl';
 
-const SprintForm = () => {
+const SprintForm = ({closeModal}) => {
   const dispatch = useDispatch();
-  const projectId = useSelector(state => state.projects);
-  console.log(projectId);
-    const addNeWSprint = useCallback((values) => dispatch(addSprint(values)), [dispatch]);
+  const { projectId } = useParams();
   
+  
+  const addNeWSprint = useCallback((values) => {
+    dispatch(addSprint(projectId, values))
+    closeModal();
+  }, [dispatch, projectId, closeModal]);
+  // const addNeWSprint = ( values) => dispatch(addSprint(`${projectId}`, values));
     return (
         <Formik
       initialValues={{
