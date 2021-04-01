@@ -1,4 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { NavLink, useParams } from 'react-router-dom';
+import TemporaryModal from '../../components/TemporaryModal/TemporaryModal';
+import SprintForm from '../../components/SprintForm/SprintForm';
+import { getTask } from '../../redux/tasks/task-operation';
+import { getSprint } from '../../redux/sprints/sprint-operation';
+import { getProject } from '../../redux/projects/project-operations';
 import tasks from './db.json';
 
 import sprite from '../../icons/symbol-defs.svg';
@@ -10,6 +17,25 @@ export default function TasksPage() {
   // const sprints = useSelector(state => state.projects);
   // const tasks = useSelector(state => state.projects);
   // const { id, title } = tasks
+  const dispatch = useDispatch();
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalAddPeople, setModalAddPeople] = useState(false);
+  const { projectId } = useParams();
+  const projects = useSelector(state => state.projects);
+  const project = projects.find(item => item._id === projectId);
+
+  useEffect(() => {
+    dispatch(getSprint(projectId));
+    dispatch(getProject());
+  }, [dispatch, projectId]);
+
+  const onOpenModal = () => {
+    setModalOpen(true);
+  };
+
+  const onCloseModal = () => {
+    setModalOpen(false);
+  };
 
   return (
     <div className={styles.tasksContainer}>
@@ -119,12 +145,21 @@ export default function TasksPage() {
           {/* )} */}
 
           <div className={styles.addTaskSection}>
-            <button type="button" className={styles.btnAdd}>
+            <button
+              type="button"
+              className={styles.btnAdd}
+              onClick={onOpenModal}
+            >
               {/* <p className={styles.btnAddIcon}>+</p> */}
               <img src={addBtn} alt="" className={styles.btnAddIcon} />
             </button>
             {/* <p className={styles.addProjectText}>Створити задачу</p> */}
           </div>
+          {modalOpen && (
+            <TemporaryModal onClose={onCloseModal} title="Створення задачi">
+              <SprintForm closeModal={onCloseModal} />
+            </TemporaryModal>
+          )}
 
           <div className={styles.showGraphSection}>
             <button type="button" className={styles.btnGraph}>
