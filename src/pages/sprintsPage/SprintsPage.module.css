@@ -5,6 +5,7 @@
   display: none;
 }
 .sprintsBackContainer {
+  background-color: #e5e5e5e5;
   padding-top: 10px;
   padding-bottom: 10px;
   text-align: center;
@@ -45,6 +46,8 @@
 }
 
 .sprintMainCont {
+  background-color: #e5e5e5e5;
+  height: 100vh;
   padding: 20px;
 }
 
@@ -194,6 +197,7 @@
   }
 
   .sprintsSideBar {
+    background-color: #e5e5e5e5;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -234,6 +238,10 @@
     letter-spacing: 0.04em;
     color: #181c27;
   }
+  .projectsLinkActive {
+    color: black;
+    font-weight: bold;
+  }
   .sprintsProjectList {
     display: block;
     list-style: none;
@@ -261,6 +269,7 @@
   }
 
   .sprintMainCont {
+    background-color: #e5e5e5e5;
     width: 100vw;
     padding-top: 40px;
     padding-left: 20px;
@@ -345,6 +354,7 @@
 
 @media screen and (min-width: 1200px) {
   .sprintMainCont {
+    background-color: #e5e5e5e5;
     padding-top: 40px;
     padding-left: 70px;
     padding-right: 85px;
