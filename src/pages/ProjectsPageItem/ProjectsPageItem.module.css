@@ -89,7 +89,7 @@
 /* ! ------------------DESKTOP ver.------------------ */
 @media screen and (min-width: 1280px) {
   .projectTitle {
-    width: 210px;
+    max-width: 210px;
     margin-bottom: 20px;
   }
   .btnDelete {

@@ -98,10 +98,10 @@ export default function ProjectsPage() {
         )}
         <div className="addProjectSection">
           <button type="button" className={styles.btnAdd} onClick={onOpenModal}>
-            {/* <p className={styles.btnAddIcon}>+</p> */}
+            <p className={styles.btnAddIcon}>+</p>
 
              
-            <img src={sideBarButton} alt="" />
+            {/* <img src={sideBarButton} alt="" /> */}
 
               {/* <svg className={styles.btnAddIcon} >
                <use href={sprite + '#icon-add'} />

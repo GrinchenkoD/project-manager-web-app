@@ -117,7 +117,7 @@
   width: 280px;
   height: 64px;
   display: flex;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .tasksTitleText{
@@ -162,6 +162,7 @@
 .tasksListItem{
   width: 280px;
   height: 200px;
+  margin: 10px 10px 0 0;
   padding: 20px;
   position: relative;
 
