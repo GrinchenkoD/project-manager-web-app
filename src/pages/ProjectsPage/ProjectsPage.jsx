@@ -26,6 +26,7 @@ const getCurrentColor = () => {
   }
 };
 
+
 export default function ProjectsPage() {
   const [modalOpen, setModalOpen] = useState(false);
   const history = useHistory();
@@ -35,6 +36,8 @@ export default function ProjectsPage() {
   useEffect(() => {
     dispatch(getProject());
   }, [dispatch]);
+
+
 
   const onOpenModal = () => {
     window.scrollTo({

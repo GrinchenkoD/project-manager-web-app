@@ -1,6 +1,6 @@
 import ProjectsPage from '../pages/ProjectsPage/ProjectsPage';
 import SprintsPage from '../pages/sprintsPage/SprintsPage';
-import TasksPage from '../pages/TasksPage/TasksPage';
+import TasksPage from '../pages/tasksPage/TasksPage';
 import LoginPage from '../pages/loginPage/LoginPage';
 import RegistrationPage from '../pages/registrationPage/RegistrationPage';
 
