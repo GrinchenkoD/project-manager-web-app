@@ -33,8 +33,9 @@ const addProject = project => async dispatch => {
 
   try {
     const { data } = await axios.post('/project', project);
-
-    dispatch(addProjectSuccess(data));
+    const id = data.id;
+    delete data.id;
+    dispatch(addProjectSuccess({ ...data, _id: id }));
   } catch (error) {
     dispatch(addProjectError(error));
   }
@@ -82,8 +83,8 @@ const patchTitle = (projectId, title) => async dispatch => {
   dispatch(changeProjectTitleRequest());
 
   try {
-    await axios.patch(`/project/title/${projectId}`, title);
-    dispatch(changeProjectTitleSuccess());
+    await axios.patch(`/project/title/${projectId}`, { title });
+    dispatch(changeProjectTitleSuccess({ projectId, title }));
   } catch (error) {
     dispatch(changeProjectTitleError(error));
   }
