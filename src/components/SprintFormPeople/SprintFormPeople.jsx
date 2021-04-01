@@ -2,8 +2,9 @@ import React from 'react';
 import { Form, Formik } from 'formik';
 import sprintsSchema from './sprintSchema';
 import FormControl from '../formControl/FormControl';
+import styles from '../ProjectForm/ProjectForm.module.css';
 
-const SprintForm = ({ closeModal }) => {
+const SprintForm = () => {
   const addPeople = () => {
     console.log('Add people!!!!');
   };
@@ -22,9 +23,11 @@ const SprintForm = ({ closeModal }) => {
           id="email"
           placeholder="E-mail"
         />
-        <button type="submit" className="">
-          Готово
-        </button>
+        <div className={styles.btnThumb}>
+          <button type="submit" className={styles.acceptBtn}>
+            Готово
+          </button>
+        </div>
       </Form>
     </Formik>
   );

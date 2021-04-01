@@ -17,11 +17,7 @@ import {
   changeProjectTitleError,
 } from './project-actions';
 
-//  https://sbc-backend.goit.global
-// axios.defaults.baseURL = 'https://sbc-backend.goit.global';
-
 // ======= post project=======
-//     /project
 
 const token = {
   set(token) {
@@ -86,7 +82,7 @@ const patchTitle = (projectId, title) => async dispatch => {
   dispatch(changeProjectTitleRequest());
 
   try {
-    const responce = await axios.patch(`/project/title/${projectId}`, title);
+    await axios.patch(`/project/title/${projectId}`, title);
     dispatch(changeProjectTitleSuccess());
   } catch (error) {
     dispatch(changeProjectTitleError(error));

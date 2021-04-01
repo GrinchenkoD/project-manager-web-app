@@ -1,10 +1,8 @@
 import { createReducer } from '@reduxjs/toolkit';
 import {
   addProjectSuccess,
-  addContributorSuccess,
   getProjectSuccess,
   deleteProjectSuccess,
-  changeProjectTitleSuccess,
 } from './project-actions.js';
 
 const projectsReducer = createReducer([], {

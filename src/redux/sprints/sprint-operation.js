@@ -10,7 +10,6 @@ import {
   deleteSprintSuccess,
   deleteSprintError,
 } from './sprint-action';
-import { getToken } from './sprint-selectors';
 
 //  https://sbc-backend.goit.global
 // axios.defaults.baseURL = 'https://sbc-backend.goit.global';
