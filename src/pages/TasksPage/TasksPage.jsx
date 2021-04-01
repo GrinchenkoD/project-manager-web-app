@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
@@ -6,12 +7,15 @@ import SprintForm from '../../components/SprintForm/SprintForm';
 import { getTask } from '../../redux/tasks/task-operation';
 import { getSprint } from '../../redux/sprints/sprint-operation';
 import { getProject } from '../../redux/projects/project-operations';
+
 import tasks from './db.json';
 
 import sprite from '../../icons/symbol-defs.svg';
 import addBtn from '../../icons/Buttons/addBtn.png';
-import analytics from '../../icons/Buttons/analytics.png';
+import analytics from '../../icons/Buttons/analytics.png'
+import sprintBox from '../../icons/Buttons/sprintBox.png'
 import styles from './TasksPage.module.css';
+import TaskPageItem from 'pages/TaskPageItem/TaskPageItem';
 
 export default function TasksPage() {
   // const sprints = useSelector(state => state.projects);
@@ -40,51 +44,63 @@ export default function TasksPage() {
   return (
     <div className={styles.tasksContainer}>
       <div className={styles.tasksPage}>
+        
         <div className={styles.sprintsSideBar}>
+          
           <div className={styles.showSprints}>
             <a href="/" className={styles.sprintsBackLink}>
               <svg className={styles.sprintsBackArrow}>
                 <use href={sprite + '#arrow-left'} />
               </svg>
-              <p className={styles.sprintsBackText}>Показати спринти</p>
+              <div className={styles.sprintsBack}>
+                <p className={styles.sprintsBackText}>Показати спринти</p>
+              </div>
             </a>
           </div>
 
-          <div className={styles.sprintsList}>
-            {/* <ul className={styles.sprintsList}>
-                {sprints.map(sprint =>
-                  <li className={styles.sprintListItem} key={nanoid()}>
-                    <a href="/" className={styles.sprintsBackLink} >
-                      <span className={styles.sprintBox}>Color Box</span>
-                      <p className={styles.sprintTitle}>{sprint.title}</p>
-                    </a>
-                  </li>
-               )}
-            </ul> */}
+          <div className={styles.sprintsListSection}>
+            <ul className={styles.sprintsList}>
+                {/* {sprints.map(sprint => */}
+              <li className={styles.sprintListItem} key={nanoid()}>
+                <a href="/" className={styles.sprintsBackLink} >
+                  <img src={sprintBox} alt="" className={styles.sprintBox} />
+                  {/* <span className={styles.sprintBox}>Color Box</span> */}
+                  <p className={styles.sprintTitleActive}>Sprint Burndown Chart 1</p>
+                </a>
+              </li>
+              
+              <li className={styles.sprintListItem} key={nanoid()}>
+                <a href="/" className={styles.sprintsBackLink} >
+                  <img src={sprintBox} alt="" className={styles.sprintBox} />
+                  {/* <span className={styles.sprintBox}>Color Box</span> */}
+                  <p className={styles.sprintTitle}>Sprint Burndown Chart 2</p>
+                </a>
+              </li>
+               {/* )} */}
+            </ul>
 
-            {/* <div className={styles.addSprintSection}>
-            <button
-              type="button"
-              className={styles.btnAdd}
-            >
-            <p className={styles.btnAddIcon}>+</p>
-            </button>
-            <p className={styles.addProjectText}>Створити спринт</p> 
-          </div> */}
+            <div className={styles.addSprint}>
+              <button
+                type="button"
+                className={styles.btnAddSprint}
+              >
+                  {/* <p className={styles.btnAddIcon}>+</p> */}
+                  <img src={addBtn} alt="" className={styles.btnAddSprintIcon} />
+              </button>
+              <p className={styles.addSprintText}>Створити спринт</p> 
+            </div>
+          
           </div>
+
         </div>
 
         <div className={styles.navigation}>
           <div className={styles.datePicker}>
             <div className={styles.navDay}>
-              <button type="button" className={styles.navLeft}>
-                &lt;
-              </button>
+              <button type="button" className={styles.navLeft}>&lt;</button>
               <p className={styles.navCurrentDay}> 2 </p>
-              <p className={styles.navTotalDays}> / 12 </p>
-              <button type="button" className={styles.navRight}>
-                &gt;
-              </button>
+              <p className={styles.navTotalDays}>  / 12   </p>
+              <button type="button" className={styles.navRight}>&gt;</button>
             </div>
             <p className={styles.navDate}>08.08.2020</p>
           </div>
@@ -110,37 +126,10 @@ export default function TasksPage() {
           </div>
 
           {/* {tasks.length && ( */}
-          <ul className={styles.tasksList}>
-            {tasks.map(task => (
-              <li className={styles.tasksListItem} key={task._id}>
-                <h5 className={styles.taskTitle}>{task.title}</h5>
-
-                <div className={styles.planned}>
-                  <p className={styles.plannedTitle}>Заплановано годин </p>
-                  <p className={styles.plannedHours}>{task.hoursPlanned}</p>
-                </div>
-
-                <div className={styles.used}>
-                  <p className={styles.usedTitle}>Витрачено год / день </p>
-                  <p className={styles.usedHours}>{task.hoursWasted}</p>
-                </div>
-
-                <div className={styles.total}>
-                  <p className={styles.totalTitle}>Витрачено годин (загал.)</p>
-                  <p className={styles.totalHours}>1</p>
-                </div>
-
-                <button
-                  data-id={task._id}
-                  type="button"
-                  className={styles.btnDelete}
-                >
-                  <svg className={styles.btnDeleteIcon}>
-                    <use href={sprite + '#icon-delete'} />
-                  </svg>
-                </button>
-              </li>
-            ))}
+            <ul className={styles.tasksList}>
+              {tasks.map(tasks => 
+                <TaskPageItem {...tasks}/>
+              )}
           </ul>
           {/* )} */}
 
@@ -153,7 +142,7 @@ export default function TasksPage() {
               {/* <p className={styles.btnAddIcon}>+</p> */}
               <img src={addBtn} alt="" className={styles.btnAddIcon} />
             </button>
-            {/* <p className={styles.addProjectText}>Створити задачу</p> */}
+            <p className={styles.addProjectText}>Створити задачу</p>
           </div>
           {modalOpen && (
             <TemporaryModal onClose={onCloseModal} title="Створення задачi">

@@ -9,7 +9,7 @@
         "singleHoursWasted": 0
       }
     ],
-    "_id": "507f1f77bcf86cd799439011",
+    "_id": "57f1f77bcf86cd799439011",
     "__v": 0
   },
   {
@@ -22,6 +22,7 @@
         "singleHoursWasted": 1
       }
     ],
+
     "_id": "507f1f77bcf86cd799439012",
     "__v": 0
   },
@@ -62,6 +63,19 @@
       }
     ],
     "_id": "507f1f77bcf86cd799439015",
+    "__v": 0
+  },
+  {
+    "title": "Task 6",
+    "hoursPlanned": 5,
+    "hoursWasted": 5,
+    "hoursWastedPerDay": [
+      {
+        "currentDay": "2020-12-31",
+        "singleHoursWasted": 5
+      }
+    ],
+    "_id": "507f1f77bcf86cd799439016",
     "__v": 0
   }
 ]

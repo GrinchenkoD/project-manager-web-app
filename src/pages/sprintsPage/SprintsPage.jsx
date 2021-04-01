@@ -7,13 +7,20 @@ import TemporaryModal from '../../components/TemporaryModal/TemporaryModal';
 import SprintForm from '../../components/SprintForm/SprintForm';
 import { getSprint } from '../../redux/sprints/sprint-operation';
 import SprintItem from '../../components/SprintItem/SprintItem';
-import { getProject } from 'redux/projects/project-operations';
+import { getProject, patchTitle } from 'redux/projects/project-operations';
 import SprintFormPeople from '../../components/SprintFormPeople/SprintFormPeople';
+import ProjectForm from 'components/ProjectForm/ProjectForm';
+import { CSSTransition } from 'react-transition-group';
+import alert from './alert.module.css';
 
 export default function SprintsPage() {
   const dispatch = useDispatch();
   const [modalOpen, setModalOpen] = useState(false);
   const [modalAddPeople, setModalAddPeople] = useState(false);
+  const [modalAddProject, setModalAddProject] = useState(false);
+  const [isUpdate, setUpdate] = useState(true);
+  const [active, setActive] = useState(false);
+  const [input, setInput] = useState();
   const { projectId } = useParams();
   const projects = useSelector(state => state.projects);
   const project = projects.find(item => item._id === projectId);
@@ -39,6 +46,27 @@ export default function SprintsPage() {
     setModalAddPeople(false);
   };
 
+  const onOpenModalProject = () => {
+    setModalAddProject(true);
+  };
+
+  const onCloseModalProject = () => {
+    setModalAddProject(false);
+  };
+
+  const onChangeTitle = e => {
+    setUpdate(!isUpdate);
+    setInput(project.title);
+  };
+  const onHandleChange = e => {
+    setInput(e.target.value);
+  };
+  const onFormSubmit = e => {
+    e.preventDefault();
+    dispatch(patchTitle(projectId, input));
+    setUpdate(!isUpdate);
+  };
+
   return (
     <div className={styles.sprintsContainer}>
       <div className={styles.sprintsSideBar}>
@@ -61,7 +89,7 @@ export default function SprintsPage() {
           ))}
         </ul>
         <div className={styles.buttonCont}>
-          <button className={styles.sprintsButton}>
+          <button className={styles.sprintsButton} onClick={onOpenModalProject}>
             <img src={sideBarButton} alt="" />
           </button>
           <p className={styles.buttonText}>Создать проект</p>
@@ -70,8 +98,45 @@ export default function SprintsPage() {
       <div className={styles.sprintMainCont}>
         <div className={styles.sprintUpperCont}>
           <div className={styles.firstBlockLeft}>
-            <h2 className={styles.mainblockTitle}>{project?.title}</h2>
-            <button type="button" className={styles.changeNameButton}></button>
+            <CSSTransition
+              in={active}
+              unmountOnExit
+              mountOnEnter
+              timeout={300}
+              classNames={alert}
+            >
+              <form onSubmit={onFormSubmit} className={styles.changeForm}>
+                <input
+                  type="text"
+                  name="edit"
+                  value={input}
+                  onChange={onHandleChange}
+                  className={styles.changeFormInput}
+                />{' '}
+                <button
+                  type="submit"
+                  className={styles.saveButtonIcon}
+                ></button>{' '}
+              </form>
+            </CSSTransition>
+            <CSSTransition
+              classNames={alert}
+              in={isUpdate}
+              timeout={300}
+              unmountOnExit
+              mountOnEnter
+              onExited={() => setActive(true)}
+              onEnter={() => setActive(false)}
+            >
+              <>
+                <h2 className={styles.mainblockTitle}>{project?.title}</h2>
+                <button
+                  type="button"
+                  className={styles.changeNameButton}
+                  onClick={onChangeTitle}
+                ></button>
+              </>
+            </CSSTransition>
           </div>
           <div className={styles.sprintSecondBlock}>
             <button className={styles.sprintsButton} onClick={onOpenModal}>
@@ -97,6 +162,14 @@ export default function SprintsPage() {
         {modalAddPeople && (
           <TemporaryModal onClose={onCloseModalPeople} title="Добавить людей">
             <SprintFormPeople closeModal={onCloseModalPeople} />
+          </TemporaryModal>
+        )}
+        {modalAddProject && (
+          <TemporaryModal
+            onClose={onCloseModalProject}
+            title="Створення проекту"
+          >
+            <ProjectForm onClose={onCloseModalProject} />
           </TemporaryModal>
         )}
         <SprintItem />

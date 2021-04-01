@@ -17,6 +17,34 @@
   color: #181c27;
   position: relative;
 }
+.changeForm {
+  position: relative;
+}
+.changeFormInput {
+  width: 100%;
+  border: none;
+  box-shadow: 2px 4px 8px rgb(0 5 97 / 10%);
+  border-radius: 5px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: #181c27;
+  padding: 3px 3px;
+  outline: none;
+}
+.saveButtonIcon {
+  border: none;
+  background-image: url('../../icons/saveicon.svg');
+  width: 23px;
+  height: 23px;
+  background-size: contain;
+  background-color: transparent;
+  position: absolute;
+  right: -30px;
+  cursor: pointer;
+}
 
 .sprintsBackButton::before {
   content: '';
@@ -183,6 +211,7 @@
   background-color: #ffffff;
   position: absolute;
   right: 10px;
+  bottom: 10px;
 }
 
 .deleteButton:hover {
@@ -195,7 +224,13 @@
   .sprintsContainer {
     display: flex;
   }
-
+  .messageNoSprints {
+    font-size: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
   .sprintsSideBar {
     background-color: #e5e5e5e5;
     display: flex;
@@ -208,7 +243,8 @@
     color: #181c27;
     border-right: 1px solid rgba(24, 28, 39, 0.1);
     width: 255px;
-    height: calc(100vh - 75px);
+    height: calc(100vh - 74px);
+    /* height: 100vh; */
   }
   .sprintsButton {
     outline: none;
@@ -274,6 +310,7 @@
     padding-top: 40px;
     padding-left: 20px;
     padding-right: 40px;
+    position: relative;
   }
 
   .sprintUpperCont {
@@ -359,6 +396,7 @@
     padding-left: 70px;
     padding-right: 85px;
     padding-bottom: 40px;
+    height: calc(100vh - 74px);
   }
   .sprintsCont {
     width: 900px;

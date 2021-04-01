@@ -42,36 +42,43 @@ const SprintItem = () => {
 
   return (
     <ul className={styles.sprintsCont}>
-      {sprints.map(({ title, startDate, endDate, duration, _id }) => (
-        <li
-          className={styles.sprintsItem}
-          key={_id}
-          id={_id}
-          onClick={onHandleClick}
-        >
-          <p className={styles.sprintTitle}>{title}</p>
-          <div className={styles.sprintItemText}>
-            <div className={styles.textCont}>
-              <p>Дата начала</p>
-              <p>{getNormalizedDate(startDate)}</p>
+      {sprints.length > 0 ? (
+        sprints.map(({ title, startDate, endDate, duration, _id }) => (
+          <li
+            className={styles.sprintsItem}
+            key={_id}
+            id={_id}
+            onClick={onHandleClick}
+          >
+            <p className={styles.sprintTitle}>{title}</p>
+            <div className={styles.sprintItemText}>
+              <div className={styles.textCont}>
+                <p>Дата начала</p>
+                <p>{getNormalizedDate(startDate)}</p>
+              </div>
+              <div className={styles.textCont}>
+                <p>Дата оконч.</p>
+                <p>{getNormalizedDate(endDate)}</p>
+              </div>
+              <div className={styles.textCont}>
+                <p>Длительность</p>
+                <p>{duration}</p>
+              </div>
             </div>
-            <div className={styles.textCont}>
-              <p>Дата оконч.</p>
-              <p>{getNormalizedDate(endDate)}</p>
-            </div>
-            <div className={styles.textCont}>
-              <p>Длительность</p>
-              <p>{duration}</p>
-            </div>
-          </div>
-          <button
-            type="button"
-            className={styles.deleteButton}
-            data-process="delete"
-            onClick={() => dispatch(deleteSprint(_id))}
-          ></button>
-        </li>
-      ))}
+            <button
+              type="button"
+              className={styles.deleteButton}
+              data-process="delete"
+              onClick={() => dispatch(deleteSprint(_id))}
+            ></button>
+          </li>
+        ))
+      ) : (
+        <p className={styles.messageNoSprints}>
+          В Вашем проекте отсутствуют спринты, воспользуйтесь кнопкой "Создать
+          спринт"{' '}
+        </p>
+      )}
     </ul>
   );
 };
