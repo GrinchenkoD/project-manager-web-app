@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
@@ -7,13 +6,11 @@ import SprintForm from '../../components/SprintForm/SprintForm';
 import { getTask } from '../../redux/tasks/task-operation';
 import { getSprint } from '../../redux/sprints/sprint-operation';
 import { getProject } from '../../redux/projects/project-operations';
-
 import tasks from './db.json';
-
 import sprite from '../../icons/symbol-defs.svg';
 import addBtn from '../../icons/Buttons/addBtn.png';
-import analytics from '../../icons/Buttons/analytics.png'
-import sprintBox from '../../icons/Buttons/sprintBox.png'
+import analytics from '../../icons/Buttons/analytics.png';
+import sprintBox from '../../icons/Buttons/sprintBox.png';
 import styles from './TasksPage.module.css';
 import TaskPageItem from 'pages/TaskPageItem/TaskPageItem';
 import { nanoid } from '@reduxjs/toolkit';
@@ -45,9 +42,7 @@ export default function TasksPage() {
   return (
     <div className={styles.tasksContainer}>
       <div className={styles.tasksPage}>
-        
         <div className={styles.sprintsSideBar}>
-          
           <div className={styles.showSprints}>
             <a href="/" className={styles.sprintsBackLink}>
               <svg className={styles.sprintsBackArrow}>
@@ -61,47 +56,48 @@ export default function TasksPage() {
 
           <div className={styles.sprintsListSection}>
             <ul className={styles.sprintsList}>
-                {/* {sprints.map(sprint => */}
+              {/* {sprints.map(sprint => */}
               <li className={styles.sprintListItem} key={nanoid()}>
-                <a href="/" className={styles.sprintsBackLink} >
+                <a href="/" className={styles.sprintsBackLink}>
                   <img src={sprintBox} alt="" className={styles.sprintBox} />
                   {/* <span className={styles.sprintBox}>Color Box</span> */}
-                  <p className={styles.sprintTitleActive}>Sprint Burndown Chart 1</p>
+                  <p className={styles.sprintTitleActive}>
+                    Sprint Burndown Chart 1
+                  </p>
                 </a>
               </li>
-              
+
               <li className={styles.sprintListItem} key={nanoid()}>
-                <a href="/" className={styles.sprintsBackLink} >
+                <a href="/" className={styles.sprintsBackLink}>
                   <img src={sprintBox} alt="" className={styles.sprintBox} />
                   {/* <span className={styles.sprintBox}>Color Box</span> */}
                   <p className={styles.sprintTitle}>Sprint Burndown Chart 2</p>
                 </a>
               </li>
-               {/* )} */}
+              {/* )} */}
             </ul>
 
             <div className={styles.addSprint}>
-              <button
-                type="button"
-                className={styles.btnAddSprint}
-              >
-                  {/* <p className={styles.btnAddIcon}>+</p> */}
-                  <img src={addBtn} alt="" className={styles.btnAddSprintIcon} />
+              <button type="button" className={styles.btnAddSprint}>
+                {/* <p className={styles.btnAddIcon}>+</p> */}
+                <img src={addBtn} alt="" className={styles.btnAddSprintIcon} />
               </button>
-              <p className={styles.addSprintText}>Створити спринт</p> 
+              <p className={styles.addSprintText}>Створити спринт</p>
             </div>
-          
           </div>
-
         </div>
 
         <div className={styles.navigation}>
           <div className={styles.datePicker}>
             <div className={styles.navDay}>
-              <button type="button" className={styles.navLeft}>&lt;</button>
+              <button type="button" className={styles.navLeft}>
+                &lt;
+              </button>
               <p className={styles.navCurrentDay}> 2 </p>
-              <p className={styles.navTotalDays}>  / 12   </p>
-              <button type="button" className={styles.navRight}>&gt;</button>
+              <p className={styles.navTotalDays}> / 12 </p>
+              <button type="button" className={styles.navRight}>
+                &gt;
+              </button>
             </div>
             <p className={styles.navDate}>08.08.2020</p>
           </div>
@@ -127,10 +123,10 @@ export default function TasksPage() {
           </div>
 
           {/* {tasks.length && ( */}
-            <ul className={styles.tasksList}>
-              {tasks.map(tasks => 
-                <TaskPageItem {...tasks}/>
-              )}
+          <ul className={styles.tasksList}>
+            {tasks.map(tasks => (
+              <TaskPageItem {...tasks} />
+            ))}
           </ul>
           {/* )} */}
 
@@ -145,11 +141,13 @@ export default function TasksPage() {
             </button>
             <p className={styles.addProjectText}>Створити задачу</p>
           </div>
-          {modalOpen && (
-            <TemporaryModal onClose={onCloseModal} title="Створення задачi">
-              <SprintForm closeModal={onCloseModal} />
-            </TemporaryModal>
-          )}
+          <TemporaryModal
+            onClose={onCloseModal}
+            onOpen={modalOpen}
+            title="Створення задачi"
+          >
+            <SprintForm closeModal={onCloseModal} />
+          </TemporaryModal>
 
           <div className={styles.showGraphSection}>
             <button type="button" className={styles.btnGraph}>
