@@ -5,8 +5,7 @@ import { useParams } from 'react-router-dom';
 import { addSprint } from '../../redux/sprints/sprint-operation';
 import sprintsSchema from './sprintSchema';
 import FormControl from '../formControl/FormControl';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
+import styles from '../ProjectForm/ProjectForm.module.css';
 
 const SprintForm = ({ closeModal }) => {
   const dispatch = useDispatch();
@@ -21,7 +20,7 @@ const SprintForm = ({ closeModal }) => {
     },
     [dispatch, projectId, closeModal],
   );
-  // const addNeWSprint = ( values) => dispatch(addSprint(`${projectId}`, values));
+
   return (
     <Formik
       initialValues={{
@@ -61,9 +60,11 @@ const SprintForm = ({ closeModal }) => {
           placeholder="Тривалість"
         />
 
-        <button type="submit" className="">
-          Готово
-        </button>
+        <div className={styles.btnThumb}>
+          <button type="submit" className={styles.acceptBtn}>
+            Готово
+          </button>
+        </div>
       </Form>
     </Formik>
   );

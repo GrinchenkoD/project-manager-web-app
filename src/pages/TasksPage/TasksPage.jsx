@@ -1,15 +1,43 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { NavLink, useParams } from 'react-router-dom';
+import TemporaryModal from '../../components/TemporaryModal/TemporaryModal';
+import SprintForm from '../../components/SprintForm/SprintForm';
+import { getTask } from '../../redux/tasks/task-operation';
+import { getSprint } from '../../redux/sprints/sprint-operation';
+import { getProject } from '../../redux/projects/project-operations';
 import tasks from './db.json';
-
 import sprite from '../../icons/symbol-defs.svg';
 import addBtn from '../../icons/Buttons/addBtn.png';
 import analytics from '../../icons/Buttons/analytics.png';
+import sprintBox from '../../icons/Buttons/sprintBox.png';
 import styles from './TasksPage.module.css';
+import TaskPageItem from 'pages/TaskPageItem/TaskPageItem';
+import { nanoid } from '@reduxjs/toolkit';
 
 export default function TasksPage() {
   // const sprints = useSelector(state => state.projects);
   // const tasks = useSelector(state => state.projects);
   // const { id, title } = tasks
+  const dispatch = useDispatch();
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalAddPeople, setModalAddPeople] = useState(false);
+  const { projectId } = useParams();
+  const projects = useSelector(state => state.projects);
+  const project = projects.find(item => item._id === projectId);
+
+  useEffect(() => {
+    dispatch(getSprint(projectId));
+    dispatch(getProject());
+  }, [dispatch, projectId]);
+
+  const onOpenModal = () => {
+    setModalOpen(true);
+  };
+
+  const onCloseModal = () => {
+    setModalOpen(false);
+  };
 
   return (
     <div className={styles.tasksContainer}>
@@ -20,31 +48,42 @@ export default function TasksPage() {
               <svg className={styles.sprintsBackArrow}>
                 <use href={sprite + '#arrow-left'} />
               </svg>
-              <p className={styles.sprintsBackText}>Показати спринти</p>
+              <div className={styles.sprintsBack}>
+                <p className={styles.sprintsBackText}>Показати спринти</p>
+              </div>
             </a>
           </div>
 
-          <div className={styles.sprintsList}>
-            {/* <ul className={styles.sprintsList}>
-                {sprints.map(sprint =>
-                  <li className={styles.sprintListItem} key={nanoid()}>
-                    <a href="/" className={styles.sprintsBackLink} >
-                      <span className={styles.sprintBox}>Color Box</span>
-                      <p className={styles.sprintTitle}>{sprint.title}</p>
-                    </a>
-                  </li>
-               )}
-            </ul> */}
+          <div className={styles.sprintsListSection}>
+            <ul className={styles.sprintsList}>
+              {/* {sprints.map(sprint => */}
+              <li className={styles.sprintListItem} key={nanoid()}>
+                <a href="/" className={styles.sprintsBackLink}>
+                  <img src={sprintBox} alt="" className={styles.sprintBox} />
+                  {/* <span className={styles.sprintBox}>Color Box</span> */}
+                  <p className={styles.sprintTitleActive}>
+                    Sprint Burndown Chart 1
+                  </p>
+                </a>
+              </li>
 
-            {/* <div className={styles.addSprintSection}>
-            <button
-              type="button"
-              className={styles.btnAdd}
-            >
-            <p className={styles.btnAddIcon}>+</p>
-            </button>
-            <p className={styles.addProjectText}>Створити спринт</p> 
-          </div> */}
+              <li className={styles.sprintListItem} key={nanoid()}>
+                <a href="/" className={styles.sprintsBackLink}>
+                  <img src={sprintBox} alt="" className={styles.sprintBox} />
+                  {/* <span className={styles.sprintBox}>Color Box</span> */}
+                  <p className={styles.sprintTitle}>Sprint Burndown Chart 2</p>
+                </a>
+              </li>
+              {/* )} */}
+            </ul>
+
+            <div className={styles.addSprint}>
+              <button type="button" className={styles.btnAddSprint}>
+                {/* <p className={styles.btnAddIcon}>+</p> */}
+                <img src={addBtn} alt="" className={styles.btnAddSprintIcon} />
+              </button>
+              <p className={styles.addSprintText}>Створити спринт</p>
+            </div>
           </div>
         </div>
 
@@ -85,46 +124,30 @@ export default function TasksPage() {
 
           {/* {tasks.length && ( */}
           <ul className={styles.tasksList}>
-            {tasks.map(task => (
-              <li className={styles.tasksListItem} key={task._id}>
-                <h5 className={styles.taskTitle}>{task.title}</h5>
-
-                <div className={styles.planned}>
-                  <p className={styles.plannedTitle}>Заплановано годин </p>
-                  <p className={styles.plannedHours}>{task.hoursPlanned}</p>
-                </div>
-
-                <div className={styles.used}>
-                  <p className={styles.usedTitle}>Витрачено год / день </p>
-                  <p className={styles.usedHours}>{task.hoursWasted}</p>
-                </div>
-
-                <div className={styles.total}>
-                  <p className={styles.totalTitle}>Витрачено годин (загал.)</p>
-                  <p className={styles.totalHours}>1</p>
-                </div>
-
-                <button
-                  data-id={task._id}
-                  type="button"
-                  className={styles.btnDelete}
-                >
-                  <svg className={styles.btnDeleteIcon}>
-                    <use href={sprite + '#icon-delete'} />
-                  </svg>
-                </button>
-              </li>
+            {tasks.map(tasks => (
+              <TaskPageItem {...tasks} />
             ))}
           </ul>
           {/* )} */}
 
           <div className={styles.addTaskSection}>
-            <button type="button" className={styles.btnAdd}>
+            <button
+              type="button"
+              className={styles.btnAdd}
+              onClick={onOpenModal}
+            >
               {/* <p className={styles.btnAddIcon}>+</p> */}
               <img src={addBtn} alt="" className={styles.btnAddIcon} />
             </button>
-            {/* <p className={styles.addProjectText}>Створити задачу</p> */}
+            <p className={styles.addProjectText}>Створити задачу</p>
           </div>
+          <TemporaryModal
+            onClose={onCloseModal}
+            onOpen={modalOpen}
+            title="Створення задачi"
+          >
+            <SprintForm closeModal={onCloseModal} />
+          </TemporaryModal>
 
           <div className={styles.showGraphSection}>
             <button type="button" className={styles.btnGraph}>
