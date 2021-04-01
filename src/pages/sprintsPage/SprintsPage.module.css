@@ -234,6 +234,10 @@
     letter-spacing: 0.04em;
     color: #181c27;
   }
+  .projectsLinkActive {
+    color: black;
+    font-weight: bold;
+  }
   .sprintsProjectList {
     display: block;
     list-style: none;
