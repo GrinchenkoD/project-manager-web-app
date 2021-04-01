@@ -30,7 +30,7 @@ const register = credential => async dispatch => {
     const responseWithToken = await axios.post('/auth/login', credential);
     dispatch(loginSuccess(responseWithToken.data));
   } catch (error) {
-    alert('Такий корыстувач вже зареєстрований!');
+    alert('Такой пользователь уже зарегистрирован!');
     dispatch(registerError(error.message));
   }
 };
@@ -42,7 +42,7 @@ const login = credential => async dispatch => {
     token.set(response.data.accessToken);
     dispatch(loginSuccess(response.data));
   } catch (error) {
-    alert('Помилка! Перевiрте даннi для входу!');
+    alert('Ошибка! Проверьте данные для входа!');
     dispatch(loginError(error.message));
   }
 };
