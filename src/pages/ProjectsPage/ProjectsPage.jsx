@@ -106,11 +106,12 @@ export default function ProjectsPage() {
           </button>
           <p className={styles.addProjectText}>Створити проект</p>
         </div>
-        {modalOpen && (
-          <TemporaryModal onClose={onCloseModal} title="Створення проекту">
+        {/* {modalOpen && ( */}
+          <TemporaryModal onClose={onCloseModal} onOpen={modalOpen} title="Створення проекту">
             <ProjectForm onClose={onCloseModal} />
           </TemporaryModal>
-        )}
+        {/* )} */}
+   
       </div>
     </div>
   );
