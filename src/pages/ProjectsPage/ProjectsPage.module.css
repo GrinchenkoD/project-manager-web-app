@@ -98,9 +98,14 @@
   width: 44px;
   height: 44px;
 
-  position: absolute;
+
+  position: fixed;
   right: 20px;
-  /* top: 504px; */
+  bottom: 20px;
+
+  /* position: absolute;
+  right: 20px;
+  */
 
   background: #ff6b08; /* orange */
 
@@ -129,15 +134,15 @@
 .btnAdd:focus .btnAddIcon {
   color: #ff6b08;
   position: absolute;
-  left: 9px;
-  top: -5px;
+  left: 10px;
+  top: -4px;
 }
 
 .btnAdd:hover,
 .btnAdd:focus {
   background-color: #fff;
-  border: 2px solid #ff6b08;
-  box-shadow: 0 0 8px #ff6b08;
+  border: 1px solid #ff6b08;
+  /* box-shadow: 0 0 8px #ff6b08; */
 }
 
 /* ! icon-exit svg */
