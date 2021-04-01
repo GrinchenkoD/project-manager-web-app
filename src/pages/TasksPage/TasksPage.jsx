@@ -8,6 +8,7 @@ import addBtn from '../../icons/Buttons/addBtn.png';
 import analytics from '../../icons/Buttons/analytics.png'
 import sprintBox from '../../icons/Buttons/sprintBox.png'
 import styles from './TasksPage.module.css';
+import TaskPageItem from 'pages/TaskPageItem/TaskPageItem';
 
 export default function TasksPage() {
   // const sprints = useSelector(state => state.projects);
@@ -100,40 +101,9 @@ export default function TasksPage() {
 
           {/* {tasks.length && ( */}
             <ul className={styles.tasksList}>
-              {tasks.map(task => 
-                
-                 <li className={styles.tasksListItem} key={task._id}>
-                  <h5 className={styles.taskTitle}>{task.title}</h5>
-
-                  <div className={styles.planned}>
-                    <p className={styles.plannedTitle}>Заплановано годин </p>
-                    <p className={styles.plannedHours}>{task.hoursPlanned}</p>
-                  </div>
-
-                  <div className={styles.used}>
-                    <p className={styles.usedTitle}>Витрачено год / день </p>
-                    <p className={styles.usedHours}>{task.hoursWasted}</p>
-                   
-                  </div>
-
-                   <div className={styles.total}>
-                    <p className={styles.totalTitle}>Витрачено годин (загал.)</p>
-                    <p className={styles.totalHours}>1</p>
-                    
-                  </div>
-
-                  <button
-                    data-id={task._id}
-                    type="button"
-                    className={styles.btnDelete}
-                    >
-                    <svg className={styles.btnDeleteIcon} >
-                      <use href={sprite + '#icon-delete'} />
-                    </svg>
-                  </button>
-                </li>
-            )}
-            
+              {tasks.map(tasks => 
+                <TaskPageItem {...tasks}/>
+              )}
           </ul>
           {/* )} */}
 
