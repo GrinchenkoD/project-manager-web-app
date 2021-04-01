@@ -5,6 +5,7 @@
 }
 
 .container {
+  background-color: #e5e5e5e5;
   width: 100vw;
   height: 100vh;
   padding: 10px;
@@ -131,6 +132,7 @@
 /* !  ------------------TABLET ver.------------------ */
 @media screen and (min-width: 768px) {
   .container {
+    background-color: #e5e5e5e5;
     width: 100vw;
     height: 100vh;
     padding: 20px;
