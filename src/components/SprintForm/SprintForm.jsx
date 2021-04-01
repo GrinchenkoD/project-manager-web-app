@@ -1,17 +1,21 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Form, Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { addSprint } from '../../redux/sprints/sprint-operation';
 import sprintsSchema from './sprintSchema';
 import FormControl from '../formControl/FormControl';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const SprintForm = ({ closeModal }) => {
   const dispatch = useDispatch();
   const { projectId } = useParams();
+  const [startDate, setStartDate] = useState(new Date());
 
   const addNeWSprint = useCallback(
     values => {
+      console.log(values);
       dispatch(addSprint(projectId, values));
       closeModal();
     },
@@ -22,7 +26,7 @@ const SprintForm = ({ closeModal }) => {
     <Formik
       initialValues={{
         title: '',
-        endDate: '',
+        endDate: `${startDate}`,
         duration: '',
       }}
       validationSchema={sprintsSchema}
@@ -36,12 +40,18 @@ const SprintForm = ({ closeModal }) => {
           placeholder="Назва спринта"
         />
 
-        <FormControl
-          //   label="Password"
+        {/* <FormControl
+          label="Password"
           name="endDate"
-          type="text"
+          type="date"
           id="endDate"
           placeholder="Дата"
+        /> */}
+        <DatePicker
+          name="endDate"
+          id="endDate"
+          selected={startDate}
+          onChange={date => setStartDate(date)}
         />
         <FormControl
           //   label="Password"
