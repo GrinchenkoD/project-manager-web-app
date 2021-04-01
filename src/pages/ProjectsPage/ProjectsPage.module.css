@@ -5,6 +5,7 @@
 }
 
 .container {
+  background-color: #e5e5e5e5;
   width: 100vw;
   height: 100vh;
   padding: 10px;
@@ -97,7 +98,6 @@
 
 .btnAdd:hover .btnAddIcon,
 .btnAdd:focus .btnAddIcon {
-
   /* fill: #ff6b08; */
 
   /* color: #ff6b08; */
@@ -131,6 +131,7 @@
 /* !  ------------------TABLET ver.------------------ */
 @media screen and (min-width: 768px) {
   .container {
+    background-color: #e5e5e5e5;
     width: 100vw;
     height: 100vh;
     padding: 20px;
@@ -179,7 +180,7 @@
 @media screen and (min-width: 1280px) {
   .container {
     width: 100vw;
-    height: 100vh;
+    height: calc(100vh - 75px);
     padding: 25px;
   }
 
@@ -245,7 +246,7 @@
     cursor: pointer;
   }
 
-  .projectsNone{
+  .projectsNone {
     font-weight: 600;
     font-size: 32px;
     line-height: 1.222;
@@ -260,7 +261,5 @@
     position: absolute;
     left: 15%;
     top: 45%;
-
-
   }
 }
