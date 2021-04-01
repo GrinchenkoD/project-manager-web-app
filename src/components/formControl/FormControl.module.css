@@ -10,17 +10,60 @@
 font-size: 16px;
 line-height: 20px;
 color: rgba(24, 28, 39, 0.6);
-pointer-events: none;
+/* pointer-events: none; */
 
-transform: translateY(30px);
+/* transform: translateY(30px); */
+
 
 transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
 }
-input:focus .label{
-    transform: translateY(-100px);
+.label:hover ~ .formControlInput{
+background-color: green;
+
 }
+
+/* .formControlInput:focus  .label{
+    color: green;
+    transform: translateY(-100px);
+} */
 .error{
     display: block;
 
+}
+/* =============input=========== */
+.formControlInput {
+  /* margin: 0 auto; */
+  background-color: transparent;
+  width: 100%;
+  height: 30px;
+  /* background-color: #fafafa; */
+  border: none;
+  outline: none;
+  border-bottom: 1px solid rgba(24, 28, 39, 0.2);
+
+font-size: 16px;
+line-height: 1.25;
+color: #181C27;
+
+}
+
+
+@media screen and (min-width: 768px){
+.formControlInput{
+    font-size: 18px;
+    line-height: 1.22;
+  }
+}
+
+:global .isInvalid {
+  border-bottom: 1px solid rgb(255, 0, 55);
+  
+ 
+}
+
+@media screen and (min-width: 768px) {
+  .formControlInput {
+            width: 430px;
+  }
 }

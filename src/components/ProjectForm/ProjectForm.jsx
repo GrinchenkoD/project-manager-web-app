@@ -26,7 +26,7 @@ const ProjectForm = ({onClose}) => {
     >
       <Form>
         <FormControl
-          label="Назва проекту"
+          label="Название проэкта"
           name="title"
           type="text"
           id="title"
@@ -34,7 +34,7 @@ const ProjectForm = ({onClose}) => {
         />
 
         <FormControl
-          label="Опис"
+          label="Описание"
           name="description"
           type="text"
           id="description"
