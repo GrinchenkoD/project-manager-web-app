@@ -26,7 +26,6 @@ const getCurrentColor = () => {
   }
 };
 
-
 export default function ProjectsPage() {
   const [modalOpen, setModalOpen] = useState(false);
   const history = useHistory();
@@ -36,8 +35,6 @@ export default function ProjectsPage() {
   useEffect(() => {
     dispatch(getProject());
   }, [dispatch]);
-
-
 
   const onOpenModal = () => {
     window.scrollTo({
@@ -82,7 +79,7 @@ export default function ProjectsPage() {
               >
                 <li
                   className={styles.projectsListItem}
-                  id={project._id}
+                  id={project._id ? project._id : project.id}
                   key={project._id}
                   style={{ backgroundColor: getCurrentColor() }}
                   onClick={onHandleClick}
