@@ -17,17 +17,21 @@ export default function TasksPage() {
   return (
     <div className={styles.tasksContainer}>
       <div className={styles.tasksPage}>
+        
         <div className={styles.sprintsSideBar}>
+          
           <div className={styles.showSprints}>
             <a href="/" className={styles.sprintsBackLink}>
               <svg className={styles.sprintsBackArrow}>
                 <use href={sprite + '#arrow-left'} />
               </svg>
-              <p className={styles.sprintsBackText}>Показати спринти</p>
+              <div className={styles.sprintsBack}>
+                <p className={styles.sprintsBackText}>Показати спринти</p>
+              </div>
             </a>
           </div>
 
-          <div className={styles.sprintsList}>
+          <div className={styles.sprintsListSection}>
             <ul className={styles.sprintsList}>
                 {/* {sprints.map(sprint => */}
               <li className={styles.sprintListItem} key={nanoid()}>
@@ -47,20 +51,20 @@ export default function TasksPage() {
               </li>
                {/* )} */}
             </ul>
-            
 
-          <div className={styles.addSprintSection}>
-            <button
-              type="button"
-              className={styles.btnAddSprint}
-            >
-                {/* <p className={styles.btnAddIcon}>+</p> */}
-                 <img src={addBtn} alt="" className={styles.btnAddSprintIcon} />
-            </button>
-            <p className={styles.addSprintText}>Створити спринт</p> 
-          </div>
+            <div className={styles.addSprint}>
+              <button
+                type="button"
+                className={styles.btnAddSprint}
+              >
+                  {/* <p className={styles.btnAddIcon}>+</p> */}
+                  <img src={addBtn} alt="" className={styles.btnAddSprintIcon} />
+              </button>
+              <p className={styles.addSprintText}>Створити спринт</p> 
+            </div>
           
           </div>
+
         </div>
 
         <div className={styles.navigation}>
@@ -138,7 +142,7 @@ export default function TasksPage() {
               {/* <p className={styles.btnAddIcon}>+</p> */}
               <img src={addBtn} alt="" className={styles.btnAddIcon} />
             </button>
-            {/* <p className={styles.addProjectText}>Створити задачу</p> */}
+            <p className={styles.addProjectText}>Створити задачу</p>
           </div>
 
           <div className={styles.showGraphSection}>

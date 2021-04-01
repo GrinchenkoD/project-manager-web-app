@@ -298,8 +298,7 @@
   height: 44px;
 }
 
-.sprintsList,
-.addSprintSection {
+.sprintsListSection {
    display: none
 }
 
@@ -315,14 +314,13 @@
   position: relative;
 }
 
-.sprintsList,
-.addSprintSection {
+.sprintsListSection {
   display: block;
 }
 
 .sprintsSideBar{
   width: 189px;
-  height: 844px;
+  height: 100vh;
   margin-left: 20px;
   border-right: 1px solid #181c271a;
 }
@@ -340,8 +338,13 @@
   height: 8px;
   display: inline-block;
   position: absolute;
-  top: 17px;
+  top: 15px;
   left: 0px;
+}
+
+.sprintsBack{
+  width: 119px;
+  height: 34px;
 }
 .sprintsBackText {
   margin-left: 50px;
@@ -364,7 +367,6 @@
   justify-content: flex-start;
   align-items: baseline;
   position: relative;
-  
 }
 
 .sprintTitle{
@@ -395,8 +397,8 @@
   margin-bottom: 5px;
 }
 
-/* ! addSprintSection */
-.addSprintSection{
+/* ! addSprint */
+.addSprint{
   width: 162px;
   height: 76px;
   display: flex;
@@ -442,7 +444,11 @@
   flex-direction: row;
   align-items: inherit;
   width: 512px;
-  
+}
+
+.datePicker{
+  margin-right: 40px;
+  margin-top: 20px;
 }
 
 /* ! tasks */
@@ -458,10 +464,6 @@
   right: 40px;
 }
 
-.datePicker{
-  margin-right: 40px;
-  margin-top: 20px;
-}
 
 /* ! search */
 .search{
@@ -494,14 +496,110 @@
   height: 306px;
 }
 
-
-
 .showGraphSection{
+  display: none;
+}
+
+.addProjectText{
   display: none;
 }
 }
 
 
-
 /* ! ------------------DESKTOP ver.------------------ */
-@media screen and (min-width: 1280px) {}
+@media screen and (min-width: 1280px) {
+
+.sprintsSideBar{
+  width: 255;
+  margin-left: 35px;
+}
+
+.showSprints {
+  margin-bottom: 103px;
+}
+
+/* ! addSprint */
+.addSprint{
+  bottom: 50px;
+  left: 30px;
+  z-index: 1;
+}
+.btnAddSprint {
+  margin-bottom: 5px;
+}
+
+/* ! navigation */
+.datePicker{
+  margin-right: 50px;
+  margin-top: 20px;
+}
+
+
+/* ! tasks */
+.tasks{
+
+}
+
+/* ! addTaskSection */
+.addTaskSection {
+  width: 239px;
+  height: 44px;
+  position: fixed;
+  top: 170px;
+  right: 86px;
+}
+
+.btnAddIcon {
+  position: fixed;
+  top: 172px;
+  right: 276px;
+}
+.addProjectText{
+  display: inline-block;
+  margin-top: 10px;
+  margin-left: 64px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+  color: #181C27;
+}
+
+
+/* ! showGraphSection */
+.showGraphSection{
+  display: inline-block;
+}
+.btnGraph{
+  position: fixed;
+  bottom: 60px;
+  left: 1100px;
+  z-index: 1;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  transition: all 0.25s linear;
+}
+.btnGraph:hover {
+  transform: scale(1.1);
+}
+.btnGraphIcon{
+  width: 44px;
+  height: 44px;
+}
+
+
+
+/* ! tasksListItem */
+.tasksListItem{
+  width: 869px;
+  height: 114px;
+  margin-left: 50px;
+}
+.planned,
+.used,
+.total {
+  margin-top: 5px;
+}
+}
