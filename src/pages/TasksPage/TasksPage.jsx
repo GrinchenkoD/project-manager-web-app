@@ -141,11 +141,13 @@ export default function TasksPage() {
             </button>
             <p className={styles.addProjectText}>Створити задачу</p>
           </div>
-          {modalOpen && (
-            <TemporaryModal onClose={onCloseModal} title="Створення задачi">
-              <SprintForm closeModal={onCloseModal} />
-            </TemporaryModal>
-          )}
+          <TemporaryModal
+            onClose={onCloseModal}
+            onOpen={modalOpen}
+            title="Створення задачi"
+          >
+            <SprintForm closeModal={onCloseModal} />
+          </TemporaryModal>
 
           <div className={styles.showGraphSection}>
             <button type="button" className={styles.btnGraph}>

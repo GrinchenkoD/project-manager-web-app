@@ -154,24 +154,27 @@ export default function SprintsPage() {
             Добавить людей
           </button>
         </div>
-        {modalOpen && (
-          <TemporaryModal onClose={onCloseModal} title="Створення спринта">
-            <SprintForm closeModal={onCloseModal} />
-          </TemporaryModal>
-        )}
-        {modalAddPeople && (
-          <TemporaryModal onClose={onCloseModalPeople} title="Добавить людей">
-            <SprintFormPeople closeModal={onCloseModalPeople} />
-          </TemporaryModal>
-        )}
-        {modalAddProject && (
-          <TemporaryModal
-            onClose={onCloseModalProject}
-            title="Створення проекту"
-          >
-            <ProjectForm onClose={onCloseModalProject} />
-          </TemporaryModal>
-        )}
+        <TemporaryModal
+          onClose={onCloseModal}
+          onOpen={modalOpen}
+          title="Створення спринта"
+        >
+          <SprintForm closeModal={onCloseModal} />
+        </TemporaryModal>
+        <TemporaryModal
+          onClose={onCloseModalPeople}
+          onOpen={modalAddPeople}
+          title="Добавить людей"
+        >
+          <SprintFormPeople closeModal={onCloseModalPeople} />
+        </TemporaryModal>
+        <TemporaryModal
+          onClose={onCloseModalProject}
+          onOpen={modalAddProject}
+          title="Створення проекту"
+        >
+          <ProjectForm onClose={onCloseModalProject} />
+        </TemporaryModal>
         <SprintItem />
       </div>
     </div>
