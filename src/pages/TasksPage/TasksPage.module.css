@@ -2,34 +2,39 @@
   width: 100vw;
   height: 100vh;
   padding: 10px 10px 0 10px;
-  
+  background: #E5E5E5;
 }
 
 .showSprints {
   padding: 0 10px 10px 10px;
   width: 278px;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   border-bottom: 1px solid #181c271a;
   display: flex;
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-items: baseline;
-}
-
-.sprintsBackText {
-  margin-left: 20px;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 17px;
-  letter-spacing: 0.04em;
-  color: #181C27;
+  position: relative;
 }
 
 .sprintsBackArrow {
   width: 30px;
   height: 8px;
   display: inline-block;
+  position: absolute;
+  top: 10px;
+  left: 10px;
 } 
+
+.sprintsBackText {
+  margin-top: 5px;
+  margin-left: 60px;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  color: #181C27;
+}
 
 /* ! datePicker */
 
@@ -41,7 +46,6 @@
   flex-direction: column;
   margin-bottom: 10px;
 }
-
 
 .navDay{
   display: flex;
@@ -76,7 +80,6 @@
   color: grey;
 }
 
-
 .navCurrentDay {
   margin-left: 10px;
   font-size: 22px;
@@ -97,6 +100,11 @@
   outline: none;
   width: 20px;
   height: 20px;
+  transition: all 0.25s linear;
+}
+
+.searchBBtnMagnify:hover {
+  transform: scale(1.1);
 }
 
 /* ! tasks */
@@ -109,7 +117,7 @@
   width: 280px;
   height: 64px;
   display: flex;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .tasksTitleText{
@@ -130,6 +138,11 @@
   outline: none;
   width: 20px;
   height: 20px;
+  transition: all 0.25s linear;
+}
+
+.btnEdit:hover {
+  transform: scale(1.1);
 }
 
 .tasksTitleEdit {
@@ -148,10 +161,20 @@
 
 .tasksListItem{
   width: 280px;
-  height: 214px;
+  height: 200px;
+  margin: 10px 10px 0 0;
   padding: 20px;
-  box-shadow: 2px 2px 5px 1px rgba(100, 100, 100, 0.4);
   position: relative;
+
+  box-shadow: 0px 6px 26px rgba(0, 5, 97, 0.1);
+  /* box-shadow: 1px 2px 5px 1px rgba(100, 100, 100, 0.4); */
+  background: #FFFFFF;
+  border-radius: 5px;
+  transition: all 0.25s linear;
+}
+
+.tasksListItem:hover {
+  transform: scale(1.05);
 }
 
 .taskTitle{
@@ -178,7 +201,6 @@
   display: flex;
   justify-content: space-between;
 }
-
 
 .plannedTitle,
 .plannedHours, 
@@ -207,7 +229,6 @@
   color: #000000;
 }
 
-
 .usedHours::before {
   width: 30px;
   height: 1px;
@@ -226,10 +247,54 @@
   bottom: 10px;
   right: 10px;
   background: transparent;
+  transition: all 0.25s linear;
 }
-
 .btnDeleteIcon {
   width: 20px;
   height: 20px;
 } 
+.btnDelete:hover {
+  transform: scale(1.1);
+}
+
+/* ! btnAdd */
+
+.btnAdd {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  transition: all 0.25s linear;
+}
+.btnAdd:hover {
+  transform: scale(1.1);
+}
+.btnAddIcon{
+  width: 44px;
+  height: 44px;
+}
+
+/* ! btnGraphIcon */
+.btnGraph{
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 1;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  transition: all 0.25s linear;
+}
+.btnGraph:hover {
+  transform: scale(1.1);
+}
+.btnGraphIcon{
+  width: 44px;
+  height: 44px;
+}
 

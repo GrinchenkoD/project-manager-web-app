@@ -1,16 +1,17 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
-// import tasks from './db.json';
+import tasks from './db.json';
 
 import sprite from '../../icons/symbol-defs.svg';
-import sideBarButton from '../../icons/Buttons/sidebarButton.png';
+import addBtn from '../../icons/Buttons/addBtn.png';
+import analytics from '../../icons/Buttons/analytics.png'
 import styles from './TasksPage.module.css';
 
 export default function TasksPage() {
-  const sprints = useSelector(state => state.projects);
-  const tasks = useSelector(state => state.projects);
-  const { id, title } = tasks
+  // const sprints = useSelector(state => state.projects);
+  // const tasks = useSelector(state => state.projects);
+  // const { id, title } = tasks
 
   return (
     <div className={styles.tasksContainer}>
@@ -95,30 +96,30 @@ export default function TasksPage() {
          
           {/* {tasks.length && ( */}
             <ul className={styles.tasksList}>
-              {/* {tasks.map(task =>  */}
+              {tasks.map(task => 
                 
-                 <li className={styles.tasksListItem} key={nanoid()}>
-                  <h5 className={styles.taskTitle}>KN-1 Configure project</h5>
+                 <li className={styles.tasksListItem} key={task._id}>
+                  <h5 className={styles.taskTitle}>{task.title}</h5>
 
                   <div className={styles.planned}>
                     <p className={styles.plannedTitle}>Заплановано годин </p>
-                    <p className={styles.plannedHours}>8</p>
+                    <p className={styles.plannedHours}>{task.hoursPlanned}</p>
                   </div>
 
                   <div className={styles.used}>
                     <p className={styles.usedTitle}>Витрачено год / день </p>
-                    <p className={styles.usedHours}>6</p>
+                    <p className={styles.usedHours}>{task.hoursWasted}</p>
                    
                   </div>
 
                    <div className={styles.total}>
-                    <p className={styles.totalTitle}>Витрачено годин</p>
-                    <p className={styles.totalHours}>6</p>
+                    <p className={styles.totalTitle}>Витрачено годин (загал.)</p>
+                    <p className={styles.totalHours}>1</p>
                     
                   </div>
 
                   <button
-                    data-id={id}
+                    data-id={task._id}
                     type="button"
                     className={styles.btnDelete}
                     >
@@ -128,17 +129,18 @@ export default function TasksPage() {
                   </button>
 
                 </li>
-              {/* )} */}
+              )}
           </ul>
           {/* )} */}
 
           <div className={styles.addTaskSection}>
-           {/* <button
+           <button
             type="button"
             className={styles.btnAdd}
           >
-            <p className={styles.btnAddIcon}>+</p>
-            </button> */}
+              {/* <p className={styles.btnAddIcon}>+</p> */}
+              <img src={addBtn} alt="" className={styles.btnAddIcon} />
+            </button> 
             {/* <p className={styles.addProjectText}>Створити задачу</p> */}
           </div>
 
@@ -146,8 +148,8 @@ export default function TasksPage() {
            <button
             type="button"
             className={styles.btnGraph}
-          >
-            <p className={styles.btnGraphIcon}>GraphIcon</p>
+            >
+            <img src={analytics} alt="" className={styles.btnGraphIcon} />
             </button>
             {/* <p className={styles.showGraphText}>Створити задачу</p> */}
           </div>
