@@ -10,7 +10,7 @@ import {
   deleteSprintSuccess,
   deleteSprintError,
 } from './sprint-action';
-import  {getToken}  from './sprint-selectors';
+import { getToken } from './sprint-selectors';
 
 //  https://sbc-backend.goit.global
 // axios.defaults.baseURL = 'https://sbc-backend.goit.global';
@@ -41,20 +41,19 @@ const addSprint = (projectId, sprint) => async (dispatch, getState) => {
   }
 };
 
-const getSprint =  (projectId) => async (dispatch, getState) => {
-   dispatch(getSprintRequest());
+const getSprint = projectId => async (dispatch, getState) => {
+  dispatch(getSprintRequest());
   const {
     auth: { token: accessToken },
   } = getState();
   token.set(accessToken);
   try {
-    const {data} = await axios.get(`/sprint/${projectId}`);
-    console.log(data);
-    dispatch(getSprintSuccess(data));
+    const { data } = await axios.get(`/sprint/${projectId}`);
+    dispatch(getSprintSuccess(data.sprints));
   } catch (error) {
     dispatch(getSprintError(error));
   }
- };
+};
 
 // =========get project========
 //     /project

@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 import sideBarButton from '../../icons/Buttons/sidebarButton.png';
 import styles from './SprintsPage.module.css';
 import TemporaryModal from '../../components/TemporaryModal/TemporaryModal';
@@ -13,14 +13,13 @@ export default function SprintsPage() {
   const [modalOpen, setModalOpen] = useState(false);
   const { projectId } = useParams();
   // const projects = useSelector(state => state.projects);
-
-    useEffect(() => {
+  console.log(projectId);
+  useEffect(() => {
     dispatch(getSprint(projectId));
   }, [dispatch, projectId]);
 
-
   const onOpenModal = () => {
-  setModalOpen(true);
+    setModalOpen(true);
   };
 
   const onCloseModal = () => {
@@ -75,7 +74,7 @@ export default function SprintsPage() {
           </TemporaryModal>
         )}
         {}
-         <SprintItem/>
+        <SprintItem />
       </div>
     </div>
   );

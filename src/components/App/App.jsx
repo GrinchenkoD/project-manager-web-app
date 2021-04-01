@@ -3,7 +3,6 @@ import { useHistory, useLocation } from 'react-router';
 import Main from '../Main/Main';
 import Header from 'components/Header/Header';
 
-
 const App = function () {
   const history = useHistory();
 
