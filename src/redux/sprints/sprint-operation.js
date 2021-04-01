@@ -35,7 +35,9 @@ const addSprint = (projectId, sprint) => async (dispatch, getState) => {
   token.set(accessToken);
   try {
     const { data } = await axios.post(`/sprint/${projectId}`, sprint);
-    dispatch(addSprintSuccess(data));
+    const id = data.id;
+    delete data.id;
+    dispatch(addSprintSuccess({ ...data, _id: id }));
   } catch (error) {
     dispatch(addSprintError(error));
   }
@@ -55,65 +57,14 @@ const getSprint = projectId => async (dispatch, getState) => {
   }
 };
 
-// =========get project========
-//     /project
-// const getProject = () => async (dispatch, getState) => {
-//   const {
-//     auth: { token: accessToken },
-//   } = getState();
-//   token.set(accessToken);
-//   dispatch(getProjectRequest());
+const deleteSprint = id => async dispatch => {
+  dispatch(deleteSprintRequest());
+  try {
+    await axios.delete(`/sprint/${id}`);
+    dispatch(deleteSprintSuccess(id));
+  } catch (error) {
+    dispatch(deleteSprintError(error));
+  }
+};
 
-//   try {
-//     const { data } = await axios.get('/project');
-//     dispatch(getProjectSuccess(data));
-//   } catch (error) {
-//     dispatch(getProjectError(error));
-//   }
-// };
-
-// ======== post contributor=========
-//      /project/contributor/{projectId}
-
-// const addContributor = (projectId, contributor) => async dispatch => {
-//   dispatch(addContributorRequest());
-
-//   try {
-//     const { data } = await axios.post(
-//       `/project/contributor/${projectId}`,
-//       contributor,
-//     );
-//     dispatch(addContributorSuccess(data));
-//   } catch (error) {
-//     dispatch(addContributorError(error));
-//   }
-// };
-
-// ========patch title==========
-
-//    /project/title/{projectId}
-
-// const patchTitle = (projectId, title) => async dispatch => {
-//   dispatch(changeProjectTitleRequest());
-
-//   try {
-//     const responce = await axios.patch(`/project/title/${projectId}`, title);
-//     dispatch(changeProjectTitleSuccess());
-//   } catch (error) {
-//     dispatch(changeProjectTitleError(error));
-//   }
-// };
-
-//=========delete project==========
-//    /project/{projectId}
-// const deleteProject = id => async dispatch => {
-//   dispatch(deleteProjectRequest());
-//   try {
-//     await axios.delete(`/project/${id}`);
-//     dispatch(deleteProjectSuccess(id));
-//   } catch (error) {
-//     dispatch(deleteProjectError(error));
-//   }
-// };
-
-export { addSprint, getSprint };
+export { addSprint, getSprint, deleteSprint };
