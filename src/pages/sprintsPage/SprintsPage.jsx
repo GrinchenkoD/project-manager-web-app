@@ -43,7 +43,7 @@ export default function SprintsPage() {
     <div className={styles.sprintsContainer}>
       <div className={styles.sprintsSideBar}>
         <div className={styles.sprintsBackContainer}>
-          <a href="" className={styles.sprintsBackButton}>
+          <a href="/" className={styles.sprintsBackButton}>
             Показать проекты
           </a>
         </div>
