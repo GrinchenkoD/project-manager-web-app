@@ -30,7 +30,7 @@ const ProjectForm = ({onClose}) => {
           name="title"
           type="text"
           id="title"
-        //   placeholder="Назва проекту"
+          placeholder="Название проэкта"
         />
 
         <FormControl
@@ -38,7 +38,7 @@ const ProjectForm = ({onClose}) => {
           name="description"
           type="text"
           id="description"
-        //   placeholder="Опис"
+          placeholder="Описание"
         />
         <div className={styles.btnThumb}>
             <button

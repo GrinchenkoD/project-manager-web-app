@@ -13,9 +13,6 @@ const FormControl = ({ label,className, ...props }) => {
       <div className={styles.container}>
    
       {/* <TextInput {...props} /> */}
-           <label htmlFor={props.id} className={styles.label}>
-              {label}
-          </label>
         <input
           className={cn(
           `${styles.formControlInput}`,
@@ -27,6 +24,9 @@ const FormControl = ({ label,className, ...props }) => {
         {...props}
         {...field}
       />
+          <label htmlFor={props.id} className={styles.label}>
+             {label}
+         </label>
        
    
       <ErrorMessage
