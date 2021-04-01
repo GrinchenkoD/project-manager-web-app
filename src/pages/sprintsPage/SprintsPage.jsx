@@ -12,8 +12,8 @@ export default function SprintsPage() {
   const dispatch = useDispatch();
   const [modalOpen, setModalOpen] = useState(false);
   const { projectId } = useParams();
-  // const projects = useSelector(state => state.projects);
-  console.log(projectId);
+  const projects = useSelector(state => state.projects);
+
   useEffect(() => {
     dispatch(getSprint(projectId));
   }, [dispatch, projectId]);
@@ -34,7 +34,7 @@ export default function SprintsPage() {
             Показать проекты
           </a>
         </div>
-        {/* <ul className={styles.sprintsProjectList}>
+        <ul className={styles.sprintsProjectList}>
           {projects.map(project => (
             <li className={styles.sprintsProjectItem} key={project._id}>
               <a className={styles.projectsLink} href="">
@@ -42,7 +42,7 @@ export default function SprintsPage() {
               </a>
             </li>
           ))}
-        </ul> */}
+        </ul>
         <div className={styles.buttonCont}>
           <button className={styles.sprintsButton}>
             <img src={sideBarButton} alt="" />
