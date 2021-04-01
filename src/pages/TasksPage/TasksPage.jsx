@@ -1,11 +1,12 @@
 import React from 'react'
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
 import tasks from './db.json';
 
 import sprite from '../../icons/symbol-defs.svg';
 import addBtn from '../../icons/Buttons/addBtn.png';
 import analytics from '../../icons/Buttons/analytics.png'
+import sprintBox from '../../icons/Buttons/sprintBox.png'
 import styles from './TasksPage.module.css';
 
 export default function TasksPage() {
@@ -19,7 +20,6 @@ export default function TasksPage() {
       <div className={styles.tasksPage}>
               
         <div className={styles.sprintsSideBar}>
-          
 
           <div className={styles.showSprints}>
             <a href="/" className={styles.sprintsBackLink}>
@@ -31,28 +31,37 @@ export default function TasksPage() {
           </div>
 
           <div className={styles.sprintsList}>
-
-            {/* <ul className={styles.sprintsList}>
-                {sprints.map(sprint =>
-                  <li className={styles.sprintListItem} key={nanoid()}>
-                    <a href="/" className={styles.sprintsBackLink} >
-                      <span className={styles.sprintBox}>Color Box</span>
-                      <p className={styles.sprintTitle}>{sprint.title}</p>
-                    </a>
-                  </li>
-               )}
-            </ul> */}
+            <ul className={styles.sprintsList}>
+                {/* {sprints.map(sprint => */}
+              <li className={styles.sprintListItem} key={nanoid()}>
+                <a href="/" className={styles.sprintsBackLink} >
+                  <img src={sprintBox} alt="" className={styles.sprintBox} />
+                  {/* <span className={styles.sprintBox}>Color Box</span> */}
+                  <p className={styles.sprintTitleActive}>Sprint Burndown Chart 1</p>
+                </a>
+              </li>
+              
+              <li className={styles.sprintListItem} key={nanoid()}>
+                <a href="/" className={styles.sprintsBackLink} >
+                  <img src={sprintBox} alt="" className={styles.sprintBox} />
+                  {/* <span className={styles.sprintBox}>Color Box</span> */}
+                  <p className={styles.sprintTitle}>Sprint Burndown Chart 2</p>
+                </a>
+              </li>
+               {/* )} */}
+            </ul>
             
 
-          {/* <div className={styles.addSprintSection}>
+          <div className={styles.addSprintSection}>
             <button
               type="button"
-              className={styles.btnAdd}
+              className={styles.btnAddSprint}
             >
-            <p className={styles.btnAddIcon}>+</p>
+                {/* <p className={styles.btnAddIcon}>+</p> */}
+                 <img src={addBtn} alt="" className={styles.btnAddSprintIcon} />
             </button>
-            <p className={styles.addProjectText}>Створити спринт</p> 
-          </div> */}
+            <p className={styles.addSprintText}>Створити спринт</p> 
+          </div>
           
           </div>
         </div>
@@ -62,8 +71,8 @@ export default function TasksPage() {
           <div className={styles.datePicker}>
             <div className={styles.navDay}>
               <button type="button" className={styles.navLeft}>&lt;</button>
-             <p className={styles.navCurrentDay}> 2 </p>
-             <p className={styles.navTotalDays}>  / 12   </p>
+              <p className={styles.navCurrentDay}> 2 </p>
+              <p className={styles.navTotalDays}>  / 12   </p>
               <button type="button" className={styles.navRight}>&gt;</button>
             </div>
             <p className={styles.navDate}>08.08.2020</p>
@@ -127,9 +136,9 @@ export default function TasksPage() {
                       <use href={sprite + '#icon-delete'} />
                     </svg>
                   </button>
-
                 </li>
-              )}
+            )}
+            
           </ul>
           {/* )} */}
 

@@ -298,3 +298,164 @@
   height: 44px;
 }
 
+.sprintsList,
+.addSprintSection {
+   opacity: 0;
+}
+
+
+/* !  ------------------TABLET ver.------------------ */
+@media screen and (min-width: 768px) {
+.tasksContainer {
+  padding: 20px 20px 0 20px;
+  }
+
+.tasksPage {
+  display: flex;
+  position: relative;
+}
+
+.sprintsList,
+.addSprintSection {
+  opacity: 1;
+}
+
+.sprintsSideBar{
+  width: 189px;
+  height: 844px;
+  margin-left: 20px;
+  border-right: 1px solid #181c271a;
+}
+
+.showSprints {
+  padding: 0;
+  width: 170px;
+  border-bottom: none;
+  position: relative;
+  margin-bottom: 60px;
+}
+
+.sprintsBackArrow {
+  width: 30px;
+  height: 8px;
+  display: inline-block;
+  position: absolute;
+  top: 17px;
+  left: 0px;
+}
+.sprintsBackText {
+  margin-left: 50px;
+}
+
+/* ! sprintsList */
+
+.sprintsList{
+  width: 170px;
+  height: 294px;
+  list-style: none;
+}
+
+.sprintListItem {
+  width: 165px;
+  height: 51;
+  margin-bottom: 30px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: baseline;
+  position: relative;
+  
+}
+
+.sprintTitle{
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  color: #181C27;
+  /* margin-left: 15px; */
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 51px;
+  padding-right: 20px;
+}
+.sprintTitleActive{
+  composes: sprintTitle;
+  font-weight: bold;
+}
+
+.sprintBox{
+  width: 36px;
+  height: 36px;
+  background: #FFFFFF;
+  box-shadow: 0px 6px 26px rgba(0, 5, 97, 0.1);
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+/* ! addSprintSection */
+.addSprintSection{
+  width: 162px;
+  height: 76px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  bottom: 80px;
+  left: 47px;
+  z-index: 1;
+}
+
+.btnAddSprint {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  transition: all 0.25s linear;
+  margin-bottom: 3px;
+}
+.btnAddSprint:hover {
+  transform: scale(1.1);
+}
+.btnAddSprintIcon{
+  width: 44px;
+  height: 44px;
+}
+
+.addSprintText {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.04em;
+  color: #181C27;
+}
+
+/* ! navigation */
+.navigation{
+  padding: 20px 20px 0 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  width: 512px;
+  height: 100vh;
+}
+
+/* ! tasks */
+.tasks{
+  position: absolute;
+  top: 60px;
+  left: 220px;
+}
+
+
+}
+
+
+
+/* ! ------------------DESKTOP ver.------------------ */
+@media screen and (min-width: 1280px) {}
