@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { useHistory, useLocation } from 'react-router';
+import React, { useEffect } from 'react';
+import { useHistory } from 'react-router';
 import Main from '../Main/Main';
 import Header from 'components/Header/Header';
-
 
 const App = function () {
   const history = useHistory();

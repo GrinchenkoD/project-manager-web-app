@@ -5,43 +5,11 @@
 }
 
 .container {
+  background-color: #e5e5e5e5;
   width: 100vw;
   height: 100vh;
   padding: 10px;
 }
-
-/*! start of header draft  */
-/* .header {
-  border: 1px solid red;
-  width: 100%;
-  margin-top: 4px;
-  height: 46px;
-  padding: 0 10px 16px 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
-.headerLogo {
-  font-weight: 900;
-  font-size: 20px;
-  line-height: 22px;
-
-  display: flex;
-  align-items: center;
-  letter-spacing: 0.04em;
-}
-
-.headerTitle {
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 17px;
-
-  display: flex;
-  align-items: center;
-  letter-spacing: 0.04em;
-} */
-/*! end of header draft  */
 
 .title {
   margin-top: 20px;
@@ -98,9 +66,10 @@
   width: 44px;
   height: 44px;
 
-  position: absolute;
+  /* position: relative; */
+  position: fixed;
   right: 20px;
-  /* top: 504px; */
+  bottom: 20px;
 
   background: #ff6b08; /* orange */
 
@@ -114,11 +83,13 @@
 
 .btnAddIcon {
   position: absolute;
-  left: 11px;
+  /* left: 3px;
+  top: 7px; */
+  left: 12px;
   top: -3px;
 
   font-weight: 200;
-  font-size: 40px;
+  font-size: 36px;
   line-height: 52px;
   color: #fff;
   /* z-index: 10; */
@@ -127,17 +98,21 @@
 
 .btnAdd:hover .btnAddIcon,
 .btnAdd:focus .btnAddIcon {
-  color: #ff6b08;
-  position: absolute;
-  left: 9px;
-  top: -5px;
+
+  /* fill: #ff6b08; */
+
+  /* color: #ff6b08; */
+  /* position: absolute;
+  left: 10px;
+  top: -4px; */
 }
 
 .btnAdd:hover,
 .btnAdd:focus {
-  background-color: #fff;
-  border: 2px solid #ff6b08;
-  box-shadow: 0 0 8px #ff6b08;
+  transform: scale(1.15);
+  /* background-color: #fff;
+  border: 1px solid #ff6b08; */
+  /* box-shadow: 0 0 8px #ff6b08; */
 }
 
 /* ! icon-exit svg */
@@ -157,6 +132,7 @@
 /* !  ------------------TABLET ver.------------------ */
 @media screen and (min-width: 768px) {
   .container {
+    background-color: #e5e5e5e5;
     width: 100vw;
     height: 100vh;
     padding: 20px;

@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useRouteMatch } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import ProjectsPageItem from '../ProjectsPageItem/ProjectsPageItem';
-import popTransition from './transitions/pop.module.css';
-import styles from './ProjectsPage.module.css';
 import TemporaryModal from 'components/TemporaryModal/TemporaryModal';
 import ProjectForm from 'components/ProjectForm/ProjectForm';
 import { getProject } from 'redux/projects/project-operations';
 import { projectsSelector } from 'redux/projects/project-selectors';
-import { useHistory, useRouteMatch } from 'react-router-dom';
+import popTransition from './transitions/pop.module.css';
+import styles from './ProjectsPage.module.css';
 
 const colors = ['#8c72df', '#FF765F', '#71DF87'];
 let currentColor = colors[0];
@@ -26,7 +26,6 @@ const getCurrentColor = () => {
   }
 };
 
-
 export default function ProjectsPage() {
   const [modalOpen, setModalOpen] = useState(false);
   const history = useHistory();
@@ -36,8 +35,6 @@ export default function ProjectsPage() {
   useEffect(() => {
     dispatch(getProject());
   }, [dispatch]);
-
-
 
   const onOpenModal = () => {
     window.scrollTo({
@@ -53,10 +50,6 @@ export default function ProjectsPage() {
 
   const onHandleClick = e => {
     const isDelete = e.target.closest('[data-process="delete"]');
-    // const isDelete = e.currentTarget.closest('[data-process="delete"]');
-    console.log(isDelete);
-    console.log(e.target.id);
-    console.log(e.currentTarget.id);
     if (isDelete) {
       return;
     } else {
@@ -86,7 +79,7 @@ export default function ProjectsPage() {
               >
                 <li
                   className={styles.projectsListItem}
-                  id={project._id}
+                  id={project._id ? project._id : project.id}
                   key={project._id}
                   style={{ backgroundColor: getCurrentColor() }}
                   onClick={onHandleClick}
@@ -104,6 +97,12 @@ export default function ProjectsPage() {
         <div className="addProjectSection">
           <button type="button" className={styles.btnAdd} onClick={onOpenModal}>
             <p className={styles.btnAddIcon}>+</p>
+
+            {/* <img src={sideBarButton} alt="" /> */}
+
+            {/* <svg className={styles.btnAddIcon} >
+               <use href={sprite + '#icon-add'} />
+              </svg> */}
           </button>
           <p className={styles.addProjectText}>Створити проект</p>
         </div>

@@ -1,129 +1,139 @@
-import React from 'react'
-import { nanoid } from '@reduxjs/toolkit';
-
+import React from 'react';
 import tasks from './db.json';
 
 import sprite from '../../icons/symbol-defs.svg';
+import addBtn from '../../icons/Buttons/addBtn.png';
+import analytics from '../../icons/Buttons/analytics.png';
 import styles from './TasksPage.module.css';
 
-export default function TasksPage(tasks, sprints) {
-    const { id, title } = tasks
+export default function TasksPage() {
+  // const sprints = useSelector(state => state.projects);
+  // const tasks = useSelector(state => state.projects);
+  // const { id, title } = tasks
 
   return (
-    <div className={styles.container}>
-      
+    <div className={styles.tasksContainer}>
       <div className={styles.tasksPage}>
-        
-      
-        <div className={styles.sprints}> 
-          <div  className={styles.showSprints}> 
-            <span>arrow left</span>
-            <p>Показати спринти</p>
+        <div className={styles.sprintsSideBar}>
+          <div className={styles.showSprints}>
+            <a href="/" className={styles.sprintsBackLink}>
+              <svg className={styles.sprintsBackArrow}>
+                <use href={sprite + '#arrow-left'} />
+              </svg>
+              <p className={styles.sprintsBackText}>Показати спринти</p>
+            </a>
           </div>
-          
+
           <div className={styles.sprintsList}>
-            {sprints.length && (
-            <ul className={styles.sprintsList}>
+            {/* <ul className={styles.sprintsList}>
                 {sprints.map(sprint =>
-                  
                   <li className={styles.sprintListItem} key={nanoid()}>
-                    <span className={styles.sprintBox}>Color Box</span>
-                    <p className={styles.sprintTitle}>{sprint.title}</p>
+                    <a href="/" className={styles.sprintsBackLink} >
+                      <span className={styles.sprintBox}>Color Box</span>
+                      <p className={styles.sprintTitle}>{sprint.title}</p>
+                    </a>
                   </li>
                )}
-            </ul>
-            )}
+            </ul> */}
 
-            <div className={styles.addSprintSection}>
-           <button
-            type="button"
-            className={styles.btnAdd}
-          >
+            {/* <div className={styles.addSprintSection}>
+            <button
+              type="button"
+              className={styles.btnAdd}
+            >
             <p className={styles.btnAddIcon}>+</p>
             </button>
-            {/* <p className={styles.addProjectText}>Створити спринт</p> */}
-          </div>
-          
+            <p className={styles.addProjectText}>Створити спринт</p> 
+          </div> */}
           </div>
         </div>
 
+        <div className={styles.navigation}>
+          <div className={styles.datePicker}>
+            <div className={styles.navDay}>
+              <button type="button" className={styles.navLeft}>
+                &lt;
+              </button>
+              <p className={styles.navCurrentDay}> 2 </p>
+              <p className={styles.navTotalDays}> / 12 </p>
+              <button type="button" className={styles.navRight}>
+                &gt;
+              </button>
+            </div>
+            <p className={styles.navDate}>08.08.2020</p>
+          </div>
 
-        <div  className={styles.datePicker}> 
-          <p> lessThan  2 / 12   greaterThan </p>
-          <p>date</p>
-          <p>magnify glass</p>
+          <div className={styles.search}>
+            <button type="button" className={styles.searchBBtnMagnify}>
+              <svg className={styles.searchMagnify}>
+                <use href={sprite + '#magnify-glass'} />
+              </svg>
+            </button>
+          </div>
         </div>
-        
+
         <div className={styles.tasks}>
-          <p className={styles.tasksTitle}> Sprint Burndown Chart 1 </p>
-          <button type="button" className={styles.btnEdit}>Edit</button>
+          <div className={styles.tasksTitle}>
+            <p className={styles.tasksTitleText}> Sprint Burndown Chart 1 </p>
 
-          {tasks.length && (
-            <ul className={styles.tasksList}>
-              {tasks.map(task => 
-                
-                 <li className={styles.tasksListItem} key={nanoid()}>
-                  <h5 className={styles.taskTitle}>{title}</h5>
+            <button type="button" className={styles.tasksTitleEdit}>
+              <svg className={styles.btnEdit}>
+                <use href={sprite + '#icon-edit'} />
+              </svg>
+            </button>
+          </div>
 
-                  <div className={styles.planned}>
-                    <p className={styles.plannedTitle}>Заплановано годин
-                    <p className={styles.plannedHours}>8</p>
-                    </p>
-                  </div>
+          {/* {tasks.length && ( */}
+          <ul className={styles.tasksList}>
+            {tasks.map(task => (
+              <li className={styles.tasksListItem} key={task._id}>
+                <h5 className={styles.taskTitle}>{task.title}</h5>
 
-                  <div className={styles.used}>
-                    <p className={styles.usedTitle}>Витрачено год СЛЕШ день
-                    <p className={styles.usedHours}>6</p>
-                    </p>
-                  </div>
+                <div className={styles.planned}>
+                  <p className={styles.plannedTitle}>Заплановано годин </p>
+                  <p className={styles.plannedHours}>{task.hoursPlanned}</p>
+                </div>
 
-                   <div className={styles.total}>
-                    <p className={styles.totalTitle}>Витрачено год СЛЕШ день
-                    <p className={styles.totalHours}>6</p>
-                    </p>
-                  </div>
+                <div className={styles.used}>
+                  <p className={styles.usedTitle}>Витрачено год / день </p>
+                  <p className={styles.usedHours}>{task.hoursWasted}</p>
+                </div>
 
-                  <button
-                    data-id={id}
-                    type="button"
-                    className={styles.btnDelete}
-                    >
-                    <svg className={styles.btnDeleteIcon} >
-                      <use href={sprite + '#icon-bin'} />
-                    </svg>
-                    </button>
+                <div className={styles.total}>
+                  <p className={styles.totalTitle}>Витрачено годин (загал.)</p>
+                  <p className={styles.totalHours}>1</p>
+                </div>
 
-                </li>
-              )}
+                <button
+                  data-id={task._id}
+                  type="button"
+                  className={styles.btnDelete}
+                >
+                  <svg className={styles.btnDeleteIcon}>
+                    <use href={sprite + '#icon-delete'} />
+                  </svg>
+                </button>
+              </li>
+            ))}
           </ul>
-          )}
+          {/* )} */}
 
           <div className={styles.addTaskSection}>
-           <button
-            type="button"
-            className={styles.btnAdd}
-          >
-            <p className={styles.btnAddIcon}>+</p>
+            <button type="button" className={styles.btnAdd}>
+              {/* <p className={styles.btnAddIcon}>+</p> */}
+              <img src={addBtn} alt="" className={styles.btnAddIcon} />
             </button>
             {/* <p className={styles.addProjectText}>Створити задачу</p> */}
           </div>
 
           <div className={styles.showGraphSection}>
-           <button
-            type="button"
-            className={styles.btnGraph}
-          >
-            <p className={styles.btnGraphIcon}>XXX</p>
+            <button type="button" className={styles.btnGraph}>
+              <img src={analytics} alt="" className={styles.btnGraphIcon} />
             </button>
             {/* <p className={styles.showGraphText}>Створити задачу</p> */}
           </div>
-          
-
-        
-        
-        
         </div>
       </div>
     </div>
-  )
+  );
 }
