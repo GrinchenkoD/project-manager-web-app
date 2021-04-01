@@ -9,8 +9,6 @@ import { getProject } from 'redux/projects/project-operations';
 import { projectsSelector } from 'redux/projects/project-selectors';
 import popTransition from './transitions/pop.module.css';
 import styles from './ProjectsPage.module.css';
-import sprite from '../../icons/symbol-defs.svg';
-import sideBarButton from '../../icons/Buttons/sidebarButton.png';
 
 const colors = ['#8c72df', '#FF765F', '#71DF87'];
 let currentColor = colors[0];
@@ -81,7 +79,7 @@ export default function ProjectsPage() {
               >
                 <li
                   className={styles.projectsListItem}
-                  id={project._id}
+                  id={project._id ? project._id : project.id}
                   key={project._id}
                   style={{ backgroundColor: getCurrentColor() }}
                   onClick={onHandleClick}
@@ -100,13 +98,11 @@ export default function ProjectsPage() {
           <button type="button" className={styles.btnAdd} onClick={onOpenModal}>
             <p className={styles.btnAddIcon}>+</p>
 
-             
             {/* <img src={sideBarButton} alt="" /> */}
 
-              {/* <svg className={styles.btnAddIcon} >
+            {/* <svg className={styles.btnAddIcon} >
                <use href={sprite + '#icon-add'} />
               </svg> */}
-
           </button>
           <p className={styles.addProjectText}>Створити проект</p>
         </div>

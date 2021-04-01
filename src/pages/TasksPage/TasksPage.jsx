@@ -16,14 +16,11 @@ export default function TasksPage() {
 
   return (
     <div className={styles.tasksContainer}>
-      
       <div className={styles.tasksPage}>
-              
         <div className={styles.sprintsSideBar}>
-
           <div className={styles.showSprints}>
             <a href="/" className={styles.sprintsBackLink}>
-              <svg className={styles.sprintsBackArrow} >
+              <svg className={styles.sprintsBackArrow}>
                 <use href={sprite + '#arrow-left'} />
               </svg>
               <p className={styles.sprintsBackText}>Показати спринти</p>
@@ -65,9 +62,8 @@ export default function TasksPage() {
           
           </div>
         </div>
-        
+
         <div className={styles.navigation}>
-          
           <div className={styles.datePicker}>
             <div className={styles.navDay}>
               <button type="button" className={styles.navLeft}>&lt;</button>
@@ -79,30 +75,25 @@ export default function TasksPage() {
           </div>
 
           <div className={styles.search}>
-            <button type="button" className={styles.searchBBtnMagnify} >
-              <svg className={styles.searchMagnify} >
+            <button type="button" className={styles.searchBBtnMagnify}>
+              <svg className={styles.searchMagnify}>
                 <use href={sprite + '#magnify-glass'} />
               </svg>
             </button>
-
           </div>
-        </div> 
+        </div>
 
-
-        
         <div className={styles.tasks}>
-
           <div className={styles.tasksTitle}>
             <p className={styles.tasksTitleText}> Sprint Burndown Chart 1 </p>
-            
-             <button type="button" className={styles.tasksTitleEdit} >
-              <svg className={styles.btnEdit} >
+
+            <button type="button" className={styles.tasksTitleEdit}>
+              <svg className={styles.btnEdit}>
                 <use href={sprite + '#icon-edit'} />
               </svg>
             </button>
           </div>
 
-         
           {/* {tasks.length && ( */}
             <ul className={styles.tasksList}>
               {tasks.map(task => 
@@ -143,28 +134,21 @@ export default function TasksPage() {
           {/* )} */}
 
           <div className={styles.addTaskSection}>
-           <button
-            type="button"
-            className={styles.btnAdd}
-          >
+            <button type="button" className={styles.btnAdd}>
               {/* <p className={styles.btnAddIcon}>+</p> */}
               <img src={addBtn} alt="" className={styles.btnAddIcon} />
-            </button> 
+            </button>
             {/* <p className={styles.addProjectText}>Створити задачу</p> */}
           </div>
 
           <div className={styles.showGraphSection}>
-           <button
-            type="button"
-            className={styles.btnGraph}
-            >
-            <img src={analytics} alt="" className={styles.btnGraphIcon} />
+            <button type="button" className={styles.btnGraph}>
+              <img src={analytics} alt="" className={styles.btnGraphIcon} />
             </button>
             {/* <p className={styles.showGraphText}>Створити задачу</p> */}
           </div>
-        
         </div>
       </div>
     </div>
-  )
+  );
 }
