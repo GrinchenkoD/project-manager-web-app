@@ -16,6 +16,7 @@ import analytics from '../../icons/Buttons/analytics.png'
 import sprintBox from '../../icons/Buttons/sprintBox.png'
 import styles from './TasksPage.module.css';
 import TaskPageItem from 'pages/TaskPageItem/TaskPageItem';
+import { nanoid } from '@reduxjs/toolkit';
 
 export default function TasksPage() {
   // const sprints = useSelector(state => state.projects);
