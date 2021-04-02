@@ -33,7 +33,6 @@ export default function TaskPageItem(task) {
           </svg>
         </button>
       </div>
-
     </li>
   )
 }
