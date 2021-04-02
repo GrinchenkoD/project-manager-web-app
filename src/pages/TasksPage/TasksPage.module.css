@@ -548,4 +548,26 @@
   .tasksHeaderUsed {
     padding-right: 10px;
   }
+
+.tasksNone{
+width: 700px;
+height: auto;
+
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 1.222;
+  letter-spacing: 0.04em;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: grey;
+
+  display: block;
+
+  position: absolute;
+  left: 25%;
+  top: 45%;
+}
+
 }
