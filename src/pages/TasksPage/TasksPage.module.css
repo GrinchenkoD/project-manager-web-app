@@ -260,50 +260,65 @@
 
   /* ! sprintsList */
 
-  .sprintsList {
-    width: 170px;
-    height: 294px;
-    list-style: none;
+.sprintsList {
+  width: 170px;
+  height: 294px;
+  list-style: none;
+}
+
+.sprintListItem {
+  width: 165px;
+  height: 51;
+  margin-bottom: 30px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: baseline;
+  position: relative;
+}
+
+.sprintsLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  color: #181c27;
+}
+.sprintLinkActive {
+  composes: sprintsLink;
+  color: #000;
+  font-weight: bold;
+}
+
+.sprintTitle {
+  width: 115px;
+  margin-left: 15px;
+  padding-right: 20px;
   }
 
-  .sprintListItem {
-    width: 165px;
-    height: 51;
-    margin-bottom: 30px;
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-items: baseline;
-    position: relative;
-  }
+.sprintBox {
+  width: 36px;
+  height: 36px;
+  background: #ffffff;
+  box-shadow: 0px 6px 26px rgba(0, 5, 97, 0.1);
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
 
-  .sprintTitle {
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 17px;
-    letter-spacing: 0.04em;
-    color: #181c27;
-    /* margin-left: 15px; */
-    display: inline-block;
-    position: absolute;
-    top: 0;
-    left: 51px;
-    padding-right: 20px;
-  }
-  .sprintTitleActive {
-    composes: sprintTitle;
-    font-weight: bold;
-  }
-
-  .sprintBox {
-    width: 36px;
-    height: 36px;
-    background: #ffffff;
-    box-shadow: 0px 6px 26px rgba(0, 5, 97, 0.1);
-    border-radius: 5px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-  }
+.projectsBackText {
+  margin-top: 5px;
+  margin-left: 5px;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  color: #181c27;
+}
 
   /* ! addSprint */
   .addSprint {
