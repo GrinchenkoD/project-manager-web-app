@@ -11,6 +11,7 @@ import sprite from '../../icons/symbol-defs.svg';
 import addBtn from '../../icons/Buttons/addBtn.png';
 import analytics from '../../icons/Buttons/analytics.png';
 import sprintBox from '../../icons/Buttons/sprintBox.png';
+import ChartModal from '../../components/ChartModal/ChartModal';
 import styles from './TasksPage.module.css';
 import TaskPageItem from 'pages/TasksPageItem/TasksPageItem';
 import { nanoid } from '@reduxjs/toolkit';
@@ -21,6 +22,7 @@ export default function TasksPage() {
   // const { id, title } = tasks
   const dispatch = useDispatch();
   const [modalOpen, setModalOpen] = useState(false);
+  const [isOpenModal, setIsOpenModal] = useState(false);
   // const [modalAddPeople, setModalAddPeople] = useState(false);
   const { projectId } = useParams();
   // const projects = useSelector(state => state.projects);
@@ -150,9 +152,10 @@ export default function TasksPage() {
           </TemporaryModal>
 
           <div className={styles.showGraphSection}>
-            <button type="button" className={styles.btnGraph}>
+            <button type="button" className={styles.btnGraph} onClick={() => setIsOpenModal(true)}>
               <img src={analytics} alt="" className={styles.btnGraphIcon} />
             </button>
+            {isOpenModal && <ChartModal onClose={() => setIsOpenModal(false) }/>}
             {/* <p className={styles.showGraphText}>Створити задачу</p> */}
           </div>
         </div>
