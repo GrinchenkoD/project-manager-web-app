@@ -1,5 +1,4 @@
 .tasksContainer {
-  width: 100vw;
   height: 200vh;
   padding: 10px 10px 0 10px;
   background: #e5e5e5;
@@ -136,6 +135,7 @@
 .btnEdit {
   border: none;
   outline: none;
+  background: transparent;
   width: 20px;
   height: 20px;
   transition: all 0.25s linear;
@@ -156,14 +156,9 @@
   align-items: center;
   justify-content: center;
   margin-left: 10px;
-
 }
 
-
-
-
 /* ! btnAdd */
-
 .btnAdd {
   position: fixed;
   bottom: 20px;
@@ -211,201 +206,204 @@
   display: none;
 }
 
+.tasksHeader {
+  display: none;
+}
+
 /* !  ------------------TABLET ver.------------------ */
 @media screen and (min-width: 768px) {
-.tasksContainer {
-  height: 120vh;
-  padding: 20px 20px 0 20px;
-}
+  .tasksContainer {
+    height: 120vh;
+    padding: 20px 20px 0 20px;
+  }
 
-.tasksPage {
-  display: flex;
-  position: relative;
-}
+  .tasksPage {
+    display: flex;
+    position: relative;
+  }
 
-.sprintsListSection {
-  display: block;
-}
+  .sprintsListSection {
+    display: block;
+  }
 
-.sprintsSideBar {
-  width: 189px;
-  height: 100vh;
-  margin-left: 20px;
-  border-right: 1px solid #181c271a;
-}
+  .sprintsSideBar {
+    width: 189px;
+    height: 100vh;
+    margin-left: 20px;
+    border-right: 1px solid #181c271a;
+  }
 
-.showSprints {
-  padding: 0;
-  width: 170px;
-  border-bottom: none;
-  position: relative;
-  margin-bottom: 60px;
-}
+  .showSprints {
+    padding: 0;
+    width: 170px;
+    border-bottom: none;
+    position: relative;
+    margin-bottom: 60px;
+  }
 
-.sprintsBackArrow {
-  width: 30px;
-  height: 8px;
-  display: inline-block;
-  position: absolute;
-  top: 15px;
-  left: 0px;
-}
+  .sprintsBackArrow {
+    width: 30px;
+    height: 8px;
+    display: inline-block;
+    position: absolute;
+    top: 15px;
+    left: 0px;
+  }
 
-.sprintsBack {
-  width: 119px;
-  height: 34px;
-}
-.sprintsBackText {
-  margin-left: 50px;
-}
+  .sprintsBack {
+    width: 119px;
+    height: 34px;
+  }
+  .sprintsBackText {
+    margin-left: 50px;
+  }
 
-/* ! sprintsList */
+  /* ! sprintsList */
 
-.sprintsList {
-  width: 170px;
-  height: 294px;
-  list-style: none;
-}
+  .sprintsList {
+    width: 170px;
+    height: 294px;
+    list-style: none;
+  }
 
-.sprintListItem {
-  width: 165px;
-  height: 51;
-  margin-bottom: 30px;
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-items: baseline;
-  position: relative;
-}
+  .sprintListItem {
+    width: 165px;
+    height: 51;
+    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: baseline;
+    position: relative;
+  }
 
-.sprintTitle {
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 17px;
-  letter-spacing: 0.04em;
-  color: #181c27;
-  /* margin-left: 15px; */
-  display: inline-block;
-  position: absolute;
-  top: 0;
-  left: 51px;
-  padding-right: 20px;
-}
-.sprintTitleActive {
-  composes: sprintTitle;
-  font-weight: bold;
-}
+  .sprintTitle {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.04em;
+    color: #181c27;
+    /* margin-left: 15px; */
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 51px;
+    padding-right: 20px;
+  }
+  .sprintTitleActive {
+    composes: sprintTitle;
+    font-weight: bold;
+  }
 
-.sprintBox {
-  width: 36px;
-  height: 36px;
-  background: #ffffff;
-  box-shadow: 0px 6px 26px rgba(0, 5, 97, 0.1);
-  border-radius: 5px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
+  .sprintBox {
+    width: 36px;
+    height: 36px;
+    background: #ffffff;
+    box-shadow: 0px 6px 26px rgba(0, 5, 97, 0.1);
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
 
-/* ! addSprint */
-.addSprint {
-  width: 162px;
-  height: 76px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: fixed;
-  bottom: 80px;
-  left: 47px;
-  z-index: 1;
-}
+  /* ! addSprint */
+  .addSprint {
+    width: 162px;
+    height: 76px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    bottom: 80px;
+    left: 47px;
+    z-index: 1;
+  }
 
-.btnAddSprint {
-  outline: none;
-  border: none;
-  cursor: pointer;
-  background-color: transparent;
-  transition: all 0.25s linear;
-  margin-bottom: 3px;
-}
-.btnAddSprint:hover {
-  transform: scale(1.1);
-}
-.btnAddSprintIcon {
-  width: 44px;
-  height: 44px;
-}
+  .btnAddSprint {
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    transition: all 0.25s linear;
+    margin-bottom: 3px;
+  }
+  .btnAddSprint:hover {
+    transform: scale(1.1);
+  }
+  .btnAddSprintIcon {
+    width: 44px;
+    height: 44px;
+  }
 
-.addSprintText {
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 17px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  letter-spacing: 0.04em;
-  color: #181c27;
-}
+  .addSprintText {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.04em;
+    color: #181c27;
+  }
 
-/* ! navigation */
-.navigation {
-  padding: 0 20px;
-  display: flex;
-  flex-direction: row;
-  align-items: inherit;
-  width: 512px;
-}
+  /* ! navigation */
+  .navigation {
+    padding: 0 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: inherit;
+    width: 512px;
+  }
 
-.datePicker {
-  margin-right: 40px;
-  margin-top: 20px;
-}
+  .datePicker {
+    margin-right: 40px;
+    margin-top: 20px;
+  }
 
-/* ! tasks */
-.tasks {
-  position: absolute;
-  top: 60px;
-  left: 220px;
-}
+  /* ! tasks */
+  .tasks {
+    top: 60px;
+    left: 225px;
+  }
 
-.btnAddIcon {
-  position: fixed;
-  top: 166px;
-  right: 40px;
-}
+  .btnAddIcon {
+    position: fixed;
+    top: 166px;
+    right: 40px;
+  }
 
-/* ! search */
-.search {
-  position: relative;
-}
+  /* ! search */
+  .search {
+    position: relative;
+  }
 
-.searchBBtnMagnify {
-  position: absolute;
-  right: 10px;
-}
+  .searchBBtnMagnify {
+    position: absolute;
+    right: 10px;
+  }
 
   /* ! tasks */
 
-.tasksList {
-  align-items: unset;
-}
+  .tasksList {
+    align-items: unset;
+  }
 
-.tasksTitle {
-  width: 374px;
-  height: 88px;
-  display: flex;
-  margin-bottom: 20px;
-}
-.tasksTitleText {
-  width: 334px;
-  height: 88px;
-  font-weight: 500;
-  font-size: 36px;
-  line-height: 44px;
-}
+  .tasksTitle {
+    width: 374px;
+    height: 88px;
+    display: flex;
+    margin-bottom: 20px;
+  }
+  .tasksTitleText {
+    width: 334px;
+    height: 88px;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 44px;
+  }
 
-.showGraphSection {
-  display: none;
-}
+  .showGraphSection {
+    display: none;
+  }
 }
 
 /* ! ------------------DESKTOP ver.------------------ */
@@ -422,7 +420,7 @@
   /* ! addSprint */
   .addSprint {
     bottom: 50px;
-    left: 30px;
+    left: 45px;
     z-index: 1;
   }
   .btnAddSprint {
@@ -441,11 +439,11 @@
     height: 44px;
     position: absolute;
     top: 16px;
-    right: 30px;
+    right: 0;
   }
-.btnAdd{
-  position: relative;
-}
+  .btnAdd {
+    position: relative;
+  }
   .btnAddIcon {
     position: absolute;
     top: -5px;
@@ -469,7 +467,7 @@
   .btnGraph {
     position: fixed;
     bottom: 60px;
-    left: 1150px;
+    left: 1160px;
     z-index: 1;
     outline: none;
     border: none;
@@ -485,28 +483,91 @@
     height: 44px;
   }
 
-.tasksList {
-  flex-direction: column;
-  margin-left: 60px;
-  padding-top: 20px;
-  border-top: 1px solid #181c271a;
-}
+  .tasksList {
+    flex-direction: column;
+    margin-left: 70px;
+    padding-top: 20px;
+  }
 
-.tasksTitle{
-  margin-left: 60px;
-  width: 400px;
-  height: 75px;
-}
-.tasksTitleText{
-width: 337px;
-height: 75px;
-}
+  .tasks {
+    padding: 10px 10px 10px 0;
+  }
 
-.search{
+  .tasksTitle {
+    margin-left: 70px;
+    width: 400px;
+    height: 75px;
+    margin-bottom: 30px;
+  }
+  .tasksTitleText {
+    width: 337px;
+    height: 75px;
+  }
+
+  .search {
+    position: absolute;
+    top: 180px;
+    left: 880px;
+    border-bottom: none;
+  }
+
+  /* ! tasksHeader */
+  .tasksHeader {
+    display: block;
+    display: flex;
+    align-items: baseline;
+    width: 1025px;
+    height: 50px;
+    border-bottom: 1px solid #181c271a;
+    padding: 7px 100px;
+  }
+
+  .tasksHeaderTitle,
+  .tasksHeaderPlanned,
+  .tasksHeaderUsed,
+  .tasksHeaderTotal {
+    height: 34px;
+    margin-right: 93px;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.04em;
+    color: #181c27;
+  }
+
+  .tasksHeaderTitle,
+  .tasksHeaderPlanned {
+    width: 107px;
+  }
+
+  .tasksHeaderUsed,
+  .tasksHeaderTotal {
+    width: 100px;
+  }
+
+  .tasksHeaderUsed {
+    padding-right: 10px;
+  }
+
+.tasksNone{
+width: 700px;
+height: auto;
+
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 1.222;
+  letter-spacing: 0.04em;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: grey;
+
+  display: block;
+
   position: absolute;
-  top: 120px;
-  left: 900px;
+  left: 25%;
+  top: 45%;
 }
-
 
 }
