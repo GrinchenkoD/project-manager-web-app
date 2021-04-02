@@ -3,6 +3,7 @@ import {
   addTaskSuccess,
   getTaskSuccess,
   deleteTaskSuccess,
+  addHoursWastedSuccess,
 } from './task-action';
 
 const tasksReducer = createReducer([], {
@@ -11,6 +12,13 @@ const tasksReducer = createReducer([], {
   [deleteTaskSuccess]: (state, { payload }) => {
     return [...state.filter(task => task._id !== payload)];
   },
+  [addHoursWastedSuccess]: (state, { payload }) => [
+    ...state.map(task =>
+      task._id === payload.taskId
+        ? { ...task, hoursWasted: [...payload.hoursWasted] }
+        : task,
+    ),
+  ],
 });
 
 export default tasksReducer;
