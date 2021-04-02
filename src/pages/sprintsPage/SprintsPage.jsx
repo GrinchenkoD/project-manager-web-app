@@ -7,7 +7,11 @@ import TemporaryModal from '../../components/TemporaryModal/TemporaryModal';
 import SprintForm from '../../components/SprintForm/SprintForm';
 import { getSprint } from '../../redux/sprints/sprint-operation';
 import SprintItem from '../../components/SprintItem/SprintItem';
-import { getProject, patchTitle } from 'redux/projects/project-operations';
+import {
+  addContributor,
+  getProject,
+  patchTitle,
+} from 'redux/projects/project-operations';
 import SprintFormPeople from '../../components/SprintFormPeople/SprintFormPeople';
 import ProjectForm from 'components/ProjectForm/ProjectForm';
 import { CSSTransition } from 'react-transition-group';
@@ -24,6 +28,22 @@ export default function SprintsPage() {
   const { projectId } = useParams();
   const projects = useSelector(state => state.projects);
   const project = projects.find(item => item._id === projectId);
+
+  const colors = ['#8c72df', '#FF765F', '#71DF87'];
+  let currentColor = colors[0];
+  let idx = 0;
+
+  const getCurrentColor = () => {
+    if (idx < colors.length) {
+      currentColor = colors[idx];
+      idx += 1;
+      return currentColor;
+    } else {
+      currentColor = colors[0];
+      idx = 0;
+      return currentColor;
+    }
+  };
 
   useEffect(() => {
     dispatch(getSprint(projectId));
@@ -83,7 +103,11 @@ export default function SprintsPage() {
                 className={styles.projectsLink}
                 activeClassName={styles.projectsLinkActive}
               >
-                {project.title}
+                <div
+                  className={styles.sideBarImage}
+                  style={{ backgroundColor: getCurrentColor() }}
+                ></div>
+                <span className={styles.projTitleText}> {project.title}</span>
               </NavLink>
             </li>
           ))}
