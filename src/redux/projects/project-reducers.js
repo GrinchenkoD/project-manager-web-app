@@ -4,6 +4,7 @@ import {
   getProjectSuccess,
   deleteProjectSuccess,
   changeProjectTitleSuccess,
+  addContributorSuccess,
 } from './project-actions.js';
 
 const projectsReducer = createReducer([], {
@@ -12,6 +13,7 @@ const projectsReducer = createReducer([], {
   [deleteProjectSuccess]: (state, { payload }) => [
     ...state.filter(project => project._id !== payload),
   ],
+  [addContributorSuccess]: (state, { payload }) => [...state, payload],
   [changeProjectTitleSuccess]: (state, { payload }) => {
     const index = state.findIndex(item => item._id === payload.projectId);
     const item = state[index];

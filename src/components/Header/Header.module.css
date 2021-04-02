@@ -39,9 +39,14 @@
     text-align: center;
     position: relative;
     background-color: transparent;
+    transition: 0.3s;
   }
   .headerButton:hover {
-    color: rgba(233, 168, 48, 0.589);
+    color: rgba(185, 95, 20, 0.767);
+    font-weight: bold;
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
   }
 
   .headerButton::before {
