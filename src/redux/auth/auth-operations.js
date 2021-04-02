@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { refreshTemplate } from 'redux/refreshToken/refreshTemplate';
 import {
   registerRequest,
   registerSuccess,
@@ -60,6 +61,7 @@ const logout = () => async (dispatch, getState) => {
     window.location.reload();
   } catch (error) {
     dispatch(logoutError(error.message));
+    refreshTemplate(logout, error, dispatch);
   }
 };
 
