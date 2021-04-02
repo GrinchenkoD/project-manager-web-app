@@ -1,15 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteTask } from 'redux/tasks/task-operation';
-import sprite from '../../icons/symbol-defs.svg'
+import sprite from '../../icons/symbol-defs.svg';
 import styles from './TasksPageItem.module.css';
 
-
-
 export default function TaskPageItem(task) {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
+  // const [input = 0, setInput] = useState();
 
-  return(
+  // let totalHoursWasted = 0;
+
+  // const onHandleChange = e => {
+  //   setInput(e.target.value);
+  //   totalHoursWasted += e.target.value;
+  //   return totalHoursWasted;
+  // };
+  // // console.log(task.hoursWastedPerDay[0].singleHoursWasted);
+  // console.log('HoursWasted', task.hoursWasted);
+  // console.log('WastedPerDay Array', task.hoursWastedPerDay);
+
+  return (
     <li className={styles.tasksListItem} key={task._id}>
       <h5 className={styles.taskTitle}>{task.title}</h5>
 
@@ -25,22 +35,16 @@ export default function TaskPageItem(task) {
 
       <div className={styles.total}>
         <p className={styles.totalTitle}>Витрачено годин (загал.)</p>
-        <p className={styles.totalHours}>1</p>
+        <p className={styles.totalHours}>0</p>
       </div>
-      
+
       <div className={styles.btnCont}>
-        <button
-          data-id={task._id}
-          type="button"
-          className={styles.btnDelete}
-          onClick={() => dispatch(deleteTask(task._id))}
-          >
-          <svg className={styles.btnDeleteIcon} >
+        <button data-id={task._id} type="button" className={styles.btnDelete}>
+          <svg className={styles.btnDeleteIcon}>
             <use href={sprite + '#icon-delete'} />
           </svg>
         </button>
       </div>
-
     </li>
-  )
+  );
 }
