@@ -1,15 +1,13 @@
-import React from 'react';
-import { nanoid } from '@reduxjs/toolkit';
-// import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useRouteMatch } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-
 import ProjectsPageItem from '../ProjectsPageItem/ProjectsPageItem';
-// import { addProject } from '/redux/projects/projects-operations';
-import projects from './db.json';
-import sprite from '../../icons/symbol-defs.svg';
-
+import TemporaryModal from 'components/TemporaryModal/TemporaryModal';
+import ProjectForm from 'components/ProjectForm/ProjectForm';
+import { getProject } from 'redux/projects/project-operations';
+import { projectsSelector } from 'redux/projects/project-selectors';
 import popTransition from './transitions/pop.module.css';
-// import slideTransition from './transitions/slide.module.css';
 import styles from './ProjectsPage.module.css';
 
 const colors = ['#8c72df', '#FF765F', '#71DF87'];
@@ -29,38 +27,62 @@ const getCurrentColor = () => {
 };
 
 export default function ProjectsPage() {
-  // const dispatch = useDispatch();
-  // const generateColor = () => {
-  //   return '#' + Math.floor(Math.random() * 16777215).toString(16);
-  // };
+  const [modalOpen, setModalOpen] = useState(false);
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const match = useRouteMatch();
+
+  useEffect(() => {
+    dispatch(getProject());
+  }, [dispatch]);
+
+  const onOpenModal = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+    setModalOpen(true);
+  };
+
+  const onCloseModal = () => {
+    setModalOpen(false);
+  };
+
+  const onHandleClick = e => {
+    const isDelete = e.target.closest('[data-process="delete"]');
+    if (isDelete) {
+      return;
+    } else {
+      history.push(`${match.url}/${e.currentTarget.id}`);
+    }
+  };
+
+  const projects = useSelector(projectsSelector);
 
   return (
     <div className={styles.container}>
-      {/* start of header draft */}
-      {/* <div className={styles.header}>
-        <p className={styles.headerLogo}>GoIT </p>
-        <p className={styles.headerTitle}>Username</p>
-        <svg className={styles.iconExit}>
-          <use href={sprite + '#icon-exit'} />
-        </svg>
-      </div> */}
-      {/* end of header draft */}
-
       <div className="projects">
         <h2 className={styles.title}>Проекти</h2>
 
-        {projects.length && (
+        {!projects.length ? (
+          <p className={styles.projectsNone}>
+            Ваша колекція проектів порожня, скористайтесь кнопкою "Створити
+            проект"
+          </p>
+        ) : (
           <TransitionGroup component="ul" className={styles.projectsList}>
             {projects.map(project => (
               <CSSTransition
-                key={nanoid()}
+                key={project._id}
                 timeout={200}
                 classNames={popTransition}
               >
                 <li
                   className={styles.projectsListItem}
-                  key={nanoid()}
+                  id={project._id ? project._id : project.id}
+                  key={project._id}
                   style={{ backgroundColor: getCurrentColor() }}
+                  onClick={onHandleClick}
                 >
                   <ProjectsPageItem {...project} color={currentColor}>
                     <span className={styles.projectDescription}>
@@ -72,20 +94,24 @@ export default function ProjectsPage() {
             ))}
           </TransitionGroup>
         )}
-
         <div className="addProjectSection">
-          <button
-            type="button"
-            // onClick={event => dispatch(addProject())}
-            className={styles.btnAdd}
-          >
-            {/* <svg className={styles.btnAddIcon} width="32px" height="32px">
-            <use href={sprite + '#icon-plus'} />
-          </svg> */}
+          <button type="button" className={styles.btnAdd} onClick={onOpenModal}>
             <p className={styles.btnAddIcon}>+</p>
+
+            {/* <img src={sideBarButton} alt="" /> */}
+
+            {/* <svg className={styles.btnAddIcon} >
+               <use href={sprite + '#icon-add'} />
+              </svg> */}
           </button>
           <p className={styles.addProjectText}>Створити проект</p>
         </div>
+        {/* {modalOpen && ( */}
+          <TemporaryModal onClose={onCloseModal} onOpen={modalOpen} title="Створення проекту">
+            <ProjectForm onClose={onCloseModal} />
+          </TemporaryModal>
+        {/* )} */}
+   
       </div>
     </div>
   );

@@ -1,0 +1,81 @@
+[
+  {
+    "title": "Task 1",
+    "hoursPlanned": 1,
+    "hoursWasted": 0,
+    "hoursWastedPerDay": [
+      {
+        "currentDay": "2020-12-31",
+        "singleHoursWasted": 0
+      }
+    ],
+    "_id": "57f1f77bcf86cd79943999011",
+    "__v": 0
+  },
+  {
+    "title": "Task 2",
+    "hoursPlanned": 2,
+    "hoursWasted": 1,
+    "hoursWastedPerDay": [
+      {
+        "currentDay": "2020-12-31",
+        "singleHoursWasted": 1
+      }
+    ],
+
+    "_id": "507f1f77b77cf86cd799439012",
+    "__v": 0
+  },
+  {
+    "title": "Task 3",
+    "hoursPlanned": 3,
+    "hoursWasted": 2,
+    "hoursWastedPerDay": [
+      {
+        "currentDay": "2020-12-31",
+        "singleHoursWasted": 2
+      }
+    ],
+    "_id": "507f77bcf86cd799439013",
+    "__v": 0
+  },
+  {
+    "title": "Task 4",
+    "hoursPlanned": 4,
+    "hoursWasted": 4,
+    "hoursWastedPerDay": [
+      {
+        "currentDay": "2020-12-31",
+        "singleHoursWasted": 4
+      }
+    ],
+    "_id": "507f1f77bcf8116cd799439014",
+    "__v": 0
+  },
+  {
+    "title": "Task 5",
+    "hoursPlanned": 5,
+    "hoursWasted": 5,
+    "hoursWastedPerDay": [
+      {
+        "currentDay": "2020-12-31",
+        "singleHoursWasted": 5
+      }
+    ],
+    "_id": "507fdd1f77bcf86cd799439015",
+    "__v": 0
+  },
+  {
+    "title": "Task 6",
+    "hoursPlanned": 5,
+    "hoursWasted": 5,
+    "hoursWastedPerDay": [
+      {
+        "currentDay": "2020-12-31",
+        "singleHoursWasted": 5
+      }
+    ],
+    "_id": "507f1f77bcf86qqcd799439016",
+    "__v": 0
+  }
+]

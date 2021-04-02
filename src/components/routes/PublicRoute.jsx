@@ -1,4 +1,3 @@
-import { Component } from 'react';
 import { useSelector } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 import { authSelectors } from '../../redux/auth/auth-selectors';
@@ -8,7 +7,7 @@ export default function PublicRoute({
   redirectTo = '/projects',
   ...routeProps
 }) {
-  const isAuthentificated = useSelector(authSelectors.isAuthentificated)
+  const isAuthentificated = useSelector(authSelectors.isAuthentificated);
   const shouldRedirect = !isAuthentificated && restricted;
   return (
     <>
@@ -20,4 +19,3 @@ export default function PublicRoute({
     </>
   );
 }
-

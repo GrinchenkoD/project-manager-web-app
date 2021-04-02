@@ -22,15 +22,17 @@
 .btnDelete {
   width: 30px;
   height: 30px;
-  border: 0;
   border-radius: 50%;
   background-color: #fff;
-  cursor: pointer;
   transition: all 200ms ease;
+  border: none;
+  outline: none;
+  cursor: pointer;
 
   position: absolute;
   top: 86px;
   left: 86px;
+  transition: all 0.25s linear;
 }
 
 .btnDeleteIcon {
@@ -39,19 +41,21 @@
   height: 16px;
   fill: #8c72df;
   margin-top: 4px;
+  transition: all 0.25s linear;
 }
 
 .btnDelete:hover .btnDeleteIcon,
 .btnDelete:focus .btnDeleteIcon {
   /* fill: white; */
-  transform: scale(1.2);
+  transform: scale(1.15);
+  box-shadow: 0 0 25px #fff;
 }
 
 .btnDelete:hover,
 .btnDelete:focus {
   /* background-color: #8c72df; */
   /* background-color: white; */
-  border: 2px solid #ff6b08;
+  border: 1px solid #ff6b08;
 }
 
 /* !  ------------------TABLET ver.------------------ */
@@ -85,7 +89,7 @@
 /* ! ------------------DESKTOP ver.------------------ */
 @media screen and (min-width: 1280px) {
   .projectTitle {
-    width: 210px;
+    max-width: 210px;
     margin-bottom: 20px;
   }
   .btnDelete {

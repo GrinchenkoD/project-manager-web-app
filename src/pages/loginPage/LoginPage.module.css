@@ -1,40 +1,37 @@
+.container {
+  min-width: 320px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
 .registerForm {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 570px;
-  height: 538px;
-  background-color: #fafafa;
-  box-shadow: 0px 6px 26px rgba(0, 5, 97, 0.1);
-  border-radius: 5px;
-  margin: 0 auto;
-  margin-top: 56px;
 }
-
 .registerFormInput {
-  width: 429px;
+  width: 280px;
+  padding: 10px;
   border: none;
   border-bottom: 1px solid rgba(24, 28, 39, 0.2);
   color: rgba(24, 28, 39, 0.6);
-  font-size: 18px;
-  line-height: 22px;
+  font-size: 16px;
+  line-height: 19,5px;
   letter-spacing: 0.04em;
   background-color: #fafafa;
   margin-bottom: 60px;
   outline: none;
 }
-
 .registerFormTitle {
   font-family: Montserrat;
   font-weight: 500;
-  font-size: 36px;
-  line-height: 44px;
+  font-size: 26px;
+  line-height: 31,69px;
   letter-spacing: 0.04em;
   color: #181c27;
-  margin-top: 61px;
-  margin-bottom: 45px;
+  margin-top: 47px;
+  margin-bottom: 30px;
+  text-align: center;
 }
-
 .registerPageButton {
   cursor: pointer;
   font-family: Montserrat;
@@ -47,19 +44,101 @@
   background: #ff6b08;
   box-shadow: 0px 3px 4px rgba(255, 107, 8, 0.3);
   border-radius: 25px;
-  width: 260px;
-  height: 44px;
+  width: 155px;
+  height: 45px;
+  margin-bottom: 20px;
   outline: none;
 }
-
 .registerFormText {
   font-family: Montserrat;
+  font-weight: 400;
   font-size: 12px;
   line-height: 15px;
   letter-spacing: 0.04em;
   color: rgba(24, 28, 39, 0.6);
 }
-.errorMessage {
-  color: red;
-  transform: translateY(-300%);
+  .errorMessageEmail {
+    position: absolute;
+    top: 225px;
+    color: red;
+  }
+
+  .errorMessagePassword {
+    position: absolute;
+    top: 325px;
+    color: red;
+  }
+@media (min-width:768px) {
+  .container {
+    height: calc(100vh -  90px);
+    padding: 0;
+    background-color: #E5E5E5;
+    position: relative;
+  }
+  .registerForm {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -61%);
+    width: 570px;
+    height: 455px;
+    background: #FAFAFA;
+    box-shadow: 0px 6px 26px rgba(0, 5, 97, 0.1);
+    border-radius: 5px;
+  }
+  .registerFormInput {
+    width: 400px;
+  }
+  .registerFormTitle { 
+  font-size: 36px;
+  }
 }
+@media (min-width:768px) and (max-width: 1279px) {
+  .container {
+    background-image: url("../../images/ellipses-tablet/Ellipse\ 2.svg"),
+      url("../../images/ellipses-tablet/Ellipse\ 1.svg"),
+      url("../../images/ellipses-tablet/Ellipse\ 4.svg"),
+      url("../../images/ellipses-tablet/Ellipse\ 5.svg"),
+      url("../../images/ellipses-tablet/Union1.svg"),
+      url("../../images/ellipses-tablet/Union2.svg");
+    background-position: top 446px left 0,
+      top 437px left 0,
+      left 0 top 170px,
+      right 70px top 33px,
+      top 154px right 0,
+      top 130px right 0;
+    background-repeat: no-repeat,
+      no-repeat,
+      no-repeat;
+  }
+    .errorMessageEmail {
+      top: 160px;
+    }
+
+    .errorMessagePassword {
+      top: 260px;
+    }
+}
+
+@media (min-width:1280px) {
+  .container {
+    background-image: url("../../images/elipses-desc/Group\ 6.svg"),
+    url("../../images/elipses-desc/Ellipse\ 5.svg"),
+    url("../../images/elipses-desc/Ellipse\ 6.svg"),
+    url("../../images/elipses-desc/Union2.svg"),
+    url("../../images/elipses-desc/Union1.svg");
+    background-position: bottom 0 left 111px,
+    top 23px right 325px,
+    top 49px right 200px,
+    bottom 33px right 0,
+    bottom 0 right 0;
+    background-repeat: no-repeat;
+  }
+  .errorMessageEmail {
+    top: 160px;
+  }
+
+  .errorMessagePassword {
+    top: 260px;
+  }
+ }

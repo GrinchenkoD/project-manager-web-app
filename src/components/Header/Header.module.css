@@ -1,124 +1,135 @@
-@media (min-width:320px){
-    .headerbg{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        border: 1px solid rgba(24, 28, 39, 0.1);
-    }
+@media (min-width: 320px) {
+  .headerbg {
+    background-color: #e5e5e5e5;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 1px solid rgba(24, 28, 39, 0.1);
+  }
 
-    .logoimg {
-        margin-top: 14px;
-        margin-left: 20px;
-        margin-bottom: 14px;
-        width: 100px;
-    }
+  .logoimg {
+    margin-top: 14px;
+    margin-left: 20px;
+    margin-bottom: 14px;
+    width: 100px;
+  }
+  .logo2img {
+    width: 100px;
+  }
 
-    .user_cont {
-        display: flex;
-        align-items: center;
-        margin-right: 20px;
-    }
+  .user_cont {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+  }
 
-    .outImg {
-        width: 30px;
-    }
+  .outImg {
+    width: 30px;
+  }
 
-    .headerButton {
-        cursor: pointer;
-        display: inline-block;
-        outline: none;
-        border: none;
-        font-size: 14px;
-        line-height: 17px;
-        letter-spacing: 0.04em;
-        color: rgba(24, 28, 39, 0.6);
-        text-align: center;
-        position: relative;
-    }
-       .headerButton:hover {
-        color: rgba(233, 168, 48, 0.589);
- 
-    }
-  
-   .headerButton::before {
-       content: "";
-       background-image: url('../../icons/Header/LogOut.svg');
-       display: inline-block;
-       background-position: center;
-       background-size: contain;
-       width: 20px;
-       height: 20px;
-   }
+  .headerButton {
+    cursor: pointer;
+    display: inline-block;
+    outline: none;
+    border: none;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.04em;
+    color: rgba(24, 28, 39, 0.6);
+    text-align: center;
+    position: relative;
+    background-color: transparent;
+  }
+  .headerButton:hover {
+    color: rgba(233, 168, 48, 0.589);
+  }
 
-    .buttonText {
-        display: none;
-    }
-     
-    .secOutImg {
-        display: none;
-    }
-
-    .name_contx {
-        margin-right: 20px;
-    }
-}
-
-@media (min-width:768px){
-
-    .logoimg {
-        margin-top: 19px;
-        margin-left: 40px;
-        margin-bottom: 19px;
-    }
-
-    .user_cont{
-        margin-right: 40px;
-    }
-
-    .name_contx {
-        margin-right: 70px;
-    }
-
-    .outImg {
-        display: none;
-    }
-
-    .secOutImg {
-        display: inline-block;
-    }
+  .headerButton::before {
+    content: '';
+    background-image: url('../../icons/Header/LogOut.svg');
+    display: inline-block;
+    background-position: center;
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+  }
 
   .buttonText {
-        display: inline-block;
-        margin-left: 10px;
-    }
+    display: none;
+  }
 
+  .secOutImg {
+    display: none;
+  }
 
-    .headerButton {
-        display: inline;
-        margin-left: 10px;
-        border: none;
-    }
-    .headerButton::before {
-        background-image: url('../../icons/Header/SecondLogOut.svg');
-        position: absolute;
-        left: -20px;
-        top: -2px;
-    }
-    .headerButton::before:hover {
-        background-color: yellow;
-    }
+  .name_contx {
+    margin-right: 20px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.04em;
+    color: #181c27;
+  }
 }
 
-@media (min-width:1024px) {
-    .logoimg {
-        margin-left: 50px;
-    }
+@media (min-width: 768px) {
+  .logoimg {
+    margin-top: 19px;
+    margin-left: 40px;
+    margin-bottom: 19px;
+  }
 
-    .user_cont {
-        margin-right: 55px;
-    }
+  .user_cont {
+    margin-right: 40px;
+  }
 
-    .name_contx {
-        margin-right: 77px;
-    }
+  .name_contx {
+    margin-right: 70px;
+    display: block;
+  }
+
+  .outImg {
+    display: none;
+  }
+
+  .secOutImg {
+    display: inline-block;
+  }
+
+  .buttonText {
+    display: inline-block;
+    margin-left: 10px;
+  }
+
+  .headerButton {
+    display: inline;
+    margin-left: 10px;
+    border: none;
+  }
+  .headerButton::before {
+    background-image: url('../../icons/Header/SecondLogOut.svg');
+    position: absolute;
+    left: -20px;
+    top: -2px;
+  }
+  .headerButton::before:hover {
+    background-color: yellow;
+  }
+}
+
+@media (min-width: 1024px) {
+  .logoimg {
+    margin-left: 50px;
+  }
+
+  .user_cont {
+    margin-right: 55px;
+  }
+
+  .name_contx {
+    margin-right: 77px;
+    display: block;
+  }
 }

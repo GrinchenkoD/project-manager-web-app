@@ -5,11 +5,12 @@ import errorReducer from './error/error-reducer';
 import loadingReducer from './loading/loading-reducer';
 import projectsReducer from './projects/project-reducers';
 import authReducer from './auth/auth-reducers';
+import sprintsReducer from './sprints/sprint-reducers';
 
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token', 'isAuthentificated'],
+  whitelist: ['token', 'user', 'isAuthentificated'],
 };
 
 const persistedAuthReducer = persistReducer(authPersistConfig, authReducer);
@@ -19,6 +20,7 @@ const reducer = {
   error: errorReducer,
   auth: persistedAuthReducer,
   projects: projectsReducer,
+  sprints: sprintsReducer,
 };
 
 export default reducer;
