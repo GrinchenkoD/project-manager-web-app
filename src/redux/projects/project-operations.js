@@ -65,7 +65,7 @@ const addContributor = (projectId, contributor) => async dispatch => {
   dispatch(addContributorRequest());
 
   try {
-    const { data } = await axios.post(
+    const { data } = await axios.patch(
       `/project/contributor/${projectId}`,
       contributor,
     );

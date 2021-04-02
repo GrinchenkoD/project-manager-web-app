@@ -224,6 +224,17 @@
   .sprintsContainer {
     display: flex;
   }
+  .projTitleText {
+    width: 115px;
+  }
+  .sideBarImage {
+    width: 36px;
+    height: 36px;
+    display: inline-block;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+
   .messageNoSprints {
     font-size: 30px;
     position: absolute;
@@ -268,6 +279,9 @@
     top: 13px;
   }
   .projectsLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
     font-size: 14px;
     line-height: 17px;
