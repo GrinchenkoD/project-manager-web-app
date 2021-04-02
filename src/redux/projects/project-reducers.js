@@ -13,7 +13,13 @@ const projectsReducer = createReducer([], {
   [deleteProjectSuccess]: (state, { payload }) => [
     ...state.filter(project => project._id !== payload),
   ],
-  [addContributorSuccess]: (state, { payload }) => [...state, payload],
+  [addContributorSuccess]: (state, { payload }) => [
+    ...state.map(project =>
+      project._id === payload.projectId
+        ? { ...project, members: [...payload.members] }
+        : project,
+    ),
+  ],
   [changeProjectTitleSuccess]: (state, { payload }) => {
     const index = state.findIndex(item => item._id === payload.projectId);
     const item = state[index];
