@@ -69,7 +69,7 @@ const addContributor = (projectId, contributor) => async dispatch => {
       `/project/contributor/${projectId}`,
       contributor,
     );
-    dispatch(addContributorSuccess(data));
+    dispatch(addContributorSuccess({ members: data.newMembers, projectId }));
   } catch (error) {
     dispatch(addContributorError(error));
   }
