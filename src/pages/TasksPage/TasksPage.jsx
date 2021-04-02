@@ -15,6 +15,8 @@ import TaskPageItem from 'pages/TasksPageItem/TasksPageItem';
 import { nanoid } from '@reduxjs/toolkit';
 import { getTask } from 'redux/tasks/task-operation';
 import { getTasks } from 'redux/tasks/task-selectors';
+import SprintForm from '../../components/SprintForm/SprintForm';
+
 
 export default function TasksPage() {
   const dispatch = useDispatch();
@@ -23,6 +25,8 @@ export default function TasksPage() {
   const { sprintId } = useParams();
   // const projects = useSelector(state => state.projects);
   // const project = projects.find(item => item._id === projectId);
+  const [modalAddSprint, setModalAddSprint] = useState(false);
+
 
   const { tasks } = useSelector(getTasks);
 
@@ -33,10 +37,17 @@ export default function TasksPage() {
   const onOpenModal = () => {
     setModalOpen(true);
   };
-
   const onCloseModal = () => {
     setModalOpen(false);
   };
+
+  const onOpenModalSprint = () => {
+    setModalAddSprint(true);
+  };
+  const onCloseModalSprint = () => {
+    setModalAddSprint(false);
+  };
+
 
   return (
     <div className={styles.tasksContainer}>
@@ -77,14 +88,24 @@ export default function TasksPage() {
             </ul>
 
             <div className={styles.addSprint}>
-              <button type="button" className={styles.btnAddSprint}>
+              <button type="button" className={styles.btnAddSprint} onClick={onOpenModalSprint}>
                 {/* <p className={styles.btnAddIcon}>+</p> */}
                 <img src={addBtn} alt="" className={styles.btnAddSprintIcon} />
               </button>
-              <p className={styles.addSprintText}>Створити спринт</p>
+              <p className={styles.addSprintText}>Создать спринт</p>
             </div>
+            <TemporaryModal
+              onClose={onCloseModalSprint}
+              onOpen={modalAddSprint}
+              title="Створення проекту"
+            >
+              <SprintForm onClose={onCloseModalSprint} />
+            </TemporaryModal>
+
           </div>
         </div>
+
+
         <div className={styles.container}>
           <div className={styles.navigation}>
             <div className={styles.datePicker}>
@@ -123,15 +144,16 @@ export default function TasksPage() {
 
             <div className={styles.tasksHeader}>
               <p className={styles.tasksHeaderTitle}>Задача </p>
-              <p className={styles.tasksHeaderPlanned}>Заплановано годин </p>
-              <p className={styles.tasksHeaderUsed}>Витрачено год / день </p>
+              <p className={styles.tasksHeaderPlanned}>Запланировано часов </p>
+              <p className={styles.tasksHeaderUsed}>Использовано час. / день </p>
               <p className={styles.tasksHeaderTotal}>
-                Витрачено годин (загал.)
+                Использовано часов (общ.)
               </p>
             </div>
 
             {!tasks.length ? (
-              <h2>ljkoiuhiuhiuh</h2>
+              <h2 className={styles.tasksNone}>В спринте отсутствуют задачи, воспользуйтесь кнопкой "Создать задачу"
+              </h2>
             ) : (
               <ul className={styles.tasksList}>
                 {tasks.map(task => (
@@ -149,7 +171,7 @@ export default function TasksPage() {
                 {/* <p className={styles.btnAddIcon}>+</p> */}
                 <img src={addBtn} alt="" className={styles.btnAddIcon} />
               </button>
-              <p className={styles.addProjectText}>Створити задачу</p>
+              <p className={styles.addProjectText}>Создать задачу</p>
             </div>
             <TemporaryModal
               onClose={onCloseModal}
