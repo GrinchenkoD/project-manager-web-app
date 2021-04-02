@@ -17,11 +17,7 @@ import {
   changeProjectTitleError,
 } from './project-actions';
 
-//  https://sbc-backend.goit.global
-// axios.defaults.baseURL = 'https://sbc-backend.goit.global';
-
 // ======= post project=======
-//     /project
 
 const token = {
   set(token) {
@@ -37,7 +33,9 @@ const addProject = project => async dispatch => {
 
   try {
     const { data } = await axios.post('/project', project);
-    dispatch(addProjectSuccess(data));
+    const id = data.id;
+    delete data.id;
+    dispatch(addProjectSuccess({ ...data, _id: id }));
   } catch (error) {
     dispatch(addProjectError(error));
   }
@@ -67,7 +65,7 @@ const addContributor = (projectId, contributor) => async dispatch => {
   dispatch(addContributorRequest());
 
   try {
-    const { data } = await axios.post(
+    const { data } = await axios.patch(
       `/project/contributor/${projectId}`,
       contributor,
     );
@@ -85,8 +83,8 @@ const patchTitle = (projectId, title) => async dispatch => {
   dispatch(changeProjectTitleRequest());
 
   try {
-    const responce = await axios.patch(`/project/title/${projectId}`, title);
-    dispatch(changeProjectTitleSuccess());
+    await axios.patch(`/project/title/${projectId}`, { title });
+    dispatch(changeProjectTitleSuccess({ projectId, title }));
   } catch (error) {
     dispatch(changeProjectTitleError(error));
   }

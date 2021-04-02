@@ -12,26 +12,25 @@
   z-index: 100;
 }
 @media screen and (min-width: 768px) {
-    .overlay {
+  .overlay {
     top: 0px;
     height: 100vh;
-    }   
+  }
 }
 .thumb {
   background-color: #fafafa;
-  height:100%;
-  
+  height: 100%;
+
   display: flex;
   flex-direction: column;
   position: relative;
 
   /* padding: 0 20px; */
 }
-@media screen and (max-width: 767px){
-    .thumb{
-        width: 100%;
-    }
-
+@media screen and (max-width: 767px) {
+  .thumb {
+    width: 100%;
+  }
 }
 @media screen and (min-width: 768px) {
   .thumb {
@@ -47,8 +46,8 @@
 .closeBtn {
   position: absolute;
   top: 10px;
-  right: 10px;
-  z-index: 1001;
+  /* right: 10px; */
+  z-index: 999999;
   width: 22px;
   height: 22px;
   background-color: transparent;
@@ -64,7 +63,7 @@
   height: 18px;
 }
 .title {
-margin-top: 63px;
+  margin-top: 63px;
 
   text-align: center;
   color: #181c27;
@@ -74,7 +73,8 @@ margin-top: 63px;
 }
 @media screen and (min-width: 768px) {
   .title {
-      margin-top: 121px;
+    margin-top: 121px;
+    margin-bottom: 40px;
     font-size: 36px;
     line-height: 44px;
   }

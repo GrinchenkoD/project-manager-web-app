@@ -6,6 +6,7 @@ import {
   loginSuccess,
   loginError,
   logoutSuccess,
+  logoutError,
 } from './auth-actions';
 const initialUserState = { email: null, id: null, projects: [] };
 const user = createReducer(initialUserState, {
@@ -31,6 +32,7 @@ const isAuthentificated = createReducer(false, {
   [registerError]: () => false,
   [loginError]: () => false,
   [logoutSuccess]: () => false,
+  [logoutError]: () => false,
 });
 const authReducer = combineReducers({ user, token, isAuthentificated });
 export default authReducer;
