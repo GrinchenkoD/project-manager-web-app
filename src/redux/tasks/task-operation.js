@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { refreshTemplate } from 'redux/refreshToken/refreshTemplate';
 import {
   addTaskRequest,
   addTaskSuccess,
@@ -37,7 +38,8 @@ const addTask = (sprintId, task) => async (dispatch, getState) => {
     delete data.id;
     dispatch(addTaskSuccess({ ...data, _id: id }));
   } catch (error) {
-    dispatch(addTaskError(error));
+    dispatch(addTaskError(error.message));
+    refreshTemplate(()=>addTask(sprintId, task), error, dispatch)
   }
 };
 
@@ -51,7 +53,8 @@ const getTask = sprintId => async (dispatch, getState) => {
     const { data } = await axios.get(`/task/${sprintId}`);
     dispatch(getTaskSuccess(data)); 
   } catch (error) {
-    dispatch(getTaskError(error));
+    dispatch(getTaskError(error.message));
+    refreshTemplate(()=>getTask(sprintId), error, dispatch)
   }
 };
 
@@ -61,7 +64,8 @@ const deleteTask = id => async dispatch => {
     await axios.delete(`/task/${id}`);
     dispatch(deleteTaskSuccess(id));
   } catch (error) {
-    dispatch(deleteTaskError(error));
+    dispatch(deleteTaskError(error.message));
+    refreshTemplate(()=>deleteTask(id), error, dispatch)
   }
 };
 
