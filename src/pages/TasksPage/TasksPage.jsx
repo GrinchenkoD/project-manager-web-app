@@ -3,10 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
 import TemporaryModal from '../../components/TemporaryModal/TemporaryModal';
 import TaskForm from '../../components/TaskForm/TaskForm';
-// import { getTask } from '../../redux/tasks/task-operation';
-import { getSprint } from '../../redux/sprints/sprint-operation';
-import { getProject } from '../../redux/projects/project-operations';
-import tasks from './db.json';
+// import { getSprint } from '../../redux/sprints/sprint-operation';
+// import { getProject } from '../../redux/projects/project-operations';
+// import tasks from './db.json';
 import sprite from '../../icons/symbol-defs.svg';
 import addBtn from '../../icons/Buttons/addBtn.png';
 import analytics from '../../icons/Buttons/analytics.png';
@@ -15,17 +14,18 @@ import styles from './TasksPage.module.css';
 import TaskPageItem from 'pages/TasksPageItem/TasksPageItem';
 import { nanoid } from '@reduxjs/toolkit';
 import { getTask } from 'redux/tasks/task-operation';
+import { getTasks } from 'redux/tasks/task-selectors';
 
 export default function TasksPage() {
-  // const sprints = useSelector(state => state.projects);
-  // const tasks = useSelector(state => state.projects);
-  // const { id, title } = tasks
   const dispatch = useDispatch();
   const [modalOpen, setModalOpen] = useState(false);
   // const [modalAddPeople, setModalAddPeople] = useState(false);
   const { sprintId } = useParams();
   // const projects = useSelector(state => state.projects);
   // const project = projects.find(item => item._id === projectId);
+
+  const { tasks } = useSelector(getTasks);
+
 
   useEffect(() => {
     dispatch(getTask(sprintId));
@@ -129,16 +129,13 @@ export default function TasksPage() {
             <p className={styles.tasksHeaderTotal}>Витрачено годин (загал.)</p>
           </div>
 
-
-
-
-          {/* {tasks.length && ( */}
+          {!tasks.length ? (<h2>ljkoiuhiuhiuh</h2>) : (
           <ul className={styles.tasksList}>
             {tasks.map(tasks => (
               <TaskPageItem {...tasks} key={tasks._id} />
             ))}
           </ul>
-          {/* )} */}
+          )}
 
           <div className={styles.addTaskSection}>
             <button
