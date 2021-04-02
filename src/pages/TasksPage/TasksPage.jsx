@@ -122,6 +122,16 @@ export default function TasksPage() {
             </button>
           </div>
 
+          <div className={styles.tasksHeader}>
+            <p className={styles.tasksHeaderTitle}>Задача </p>
+            <p className={styles.tasksHeaderPlanned}>Заплановано годин </p>
+            <p className={styles.tasksHeaderUsed}>Витрачено год / день </p>
+            <p className={styles.tasksHeaderTotal}>Витрачено годин (загал.)</p>
+          </div>
+
+
+
+
           {/* {tasks.length && ( */}
           <ul className={styles.tasksList}>
             {tasks.map(tasks => (
