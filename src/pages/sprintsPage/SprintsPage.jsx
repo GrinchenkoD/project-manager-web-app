@@ -183,14 +183,14 @@ export default function SprintsPage() {
           onOpen={modalOpen}
           title="Створення спринта"
         >
-          <SprintForm closeModal={onCloseModal} />
+          <SprintForm onClose={onCloseModal} />
         </TemporaryModal>
         <TemporaryModal
           onClose={onCloseModalPeople}
           onOpen={modalAddPeople}
           title="Добавить людей"
         >
-          <SprintFormPeople closeModal={onCloseModalPeople} />
+          <SprintFormPeople onClose={onCloseModalPeople} />
         </TemporaryModal>
         <TemporaryModal
           onClose={onCloseModalProject}
