@@ -14,6 +14,7 @@ import sprintBox from '../../icons/Buttons/sprintBox.png';
 import styles from './TasksPage.module.css';
 import TaskPageItem from 'pages/TasksPageItem/TasksPageItem';
 import { nanoid } from '@reduxjs/toolkit';
+import { getTask } from 'redux/tasks/task-operation';
 
 export default function TasksPage() {
   // const sprints = useSelector(state => state.projects);
@@ -22,14 +23,13 @@ export default function TasksPage() {
   const dispatch = useDispatch();
   const [modalOpen, setModalOpen] = useState(false);
   // const [modalAddPeople, setModalAddPeople] = useState(false);
-  const { projectId } = useParams();
+  const { sprintId } = useParams();
   // const projects = useSelector(state => state.projects);
   // const project = projects.find(item => item._id === projectId);
 
   useEffect(() => {
-    dispatch(getSprint(projectId));
-    dispatch(getProject());
-  }, [dispatch, projectId]);
+    dispatch(getTask(sprintId));
+  }, [dispatch, sprintId]);
 
   const onOpenModal = () => {
     setModalOpen(true);

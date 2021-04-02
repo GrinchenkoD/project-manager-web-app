@@ -3,6 +3,7 @@ import {
   addSprintSuccess,
   getSprintSuccess,
   deleteSprintSuccess,
+  addTaskSuccess,
 } from './sprint-action';
 
 const sprintsReducer = createReducer([], {
