@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback } from 'react';
 import sprite from '../../icons/symbol-defs.svg';
 import styles from './TemporaryMdal.module.css';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { CSSTransition} from 'react-transition-group';
 import overlayTransition from "./transitions/modalOverlayTransition.module.css"
 import modalTransition from "./transitions/modalFormTransition.module.css"
 

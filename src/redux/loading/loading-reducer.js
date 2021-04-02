@@ -25,6 +25,8 @@ import {
   loginError,
   loginSuccess,
 } from '../auth/auth-actions';
+import { refreshTokenError, refreshTokenRequest, refreshTokenSuccess } from 'redux/refreshToken/refreshToken-actions';
+
 
 const loadingReducer = createReducer(false, {
   [addProjectRequest]: () => true,
@@ -34,6 +36,7 @@ const loadingReducer = createReducer(false, {
   [changeProjectTitleRequest]: () => true,
   [registerRequest]: () => true,
   [loginRequest]: () => true,
+  [refreshTokenRequest]:()=> true,
 
   [addProjectSuccess]: () => false,
   [addProjectError]: () => false,
@@ -49,6 +52,8 @@ const loadingReducer = createReducer(false, {
   [loginError]: () => false,
   [registerSuccess]: () => false,
   [loginSuccess]: () => false,
+  [refreshTokenError]: () => false,
+  [refreshTokenSuccess]: () => false,
 });
 
 export default loadingReducer;

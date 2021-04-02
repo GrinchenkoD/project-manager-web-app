@@ -10,7 +10,7 @@ import sprintsReducer from './sprints/sprint-reducers';
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token', 'user', 'isAuthentificated'],
+  whitelist: ['token', 'user', 'isAuthentificated', 'refreshToken', 'sid'],
 };
 
 const persistedAuthReducer = persistReducer(authPersistConfig, authReducer);
