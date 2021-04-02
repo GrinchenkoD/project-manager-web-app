@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
 import TemporaryModal from '../../components/TemporaryModal/TemporaryModal';
 import SprintForm from '../../components/SprintForm/SprintForm';
-import { getTask } from '../../redux/tasks/task-operation';
+// import { getTask } from '../../redux/tasks/task-operation';
 import { getSprint } from '../../redux/sprints/sprint-operation';
 import { getProject } from '../../redux/projects/project-operations';
 import tasks from './db.json';
@@ -12,7 +12,7 @@ import addBtn from '../../icons/Buttons/addBtn.png';
 import analytics from '../../icons/Buttons/analytics.png';
 import sprintBox from '../../icons/Buttons/sprintBox.png';
 import styles from './TasksPage.module.css';
-import TaskPageItem from 'pages/TaskPageItem/TaskPageItem';
+import TaskPageItem from 'pages/TasksPageItem/TasksPageItem';
 import { nanoid } from '@reduxjs/toolkit';
 
 export default function TasksPage() {
@@ -21,10 +21,10 @@ export default function TasksPage() {
   // const { id, title } = tasks
   const dispatch = useDispatch();
   const [modalOpen, setModalOpen] = useState(false);
-  const [modalAddPeople, setModalAddPeople] = useState(false);
+  // const [modalAddPeople, setModalAddPeople] = useState(false);
   const { projectId } = useParams();
-  const projects = useSelector(state => state.projects);
-  const project = projects.find(item => item._id === projectId);
+  // const projects = useSelector(state => state.projects);
+  // const project = projects.find(item => item._id === projectId);
 
   useEffect(() => {
     dispatch(getSprint(projectId));
@@ -93,8 +93,8 @@ export default function TasksPage() {
               <button type="button" className={styles.navLeft}>
                 &lt;
               </button>
-              <p className={styles.navCurrentDay}> 2 </p>
-              <p className={styles.navTotalDays}> / 12 </p>
+              <p className={styles.navCurrentDay}> 2  </p>
+              <p className={styles.navTotalDays}>  / 12 </p>
               <button type="button" className={styles.navRight}>
                 &gt;
               </button>
@@ -125,7 +125,7 @@ export default function TasksPage() {
           {/* {tasks.length && ( */}
           <ul className={styles.tasksList}>
             {tasks.map(tasks => (
-              <TaskPageItem {...tasks} />
+              <TaskPageItem {...tasks} key={tasks._id}/>
             ))}
           </ul>
           {/* )} */}
