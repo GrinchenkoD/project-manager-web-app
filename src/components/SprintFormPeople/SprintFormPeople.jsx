@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { projectsSelector } from 'redux/projects/project-selectors';
 
-const SprintForm = () => {
+const SprintForm = ({ onClose }) => {
   const dispatch = useDispatch();
   const { projectId } = useParams();
   const projects = useSelector(projectsSelector);
@@ -17,9 +17,9 @@ const SprintForm = () => {
   const addPeople = useCallback(
     values => {
       dispatch(addContributor(projectId, values));
-      console.log(values);
+      onClose();
     },
-    [dispatch, projectId],
+    [dispatch, projectId, onClose],
   );
 
   return (

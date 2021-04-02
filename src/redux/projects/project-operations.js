@@ -39,9 +39,8 @@ const addProject = project => async dispatch => {
     delete data.id;
     dispatch(addProjectSuccess({ ...data, _id: id }));
   } catch (error) {
-  
     dispatch(addProjectError(error.message));
-    refreshTemplate(()=>addProject(project), error, dispatch)
+    refreshTemplate(() => addProject(project), error, dispatch);
   }
 };
 
@@ -51,7 +50,7 @@ const getProject = () => async (dispatch, getState) => {
   const {
     auth: { token: accessToken },
   } = getState();
-  // token.set(accessToken);
+  token.set(accessToken);
   dispatch(getProjectRequest());
 
   try {
@@ -59,7 +58,7 @@ const getProject = () => async (dispatch, getState) => {
     dispatch(getProjectSuccess(data));
   } catch (error) {
     dispatch(getProjectError(error.message));
-     refreshTemplate(getProject, error, dispatch)
+    refreshTemplate(getProject, error, dispatch);
   }
 };
 
@@ -77,7 +76,11 @@ const addContributor = (projectId, contributor) => async dispatch => {
     dispatch(addContributorSuccess({ members: data.newMembers, projectId }));
   } catch (error) {
     dispatch(addContributorError(error.message));
-     refreshTemplate(()=>addContributor(projectId, contributor), error, dispatch)
+    refreshTemplate(
+      () => addContributor(projectId, contributor),
+      error,
+      dispatch,
+    );
   }
 };
 
@@ -93,7 +96,7 @@ const patchTitle = (projectId, title) => async dispatch => {
     dispatch(changeProjectTitleSuccess({ projectId, title }));
   } catch (error) {
     dispatch(changeProjectTitleError(error.message));
-     refreshTemplate(()=>patchTitle(projectId, title), error, dispatch)
+    refreshTemplate(() => patchTitle(projectId, title), error, dispatch);
   }
 };
 
@@ -106,7 +109,7 @@ const deleteProject = id => async dispatch => {
     dispatch(deleteProjectSuccess(id));
   } catch (error) {
     dispatch(deleteProjectError(error.message));
-    refreshTemplate(()=>deleteProject(id), error, dispatch)
+    refreshTemplate(() => deleteProject(id), error, dispatch);
   }
 };
 
