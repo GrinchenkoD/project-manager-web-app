@@ -1,0 +1,19 @@
+.textCont {
+  margin-left: 18px;
+}
+
+.addedText {
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  color: rgba(24, 28, 39, 0.6);
+  margin-bottom: 10px;
+}
+
+.textItem {
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+  margin-bottom: 5px;
+  color: #181c27;
+}
