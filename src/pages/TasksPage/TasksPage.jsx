@@ -134,8 +134,8 @@ export default function TasksPage() {
               <h2>ljkoiuhiuhiuh</h2>
             ) : (
               <ul className={styles.tasksList}>
-                {tasks.map(tasks => (
-                  <TaskPageItem {...tasks} key={tasks._id} />
+                {tasks.map(task => (
+                  <TaskPageItem {...task} key={task._id}/>
                 ))}
               </ul>
             )}
