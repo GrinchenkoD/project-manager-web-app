@@ -25,7 +25,6 @@ const refreshCurrentToken = () => async (dispatch, getState) => {
      
       dispatch(refreshTokenSuccess(data));
       token.set(data.newAccessToken);
-      console.log( axios.defaults.headers.common.Authorization)
   } catch (error) {
      
       dispatch(refreshTokenError(error.message));

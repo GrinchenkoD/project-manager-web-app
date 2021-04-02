@@ -39,23 +39,9 @@ const addProject = project => async dispatch => {
     delete data.id;
     dispatch(addProjectSuccess({ ...data, _id: id }));
   } catch (error) {
-    // console.log(typeof(error.response.status))
+  
     dispatch(addProjectError(error.message));
-    
-    
     refreshTemplate(()=>addProject(project), error, dispatch)
-
-    //  if (error.response.status === 401 || error.response.status === 404) {
-    //    try {
-         
-    //      await dispatch( refreshCurrentToken());
-
-    //     dispatch(addProject(project));
-    //    } catch (error) {
-    //     //  dispatch(logout());
-    //    }   
-       
-    //   }
   }
 };
 
@@ -65,7 +51,7 @@ const getProject = () => async (dispatch, getState) => {
   const {
     auth: { token: accessToken },
   } = getState();
-  token.set(accessToken);
+  // token.set(accessToken);
   dispatch(getProjectRequest());
 
   try {
