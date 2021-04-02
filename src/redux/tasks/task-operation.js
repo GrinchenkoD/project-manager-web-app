@@ -49,7 +49,7 @@ const getTask = sprintId => async (dispatch, getState) => {
   token.set(accessToken);
   try {
     const { data } = await axios.get(`/task/${sprintId}`);
-    dispatch(getTaskSuccess(data)); //if not works, check here
+    dispatch(getTaskSuccess(data)); 
   } catch (error) {
     dispatch(getTaskError(error));
   }

@@ -8,7 +8,6 @@ import { addContributor } from 'redux/projects/project-operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { projectsSelector } from 'redux/projects/project-selectors';
-import { format } from 'prettier';
 
 const SprintForm = () => {
   const dispatch = useDispatch();
