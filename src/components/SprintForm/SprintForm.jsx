@@ -41,9 +41,9 @@ const SprintForm = ({ onClose }) => {
       console.log(startDate);
       const data = { ...values, endDate: format(startDate, 'yyyy-M-d') };
       dispatch(addSprint(projectId, data));
-      closeModal();
+      onClose();
     },
-    [dispatch, projectId, closeModal, startDate],
+    [dispatch, projectId, onClose, startDate],
   );
 
   return (
