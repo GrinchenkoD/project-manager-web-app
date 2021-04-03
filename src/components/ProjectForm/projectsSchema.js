@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 
 const projectsSchema = Yup.object().shape({
-  title: Yup.string().required('Обязательное поле'),
+  title: Yup.string().trim().required('Обязательное поле'),
   description: Yup.string().required('Обязательное поле'),
 });
 

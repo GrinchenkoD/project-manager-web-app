@@ -66,8 +66,7 @@ export default function ProjectsPage() {
 
         {!projects.length ? (
           <p className={styles.projectsNone}>
-            Ваша колекція проектів порожня, скористайтесь кнопкою "Створити
-            проект"
+            Ваша коллекция проектов пуста, воспользуйтесь кнопкой "Создать проект"
           </p>
         ) : (
           <TransitionGroup component="ul" className={styles.projectsList}>
@@ -104,7 +103,7 @@ export default function ProjectsPage() {
                <use href={sprite + '#icon-add'} />
               </svg> */}
           </button>
-          <p className={styles.addProjectText}>Створити проект</p>
+          <p className={styles.addProjectText}>Создать проект</p>
         </div>
         {/* {modalOpen && ( */}
           <TemporaryModal onClose={onCloseModal} onOpen={modalOpen} title="Створення проекту">

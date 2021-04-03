@@ -1,4 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
+import { logoutSuccess } from 'redux/auth/auth-actions.js';
+import { refreshTokenError } from 'redux/refreshToken/refreshToken-actions.js';
 import {
   addProjectSuccess,
   getProjectSuccess,
@@ -29,6 +31,9 @@ const projectsReducer = createReducer([], {
       ...state.slice(index + 1),
     ];
   },
+  [refreshTokenError]: () => [],
+  [logoutSuccess]:()=>[],
+  
 });
 
 export default projectsReducer;

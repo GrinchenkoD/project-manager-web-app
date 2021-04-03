@@ -7,16 +7,16 @@ import sprintsSchema from './sprintSchema';
 import FormControl from '../formControl/FormControl';
 import styles from '../ProjectForm/ProjectForm.module.css';
 
-const SprintForm = ({ closeModal }) => {
+const SprintForm = ({ onClose }) => {
   const dispatch = useDispatch();
   const { projectId } = useParams();
 
   const addNeWSprint = useCallback(
     values => {
       dispatch(addSprint(projectId, values));
-      closeModal();
+      onClose();
     },
-    [dispatch, projectId, closeModal],
+    [dispatch, projectId, onClose],
   );
 
   return (

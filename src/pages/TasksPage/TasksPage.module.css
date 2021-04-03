@@ -1,5 +1,4 @@
 .tasksContainer {
-  height: 200vh;
   padding: 10px 10px 0 10px;
   background: #e5e5e5;
 }
@@ -213,7 +212,6 @@
 /* !  ------------------TABLET ver.------------------ */
 @media screen and (min-width: 768px) {
   .tasksContainer {
-    height: 120vh;
     padding: 20px 20px 0 20px;
   }
 
@@ -228,7 +226,7 @@
 
   .sprintsSideBar {
     width: 189px;
-    height: 100vh;
+    height: calc(100vh - 94px);
     margin-left: 20px;
     border-right: 1px solid #181c271a;
   }
@@ -277,22 +275,27 @@
     position: relative;
   }
 
-  .sprintTitle {
+  .sprintsLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
     font-weight: normal;
     font-size: 14px;
     line-height: 17px;
     letter-spacing: 0.04em;
     color: #181c27;
-    /* margin-left: 15px; */
-    display: inline-block;
-    position: absolute;
-    top: 0;
-    left: 51px;
-    padding-right: 20px;
   }
-  .sprintTitleActive {
-    composes: sprintTitle;
+  .sprintLinkActive {
+    composes: sprintsLink;
+    color: #000;
     font-weight: bold;
+  }
+
+  .sprintTitle {
+    width: 115px;
+    margin-left: 15px;
+    padding-right: 20px;
   }
 
   .sprintBox {
@@ -303,6 +306,16 @@
     border-radius: 5px;
     margin-top: 5px;
     margin-bottom: 5px;
+  }
+
+  .projectsBackText {
+    margin-top: 5px;
+    margin-left: 5px;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.04em;
+    color: #181c27;
   }
 
   /* ! addSprint */
@@ -547,5 +560,26 @@
 
   .tasksHeaderUsed {
     padding-right: 10px;
+  }
+
+  .tasksNone {
+    width: 700px;
+    height: auto;
+
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 1.222;
+    letter-spacing: 0.04em;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: grey;
+
+    display: block;
+
+    position: absolute;
+    left: 25%;
+    top: 45%;
   }
 }

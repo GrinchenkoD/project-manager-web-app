@@ -16,6 +16,16 @@ const deleteTaskRequest = createAction('sprints/delete-task-request');
 const deleteTaskSuccess = createAction('sprints/delete-task-success');
 const deleteTaskError = createAction('sprints/delete-task-error');
 
+//============add hours wasted==========
+const addHoursWastedRequest = createAction('sprints/add-hours-wasted-request');
+const addHoursWastedSuccess = createAction('sprints/add-hours-wasted-success');
+const addHoursWastedError = createAction('sprints/add-hours-wasted-error');
+
+//===========get hours wasted===========
+const getHoursWastedRequest = createAction('sprints/get-hours-wasted-request');
+const getHoursWastedSuccess = createAction('sprints/get-hours-wasted-success');
+const getHoursWastedError = createAction('sprints/get-hours-wasted-error');
+
 export {
   addTaskRequest,
   addTaskSuccess,
@@ -26,4 +36,10 @@ export {
   deleteTaskRequest,
   deleteTaskSuccess,
   deleteTaskError,
+  addHoursWastedRequest,
+  addHoursWastedSuccess,
+  addHoursWastedError,
+  getHoursWastedRequest,
+  getHoursWastedSuccess,
+  getHoursWastedError,
 };
