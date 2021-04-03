@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { refreshTemplate } from 'redux/refreshToken/refreshTemplate';
+
 import {
   addProjectRequest,
   addProjectSuccess,
@@ -37,11 +39,12 @@ const addProject = project => async dispatch => {
     delete data.id;
     dispatch(addProjectSuccess({ ...data, _id: id }));
   } catch (error) {
-    dispatch(addProjectError(error));
+    dispatch(addProjectError(error.message));
+    refreshTemplate(() => addProject(project), error, dispatch);
   }
 };
 
-// =========get project========
+// =========get projects========
 //     /project
 const getProject = () => async (dispatch, getState) => {
   const {
@@ -54,7 +57,8 @@ const getProject = () => async (dispatch, getState) => {
     const { data } = await axios.get('/project');
     dispatch(getProjectSuccess(data));
   } catch (error) {
-    dispatch(getProjectError(error));
+    dispatch(getProjectError(error.message));
+    refreshTemplate(getProject, error, dispatch);
   }
 };
 
@@ -71,7 +75,12 @@ const addContributor = (projectId, contributor) => async dispatch => {
     );
     dispatch(addContributorSuccess({ members: data.newMembers, projectId }));
   } catch (error) {
-    dispatch(addContributorError(error));
+    dispatch(addContributorError(error.message));
+    refreshTemplate(
+      () => addContributor(projectId, contributor),
+      error,
+      dispatch,
+    );
   }
 };
 
@@ -86,7 +95,8 @@ const patchTitle = (projectId, title) => async dispatch => {
     await axios.patch(`/project/title/${projectId}`, { title });
     dispatch(changeProjectTitleSuccess({ projectId, title }));
   } catch (error) {
-    dispatch(changeProjectTitleError(error));
+    dispatch(changeProjectTitleError(error.message));
+    refreshTemplate(() => patchTitle(projectId, title), error, dispatch);
   }
 };
 
@@ -98,7 +108,8 @@ const deleteProject = id => async dispatch => {
     await axios.delete(`/project/${id}`);
     dispatch(deleteProjectSuccess(id));
   } catch (error) {
-    dispatch(deleteProjectError(error));
+    dispatch(deleteProjectError(error.message));
+    refreshTemplate(() => deleteProject(id), error, dispatch);
   }
 };
 

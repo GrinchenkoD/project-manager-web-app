@@ -15,7 +15,7 @@ import format from 'date-fns/format';
 import { getDay } from 'date-fns';
 import uk from 'date-fns/locale/uk';
 
-const SprintForm = ({ closeModal }) => {
+const SprintForm = ({ onClose }) => {
   const dispatch = useDispatch();
   const { projectId } = useParams();
 
@@ -41,9 +41,9 @@ const SprintForm = ({ closeModal }) => {
       console.log(startDate);
       const data = { ...values, endDate: format(startDate, 'yyyy-M-d') };
       dispatch(addSprint(projectId, data));
-      closeModal();
+      onClose();
     },
-    [dispatch, projectId, closeModal, startDate],
+    [dispatch, projectId, onClose, startDate],
   );
 
   return (

@@ -7,16 +7,16 @@ import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router';
 import { addTask } from 'redux/tasks/task-operation';
 
-const SprintForm = () => {
+const SprintForm = ({ onClose }) => {
   const dispatch = useDispatch();
   const { sprintId } = useParams();
 
   const onAddTask = useCallback(
     values => {
       dispatch(addTask(sprintId, values));
-      console.log(values);
+      onClose();
     },
-    [dispatch, sprintId],
+    [dispatch, sprintId, onClose],
   );
 
   return (
