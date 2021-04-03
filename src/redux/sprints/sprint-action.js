@@ -1,4 +1,4 @@
-import { createAction} from '@reduxjs/toolkit'
+import { createAction } from '@reduxjs/toolkit';
 
 // =========  add project  ========
 const addSprintRequest = createAction('sprints/add-sprint-request');
@@ -30,16 +30,16 @@ export {
   addSprintRequest,
   addSprintSuccess,
   addSprintError,
-//   addContributorRequest,
-//   addContributorSuccess,
-//   addContributorError,
+  //   addContributorRequest,
+  //   addContributorSuccess,
+  //   addContributorError,
   getSprintRequest,
   getSprintSuccess,
   getSprintError,
   deleteSprintRequest,
   deleteSprintSuccess,
   deleteSprintError,
-//   changeProjectTitleRequest,
-//   changeProjectTitleSuccess,
-//   changeProjectTitleError,
+  //   changeProjectTitleRequest,
+  //   changeProjectTitleSuccess,
+  //   changeProjectTitleError,
 };
