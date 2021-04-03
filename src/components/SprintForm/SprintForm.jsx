@@ -8,9 +8,7 @@ import FormControl from '../formControl/FormControl';
 import styles from '../ProjectForm/ProjectForm.module.css';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-// import './picker.scss';
-
-// import 'react-datepicker/dist/react-datepicker-cssmodules.css';
+import './picker.css';
 import format from 'date-fns/format';
 import { getDay } from 'date-fns';
 import uk from 'date-fns/locale/uk';
@@ -18,12 +16,16 @@ import uk from 'date-fns/locale/uk';
 const SprintForm = ({ onClose }) => {
   const dispatch = useDispatch();
   const { projectId } = useParams();
-
   const [startDate, setStartDate] = useState(null);
+  const [checkedBeforeDay, setcheckedBeforeDay] = useState(false);
 
   const options = {
     month: 'long',
     day: 'numeric',
+  };
+
+  const onChecked = () => {
+    setcheckedBeforeDay(!checkedBeforeDay);
   };
 
   const isWeekday = date => {
@@ -63,6 +65,30 @@ const SprintForm = ({ onClose }) => {
             id="title"
             placeholder="Назва спринта"
           />
+          <div className="div-datepicker">
+            <input
+              type="checkbox"
+              className="custom-checkbox"
+              id="beforeDays"
+              onClick={onChecked}
+            />
+            <label for="beforeDays" className="label-checkbox">
+              Попередні дні
+            </label>
+            <DatePicker
+              selected={startDate}
+              onChange={changeData}
+              placeholderText="Дата завершення"
+              autoComplete="false"
+              dateFormat={
+                startDate ? startDate.toLocaleDateString('ua', options) : ''
+              }
+              filterDate={isWeekday}
+              locale={uk}
+              minDate={checkedBeforeDay ? new Date() : ''}
+              showDisabledMonthNavigation
+            />
+          </div>
           <FormControl
             //   label="Password"
             name="duration"
@@ -81,20 +107,6 @@ const SprintForm = ({ onClose }) => {
           </div>
         </Form>
       </Formik>
-
-      <DatePicker
-        selected={startDate}
-        onChange={changeData}
-        placeholderText="Дата закінчення"
-        autoComplete="false"
-        dateFormat={
-          startDate ? startDate.toLocaleDateString('ua', options) : ''
-        }
-        filterDate={isWeekday}
-        locale={uk}
-        // calendarClassName="picker"
-        // className="picker"
-      />
     </>
   );
 };
