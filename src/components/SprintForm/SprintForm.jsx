@@ -15,7 +15,7 @@ import format from 'date-fns/format';
 import { getDay } from 'date-fns';
 import uk from 'date-fns/locale/uk';
 
-const SprintForm = ({ closeModal }) => {
+const SprintForm = ({ onClose }) => {
   const dispatch = useDispatch();
   const { projectId } = useParams();
 

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { refreshTemplate } from 'redux/refreshToken/refreshTemplate';
 import {
   addTaskRequest,
   addTaskSuccess,
@@ -9,6 +10,9 @@ import {
   deleteTaskRequest,
   deleteTaskSuccess,
   deleteTaskError,
+  addHoursWastedSuccess,
+  addHoursWastedRequest,
+  addHoursWastedError,
 } from './task-action';
 
 //  https://sbc-backend.goit.global
@@ -37,7 +41,8 @@ const addTask = (sprintId, task) => async (dispatch, getState) => {
     delete data.id;
     dispatch(addTaskSuccess({ ...data, _id: id }));
   } catch (error) {
-    dispatch(addTaskError(error));
+    dispatch(addTaskError(error.message));
+    refreshTemplate(()=>addTask(sprintId, task), error, dispatch)
   }
 };
 
@@ -49,9 +54,10 @@ const getTask = sprintId => async (dispatch, getState) => {
   token.set(accessToken);
   try {
     const { data } = await axios.get(`/task/${sprintId}`);
-    dispatch(getTaskSuccess(data)); 
+    dispatch(getTaskSuccess(data));
   } catch (error) {
-    dispatch(getTaskError(error));
+    dispatch(getTaskError(error.message));
+    refreshTemplate(()=>getTask(sprintId), error, dispatch)
   }
 };
 
@@ -61,8 +67,20 @@ const deleteTask = id => async dispatch => {
     await axios.delete(`/task/${id}`);
     dispatch(deleteTaskSuccess(id));
   } catch (error) {
-    dispatch(deleteTaskError(error));
+    dispatch(deleteTaskError(error.message));
+    refreshTemplate(()=>deleteTask(id), error, dispatch)
   }
 };
 
-export { addTask, getTask, deleteTask };
+const addHoursWasted = (taskId, hoursWasted) => async dispatch => {
+  dispatch(addHoursWastedRequest());
+
+  try {
+    const { data } = await axios.patch(`/task/${taskId}`, hoursWasted); //Не уверен за hoursWasted
+    dispatch(addHoursWastedSuccess({ hoursWasted: data.hoursWasted, taskId }));
+  } catch (error) {
+    dispatch(addHoursWastedError(error));
+  }
+};
+
+export { addTask, getTask, deleteTask, addHoursWasted };

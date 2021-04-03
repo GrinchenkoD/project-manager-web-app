@@ -17,6 +17,8 @@ import {
   loginRequest,
   loginError,
 } from '../auth/auth-actions';
+import { refreshTokenError, refreshTokenRequest } from 'redux/refreshToken/refreshToken-actions';
+
 
 const cleanError = () => false;
 const handleError = (_, action) => action.payload;
@@ -29,6 +31,7 @@ const errorReducer = createReducer(false, {
   [changeProjectTitleRequest]: cleanError,
   [registerRequest]: cleanError,
   [loginRequest]: cleanError,
+  [refreshTokenRequest]:cleanError,
 
   [addProjectError]: handleError,
   [addContributorError]: handleError,
@@ -37,6 +40,7 @@ const errorReducer = createReducer(false, {
   [changeProjectTitleError]: handleError,
   [registerError]: handleError,
   [loginError]: handleError,
+  [refreshTokenError]:handleError,
 });
 
 export default errorReducer;
