@@ -8,7 +8,7 @@ import FormControl from '../formControl/FormControl';
 import styles from '../ProjectForm/ProjectForm.module.css';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-// import './picker.scss';
+import './picker.css';
 
 // import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 import format from 'date-fns/format';
@@ -63,6 +63,19 @@ const SprintForm = ({ closeModal }) => {
             id="title"
             placeholder="Назва спринта"
           />
+          <DatePicker
+            selected={startDate}
+            onChange={changeData}
+            placeholderText="Дата завершення"
+            autoComplete="false"
+            dateFormat={
+              startDate ? startDate.toLocaleDateString('ua', options) : ''
+            }
+            filterDate={isWeekday}
+            locale={uk}
+            // calendarClassName="picker"
+            // className="picker"
+          />
           <FormControl
             //   label="Password"
             name="duration"
@@ -81,20 +94,6 @@ const SprintForm = ({ closeModal }) => {
           </div>
         </Form>
       </Formik>
-
-      <DatePicker
-        selected={startDate}
-        onChange={changeData}
-        placeholderText="Дата закінчення"
-        autoComplete="false"
-        dateFormat={
-          startDate ? startDate.toLocaleDateString('ua', options) : ''
-        }
-        filterDate={isWeekday}
-        locale={uk}
-        // calendarClassName="picker"
-        // className="picker"
-      />
     </>
   );
 };
