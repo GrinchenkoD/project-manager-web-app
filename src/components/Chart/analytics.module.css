@@ -1,0 +1,13 @@
+<<<<<<< HEAD
+=======
+.AnalyticBtn {
+    bottom: 10%;
+    right: 12%;
+    display: block;
+    border-radius: 50%;
+    border: none;
+    background-position: 50% 12%;
+    outline: transparent;
+    transition: all .25s linear;
+}
+>>>>>>> 1df7dbacc4a07d91f7c86353bf1e2f10e45acafb

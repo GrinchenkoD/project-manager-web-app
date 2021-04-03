@@ -17,10 +17,12 @@ import { getTask } from 'redux/tasks/task-operation';
 import { getTasks } from 'redux/tasks/task-selectors';
 import SprintForm from '../../components/SprintForm/SprintForm';
 import { getProject } from 'redux/projects/project-operations';
+import ChartModal from '../../components/ChartModal/ChartModal';
 
 export default function TasksPage() {
   const dispatch = useDispatch();
   const [modalOpen, setModalOpen] = useState(false);
+  const [diagramModal, setDiagramModal] = useState(false);
   const { sprintId } = useParams();
   const [modalAddSprint, setModalAddSprint] = useState(false);
   const sprints = useSelector(state => state.sprints);
@@ -28,29 +30,24 @@ export default function TasksPage() {
   const { projectId } = useParams();
   const projects = useSelector(state => state.projects);
   const project = projects.find(item => item._id === projectId);
-
   const { tasks } = useSelector(getTasks);
-
   useEffect(() => {
     dispatch(getTask(sprintId));
     dispatch(getProject());
     dispatch(getSprint(projectId));
   }, [dispatch, sprintId, projectId]);
-
   const onOpenModal = () => {
     setModalOpen(true);
   };
   const onCloseModal = () => {
     setModalOpen(false);
   };
-
   const onOpenModalSprint = () => {
     setModalAddSprint(true);
   };
   const onCloseModalSprint = () => {
     setModalAddSprint(false);
   };
-
   return (
     <div className={styles.tasksContainer}>
       <div className={styles.tasksPage}>
@@ -68,12 +65,10 @@ export default function TasksPage() {
                 <p className={styles.sprintsBackText}>Показать спринты</p>
               </div>
             </NavLink>
-
             <a href="/" className={styles.projectsBackLink}>
               <p className={styles.projectsBackText}>Все проекты</p>
             </a>
           </div>
-
           <div className={styles.sprintsListSection}>
             <ul className={styles.sprintsList}>
               {sprints.map(sprint => (
@@ -89,7 +84,6 @@ export default function TasksPage() {
                 </li>
               ))}
             </ul>
-
             <div className={styles.addSprint}>
               <button
                 type="button"
@@ -110,7 +104,6 @@ export default function TasksPage() {
             </TemporaryModal>
           </div>
         </div>
-
         <div className={styles.container}>
           <div className={styles.navigation}>
             <div className={styles.datePicker}>
@@ -126,7 +119,6 @@ export default function TasksPage() {
               </div>
               <p className={styles.navDate}>08.08.2020</p>
             </div>
-
             <div className={styles.search}>
               <button type="button" className={styles.searchBBtnMagnify}>
                 <svg className={styles.searchMagnify}>
@@ -135,18 +127,15 @@ export default function TasksPage() {
               </button>
             </div>
           </div>
-
           <div className={styles.tasks}>
             <div className={styles.tasksTitle}>
               <p className={styles.tasksTitleText}>{sprint?.title}</p>
-
               <button type="button" className={styles.tasksTitleEdit}>
                 <svg className={styles.btnEdit}>
                   <use href={sprite + '#icon-edit'} />
                 </svg>
               </button>
             </div>
-
             <div className={styles.tasksHeader}>
               <p className={styles.tasksHeaderTitle}>Задача </p>
               <p className={styles.tasksHeaderPlanned}>Запланировано часов </p>
@@ -157,7 +146,6 @@ export default function TasksPage() {
                 Использовано часов (общ.)
               </p>
             </div>
-
             {!tasks.length ? (
               <h2 className={styles.tasksNone}>
                 В спринте отсутствуют задачи, воспользуйтесь кнопкой "Создать
@@ -170,7 +158,6 @@ export default function TasksPage() {
                 ))}
               </ul>
             )}
-
             <div className={styles.addTaskSection}>
               <button
                 type="button"
@@ -189,11 +176,11 @@ export default function TasksPage() {
             >
               <TaskForm onClose={onCloseModal} />
             </TemporaryModal>
-
             <div className={styles.showGraphSection}>
-              <button type="button" className={styles.btnGraph}>
+              <button type="button" onClick={() => setDiagramModal(true)} className={styles.btnGraph}>
                 <img src={analytics} alt="" className={styles.btnGraphIcon} />
               </button>
+              {diagramModal && <ChartModal onClose={() => setDiagramModal(false) }/>}
               {/* <p className={styles.showGraphText}>Створити задачу</p> */}
             </div>
           </div>
