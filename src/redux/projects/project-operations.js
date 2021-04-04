@@ -51,7 +51,7 @@ const getProject = () => async (dispatch, getState) => {
   const {
     auth: { token: accessToken },
   } = getState();
-  // token.set(accessToken);
+  token.set(accessToken);
   dispatch(getProjectRequest());
 
   try {
