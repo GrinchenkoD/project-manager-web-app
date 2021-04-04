@@ -30,14 +30,16 @@ const SprintForm = ({ onClose }) => {
     >
       <Form>
         <FormControl
+          label="Назва задачі"
           name="title"
           type="title"
           id="title"
           placeholder="Назва задачі"
         />
         <FormControl
+          label="Заплановано годин"
           name="hoursPlanned"
-          type="hoursPlanned"
+          type="number"
           id="hoursPlanned"
           placeholder="Заплановано годин"
         />

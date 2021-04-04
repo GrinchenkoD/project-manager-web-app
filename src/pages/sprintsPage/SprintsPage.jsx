@@ -193,7 +193,7 @@ export default function SprintsPage() {
         <TemporaryModal
           onClose={onCloseModalPeople}
           onOpen={modalAddPeople}
-          title="Добавить людей"
+          title="Додати людей"
         >
           <SprintFormPeople onClose={onCloseModalPeople} />
         </TemporaryModal>
@@ -208,4 +208,5 @@ export default function SprintsPage() {
       </div>
     </div>
   );
+  
 }

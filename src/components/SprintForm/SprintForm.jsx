@@ -58,6 +58,7 @@ const SprintForm = ({ onClose }) => {
       >
         <Form>
           <FormControl
+            label="Назва спринта"
             name="title"
             type="text"
             id="title"

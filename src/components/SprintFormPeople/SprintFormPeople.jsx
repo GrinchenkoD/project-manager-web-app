@@ -32,13 +32,14 @@ const SprintForm = ({ onClose }) => {
     >
       <Form>
         <FormControl
+          label="E-mail"
           name="email"
           type="email"
           id="email"
           placeholder="E-mail"
         />
         <div className={form.textCont}>
-          <p className={form.addedText}>Добавленные пользователи:</p>
+          <p className={form.addedText}>Доданi користувачi:</p>
           <ul>
             {members.map(member => (
               <li className={form.textItem} key={member}>
