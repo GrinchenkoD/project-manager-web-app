@@ -97,7 +97,7 @@ export default function SprintsPage() {
       <div className={styles.sprintsSideBar}>
         <div className={styles.sprintsBackContainer}>
           <a href="/" className={styles.sprintsBackButton}>
-            Показать проекты
+            Показати проекти
           </a>
         </div>
         <ul className={styles.sprintsProjectList}>
@@ -121,7 +121,7 @@ export default function SprintsPage() {
           <button className={styles.sprintsButton} onClick={onOpenModalProject}>
             <img src={sideBarButton} alt="" />
           </button>
-          <p className={styles.buttonText}>Создать проект</p>
+          <p className={styles.buttonText}>Створити проект</p>
         </div>
       </div>
       <div className={styles.sprintMainCont}>
@@ -171,7 +171,7 @@ export default function SprintsPage() {
             <button className={styles.sprintsButton} onClick={onOpenModal}>
               <img className="sprintsButtonImg" src={sideBarButton} alt="" />
             </button>
-            <p className={styles.sprintUpperText}>Создать спринт</p>
+            <p className={styles.sprintUpperText}>Створити спринт</p>
           </div>
         </div>
         <div className={styles.addPeopleCont}>
@@ -180,7 +180,7 @@ export default function SprintsPage() {
             className={styles.addButon}
             onClick={onOpenModalPeople}
           >
-            Добавить людей
+            Додати людей
           </button>
         </div>
         <TemporaryModal
