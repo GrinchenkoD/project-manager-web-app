@@ -10,7 +10,16 @@ import { projectsSelector } from 'redux/projects/project-selectors';
 import popTransition from './transitions/pop.module.css';
 import styles from './ProjectsPage.module.css';
 
-const colors = ['#8c72df', '#FF765F', '#71DF87'];
+const colors = [
+  '#8c72df',
+  '#FF765F',
+  '#71DF87',
+  '#f78335',
+  '#f3be2e',
+  '#e46cde',
+  '#4394f1',
+  '#d45535',
+];
 let currentColor = colors[0];
 let idx = 0;
 
