@@ -25,7 +25,16 @@ export default function SprintsPage() {
   const projects = useSelector(state => state.projects);
   const project = projects.find(item => item._id === projectId);
 
-  const colors = ['#8c72df', '#FF765F', '#71DF87'];
+  const colors = [
+    '#8c72df',
+    '#FF765F',
+    '#71DF87',
+    '#f78335',
+    '#f3be2e',
+    '#e46cde',
+    '#4394f1',
+    '#d45535',
+  ];
   let currentColor = colors[0];
   let idx = 0;
 

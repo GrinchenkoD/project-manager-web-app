@@ -226,6 +226,7 @@
   }
   .projTitleText {
     width: 115px;
+    overflow-wrap: break-word;
   }
   .sideBarImage {
     width: 36px;
