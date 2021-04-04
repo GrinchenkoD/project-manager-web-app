@@ -1,6 +1,6 @@
 .tasksContainer {
-  width: 100vw;
-  height: calc(100vh - 64px);
+  /* width: 100vw; */
+  height: calc(100vh - 74px);
   padding: 10px 10px 0 10px;
   background: #e5e5e5;
 }
@@ -237,7 +237,7 @@
 
   .sprintsSideBar {
     width: 189px;
-    height: calc(100vh - 94px);
+    min-height: calc(100vh - 94px);
     margin-left: 20px;
     padding-top: 20px;
     border-right: 1px solid #181c271a;
