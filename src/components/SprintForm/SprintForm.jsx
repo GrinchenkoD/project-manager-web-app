@@ -39,8 +39,6 @@ const SprintForm = ({ onClose }) => {
 
   const addNeWSprint = useCallback(
     values => {
-      console.log(values);
-      console.log(startDate);
       const data = { ...values, endDate: format(startDate, 'yyyy-M-d') };
       dispatch(addSprint(projectId, data));
       onClose();
@@ -72,7 +70,7 @@ const SprintForm = ({ onClose }) => {
               id="beforeDays"
               onClick={onChecked}
             />
-            <label for="beforeDays" className="label-checkbox">
+            <label htmlFor="beforeDays" className="label-checkbox">
               Попередні дні
             </label>
             <DatePicker

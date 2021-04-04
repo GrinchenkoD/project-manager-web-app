@@ -262,4 +262,55 @@
     left: 15%;
     top: 45%;
   }
+  /* Waves */
+  .projectsListItem {
+    position: relative;
+  }
+
+  .projectsListItem:nth-child(4n + 1)::before,
+  .projectsListItem:nth-child(4n + 1)::after,
+  .projectsListItem:nth-child(4n + 2)::before,
+  .projectsListItem:nth-child(4n + 2)::after,
+  .projectsListItem:nth-child(4n + 3)::before,
+  .projectsListItem:nth-child(4n + 3)::after,
+  .projectsListItem:nth-child(4n + 4)::before,
+  .projectsListItem:nth-child(4n + 4)::after {
+    position: absolute;
+    left: 0;
+    top: 80px;
+  }
+
+  .projectsListItem:nth-child(4n + 1)::before {
+    content: url('./projectImg/Wave_1-1.png');
+  }
+
+  .projectsListItem:nth-child(4n + 1)::after {
+    content: url('./projectImg/Wave_1-2.png');
+  }
+
+  .projectsListItem:nth-child(4n + 2)::before {
+    content: url('./projectImg/Wave_2-1.png');
+  }
+
+  .projectsListItem:nth-child(4n + 2)::after {
+    content: url('./projectImg/Wave_2-2.png');
+  }
+
+  .projectsListItem:nth-child(4n + 3)::before {
+    content: url('./projectImg/Wave_3-1.png');
+  }
+
+  .projectsListItem:nth-child(4n + 3)::after {
+    content: url('./projectImg/Wave_3-2.png');
+  }
+
+  .projectsListItem:nth-child(4n + 4)::before {
+    content: url('./projectImg/Wave_4-1.png');
+  }
+
+  .projectsListItem:nth-child(4n + 4)::after {
+    content: url('./projectImg/Wave_4-2.png');
+  }
+
+  /* ======= */
 }

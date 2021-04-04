@@ -255,7 +255,6 @@
     border-right: 1px solid rgba(24, 28, 39, 0.1);
     width: 255px;
     height: calc(100vh - 74px);
-    /* height: 100vh; */
   }
   .sprintsButton {
     outline: none;
