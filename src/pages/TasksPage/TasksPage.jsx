@@ -62,11 +62,11 @@ export default function TasksPage() {
                 <use href={sprite + '#arrow-left'} />
               </svg>
               <div className={styles.sprintsBack}>
-                <p className={styles.sprintsBackText}>Показать спринты</p>
+                <p className={styles.sprintsBackText}>Показати спринти</p>
               </div>
             </NavLink>
             <a href="/" className={styles.projectsBackLink}>
-              <p className={styles.projectsBackText}>Все проекты</p>
+              <p className={styles.projectsBackText}>Усі проекти</p>
             </a>
           </div>
           <div className={styles.sprintsListSection}>
@@ -93,7 +93,7 @@ export default function TasksPage() {
                 {/* <p className={styles.btnAddIcon}>+</p> */}
                 <img src={addBtn} alt="" className={styles.btnAddSprintIcon} />
               </button>
-              <p className={styles.addSprintText}>Создать спринт</p>
+              <p className={styles.addSprintText}>Створити спринт</p>
             </div>
             <TemporaryModal
               onClose={onCloseModalSprint}
@@ -138,17 +138,17 @@ export default function TasksPage() {
             </div>
             <div className={styles.tasksHeader}>
               <p className={styles.tasksHeaderTitle}>Задача </p>
-              <p className={styles.tasksHeaderPlanned}>Запланировано часов </p>
+              <p className={styles.tasksHeaderPlanned}>Заплановано годин </p>
               <p className={styles.tasksHeaderUsed}>
-                Использовано час. / день{' '}
+                Витрачено год / день{' '}
               </p>
               <p className={styles.tasksHeaderTotal}>
-                Использовано часов (общ.)
+                Витрачено годин
               </p>
             </div>
             {!tasks.length ? (
               <h2 className={styles.tasksNone}>
-                В спринте отсутствуют задачи, воспользуйтесь кнопкой "Создать
+                В спринті відсутні задачі, скористайтеся кнопкою "Створити
                 задачу"
               </h2>
             ) : (
@@ -167,7 +167,7 @@ export default function TasksPage() {
                 {/* <p className={styles.btnAddIcon}>+</p> */}
                 <img src={addBtn} alt="" className={styles.btnAddIcon} />
               </button>
-              <p className={styles.addProjectText}>Создать задачу</p>
+              <p className={styles.addProjectText}>Створити задачу</p>
             </div>
             <TemporaryModal
               onClose={onCloseModal}

@@ -29,19 +29,19 @@ const ProjectForm = ({ onClose }) => {
     >
       <Form>
         <FormControl
-          label="Название проэкта"
+          label="Назва проекту"
           name="title"
           type="text"
           id="title"
-          placeholder="Название проэкта"
+          placeholder="Назва проекту"
         />
 
         <FormControl
-          label="Описание"
+          label="Опис"
           name="description"
           type="text"
           id="description"
-          placeholder="Описание"
+          placeholder="Опис"
         />
         <div className={styles.btnThumb}>
           <button type="submit" disabled={loading} className={styles.acceptBtn}>

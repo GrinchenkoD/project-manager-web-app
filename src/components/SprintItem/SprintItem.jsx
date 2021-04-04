@@ -53,15 +53,15 @@ const SprintItem = () => {
             <p className={styles.sprintTitle}>{title}</p>
             <div className={styles.sprintItemText}>
               <div className={styles.textCont}>
-                <p>Дата начала</p>
+                <p>Дата початку</p>
                 <p>{getNormalizedDate(startDate)}</p>
               </div>
               <div className={styles.textCont}>
-                <p>Дата оконч.</p>
+                <p>Дата закінчення</p>
                 <p>{getNormalizedDate(endDate)}</p>
               </div>
               <div className={styles.textCont}>
-                <p>Длительность</p>
+                <p>Тривалість</p>
                 <p>{duration}</p>
               </div>
             </div>
@@ -75,7 +75,7 @@ const SprintItem = () => {
         ))
       ) : (
         <p className={styles.messageNoSprints}>
-          В Вашем проекте отсутствуют спринты, воспользуйтесь кнопкой "Создать
+          В вашому проекті відстуні спринти, скористайтесь конпкою "Створити
           спринт"{' '}
         </p>
       )}

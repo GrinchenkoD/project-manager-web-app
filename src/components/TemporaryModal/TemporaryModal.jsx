@@ -54,7 +54,7 @@ const TemporaryModal = ({ onClose, onOpen,title, children }) => {
           <h3 className={styles.title}>{title}</h3>
           {children}
           <button className={styles.cancelBtn} onClick={onClose}>
-            Отмена
+            Скасувати
           </button>
         </div>
       </CSSTransition>
