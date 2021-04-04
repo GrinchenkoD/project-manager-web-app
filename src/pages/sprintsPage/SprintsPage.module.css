@@ -75,7 +75,7 @@
 
 .sprintMainCont {
   background-color: #e5e5e5e5;
-  height: 100vh;
+  min-height: calc(100vh - 74px);
   padding: 20px;
 }
 
@@ -254,7 +254,7 @@
     color: #181c27;
     border-right: 1px solid rgba(24, 28, 39, 0.1);
     width: 255px;
-    height: calc(100vh - 74px);
+    min-height: calc(100vh - 74px);
   }
   .sprintsButton {
     outline: none;
@@ -409,7 +409,7 @@
     padding-left: 70px;
     padding-right: 85px;
     padding-bottom: 40px;
-    height: calc(100vh - 74px);
+    min-height: calc(100vh - 74px);
   }
   .sprintsCont {
     width: 900px;

@@ -102,15 +102,15 @@
   transition: all 0.25s linear;
 }
 
-.btnAdd:hover .btnAddIcon,
-.btnAdd:focus .btnAddIcon {
-  /* fill: #ff6b08; */
+/* .btnAdd:hover .btnAddIcon,
+.btnAdd:focus .btnAddIcon { */
+/* fill: #ff6b08; */
 
-  /* color: #ff6b08; */
-  /* position: absolute;
+/* color: #ff6b08; */
+/* position: absolute;
   left: 10px;
   top: -4px; */
-}
+/* } */
 
 .btnAdd:hover,
 .btnAdd:focus {

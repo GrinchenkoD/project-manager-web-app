@@ -226,7 +226,7 @@
 
   .sprintsSideBar {
     width: 189px;
-    height: calc(100vh - 94px);
+    min-height: calc(100vh - 94px);
     margin-left: 20px;
     border-right: 1px solid #181c271a;
   }
