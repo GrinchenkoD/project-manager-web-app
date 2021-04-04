@@ -177,10 +177,16 @@ export default function TasksPage() {
               <TaskForm onClose={onCloseModal} />
             </TemporaryModal>
             <div className={styles.showGraphSection}>
-              <button type="button" onClick={() => setDiagramModal(true)} className={styles.btnGraph}>
+              <button
+                type="button"
+                onClick={() => setDiagramModal(true)}
+                className={styles.btnGraph}
+              >
                 <img src={analytics} alt="" className={styles.btnGraphIcon} />
               </button>
-              {diagramModal && <ChartModal onClose={() => setDiagramModal(false) }/>}
+              {diagramModal && (
+                <ChartModal onClose={() => setDiagramModal(false)} />
+              )}
               {/* <p className={styles.showGraphText}>Створити задачу</p> */}
             </div>
           </div>
