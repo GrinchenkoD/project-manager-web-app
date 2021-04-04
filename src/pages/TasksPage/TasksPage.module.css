@@ -1,4 +1,6 @@
 .tasksContainer {
+  /* width: 100vw; */
+  height: calc(100vh - 74px);
   padding: 10px 10px 0 10px;
   background: #e5e5e5;
 }
@@ -92,7 +94,17 @@
   width: 280px;
   height: 40px;
 }
-.searchBBtnMagnify,
+.searchInput {
+  border: none;
+  outline: none;
+  width: 230px;
+  height: 20px;
+  transition: all 0.25s linear;
+  background: transparent;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
 .searchMagnify {
   border: none;
   outline: none;
@@ -101,7 +113,7 @@
   transition: all 0.25s linear;
   background: transparent;
 }
-.searchBBtnMagnify:hover {
+.searchMagnify:hover {
   transform: scale(1.1);
 }
 
@@ -212,12 +224,12 @@
 /* !  ------------------TABLET ver.------------------ */
 @media screen and (min-width: 768px) {
   .tasksContainer {
-    padding: 20px 20px 0 20px;
+    padding: 0 20px;
+    display: flex;
+    position: relative;
   }
 
   .tasksPage {
-    display: flex;
-    position: relative;
   }
 
   .sprintsListSection {
@@ -228,6 +240,7 @@
     width: 189px;
     min-height: calc(100vh - 94px);
     margin-left: 20px;
+    padding-top: 20px;
     border-right: 1px solid #181c271a;
   }
 
@@ -294,8 +307,11 @@
 
   .sprintTitle {
     width: 115px;
+    max-height: 50px;
     margin-left: 15px;
     padding-right: 20px;
+    overflow-wrap: break-word;
+    overflow-y: hidden;
   }
 
   .sprintBox {
@@ -387,11 +403,13 @@
   /* ! search */
   .search {
     position: relative;
+    width: 300px;
   }
 
-  .searchBBtnMagnify {
+  .searchInput {
     position: absolute;
-    right: 10px;
+    left: 30px;
+    width: 190px;
   }
 
   /* ! tasks */

@@ -25,7 +25,16 @@ export default function SprintsPage() {
   const projects = useSelector(state => state.projects);
   const project = projects.find(item => item._id === projectId);
 
-  const colors = ['#8c72df', '#FF765F', '#71DF87'];
+  const colors = [
+    '#8c72df',
+    '#FF765F',
+    '#71DF87',
+    '#f78335',
+    '#f3be2e',
+    '#e46cde',
+    '#4394f1',
+    '#d45535',
+  ];
   let currentColor = colors[0];
   let idx = 0;
 
@@ -88,7 +97,7 @@ export default function SprintsPage() {
       <div className={styles.sprintsSideBar}>
         <div className={styles.sprintsBackContainer}>
           <a href="/" className={styles.sprintsBackButton}>
-            Показать проекты
+            Показати проекти
           </a>
         </div>
         <ul className={styles.sprintsProjectList}>
@@ -112,7 +121,7 @@ export default function SprintsPage() {
           <button className={styles.sprintsButton} onClick={onOpenModalProject}>
             <img src={sideBarButton} alt="" />
           </button>
-          <p className={styles.buttonText}>Создать проект</p>
+          <p className={styles.buttonText}>Створити проект</p>
         </div>
       </div>
       <div className={styles.sprintMainCont}>
@@ -162,7 +171,7 @@ export default function SprintsPage() {
             <button className={styles.sprintsButton} onClick={onOpenModal}>
               <img className="sprintsButtonImg" src={sideBarButton} alt="" />
             </button>
-            <p className={styles.sprintUpperText}>Создать спринт</p>
+            <p className={styles.sprintUpperText}>Створити спринт</p>
           </div>
         </div>
         <div className={styles.addPeopleCont}>
@@ -171,7 +180,7 @@ export default function SprintsPage() {
             className={styles.addButon}
             onClick={onOpenModalPeople}
           >
-            Добавить людей
+            Додати людей
           </button>
         </div>
         <TemporaryModal

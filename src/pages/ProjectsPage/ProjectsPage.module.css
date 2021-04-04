@@ -20,8 +20,6 @@
   font-weight: 500;
   font-size: 26px;
   line-height: 32px;
-  /* identical to box height */
-
   display: flex;
   align-items: center;
   letter-spacing: 0.04em;
@@ -139,7 +137,7 @@
   .container {
     background-color: #e5e5e5e5;
     width: 100vw;
-    min-height: calc(100vh - 75px);
+    height: calc(100vh - 74px);
     padding: 20px;
   }
 
@@ -190,7 +188,7 @@
 @media screen and (min-width: 1280px) {
   .container {
     width: 100vw;
-    min-height: calc(100vh - 75px);
+    height: calc(100vh - 74px);
     padding: 25px;
   }
 
@@ -248,7 +246,7 @@
     display: block;
 
     position: absolute;
-    right: 95px;
+    right: 135px;
     top: 130px;
   }
 

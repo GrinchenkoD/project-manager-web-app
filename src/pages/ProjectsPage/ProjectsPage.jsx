@@ -10,7 +10,16 @@ import { projectsSelector } from 'redux/projects/project-selectors';
 import popTransition from './transitions/pop.module.css';
 import styles from './ProjectsPage.module.css';
 
-const colors = ['#8c72df', '#FF765F', '#71DF87'];
+const colors = [
+  '#8c72df',
+  '#FF765F',
+  '#71DF87',
+  '#f78335',
+  '#f3be2e',
+  '#e46cde',
+  '#4394f1',
+  '#d45535',
+];
 let currentColor = colors[0];
 let idx = 0;
 
@@ -66,8 +75,7 @@ export default function ProjectsPage() {
 
         {!projects.length ? (
           <p className={styles.projectsNone}>
-            Ваша коллекция проектов пуста, воспользуйтесь кнопкой "Создать
-            проект"
+            Ваша колекція проектів порожня, скористайтеся кнопкою "Створити проект"
           </p>
         ) : (
           <TransitionGroup component="ul" className={styles.projectsList}>
@@ -104,7 +112,7 @@ export default function ProjectsPage() {
                <use href={sprite + '#icon-add'} />
               </svg> */}
           </button>
-          <p className={styles.addProjectText}>Создать проект</p>
+          <p className={styles.addProjectText}>Створити проект</p>
         </div>
         {/* {modalOpen && ( */}
         <TemporaryModal
