@@ -10,6 +10,9 @@ import {
   deleteTaskRequest,
   deleteTaskSuccess,
   deleteTaskError,
+  addHoursWastedSuccess,
+  addHoursWastedRequest,
+  addHoursWastedError,
 } from './task-action';
 
 //  https://sbc-backend.goit.global
@@ -51,7 +54,7 @@ const getTask = sprintId => async (dispatch, getState) => {
   token.set(accessToken);
   try {
     const { data } = await axios.get(`/task/${sprintId}`);
-    dispatch(getTaskSuccess(data)); 
+    dispatch(getTaskSuccess(data));
   } catch (error) {
     dispatch(getTaskError(error.message));
     refreshTemplate(()=>getTask(sprintId), error, dispatch)
@@ -69,4 +72,15 @@ const deleteTask = id => async dispatch => {
   }
 };
 
-export { addTask, getTask, deleteTask };
+const addHoursWasted = (taskId, hoursWasted) => async dispatch => {
+  dispatch(addHoursWastedRequest());
+
+  try {
+    const { data } = await axios.patch(`/task/${taskId}`, hoursWasted); //Не уверен за hoursWasted
+    dispatch(addHoursWastedSuccess({ hoursWasted: data.hoursWasted, taskId }));
+  } catch (error) {
+    dispatch(addHoursWastedError(error));
+  }
+};
+
+export { addTask, getTask, deleteTask, addHoursWasted };

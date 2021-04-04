@@ -1,6 +1,5 @@
-import axios from "axios";
-import { refreshCurrentToken } from "./refreshToken-operations";
-
+import axios from 'axios';
+import { refreshCurrentToken } from './refreshToken-operations';
 
 const token = {
   unset() {
@@ -9,18 +8,14 @@ const token = {
 };
 
 const refreshTemplate = async (callback, error, dispatch) => {
-    if (error.response.status >= 400 && error.response.status <= 500) {
-        try {
-         
-            await dispatch(refreshCurrentToken());
-            dispatch(callback());
-        } catch (error) {
-           
-            token.unset()
-        }
-       
-    };
-  
+  if (error.response?.status >= 400 && error.response?.status <= 500) {
+    try {
+      await dispatch(refreshCurrentToken());
+      dispatch(callback());
+    } catch (error) {
+      token.unset();
+    }
+  }
 };
-  
+
 export { refreshTemplate };

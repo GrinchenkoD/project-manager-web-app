@@ -10,7 +10,7 @@ export default function ProjectsPageItem({ _id, title, color, children }) {
   const dispatch = useDispatch();
 
   const onDeleteProject = e => {
-    e.currentTarget && dispatch(deleteProject(_id));
+    dispatch(deleteProject(_id));
   };
 
   return (

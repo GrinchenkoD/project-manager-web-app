@@ -7,11 +7,7 @@ import TemporaryModal from '../../components/TemporaryModal/TemporaryModal';
 import SprintForm from '../../components/SprintForm/SprintForm';
 import { getSprint } from '../../redux/sprints/sprint-operation';
 import SprintItem from '../../components/SprintItem/SprintItem';
-import {
-  addContributor,
-  getProject,
-  patchTitle,
-} from 'redux/projects/project-operations';
+import { getProject, patchTitle } from 'redux/projects/project-operations';
 import SprintFormPeople from '../../components/SprintFormPeople/SprintFormPeople';
 import ProjectForm from 'components/ProjectForm/ProjectForm';
 import { CSSTransition } from 'react-transition-group';
@@ -183,14 +179,14 @@ export default function SprintsPage() {
           onOpen={modalOpen}
           title="Створення спринта"
         >
-          <SprintForm closeModal={onCloseModal} />
+          <SprintForm onClose={onCloseModal} />
         </TemporaryModal>
         <TemporaryModal
           onClose={onCloseModalPeople}
           onOpen={modalAddPeople}
           title="Добавить людей"
         >
-          <SprintFormPeople closeModal={onCloseModalPeople} />
+          <SprintFormPeople onClose={onCloseModalPeople} />
         </TemporaryModal>
         <TemporaryModal
           onClose={onCloseModalProject}
