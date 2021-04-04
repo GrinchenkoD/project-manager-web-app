@@ -3,11 +3,19 @@ import { connect } from "react-redux";
 import { Line } from "react-chartjs-2";
 // import {hoursPlannedSelector} from '../../redux/tasks/task-selectors';
 import {
+  chartDaysSelector,
+  hoursPlannedSelector,
+  sprintDurationSelector,
+  items
+} from '../../redux/tasks/task-selectors';
+import {
   formatDateChanger,
   getBlueLineArr,
   getRedLineArr,
 } from "./data";
 import styles from "./analytics.module.css";
+import db from '../../pages/TasksPage/db.json'
+
 
 const Qwert = ({
   hoursPlanned,
@@ -21,6 +29,7 @@ const Qwert = ({
   const chart = () => {
     setChartData({
       // labels: formatDateChanger(chartDays),
+      labels: formatDateChanger(chartDaysSelector),
       datasets: [
         {
           label: "Запланований залишок трудовитрат",
@@ -29,16 +38,16 @@ const Qwert = ({
           borderColor: "rgb(255, 0, 0)",
           backgroundColor: "rgb(255, 0, 0)",
           // data: getRedLineArr(hoursPlanned, sprintDuration),
-          data: getRedLineArr([120, 100, 80, 60], sprintDuration),
+          data: getRedLineArr(hoursPlannedSelector, sprintDurationSelector),
         },
         {
-          label: "Актуальний залишок трудовитрат",
+          label: "Актуальний залишок трудовитрат у годинах",
           fill: false,
           lineTension: 0.3,
           borderColor: "rgb(0, 89, 255)",
           backgroundColor: "rgb(0, 89, 255)",
           // data: getBlueLineArr(hoursPlanned, sprintDuration, itemsArr),
-          data: getBlueLineArr([120, 100, 80, 60], sprintDuration, itemsArr),
+          data: getBlueLineArr(hoursPlannedSelector, sprintDurationSelector, items),
         },
       ],
     });

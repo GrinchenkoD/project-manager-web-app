@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Line } from 'react-chartjs-2';
-import db from '../../pages/TasksPage/db.json';
+// import db from '../../pages/TasksPage/db.json';
 
 const data = {
   labels: ['Планування', '31 Бер','01 Квіт','02 Квіт'],
@@ -49,18 +49,18 @@ const data = {
     }
   ]
 };
-const getFilteredData = () => {
-  console.log(db);
-  const hoursPlaned = db.map(item => item.hoursPlanned).reduce((acc, item) => {
-    acc += item;
-    return acc;
-    console.log( acc);
-  }, 0);
+// const getFilteredData = () => {
+//   console.log(db);
+//   const hoursPlaned = db.map(item => item.hoursPlanned).reduce((acc, item) => {
+//     acc += item;
+//     return acc;
+//     console.log( acc);
+//   }, 0);
 
-  console.log(hoursPlaned);
-  console.log(db.map(item => item));
-}
-getFilteredData();
+//   console.log(hoursPlaned);
+//   console.log(db.map(item => item));
+// }
+// getFilteredData();
 
 export default class Chart extends Component {
   render() {
