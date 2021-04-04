@@ -10,6 +10,7 @@
   color: #ffffff;
   margin-bottom: 6px;
   width: 110px;
+  word-wrap: break-word;
 }
 
 .projectDescription {

@@ -100,7 +100,7 @@ const patchTitle = (projectId, title) => async dispatch => {
   }
 };
 
-//=========delete project========== 
+//=========delete project==========
 //    /project/{projectId}
 const deleteProject = id => async dispatch => {
   dispatch(deleteProjectRequest());
