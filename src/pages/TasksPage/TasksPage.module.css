@@ -43,7 +43,7 @@
   height: 97px;
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px;
+  margin: 0 auto;
 }
 
 .navDay {
@@ -124,14 +124,14 @@
 }
 
 .tasksTitle {
-  width: 280px;
+  max-width: 280px;
   height: 64px;
   display: flex;
   margin-bottom: 20px;
 }
 
 .tasksTitleText {
-  width: 260px;
+  max-width: 260px;
   height: 64px;
   font-weight: 500;
   font-size: 26px;
@@ -140,6 +140,8 @@
   align-items: center;
   letter-spacing: 0.04em;
   color: #181c27;
+  margin-right: 20px;
+  word-wrap: break-word;
 }
 
 .tasksTitleEdit,
@@ -229,9 +231,6 @@
     position: relative;
   }
 
-  .tasksPage {
-  }
-
   .sprintsListSection {
     display: block;
   }
@@ -272,9 +271,13 @@
   /* ! sprintsList */
 
   .sprintsList {
-    width: 170px;
-    height: 294px;
-    list-style: none;
+    display: flex;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    width: 200px;
+    height: 360px;
   }
 
   .sprintListItem {
@@ -376,7 +379,7 @@
 
   /* ! navigation */
   .navigation {
-    padding: 0 20px;
+    padding: 20px;
     display: flex;
     flex-direction: row;
     align-items: inherit;
@@ -396,8 +399,8 @@
 
   .btnAddIcon {
     position: fixed;
-    top: 166px;
-    right: 40px;
+    top: 176px;
+    left: 90vw;
   }
 
   /* ! search */
@@ -414,22 +417,28 @@
 
   /* ! tasks */
 
+  .tasks {
+    padding-left: 20px;
+  }
+
   .tasksList {
     align-items: unset;
   }
 
   .tasksTitle {
-    width: 374px;
+    max-width: 374px;
     height: 88px;
     display: flex;
     margin-bottom: 20px;
   }
   .tasksTitleText {
-    width: 334px;
+    max-width: 334px;
     height: 88px;
     font-weight: 500;
     font-size: 36px;
     line-height: 44px;
+    margin-right: 30px;
+    word-wrap: break-word;
   }
 
   .showGraphSection {
@@ -440,12 +449,12 @@
 /* ! ------------------DESKTOP ver.------------------ */
 @media screen and (min-width: 1280px) {
   .sprintsSideBar {
-    width: 255;
+    width: 255px;
     margin-left: 35px;
   }
 
   .showSprints {
-    margin-bottom: 103px;
+    margin-bottom: 90px;
   }
 
   /* ! addSprint */
@@ -478,12 +487,13 @@
   .btnAddIcon {
     position: absolute;
     top: -5px;
+    left: 0;
     right: -70px;
   }
   .addProjectText {
     display: inline-block;
     margin-top: 10px;
-    margin-left: 64px;
+    margin-left: 44px;
     font-weight: 500;
     font-size: 18px;
     line-height: 22px;
@@ -522,17 +532,26 @@
 
   .tasks {
     padding: 10px 10px 10px 0;
+    max-width: 1035px;
+    margin: 0 auto;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   .tasksTitle {
     margin-left: 70px;
-    width: 400px;
+    max-width: 400px;
     height: 75px;
     margin-bottom: 30px;
   }
   .tasksTitleText {
-    width: 337px;
+    max-width: 337px;
     height: 75px;
+    margin-right: 40px;
+    word-wrap: break-word;
   }
 
   .search {
