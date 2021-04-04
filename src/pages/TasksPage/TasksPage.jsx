@@ -143,9 +143,7 @@ export default function TasksPage() {
             <p className={styles.tasksHeaderTitle}>Задача </p>
             <p className={styles.tasksHeaderPlanned}>Заплановано годин</p>
             <p className={styles.tasksHeaderUsed}>Використано год / день </p>
-            <p className={styles.tasksHeaderTotal}>
-              Використано годин (загал.)
-            </p>
+            <p className={styles.tasksHeaderTotal}>Використано годин</p>
           </div>
           {!tasks.length ? (
             <h2 className={styles.tasksNone}>

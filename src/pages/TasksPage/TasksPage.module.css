@@ -16,6 +16,10 @@
   position: relative;
 }
 
+.container {
+  margin-left: calc(100vw -300px);
+}
+
 .sprintsBackArrow {
   width: 30px;
   height: 8px;
@@ -60,6 +64,7 @@
 }
 .navLeft,
 .navRight {
+  cursor: pointer;
   border: none;
   outline: none;
   width: 10px;
@@ -103,6 +108,7 @@
   background: transparent;
   margin-left: 10px;
   margin-bottom: 10px;
+  border-bottom: 1px solid rgba(24, 28, 39, 0.2);
 }
 
 .searchMagnify {
@@ -384,6 +390,10 @@
     flex-direction: row;
     align-items: inherit;
     width: 512px;
+    margin-left: 45px;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 
   .datePicker {
