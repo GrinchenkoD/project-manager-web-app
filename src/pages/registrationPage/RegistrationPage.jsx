@@ -32,7 +32,7 @@ export default function Registration() {
       >
         <div className={styles.container}>
         <Form className={styles.registerForm}>
-          <h2 className={styles.registerFormTitle}>Регистрация</h2>
+          <h2 className={styles.registerFormTitle}>Реєстрація</h2>
           <Field
             autoComplete="on"
             className={styles.registerFormInput}
@@ -58,11 +58,11 @@ export default function Registration() {
           />
           <ErrorMessage name="confirmPassword" component="span" className={styles.errorMessageConfirmPassword}/>
           <button className={styles.registerPageButton} type="submit">
-            Подтвердить
+            Зареєструватись
           </button>
           <p className={styles.registerFormText}>
-            Уже есть аккаунт?{' '}
-              <NavLink className={styles.registerFormText} to="/login">Войти</NavLink>
+            Маєте аккаунт?{' '}
+              <NavLink className={styles.registerFormText} to="/login">Увійти</NavLink>
           </p>
           </Form>
           </div>
