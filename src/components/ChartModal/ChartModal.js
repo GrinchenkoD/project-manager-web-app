@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Chart from '../Chart/Chart';
+import Qwert from '../Chart/Qwert';
 import styles from './ChartModal.module.css';
 
 export default class Modal extends Component {
@@ -25,7 +26,8 @@ export default class Modal extends Component {
         <div className={styles.Overlay} onClick={this.handleBackDrop}>
           <div className={styles.Modal}>
             <div className={styles.graphicWrapper}>
-              <Chart />
+              {/* <Chart /> */}
+              <Qwert />
             </div>
           </div>
         </div>

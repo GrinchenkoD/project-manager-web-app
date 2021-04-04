@@ -1,4 +1,5 @@
-
+import moment from "moment";
+import "moment/locale/uk";
 
 export const formatDateChanger = (chartDays) => {
   const newFormatDayMounth = formatDate(chartDays);
