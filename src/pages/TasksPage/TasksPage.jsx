@@ -14,7 +14,7 @@ import styles from './TasksPage.module.css';
 import TaskPageItem from 'pages/TasksPageItem/TasksPageItem';
 // import { nanoid } from '@reduxjs/toolkit';
 import { getTask } from 'redux/tasks/task-operation';
-import { tasksSelector } from 'redux/tasks/task-selectors';
+import { tasksSelector, getTasks } from 'redux/tasks/task-selectors';
 import SprintForm from '../../components/SprintForm/SprintForm';
 import { getProject } from 'redux/projects/project-operations';
 import { getSprints } from 'redux/sprints/sprint-selectors';
@@ -39,7 +39,7 @@ export default function TasksPage() {
   const [isUpdate, setUpdate] = useState(true);
   const [input, setInput] = useState();
   const [active, setActive] = useState(false);
-  
+
   const tasks = useSelector(tasksSelector);
   //======================================================
   const today = new Date().toJSON().slice(0, 10).split('-').reverse().join('.');
@@ -99,7 +99,6 @@ export default function TasksPage() {
     setModalAddSprint(false);
   };
 
-
   const onChangeTitle = e => {
     setUpdate(!isUpdate);
     setInput(sprint.title);
@@ -117,7 +116,6 @@ export default function TasksPage() {
     const result = (Date.now() - Date.parse(startDate)) / _MS_PER_DAY;
     setSprintDay(Math.floor(result + 1));
   }, [startDate, _MS_PER_DAY]);
-
 
   return (
     <div className={styles.tasksContainer}>
