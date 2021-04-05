@@ -75,7 +75,8 @@ export default function ProjectsPage() {
 
         {!projects.length ? (
           <p className={styles.projectsNone}>
-            Ваша колекція проектів порожня, скористайтеся кнопкою "Створити проект"
+            Ваша колекція проектів порожня, скористайтесь кнопкою "Створити
+            проект"
           </p>
         ) : (
           <TransitionGroup component="ul" className={styles.projectsList}>

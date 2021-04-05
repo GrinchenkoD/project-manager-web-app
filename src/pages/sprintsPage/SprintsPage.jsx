@@ -13,6 +13,7 @@ import ProjectForm from 'components/ProjectForm/ProjectForm';
 import { CSSTransition } from 'react-transition-group';
 import alert from './alert.module.css';
 import { projectsSelector } from 'redux/projects/project-selectors';
+import { getCurrentDay } from 'redux/sprints/sprint-action';
 
 export default function SprintsPage() {
   const dispatch = useDispatch();
@@ -209,5 +210,4 @@ export default function SprintsPage() {
       </div>
     </div>
   );
-  
 }

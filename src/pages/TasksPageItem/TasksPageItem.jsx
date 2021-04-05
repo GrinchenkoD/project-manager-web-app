@@ -22,7 +22,7 @@ export default function TaskPageItem(task) {
           new Date(item.currentDay).getDate() ===
           new Date(task.currentDay).getDate()
         );
-      }).singleHoursWasted,
+      })?.singleHoursWasted,
     );
   }, [task]);
 
@@ -37,6 +37,7 @@ export default function TaskPageItem(task) {
     if (hours) {
       setInput(hours);
     }
+
     dispatch(addHoursWasted(id, hours, currentDay));
   };
 
@@ -56,6 +57,7 @@ export default function TaskPageItem(task) {
           onChange={onHandleChange}
           data-date={task.currentDay}
           id={task._id}
+          disabled={task.isDisabled}
         />
       </div>
       <div className={styles.total}>
