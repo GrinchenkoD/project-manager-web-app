@@ -103,6 +103,9 @@
   border: none;
   border-bottom: 1px solid rgba(24, 28, 39, 0.2);
 }
+.hoursWastedInput:focus {
+  outline: none;
+}
 
 @media screen and (min-width: 768px) {
   .tasksListItem {
