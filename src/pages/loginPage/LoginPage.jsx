@@ -24,16 +24,16 @@ export default function Login() {
       >
         <div className={styles.container}>
         <Form className={styles.registerForm}>
-        <h2 className={styles.registerFormTitle}>Войти</h2>
+        <h2 className={styles.registerFormTitle}>Війти</h2>
           <Field autoComplete="on" className={styles.registerFormInput} type="email" name="email" placeholder="E-mail" />
           <ErrorMessage name="email" component="span" className={styles.errorMessageEmail}/>
           <Field autoComplete="on" className={styles.registerFormInput} type="password" name="password" placeholder="Пароль" />
           <ErrorMessage name="password" component="span" className={styles.errorMessagePassword}/>
           
-          <button className={styles.registerPageButton} type="submit">Войти</button>
+          <button className={styles.registerPageButton} type="submit">Війти</button>
           <p className={styles.registerFormText}>
-          Нет аккаунта? {' '}
-            <NavLink className={styles.registerFormText} to='/registration'>Регистрация</NavLink>
+          Маєте аккаунт? {' '}
+            <NavLink className={styles.registerFormText} to='/registration'>Зареєструватись</NavLink>
         </p>
         </Form>
         </div>
