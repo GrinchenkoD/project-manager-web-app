@@ -28,7 +28,7 @@ export default function TaskPageItem(task) {
 
   const onHandleChange = e => {
     const hours = Number(e.target.value);
-    if (hours > 8) return;
+    if (hours > 8 && hours <= 0) return;
     const date = new Date(Number(e.target.dataset.date));
     const currentDay = `${date.getFullYear()}-${(date.getMonth() + 1)
       .toString()
@@ -51,6 +51,7 @@ export default function TaskPageItem(task) {
       <div className={styles.used}>
         <p className={styles.usedTitle}>Витрачено год / день </p>
         <input
+          className={styles.hoursWastedInput}
           type="number"
           value={input}
           onChange={onHandleChange}

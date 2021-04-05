@@ -14,7 +14,7 @@ import styles from './TasksPage.module.css';
 import TaskPageItem from 'pages/TasksPageItem/TasksPageItem';
 // import { nanoid } from '@reduxjs/toolkit';
 import { getTask } from 'redux/tasks/task-operation';
-import { tasksSelector } from 'redux/tasks/task-selectors';
+import { tasksSelector, getTasks } from 'redux/tasks/task-selectors';
 import SprintForm from '../../components/SprintForm/SprintForm';
 import { getProject } from 'redux/projects/project-operations';
 import { getSprints } from 'redux/sprints/sprint-selectors';
@@ -130,7 +130,6 @@ export default function TasksPage() {
   useEffect(() => {
     setCurrentDay(Date.parse(new Date(curDay)));
   }, [curDay]);
-
   return (
     <div className={styles.tasksContainer}>
       <div className={styles.sprintsSideBar}>

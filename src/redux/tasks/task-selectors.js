@@ -7,8 +7,9 @@ const tasksSelector = state => state.tasks.tasksItems;
 const tasksErrorSelector = state => state.sprints.tasksError;
 const tasksLoadingSelector = state => state.sprints.tasksLoading;
 const getNowDay = state => state.tasks.currentDay;
-const list = db.tasks.items;
+const getTasks = state => state;
 
+const list = db.tasks.items;
 export const items = db.tasks.items;
 
 export const chartDaysSelector = list[0].hoursWastedPerDay.map(
@@ -60,4 +61,5 @@ export {
   tasksLoadingSelector,
   getTasksHoursWasted,
   getNowDay,
+  getTasks,
 };
