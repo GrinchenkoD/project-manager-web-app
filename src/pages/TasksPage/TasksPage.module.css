@@ -76,7 +76,7 @@
 .navLeft:disabled,
 .navRight:disabled {
   cursor: default;
-  color: #33353b;
+  color: #cdced3;
 }
 
 .navCurrentDay,
