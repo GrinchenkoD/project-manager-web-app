@@ -109,28 +109,29 @@ export default function TasksPage() {
           <div className={styles.datePicker}>
             <div className={styles.navDay}>
               <button type="button" className={styles.navLeft}>
-                &lt;
+                &#5176;
               </button>
               <p className={styles.navCurrentDay}> 2 </p>
               <p className={styles.navTotalDays}> / 12 </p>
               <button type="button" className={styles.navRight}>
-                &gt;
+                &#5171;
               </button>
             </div>
             <p className={styles.navDate}>08.08.2020</p>
           </div>
           <div className={styles.search}>
-            <svg className={styles.searchMagnify}>
-              <use href={sprite + '#magnify-glass'} />
-            </svg>
             <input
               name="filter"
               type="text"
               autoComplete="off"
+              placeholder="пошук..."
               className={styles.searchInput}
               onChange={event => null}
               // value={filter}
             />
+            <svg className={styles.searchMagnify}>
+              <use href={sprite + '#magnify-glass'} />
+            </svg>
           </div>
         </div>
         <div className={styles.tasks}>
