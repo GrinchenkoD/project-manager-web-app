@@ -26,11 +26,21 @@ export default function TasksPage() {
   const { sprintId } = useParams();
   const [modalAddSprint, setModalAddSprint] = useState(false);
   const sprints = useSelector(state => state.sprints);
+
   const sprint = sprints.find(item => item._id === sprintId);
   const { projectId } = useParams();
   const projects = useSelector(state => state.projects);
   const project = projects.find(item => item._id === projectId);
   const { tasks } = useSelector(getTasks);
+  const [value, setValue] = useState('');
+
+  const filtredTask = tasks.filter(task =>
+    task.title.includes(value.toLowerCase()),
+  );
+
+  const onFilter = event => {
+    setValue(event.target.value);
+  };
 
   useEffect(() => {
     dispatch(getTask(sprintId));
@@ -125,7 +135,7 @@ export default function TasksPage() {
               type="text"
               autoComplete="off"
               className={styles.searchInput}
-              onChange={event => null}
+              onChange={onFilter}
               // value={filter}
             />
           </div>
@@ -151,9 +161,11 @@ export default function TasksPage() {
             </h2>
           ) : (
             <ul className={styles.tasksList}>
-              {tasks.map(task => (
-                <TaskPageItem {...task} key={task._id} />
-              ))}
+              {filtredTask.length
+                ? filtredTask.map(task => (
+                    <TaskPageItem {...task} key={task._id} />
+                  ))
+                : tasks.map(task => <TaskPageItem {...task} key={task._id} />)}
             </ul>
           )}
           <div className={styles.addTaskSection}>

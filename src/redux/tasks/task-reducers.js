@@ -5,7 +5,6 @@ import {
   deleteTaskSuccess,
   getTaskError,
   addHoursWastedSuccess,
-
 } from './task-action';
 
 const tasksReducer = createReducer([], {
@@ -23,5 +22,9 @@ const tasksReducer = createReducer([], {
     ),
   ],
 });
+
+// const filter = createReducer('', {
+//   [filtredTask]: (_, { payload }) => payload,
+// });
 
 export default tasksReducer;

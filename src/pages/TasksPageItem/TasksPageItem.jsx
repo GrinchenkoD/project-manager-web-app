@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { deleteTask } from 'redux/tasks/task-operation';
 import sprite from '../../icons/symbol-defs.svg';
 import styles from './TasksPageItem.module.css';
+
 export default function TaskPageItem(task) {
   const dispatch = useDispatch();
   return (
