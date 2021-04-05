@@ -32,7 +32,7 @@ export default function TasksPage() {
   const { projectId } = useParams();
   const projects = useSelector(projectsSelector);
   const project = projects.find(item => item._id === projectId);
-  const { tasks } = useSelector(getTasks);
+  const tasks = useSelector(tasksSelector);
   //======================================================
   const today = new Date().toJSON().slice(0, 10).split('-').reverse().join('.');
   const startDate = sprints.find(item => item._id === sprintId)?.startDate;
