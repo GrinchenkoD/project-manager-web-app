@@ -15,7 +15,6 @@
   transform: scale(1.05);
 }
 
-
 .taskTitle {
   font-weight: 500;
   font-size: 18px;
@@ -98,108 +97,125 @@
   transform: scale(1.1);
 }
 
-@media screen and (min-width: 768px) {
-.tasksListItem{
-  width: 216px;
-  height: 284px;
-  margin-right: 20px;
-}
-.tasksListItem:nth-child(2n){
-  height: 306px;
-}
-
-.btnCont {
-  margin-left: 186px;
-  margin-right: 10px;
-  align-items: stretch;
-}
-
-.usedTitle,
-.plannedTitle,
-.totalTitle {
-  width: 98px;
-  height: 34px;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 17px;
-  color: #181C27;
-}
-.plannedHours, 
-.usedHours, 
-.totalHours {
-  width: 78px;
-  height: 22px;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 17px;
-  letter-spacing: 0.04em;
-  color: #181C27;
-
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
-
-.usedHours{
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 22px;
-  letter-spacing: 0.04em;
-  color: #181C27;
+.hoursWastedInput {
+  width: 60px;
+  text-align: center;
+  border: none;
   border-bottom: 1px solid rgba(24, 28, 39, 0.2);
 }
+.hoursWastedInput:focus {
+  outline: none;
+}
+
+@media screen and (min-width: 768px) {
+  .tasksListItem {
+    width: 216px;
+    height: 284px;
+    margin-right: 20px;
+  }
+  .tasksListItem:nth-child(2n) {
+    height: 306px;
+  }
+
+  .btnCont {
+    margin-left: 186px;
+    margin-right: 10px;
+    align-items: stretch;
+  }
+
+  .usedTitle,
+  .plannedTitle,
+  .totalTitle {
+    width: 98px;
+    height: 34px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    color: #181c27;
+  }
+  .plannedHours,
+  .usedHours,
+  .totalHours {
+    width: 78px;
+    height: 22px;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.04em;
+    color: #181c27;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .usedHours {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0.04em;
+    color: #181c27;
+    border-bottom: 1px solid rgba(24, 28, 39, 0.2);
+  }
+
+  .hoursWastedInput {
+    width: 78px;
+  }
 }
 
 @media screen and (min-width: 1280px) {
-.tasksListItem:nth-child(n){
-  width: 869px;
-  height: 95px;
-  margin-right: 20px;
-  margin-top: 10px;
-  display: flex;
-  /* flex-direction: row; */
-  align-items: center;
-  justify-content: space-between;
-}
-.usedTitle,
-.plannedTitle,
-.totalTitle {
-  display: none;
-}
-.taskTitle {
-  /* border: none; */
-  margin: 0 ;
-  width: 170px;
-  margin-left: 30px;
-}
-  
-.planned,
-.used,
-.total {
-  display: flex;
-  align-items: center;
-  margin-top: 10px;
-}
-.btnCont {
-  margin: 0;
-  margin-right: 30px;
-  /* margin-top: 36px;
+  .tasksListItem:nth-child(n) {
+    width: 869px;
+    height: 95px;
+    margin-right: 20px;
+    margin-top: 10px;
+    display: flex;
+    /* flex-direction: row; */
+    align-items: center;
+    justify-content: space-between;
+  }
+  .usedTitle,
+  .plannedTitle,
+  .totalTitle {
+    display: none;
+  }
+  .taskTitle {
+    /* border: none; */
+    margin: 0;
+    width: 170px;
+    margin-left: 30px;
+  }
+
+  .planned,
+  .used,
+  .total {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+  .btnCont {
+    margin: 0;
+    margin-right: 30px;
+    /* margin-top: 36px;
   margin-bottom: 39px; */
-}
+  }
 
-.tasksListItem {
-  padding: 20px 20px 20px 0px;
-}
+  .tasksListItem {
+    padding: 20px 20px 20px 0px;
+  }
 
-.plannedHours,
-.usedHours,
-.totalHours {
-  margin-right: 93px;
+  .plannedHours,
+  .usedHours,
+  .totalHours {
+    margin-right: 93px;
 
-  display: flex;
-  /* flex-direction: column; */
-  align-items: center;
-}
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+  }
 
+  .hoursWastedInput {
+    width: 105px;
+  }
 }

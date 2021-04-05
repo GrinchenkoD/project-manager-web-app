@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { refreshTemplate } from 'redux/refreshToken/refreshTemplate';
-import { date } from 'yup/lib/locale';
 import {
   addTaskRequest,
   addTaskSuccess,

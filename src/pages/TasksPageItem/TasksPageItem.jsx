@@ -1,16 +1,9 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import {
-  addHoursWasted,
-  deleteTask,
-  getTask,
-} from 'redux/tasks/task-operation';
-import TaskForm from '../../components/TaskForm/TaskForm';
-import { getTasksHoursWasted } from '../../redux/tasks/task-selectors';
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { addHoursWasted, deleteTask } from 'redux/tasks/task-operation';
 import sprite from '../../icons/symbol-defs.svg';
 import styles from './TasksPageItem.module.css';
-import { current } from '@reduxjs/toolkit';
+
 export default function TaskPageItem(task) {
   const dispatch = useDispatch();
   const [input, setInput] = useState(0);
@@ -21,13 +14,13 @@ export default function TaskPageItem(task) {
           new Date(item.currentDay).getDate() ===
           new Date(task.currentDay).getDate()
         );
-      }).singleHoursWasted,
+      })?.singleHoursWasted,
     );
   }, [task]);
 
   const onHandleChange = e => {
     const hours = Number(e.target.value);
-    if (hours > 8) return;
+    if (hours > 8 && hours <= 0) return;
     const date = new Date(Number(e.target.dataset.date));
     const currentDay = `${date.getFullYear()}-${(date.getMonth() + 1)
       .toString()
@@ -36,6 +29,7 @@ export default function TaskPageItem(task) {
     if (hours) {
       setInput(hours);
     }
+
     dispatch(addHoursWasted(id, hours, currentDay));
   };
 
@@ -49,11 +43,13 @@ export default function TaskPageItem(task) {
       <div className={styles.used}>
         <p className={styles.usedTitle}>Витрачено год / день </p>
         <input
+          className={styles.hoursWastedInput}
           type="number"
           value={input}
           onChange={onHandleChange}
           data-date={task.currentDay}
           id={task._id}
+          disabled={task.isDisabled}
         />
       </div>
       <div className={styles.total}>

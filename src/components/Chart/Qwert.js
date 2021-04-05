@@ -7,11 +7,9 @@ import {
   hoursPlannedSelector,
   sprintDurationSelector,
   items,
-  tasksSelector,
 } from '../../redux/tasks/task-selectors';
 import { formatDateChanger, getBlueLineArr, getRedLineArr } from './data';
 import styles from './analytics.module.css';
-import db from '../../pages/TasksPage/db.json';
 
 const Qwert = ({
   hoursPlanned,

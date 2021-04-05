@@ -4,15 +4,12 @@ import { NavLink, useParams } from 'react-router-dom';
 import TemporaryModal from '../../components/TemporaryModal/TemporaryModal';
 import TaskForm from '../../components/TaskForm/TaskForm';
 import { getSprint } from '../../redux/sprints/sprint-operation';
-// import { getProject } from '../../redux/projects/project-operations';
-// import tasks from './db.json';
 import sprite from '../../icons/symbol-defs.svg';
 import addBtn from '../../icons/Buttons/addBtn.png';
 import analytics from '../../icons/Buttons/analytics.png';
 import sprintBox from '../../icons/Buttons/sprintBox.png';
 import styles from './TasksPage.module.css';
 import TaskPageItem from 'pages/TasksPageItem/TasksPageItem';
-// import { nanoid } from '@reduxjs/toolkit';
 import { getTask } from 'redux/tasks/task-operation';
 import { tasksSelector } from 'redux/tasks/task-selectors';
 import SprintForm from '../../components/SprintForm/SprintForm';
@@ -23,6 +20,7 @@ import ChartModal from '../../components/ChartModal/ChartModal';
 import { CSSTransition } from 'react-transition-group';
 import alert from './alert.module.css';
 import { patchTitle } from 'redux/sprints/sprint-operation';
+import { getCurrentDay } from 'redux/tasks/task-action';
 
 export default function TasksPage() {
   const dispatch = useDispatch();
@@ -39,7 +37,7 @@ export default function TasksPage() {
   const [isUpdate, setUpdate] = useState(true);
   const [input, setInput] = useState();
   const [active, setActive] = useState(false);
-  
+
   const tasks = useSelector(tasksSelector);
   //======================================================
   const today = new Date().toJSON().slice(0, 10).split('-').reverse().join('.');
@@ -47,11 +45,20 @@ export default function TasksPage() {
   const duration = sprints.find(item => item._id === sprintId)?.duration;
   const endDate = sprints.find(item => item._id === sprintId)?.endDate;
   const todayReverse = today.split('.').reverse().join('-');
-
+  const [value, setValue] = useState('');
   const _MS_PER_DAY = 1000 * 60 * 60 * 24;
 
+  const curDay = useSelector(state => state.tasks.currentDay);
   const [currentDay, setCurrentDay] = useState(Date.now());
   const [sprintDay, setSprintDay] = useState(0);
+
+  const filtredTask = tasks.filter(task =>
+    task.title.includes(value.toLowerCase()),
+  );
+
+  const onFilter = event => {
+    return setValue(event.target.value);
+  };
 
   // a and b are javascript Date objects
   function dateDiffInDays(a, b) {
@@ -99,7 +106,6 @@ export default function TasksPage() {
     setModalAddSprint(false);
   };
 
-
   const onChangeTitle = e => {
     setUpdate(!isUpdate);
     setInput(sprint.title);
@@ -118,6 +124,17 @@ export default function TasksPage() {
     setSprintDay(Math.floor(result + 1));
   }, [startDate, _MS_PER_DAY]);
 
+  useEffect(() => {
+    const date = new Date(Date.now());
+    const currentDay = `${date.getFullYear()}-${(date.getMonth() + 1)
+      .toString()
+      .padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
+    dispatch(getCurrentDay(currentDay));
+  }, [dispatch]);
+
+  useEffect(() => {
+    setCurrentDay(Date.parse(new Date(curDay)));
+  }, [curDay]);
 
   return (
     <div className={styles.tasksContainer}>
@@ -174,35 +191,38 @@ export default function TasksPage() {
       <div className={styles.container}>
         <div className={styles.navigation}>
           <div className={styles.datePicker}>
-            {!!sprintDay && !!duration && (
-              <div className={styles.navDay}>
-                <button
-                  type="button"
-                  className={styles.navLeft}
-                  onClick={onDecrement}
-                  disabled={
-                    new Date(startDate).getDate() ===
-                    new Date(currentDay).getDate()
-                  }
-                >
-                  &lt;
-                </button>
-                <p className={styles.navCurrentDay}> {sprintDay} </p>
-                <span> / </span>
-                <p className={styles.navTotalDays}>{duration} </p>
-                <button
-                  type="button"
-                  className={styles.navRight}
-                  onClick={onIncrement}
-                  disabled={
-                    new Date(endDate).getDate() ===
-                    new Date(currentDay).getDate()
-                  }
-                >
-                  &gt;
-                </button>
-              </div>
-            )}
+            {!!sprintDay &&
+              !!duration &&
+              new Date(startDate).getDate() <=
+                new Date(currentDay).getDate() && (
+                <div className={styles.navDay}>
+                  <button
+                    type="button"
+                    className={styles.navLeft}
+                    onClick={onDecrement}
+                    disabled={
+                      new Date(startDate).getDate() ===
+                      new Date(currentDay).getDate()
+                    }
+                  >
+                    &lt;
+                  </button>
+                  <p className={styles.navCurrentDay}> {sprintDay} </p>
+                  <span> / </span>
+                  <p className={styles.navTotalDays}>{duration} </p>
+                  <button
+                    type="button"
+                    className={styles.navRight}
+                    onClick={onIncrement}
+                    disabled={
+                      new Date(endDate).getDate() ===
+                      new Date(currentDay).getDate()
+                    }
+                  >
+                    &gt;
+                  </button>
+                </div>
+              )}
             <p className={styles.navDate}>
               {new Date(currentDay)
                 .toJSON()
@@ -219,8 +239,9 @@ export default function TasksPage() {
               autoComplete="off"
               placeholder="пошук..."
               className={styles.searchInput}
-              onChange={event => null}
+              onChange={onFilter}
               // value={filter}
+              
             />
             <svg className={styles.searchMagnify}>
               <use href={sprite + '#magnify-glass'} />
@@ -278,9 +299,7 @@ export default function TasksPage() {
             <p className={styles.tasksHeaderTitle}>Задача </p>
             <p className={styles.tasksHeaderPlanned}>Заплановано годин</p>
             <p className={styles.tasksHeaderUsed}>Використано год / день </p>
-            <p className={styles.tasksHeaderTotal}>
-              Використано годин (загал.)
-            </p>
+            <p className={styles.tasksHeaderTotal}>Використано годин</p>
           </div>
           {!tasks.length ? (
             <h2 className={styles.tasksNone}>
@@ -288,13 +307,21 @@ export default function TasksPage() {
             </h2>
           ) : (
             <ul className={styles.tasksList}>
-              {tasks.map(task => (
-                <TaskPageItem
-                  {...task}
-                  key={task._id}
-                  currentDay={currentDay}
-                />
-              ))}
+              {
+                filtredTask.length &&
+                  filtredTask.map(task => (
+                    <TaskPageItem
+                      {...task}
+                      key={task._id}
+                      currentDay={currentDay}
+                      isDisabled={
+                        new Date(startDate).getDate() >
+                        new Date(currentDay).getDate()
+                      }
+                    />
+                  ))
+                // : tasks.map(task => <TaskPageItem {...task} key={task._id} />)}
+              }
             </ul>
           )}
           <div className={styles.addTaskSection}>
@@ -326,7 +353,6 @@ export default function TasksPage() {
             {diagramModal && (
               <ChartModal onClose={() => setDiagramModal(false)} />
             )}
-            {/* <p className={styles.showGraphText}>Створити задачу</p> */}
           </div>
         </div>
       </div>
