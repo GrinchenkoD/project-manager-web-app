@@ -73,6 +73,11 @@
   margin-left: 10px;
   background: transparent;
 }
+.navLeft:disabled,
+.navRight:disabled {
+  cursor: default;
+  color: #33353b;
+}
 
 .navCurrentDay,
 .navTotalDays {

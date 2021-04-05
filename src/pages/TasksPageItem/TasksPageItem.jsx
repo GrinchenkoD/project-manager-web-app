@@ -11,6 +11,7 @@ import { getTasksHoursWasted } from '../../redux/tasks/task-selectors';
 import sprite from '../../icons/symbol-defs.svg';
 import styles from './TasksPageItem.module.css';
 import { current } from '@reduxjs/toolkit';
+
 export default function TaskPageItem(task) {
   const dispatch = useDispatch();
   const [input, setInput] = useState(0);
@@ -49,6 +50,7 @@ export default function TaskPageItem(task) {
       <div className={styles.used}>
         <p className={styles.usedTitle}>Витрачено год / день </p>
         <input
+          className={styles.hoursWastedInput}
           type="number"
           value={input}
           onChange={onHandleChange}
