@@ -11,7 +11,6 @@ const addContributorSuccess = createAction('project/add-contributor-success');
 const addContributorError = createAction('project/add-contributor-error');
 
 //=========== get project ==============
-
 const getProjectRequest = createAction('project/get-project-request');
 const getProjectSuccess = createAction('project/get-project-success');
 const getProjectError = createAction('project/get-project-error');

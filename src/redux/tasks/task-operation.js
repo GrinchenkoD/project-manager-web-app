@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { refreshTemplate } from 'redux/refreshToken/refreshTemplate';
+import { date } from 'yup/lib/locale';
 import {
   addTaskRequest,
   addTaskSuccess,
@@ -42,7 +43,7 @@ const addTask = (sprintId, task) => async (dispatch, getState) => {
     dispatch(addTaskSuccess({ ...data, _id: id }));
   } catch (error) {
     dispatch(addTaskError(error.message));
-    refreshTemplate(()=>addTask(sprintId, task), error, dispatch)
+    refreshTemplate(() => addTask(sprintId, task), error, dispatch);
   }
 };
 
@@ -57,7 +58,7 @@ const getTask = sprintId => async (dispatch, getState) => {
     dispatch(getTaskSuccess(data));
   } catch (error) {
     dispatch(getTaskError(error.message));
-    refreshTemplate(()=>getTask(sprintId), error, dispatch)
+    refreshTemplate(() => getTask(sprintId), error, dispatch);
   }
 };
 
@@ -68,16 +69,26 @@ const deleteTask = id => async dispatch => {
     dispatch(deleteTaskSuccess(id));
   } catch (error) {
     dispatch(deleteTaskError(error.message));
-    refreshTemplate(()=>deleteTask(id), error, dispatch)
+    refreshTemplate(() => deleteTask(id), error, dispatch);
   }
 };
 
-const addHoursWasted = (taskId, hoursWasted) => async dispatch => {
+const addHoursWasted = (taskId, hoursWasted, currentDay) => async dispatch => {
   dispatch(addHoursWastedRequest());
 
   try {
-    const { data } = await axios.patch(`/task/${taskId}`, hoursWasted); //Не уверен за hoursWasted
-    dispatch(addHoursWastedSuccess({ hoursWasted: data.hoursWasted, taskId }));
+    const { data } = await axios.patch(`/task/${taskId}`, {
+      date: currentDay,
+      hours: hoursWasted,
+    });
+    dispatch(
+      addHoursWastedSuccess({
+        currentDay: data.day.currentDay,
+        singleHoursWasted: data.day.singleHoursWasted,
+        hoursWasted: data.newWastedHours,
+        taskId,
+      }),
+    );
   } catch (error) {
     dispatch(addHoursWastedError(error));
   }

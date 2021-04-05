@@ -37,7 +37,17 @@ const tasksItems = createReducer([], {
   [addHoursWastedSuccess]: (state, { payload }) => [
     ...state.map(task =>
       task._id === payload.taskId
-        ? { ...task, hoursWasted: [...payload.hoursWasted] }
+        ? {
+            ...task,
+            hoursWasted: payload.hoursWasted,
+            hoursWastedPerDay: [
+              ...task.hoursWastedPerDay.map(item =>
+                item.currentDay === payload.currentDay
+                  ? { ...item, singleHoursWasted: payload.singleHoursWasted }
+                  : item,
+              ),
+            ],
+          }
         : task,
     ),
   ],
