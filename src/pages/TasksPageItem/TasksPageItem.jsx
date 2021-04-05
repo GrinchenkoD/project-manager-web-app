@@ -1,16 +1,8 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import {
-  addHoursWasted,
-  deleteTask,
-  getTask,
-} from 'redux/tasks/task-operation';
-import TaskForm from '../../components/TaskForm/TaskForm';
-import { getTasksHoursWasted } from '../../redux/tasks/task-selectors';
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { addHoursWasted, deleteTask } from 'redux/tasks/task-operation';
 import sprite from '../../icons/symbol-defs.svg';
 import styles from './TasksPageItem.module.css';
-import { current } from '@reduxjs/toolkit';
 
 export default function TaskPageItem(task) {
   const dispatch = useDispatch();

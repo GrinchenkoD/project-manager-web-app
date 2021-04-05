@@ -4,17 +4,14 @@ import { NavLink, useParams } from 'react-router-dom';
 import TemporaryModal from '../../components/TemporaryModal/TemporaryModal';
 import TaskForm from '../../components/TaskForm/TaskForm';
 import { getSprint } from '../../redux/sprints/sprint-operation';
-// import { getProject } from '../../redux/projects/project-operations';
-// import tasks from './db.json';
 import sprite from '../../icons/symbol-defs.svg';
 import addBtn from '../../icons/Buttons/addBtn.png';
 import analytics from '../../icons/Buttons/analytics.png';
 import sprintBox from '../../icons/Buttons/sprintBox.png';
 import styles from './TasksPage.module.css';
 import TaskPageItem from 'pages/TasksPageItem/TasksPageItem';
-// import { nanoid } from '@reduxjs/toolkit';
 import { getTask } from 'redux/tasks/task-operation';
-import { tasksSelector, getTasks } from 'redux/tasks/task-selectors';
+import { tasksSelector } from 'redux/tasks/task-selectors';
 import SprintForm from '../../components/SprintForm/SprintForm';
 import { getProject } from 'redux/projects/project-operations';
 import { getSprints } from 'redux/sprints/sprint-selectors';
@@ -138,6 +135,7 @@ export default function TasksPage() {
   useEffect(() => {
     setCurrentDay(Date.parse(new Date(curDay)));
   }, [curDay]);
+
   return (
     <div className={styles.tasksContainer}>
       <div className={styles.sprintsSideBar}>
@@ -200,7 +198,7 @@ export default function TasksPage() {
                 <div className={styles.navDay}>
                   <button
                     type="button"
-                    // className={styles.navLeft}
+                    className={styles.navLeft}
                     onClick={onDecrement}
                     disabled={
                       new Date(startDate).getDate() ===
@@ -214,7 +212,7 @@ export default function TasksPage() {
                   <p className={styles.navTotalDays}>{duration} </p>
                   <button
                     type="button"
-                    // className={styles.navRight}
+                    className={styles.navRight}
                     onClick={onIncrement}
                     disabled={
                       new Date(endDate).getDate() ===
