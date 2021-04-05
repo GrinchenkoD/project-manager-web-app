@@ -8,6 +8,11 @@ const tasksErrorSelector = state => state.sprints.tasksError;
 const tasksLoadingSelector = state => state.sprints.tasksLoading;
 const getNowDay = state => state.tasks.currentDay;
 const getTasks = state => state;
+// const getFilter = state => state.tasks.filter;
+
+// const getVisibleTasks = createSelector(getFilter, getTasks, (filter, tasks) =>
+//   tasks.filter(item => item.title.toLowerCase().includes(filter.toLowerCase())),
+// );
 
 const list = db.tasks.items;
 export const items = db.tasks.items;

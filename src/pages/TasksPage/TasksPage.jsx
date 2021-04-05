@@ -48,12 +48,20 @@ export default function TasksPage() {
   const duration = sprints.find(item => item._id === sprintId)?.duration;
   const endDate = sprints.find(item => item._id === sprintId)?.endDate;
   const todayReverse = today.split('.').reverse().join('-');
-
+  const [value, setValue] = useState('');
   const _MS_PER_DAY = 1000 * 60 * 60 * 24;
 
   const curDay = useSelector(state => state.tasks.currentDay);
   const [currentDay, setCurrentDay] = useState(Date.now());
   const [sprintDay, setSprintDay] = useState(0);
+
+  const filtredTask = tasks.filter(task =>
+    task.title.includes(value.toLowerCase()),
+  );
+
+  const onFilter = event => {
+    return setValue(event.target.value);
+  };
 
   // a and b are javascript Date objects
   function dateDiffInDays(a, b) {
@@ -233,7 +241,7 @@ export default function TasksPage() {
               autoComplete="off"
               placeholder="пошук..."
               className={styles.searchInput}
-              onChange={event => null}
+              onChange={onFilter}
               // value={filter}
             />
             <svg className={styles.searchMagnify}>
@@ -300,17 +308,21 @@ export default function TasksPage() {
             </h2>
           ) : (
             <ul className={styles.tasksList}>
-              {tasks.map(task => (
-                <TaskPageItem
-                  {...task}
-                  key={task._id}
-                  currentDay={currentDay}
-                  isDisabled={
-                    new Date(startDate).getDate() >
-                    new Date(currentDay).getDate()
-                  }
-                />
-              ))}
+              {
+                filtredTask.length &&
+                  filtredTask.map(task => (
+                    <TaskPageItem
+                      {...task}
+                      key={task._id}
+                      currentDay={currentDay}
+                      isDisabled={
+                        new Date(startDate).getDate() >
+                        new Date(currentDay).getDate()
+                      }
+                    />
+                  ))
+                // : tasks.map(task => <TaskPageItem {...task} key={task._id} />)}
+              }
             </ul>
           )}
           <div className={styles.addTaskSection}>
@@ -342,7 +354,6 @@ export default function TasksPage() {
             {diagramModal && (
               <ChartModal onClose={() => setDiagramModal(false)} />
             )}
-            {/* <p className={styles.showGraphText}>Створити задачу</p> */}
           </div>
         </div>
       </div>
