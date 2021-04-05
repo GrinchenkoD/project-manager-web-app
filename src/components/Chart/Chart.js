@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Line } from 'react-chartjs-2';
 // import db from '../../pages/TasksPage/db.json';
 
 const data = {
-  labels: ['Планування', '31 Бер','01 Квіт','02 Квіт'],
+  labels: ['Планування', '31 Бер', '01 Квіт', '02 Квіт'],
   datasets: [
     {
       label: 'Запланований залишок трудовитрат',
@@ -24,7 +24,7 @@ const data = {
       pointHoverBorderWidth: 2,
       pointRadius: 3,
       pointHitRadius: 10,
-      data: [65, 59, 80, 81, 56, 55, 40]
+      data: [65, 59, 80, 81, 56, 55, 40],
     },
     {
       label: 'Актуальний залишок трудовитрат',
@@ -45,9 +45,9 @@ const data = {
       pointHoverBorderWidth: 2,
       pointRadius: 3,
       pointHitRadius: 10,
-      data: [55, 100, 300, 200, 150, 89, 190]
-    }
-  ]
+      data: [55, 100, 300, 200, 150, 89, 190],
+    },
+  ],
 };
 // const getFilteredData = () => {
 //   console.log(db);
@@ -64,7 +64,7 @@ const data = {
 
 export default class Chart extends Component {
   render() {
-      return (
+    return (
       <div>
         <h2>1-st Sprint of 1-st project</h2>
         <button>x</button>
@@ -73,7 +73,7 @@ export default class Chart extends Component {
     );
   }
   componentDidMount() {
-    const { datasets } = this.refs.chart.chartInstance.data
+    const { datasets } = this.refs.chart.chartInstance.data;
     console.log(datasets[0].data);
   }
 }

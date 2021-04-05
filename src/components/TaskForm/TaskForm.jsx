@@ -30,16 +30,18 @@ const SprintForm = ({ onClose }) => {
     >
       <Form>
         <FormControl
+          label="Назва задачі"
           name="title"
           type="title"
           id="title"
-          placeholder="Название задачи"
+          placeholder="Назва задачі"
         />
         <FormControl
+          label="Заплановано годин"
           name="hoursPlanned"
-          type="hoursPlanned"
+          type="number"
           id="hoursPlanned"
-          placeholder="Запланировано часов"
+          placeholder="Заплановано годин"
         />
         <div className={styles.btnThumb}>
           <button type="submit" className={styles.acceptBtn}>
