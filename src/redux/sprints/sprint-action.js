@@ -11,7 +11,6 @@ const addSprintError = createAction('sprints/add-sprint-error');
 // const addContributorError = createAction('project/add-contributor-error');
 
 //=========== get sprints ==============
-
 const getSprintRequest = createAction('sprints/get-sprint-request');
 const getSprintSuccess = createAction('sprints/get-sprint-success');
 const getSprintError = createAction('sprints/get-sprint-error');
@@ -20,11 +19,11 @@ const getSprintError = createAction('sprints/get-sprint-error');
 const deleteSprintRequest = createAction('sprints/delete-sprint-request');
 const deleteSprintSuccess = createAction('sprints/delete-sprint-success');
 const deleteSprintError = createAction('sprints/delete-sprint-error');
-// =============== patch sprint ==================
 
-// const changeProjectTitleRequest = createAction('project/patch-title-request');
-// const changeProjectTitleSuccess = createAction('project/patch-title-success');
-// const changeProjectTitleError = createAction('project/patch-title-error');
+// =============== patch sprint ==================
+const changeSprintTitleRequest = createAction('sprints/patch-title-request');
+const changeSprintTitleSuccess = createAction('sprints/patch-title-success');
+const changeSprintTitleError = createAction('sprints/patch-title-error');
 
 export {
   addSprintRequest,
@@ -39,7 +38,7 @@ export {
   deleteSprintRequest,
   deleteSprintSuccess,
   deleteSprintError,
-  //   changeProjectTitleRequest,
-  //   changeProjectTitleSuccess,
-  //   changeProjectTitleError,
+  changeSprintTitleRequest,
+  changeSprintTitleSuccess,
+  changeSprintTitleError,
 };

@@ -22,7 +22,7 @@ export default function UserNav() {
         <div className={style.user_cont}>
           <span className={style.name_contx}>{email}</span>
           <button className={style.headerButton} onClick={OnLogOut}>
-            <p className={style.buttonText}>Log out</p>
+            <p className={style.buttonText}>Вийти</p>
           </button>
         </div>
       </div>

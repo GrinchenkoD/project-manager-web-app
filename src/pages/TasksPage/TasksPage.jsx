@@ -20,6 +20,9 @@ import { getProject } from 'redux/projects/project-operations';
 import { getSprints } from 'redux/sprints/sprint-selectors';
 import { projectsSelector } from 'redux/projects/project-selectors';
 import ChartModal from '../../components/ChartModal/ChartModal';
+import { CSSTransition } from 'react-transition-group';
+import alert from './alert.module.css';
+import { patchTitle } from 'redux/sprints/sprint-operation';
 
 export default function TasksPage() {
   const dispatch = useDispatch();
@@ -32,6 +35,11 @@ export default function TasksPage() {
   const { projectId } = useParams();
   const projects = useSelector(projectsSelector);
   const project = projects.find(item => item._id === projectId);
+
+  const [isUpdate, setUpdate] = useState(true);
+  const [input, setInput] = useState();
+  const [active, setActive] = useState(false);
+  
   const tasks = useSelector(tasksSelector);
   //======================================================
   const today = new Date().toJSON().slice(0, 10).split('-').reverse().join('.');
@@ -76,12 +84,14 @@ export default function TasksPage() {
     dispatch(getProject());
     dispatch(getSprint(projectId));
   }, [dispatch, sprintId, projectId]);
+
   const onOpenModal = () => {
     setModalOpen(true);
   };
   const onCloseModal = () => {
     setModalOpen(false);
   };
+
   const onOpenModalSprint = () => {
     setModalAddSprint(true);
   };
@@ -89,10 +99,25 @@ export default function TasksPage() {
     setModalAddSprint(false);
   };
 
+
+  const onChangeTitle = e => {
+    setUpdate(!isUpdate);
+    setInput(sprint.title);
+  };
+  const onHandleChange = e => {
+    setInput(e.target.value);
+  };
+  const onFormSubmit = e => {
+    e.preventDefault();
+    dispatch(patchTitle(sprintId, input));
+    setUpdate(!isUpdate);
+  };
+
   useEffect(() => {
     const result = (Date.now() - Date.parse(startDate)) / _MS_PER_DAY;
     setSprintDay(Math.floor(result + 1));
   }, [startDate, _MS_PER_DAY]);
+
 
   return (
     <div className={styles.tasksContainer}>
@@ -204,18 +229,58 @@ export default function TasksPage() {
         </div>
         <div className={styles.tasks}>
           <div className={styles.tasksTitle}>
-            <p className={styles.tasksTitleText}>{sprint?.title}</p>
-            <button type="button" className={styles.tasksTitleEdit}>
-              <svg className={styles.btnEdit}>
-                <use href={sprite + '#icon-edit'} />
-              </svg>
-            </button>
+            <CSSTransition
+              in={active}
+              unmountOnExit
+              mountOnEnter
+              timeout={200}
+              classNames={alert}
+            >
+              <form onSubmit={onFormSubmit} className={styles.changeForm}>
+                <input
+                  type="text"
+                  name="edit"
+                  autoComplete="off"
+                  value={input}
+                  onChange={onHandleChange}
+                  className={styles.changeFormInput}
+                />
+                <button
+                  type="submit"
+                  className={styles.saveButtonIcon}
+                ></button>
+              </form>
+            </CSSTransition>
+            <CSSTransition
+              classNames={alert}
+              in={isUpdate}
+              timeout={200}
+              unmountOnExit
+              mountOnEnter
+              onExited={() => setActive(true)}
+              onEnter={() => setActive(false)}
+            >
+              <>
+                <p className={styles.tasksTitleText}>{sprint?.title}</p>
+                <button
+                  type="button"
+                  className={styles.tasksTitleEdit}
+                  onClick={onChangeTitle}
+                >
+                  <svg className={styles.btnEdit}>
+                    <use href={sprite + '#icon-edit'} />
+                  </svg>
+                </button>
+              </>
+            </CSSTransition>
           </div>
           <div className={styles.tasksHeader}>
             <p className={styles.tasksHeaderTitle}>Задача </p>
             <p className={styles.tasksHeaderPlanned}>Заплановано годин</p>
             <p className={styles.tasksHeaderUsed}>Використано год / день </p>
-            <p className={styles.tasksHeaderTotal}>Використано годин</p>
+            <p className={styles.tasksHeaderTotal}>
+              Використано годин (загал.)
+            </p>
           </div>
           {!tasks.length ? (
             <h2 className={styles.tasksNone}>
