@@ -178,7 +178,7 @@ export default function TasksPage() {
               <div className={styles.navDay}>
                 <button
                   type="button"
-                  // className={styles.navLeft}
+                  className={styles.navLeft}
                   onClick={onDecrement}
                   disabled={
                     new Date(startDate).getDate() ===
@@ -192,7 +192,7 @@ export default function TasksPage() {
                 <p className={styles.navTotalDays}>{duration} </p>
                 <button
                   type="button"
-                  // className={styles.navRight}
+                  className={styles.navRight}
                   onClick={onIncrement}
                   disabled={
                     new Date(endDate).getDate() ===
