@@ -17,19 +17,21 @@ import { getTask } from 'redux/tasks/task-operation';
 import { getTasks } from 'redux/tasks/task-selectors';
 import SprintForm from '../../components/SprintForm/SprintForm';
 import { getProject } from 'redux/projects/project-operations';
+import { getSprints } from 'redux/sprints/sprint-selectors';
+import { projectsSelector } from 'redux/projects/project-selectors';
 
 export default function TasksPage() {
   const dispatch = useDispatch();
   const [modalOpen, setModalOpen] = useState(false);
   const { sprintId } = useParams();
   const [modalAddSprint, setModalAddSprint] = useState(false);
-  const sprints = useSelector(state => state.sprints);
+  const sprints = useSelector(getSprints);
   const sprint = sprints.find(item => item._id === sprintId);
   const { projectId } = useParams();
-  const projects = useSelector(state => state.projects);
+  const projects = useSelector(projectsSelector);
   const project = projects.find(item => item._id === projectId);
 
-  const { tasks } = useSelector(getTasks);
+  const tasks = useSelector(getTasks);
 
   useEffect(() => {
     dispatch(getTask(sprintId));

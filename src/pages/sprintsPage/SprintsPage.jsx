@@ -16,6 +16,7 @@ import SprintFormPeople from '../../components/SprintFormPeople/SprintFormPeople
 import ProjectForm from 'components/ProjectForm/ProjectForm';
 import { CSSTransition } from 'react-transition-group';
 import alert from './alert.module.css';
+import { projectsSelector } from 'redux/projects/project-selectors';
 
 export default function SprintsPage() {
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ export default function SprintsPage() {
   const [active, setActive] = useState(false);
   const [input, setInput] = useState();
   const { projectId } = useParams();
-  const projects = useSelector(state => state.projects);
+  const projects = useSelector(projectsSelector);
   const project = projects.find(item => item._id === projectId);
 
   const colors = ['#8c72df', '#FF765F', '#71DF87'];
