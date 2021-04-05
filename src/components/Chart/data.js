@@ -1,3 +1,5 @@
+import moment from "moment";
+import "moment/locale/uk";
 
 
 export const formatDateChanger = (chartDays) => {
@@ -11,7 +13,7 @@ const formatDate = (chartDays) =>
 
 export const convertFormToUppercase = (date) => {
   const newFormatDayMounth = moment(returnDayFormat(date))
-    .locale("uk")
+    .locale("en")
     .format("DD MMM");
   const result = newFormatDayMounth.split("");
   const firstLetterToUppercase = result[3].toUpperCase();
