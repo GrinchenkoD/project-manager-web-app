@@ -32,8 +32,44 @@ export default function TasksPage() {
   const { projectId } = useParams();
   const projects = useSelector(projectsSelector);
   const project = projects.find(item => item._id === projectId);
+  const { tasks } = useSelector(getTasks);
+  //======================================================
+  const today = new Date().toJSON().slice(0, 10).split('-').reverse().join('.');
+  const startDate = sprints.find(item => item._id === sprintId)?.startDate;
+  const duration = sprints.find(item => item._id === sprintId)?.duration;
+  const endDate = sprints.find(item => item._id === sprintId)?.endDate;
+  const todayReverse = today.split('.').reverse().join('-');
 
-  const tasks = useSelector(tasksSelector);
+  const _MS_PER_DAY = 1000 * 60 * 60 * 24;
+
+  const [currentDay, setCurrentDay] = useState(Date.now());
+  const [sprintDay, setSprintDay] = useState(0);
+
+  // a and b are javascript Date objects
+  function dateDiffInDays(a, b) {
+    const utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+    const utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+    return Math.floor((utc2 - utc1) / _MS_PER_DAY);
+  }
+  // test it
+  const a = new Date(todayReverse), //today
+    b = new Date(startDate), // startDate
+    difference = dateDiffInDays(a, b);
+  const positiveDifference = Math.abs(difference) + 1;
+
+  const onDecrement = () => {
+    if (new Date(startDate).getDate() !== new Date(currentDay).getDate()) {
+      setCurrentDay(prev => prev - _MS_PER_DAY);
+      setSprintDay(prev => prev - 1);
+    }
+  };
+
+  const onIncrement = () => {
+    if (new Date(endDate).getDate() !== new Date(currentDay).getDate()) {
+      setCurrentDay(prev => prev + _MS_PER_DAY);
+      setSprintDay(prev => prev + 1);
+    }
+  };
 
   useEffect(() => {
     dispatch(getTask(sprintId));
@@ -52,6 +88,12 @@ export default function TasksPage() {
   const onCloseModalSprint = () => {
     setModalAddSprint(false);
   };
+
+  useEffect(() => {
+    const result = (Date.now() - Date.parse(startDate)) / _MS_PER_DAY;
+    setSprintDay(Math.floor(result + 1));
+  }, [startDate, _MS_PER_DAY]);
+
   return (
     <div className={styles.tasksContainer}>
       <div className={styles.sprintsSideBar}>
@@ -107,17 +149,43 @@ export default function TasksPage() {
       <div className={styles.container}>
         <div className={styles.navigation}>
           <div className={styles.datePicker}>
-            <div className={styles.navDay}>
-              <button type="button" className={styles.navLeft}>
-                &#5176;
-              </button>
-              <p className={styles.navCurrentDay}> 2 </p>
-              <p className={styles.navTotalDays}> / 12 </p>
-              <button type="button" className={styles.navRight}>
-                &#5171;
-              </button>
-            </div>
-            <p className={styles.navDate}>08.08.2020</p>
+            {!!sprintDay && !!duration && (
+              <div className={styles.navDay}>
+                <button
+                  type="button"
+                  // className={styles.navLeft}
+                  onClick={onDecrement}
+                  disabled={
+                    new Date(startDate).getDate() ===
+                    new Date(currentDay).getDate()
+                  }
+                >
+                  &lt;
+                </button>
+                <p className={styles.navCurrentDay}> {sprintDay} </p>
+                <span> / </span>
+                <p className={styles.navTotalDays}>{duration} </p>
+                <button
+                  type="button"
+                  // className={styles.navRight}
+                  onClick={onIncrement}
+                  disabled={
+                    new Date(endDate).getDate() ===
+                    new Date(currentDay).getDate()
+                  }
+                >
+                  &gt;
+                </button>
+              </div>
+            )}
+            <p className={styles.navDate}>
+              {new Date(currentDay)
+                .toJSON()
+                .slice(0, 10)
+                .split('-')
+                .reverse()
+                .join('.')}
+            </p>
           </div>
           <div className={styles.search}>
             <input
@@ -156,7 +224,11 @@ export default function TasksPage() {
           ) : (
             <ul className={styles.tasksList}>
               {tasks.map(task => (
-                <TaskPageItem {...task} key={task._id} />
+                <TaskPageItem
+                  {...task}
+                  key={task._id}
+                  currentDay={currentDay}
+                />
               ))}
             </ul>
           )}
