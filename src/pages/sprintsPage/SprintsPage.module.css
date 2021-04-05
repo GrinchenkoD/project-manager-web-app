@@ -36,6 +36,7 @@
 }
 .saveButtonIcon {
   border: none;
+  outline: none;
   background-image: url('../../icons/saveicon.svg');
   width: 23px;
   height: 23px;
