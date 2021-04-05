@@ -6,7 +6,10 @@ const sprintsSchema = Yup.object().shape({
   // endDate: Yup.date().default(function () {
   //   return new Date();
   // }),
-  duration: Yup.string().required('Обов`язкове поле'),
+  duration: Yup.number()
+    .positive()
+    // .integer('Введiть кiлькiсть годин')
+    .required('Обов`язкове поле'),
 });
 
 export default sprintsSchema;

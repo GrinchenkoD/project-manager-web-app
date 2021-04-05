@@ -89,9 +89,9 @@ const SprintForm = ({ onClose }) => {
             />
           </div>
           <FormControl
-            //   label="Password"
+            label="Тривалість"
             name="duration"
-            type="text"
+            type="number"
             id="duration"
             placeholder="Тривалість"
           />

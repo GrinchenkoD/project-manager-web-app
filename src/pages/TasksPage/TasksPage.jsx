@@ -241,6 +241,7 @@ export default function TasksPage() {
               className={styles.searchInput}
               onChange={onFilter}
               // value={filter}
+              
             />
             <svg className={styles.searchMagnify}>
               <use href={sprite + '#magnify-glass'} />
