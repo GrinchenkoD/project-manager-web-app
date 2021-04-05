@@ -1,3 +1,4 @@
 const getToken = state => state;
 const getTasks = state => state;
-export { getToken, getTasks };
+const getTasksHoursWasted = state => state.tasks;
+export { getToken, getTasks, getTasksHoursWasted };

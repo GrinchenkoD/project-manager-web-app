@@ -5,7 +5,6 @@ import {
   deleteTaskSuccess,
   getTaskError,
   addHoursWastedSuccess,
-
 } from './task-action';
 
 const tasksReducer = createReducer([], {
@@ -18,7 +17,17 @@ const tasksReducer = createReducer([], {
   [addHoursWastedSuccess]: (state, { payload }) => [
     ...state.map(task =>
       task._id === payload.taskId
-        ? { ...task, hoursWasted: [...payload.hoursWasted] }
+        ? {
+            ...task,
+            hoursWasted: payload.hoursWasted,
+            hoursWastedPerDay: [
+              ...task.hoursWastedPerDay.map(item =>
+                item.currentDay === payload.currentDay
+                  ? { ...item, singleHoursWasted: payload.singleHoursWasted }
+                  : item,
+              ),
+            ],
+          }
         : task,
     ),
   ],
