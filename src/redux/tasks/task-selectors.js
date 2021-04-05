@@ -2,7 +2,6 @@ import { createSelector } from '@reduxjs/toolkit';
 import db from '../../pages/TasksPage/db.json';
 
 const getToken = state => state;
-const getTasks = state => state;
 const getTasksHoursWasted = state => state.tasks;
 const tasksSelector = state => state.tasks.tasksItems;
 const tasksErrorSelector = state => state.sprints.tasksError;
@@ -54,4 +53,10 @@ export const sprintDurationSelector = list[0].hoursWastedPerDay.length;
 //   items[0].hoursWastedPerDay.map((task) => task.currentDay)
 // );
 
-export { getToken, tasksSelector, tasksErrorSelector, tasksLoadingSelector, getTasks, getTasksHoursWasted };
+export {
+  getToken,
+  tasksSelector,
+  tasksErrorSelector,
+  tasksLoadingSelector,
+  getTasksHoursWasted,
+};
