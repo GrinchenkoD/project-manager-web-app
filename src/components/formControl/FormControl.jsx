@@ -4,7 +4,7 @@ import { useField } from 'formik';
 
 import styles from './FormControl.module.css';
 import cn from 'classnames';
-
+//  const regExp = new RegExp(/^[a-zA-Zа-яА-ЯЁё\s]+$/)
 const FormControl = ({ label, className, ...props }) => {
   const [field, meta] = useField(props);
   return (
@@ -20,7 +20,10 @@ const FormControl = ({ label, className, ...props }) => {
         )}
         {...props}
         {...field}
-        
+        // pattern={/^[a-zA-Zа-яА-ЯЁё\s]+$/}
+        // pattern={/^([A-Za-z0-9_\-\.])$/}
+        // pattern={/^[a-zA-Z]+$/}
+        required
       />
       <label htmlFor={props.id} className={styles.label}>
         {label}
