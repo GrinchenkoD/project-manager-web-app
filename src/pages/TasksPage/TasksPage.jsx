@@ -14,9 +14,11 @@ import styles from './TasksPage.module.css';
 import TaskPageItem from 'pages/TasksPageItem/TasksPageItem';
 // import { nanoid } from '@reduxjs/toolkit';
 import { getTask } from 'redux/tasks/task-operation';
-import { getTasks } from 'redux/tasks/task-selectors';
+import { tasksSelector } from 'redux/tasks/task-selectors';
 import SprintForm from '../../components/SprintForm/SprintForm';
 import { getProject } from 'redux/projects/project-operations';
+import { getSprints } from 'redux/sprints/sprint-selectors';
+import { projectsSelector } from 'redux/projects/project-selectors';
 import ChartModal from '../../components/ChartModal/ChartModal';
 import { CSSTransition } from 'react-transition-group';
 import alert from './alert.module.css';
@@ -28,15 +30,15 @@ export default function TasksPage() {
   const [diagramModal, setDiagramModal] = useState(false);
   const { sprintId } = useParams();
   const [modalAddSprint, setModalAddSprint] = useState(false);
-  const sprints = useSelector(state => state.sprints);
+  const sprints = useSelector(getSprints);
   const sprint = sprints.find(item => item._id === sprintId);
   const { projectId } = useParams();
-  const projects = useSelector(state => state.projects);
+  const projects = useSelector(projectsSelector);
   const project = projects.find(item => item._id === projectId);
-  const { tasks } = useSelector(getTasks);
   const [isUpdate, setUpdate] = useState(true);
   const [input, setInput] = useState();
   const [active, setActive] = useState(false);
+  const tasks = useSelector(tasksSelector);
 
   useEffect(() => {
     dispatch(getTask(sprintId));

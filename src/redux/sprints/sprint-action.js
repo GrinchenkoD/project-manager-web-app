@@ -10,7 +10,7 @@ const addSprintError = createAction('sprints/add-sprint-error');
 // const addContributorSuccess = createAction('project/add-contributor-success');
 // const addContributorError = createAction('project/add-contributor-error');
 
-//=========== get sprint ==============
+//=========== get sprints ==============
 const getSprintRequest = createAction('sprints/get-sprint-request');
 const getSprintSuccess = createAction('sprints/get-sprint-success');
 const getSprintError = createAction('sprints/get-sprint-error');

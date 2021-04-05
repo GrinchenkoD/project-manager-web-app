@@ -1,21 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { connect } from "react-redux";
-import { Line } from "react-chartjs-2";
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import { Line } from 'react-chartjs-2';
 // import {hoursPlannedSelector} from '../../redux/tasks/task-selectors';
 import {
   chartDaysSelector,
   hoursPlannedSelector,
   sprintDurationSelector,
-  items
+  items,
+  tasksSelector,
 } from '../../redux/tasks/task-selectors';
-import {
-  formatDateChanger,
-  getBlueLineArr,
-  getRedLineArr,
-} from "./data";
-import styles from "./analytics.module.css";
-import db from '../../pages/TasksPage/db.json'
-
+import { formatDateChanger, getBlueLineArr, getRedLineArr } from './data';
+import styles from './analytics.module.css';
+import db from '../../pages/TasksPage/db.json';
 
 const Qwert = ({
   hoursPlanned,
@@ -32,22 +28,26 @@ const Qwert = ({
       labels: formatDateChanger(chartDaysSelector),
       datasets: [
         {
-          label: "Запланований залишок трудовитрат",
+          label: 'Запланований залишок трудовитрат',
           fill: false,
           lineTension: 0,
-          borderColor: "rgb(255, 0, 0)",
-          backgroundColor: "rgb(255, 0, 0)",
+          borderColor: 'rgb(255, 0, 0)',
+          backgroundColor: 'rgb(255, 0, 0)',
           // data: getRedLineArr(hoursPlanned, sprintDuration),
           data: getRedLineArr(hoursPlannedSelector, sprintDurationSelector),
         },
         {
-          label: "Актуальний залишок трудовитрат у годинах",
+          label: 'Актуальний залишок трудовитрат у годинах',
           fill: false,
           lineTension: 0.3,
-          borderColor: "rgb(0, 89, 255)",
-          backgroundColor: "rgb(0, 89, 255)",
+          borderColor: 'rgb(0, 89, 255)',
+          backgroundColor: 'rgb(0, 89, 255)',
           // data: getBlueLineArr(hoursPlanned, sprintDuration, itemsArr),
-          data: getBlueLineArr(hoursPlannedSelector, sprintDurationSelector, items),
+          data: getBlueLineArr(
+            hoursPlannedSelector,
+            sprintDurationSelector,
+            items,
+          ),
         },
       ],
     });
@@ -66,7 +66,7 @@ const Qwert = ({
     title: {
       display: true,
       // text: sprint.title,
-      fontColor: "#181C27",
+      fontColor: '#181C27',
       fontFamily: "'Montserrat', 'sans-serif'",
       fontSize: 20,
       padding: 0,
@@ -76,32 +76,32 @@ const Qwert = ({
         borderWidth: 2,
       },
       point: {
-        pointStyle: "circle",
+        pointStyle: 'circle',
         borderWidth: 2,
         hoverRadius: 5,
-        hoverBackgroundColor: "rgba(255, 255, 255, 0.2)",
+        hoverBackgroundColor: 'rgba(255, 255, 255, 0.2)',
         hoverBorderWidth: 2,
         radius: 2,
         hitRadius: 10,
       },
     },
     tooltips: {
-      mode: "index",
+      mode: 'index',
       titleFontSize: 14,
       titleMarginBottom: 10,
       bodyFontFamily: "'Montserrat', 'sans-serif'",
       bodyFontSize: 14,
       bodySpacing: 5,
-      bodyAlign: "center",
+      bodyAlign: 'center',
       xPadding: 8,
       yPadding: 8,
       caretPadding: 5,
       caretSize: 10,
       cornerRadius: 5,
       callbacks: {
-        label: (tooltipItem) => {
+        label: tooltipItem => {
           let label = tooltipItem.value;
-          label = "  " + label;
+          label = '  ' + label;
           return label;
         },
       },
@@ -111,15 +111,15 @@ const Qwert = ({
         {
           scaleLabel: {
             display: true,
-            labelString: "Людино-години",
+            labelString: 'Людино-години',
             fontFamily: "'Montserrat', 'sans-serif'",
             fontSize: 14,
-            fontColor: "#181C27",
+            fontColor: '#181C27',
           },
           ticks: {
             beginAtZero: true,
             fontSize: 14,
-            fontColor: "#181C27",
+            fontColor: '#181C27',
           },
           gridLines: {
             display: true,
@@ -134,7 +134,7 @@ const Qwert = ({
           ticks: {
             beginAtZero: false,
             fontSize: 14,
-            fontColor: "#181C27",
+            fontColor: '#181C27',
           },
         },
       ],
@@ -143,7 +143,7 @@ const Qwert = ({
       display: true,
       fullWidth: false,
       labels: {
-        fontColor: "#181C27",
+        fontColor: '#181C27',
         fontFamily: "'Montserrat', 'sans-serif'",
         fontSize: 14,
         boxWidth: 5,
@@ -166,7 +166,7 @@ const mapStateToProps = (state, ownProps) => ({
   // hoursPlanned: hoursPlannedSelector(state),
   // sprintDuration: sprintDurationSelector(state),
   // chartDays: chartDaysSelector(state),
-  // itemsArr: itemsSelector(state),
+  // itemsArr: tasksSelector(state),
   // sprint: findCurrentSprint(state, ownProps.params),
 });
 
