@@ -1,6 +1,6 @@
 .tasksContainer {
-  width: 100vw;
-  height: calc(100vh - 64px);
+  /* width: 100vw; */
+  height: calc(100vh - 74px);
   padding: 10px 10px 0 10px;
   background: #e5e5e5;
 }
@@ -14,6 +14,10 @@
   justify-content: flex-start;
   align-items: baseline;
   position: relative;
+}
+
+.container {
+  margin-left: calc(100vw -300px);
 }
 
 .sprintsBackArrow {
@@ -43,7 +47,7 @@
   height: 97px;
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px;
+  margin: 0 auto;
 }
 
 .navDay {
@@ -60,6 +64,7 @@
 }
 .navLeft,
 .navRight {
+  cursor: pointer;
   border: none;
   outline: none;
   width: 10px;
@@ -82,6 +87,8 @@
 
 .navCurrentDay {
   margin-left: 10px;
+  margin-right: 5px;
+  padding-bottom: 2px;
   font-size: 22px;
   line-height: 1.222;
   color: #181c27;
@@ -89,7 +96,7 @@
 
 /* ! search */
 .search {
-  border-bottom: 1px solid #181c271a;
+  /* border-bottom: 1px solid #181c271a; */
   padding: 10px;
   width: 280px;
   height: 40px;
@@ -101,8 +108,9 @@
   height: 20px;
   transition: all 0.25s linear;
   background: transparent;
-  margin-left: 10px;
+  /* margin-left: 10px; */
   margin-bottom: 10px;
+  border-bottom: 1px solid rgba(24, 28, 39, 0.2);
 }
 
 .searchMagnify {
@@ -124,14 +132,14 @@
 }
 
 .tasksTitle {
-  width: 280px;
+  max-width: 280px;
   height: 64px;
   display: flex;
   margin-bottom: 20px;
 }
 
 .tasksTitleText {
-  width: 260px;
+  max-width: 260px;
   height: 64px;
   font-weight: 500;
   font-size: 26px;
@@ -140,6 +148,8 @@
   align-items: center;
   letter-spacing: 0.04em;
   color: #181c27;
+  margin-right: 20px;
+  word-wrap: break-word;
 }
 
 .tasksTitleEdit,
@@ -229,16 +239,13 @@
     position: relative;
   }
 
-  .tasksPage {
-  }
-
   .sprintsListSection {
     display: block;
   }
 
   .sprintsSideBar {
     width: 189px;
-    height: calc(100vh - 94px);
+    min-height: calc(100vh - 94px);
     margin-left: 20px;
     padding-top: 20px;
     border-right: 1px solid #181c271a;
@@ -272,9 +279,13 @@
   /* ! sprintsList */
 
   .sprintsList {
-    width: 170px;
-    height: 294px;
-    list-style: none;
+    display: flex;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    width: 200px;
+    height: 360px;
   }
 
   .sprintListItem {
@@ -376,11 +387,15 @@
 
   /* ! navigation */
   .navigation {
-    padding: 0 20px;
+    padding: 20px;
     display: flex;
     flex-direction: row;
     align-items: inherit;
     width: 512px;
+    margin-left: 45px;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 
   .datePicker {
@@ -396,40 +411,42 @@
 
   .btnAddIcon {
     position: fixed;
-    top: 166px;
-    right: 40px;
+    top: 176px;
+    left: 90vw;
   }
 
   /* ! search */
   .search {
-    position: relative;
     width: 300px;
   }
 
   .searchInput {
-    position: absolute;
-    left: 30px;
     width: 190px;
   }
 
   /* ! tasks */
+
+  .tasks {
+    padding-left: 20px;
+  }
 
   .tasksList {
     align-items: unset;
   }
 
   .tasksTitle {
-    width: 374px;
+    max-width: 374px;
     height: 88px;
     display: flex;
     margin-bottom: 20px;
   }
   .tasksTitleText {
-    width: 334px;
+    max-width: 334px;
     height: 88px;
     font-weight: 500;
     font-size: 36px;
     line-height: 44px;
+    word-wrap: break-word;
   }
 
   .showGraphSection {
@@ -439,13 +456,22 @@
 
 /* ! ------------------DESKTOP ver.------------------ */
 @media screen and (min-width: 1280px) {
+  .container {
+    border-right: 1px solid #181c271a;
+    position: relative;
+  }
+
+  .tasksContainer {
+    padding-right: 0;
+  }
+
   .sprintsSideBar {
-    width: 255;
+    width: 255px;
     margin-left: 35px;
   }
 
   .showSprints {
-    margin-bottom: 103px;
+    margin-bottom: 90px;
   }
 
   /* ! addSprint */
@@ -459,9 +485,29 @@
   }
 
   /* ! navigation */
+  .navLeft {
+    margin-left: 0px;
+    padding-top: 1px;
+  }
+  .navRight {
+    margin-left: 20px;
+  }
+
+  .navCurrentDay {
+    margin-left: 20px;
+    margin-right: 5px;
+    padding-bottom: 3px;
+  }
+
+  .navigation {
+    margin-left: 50px;
+    height: 57px;
+  }
+
   .datePicker {
     margin-right: 50px;
-    margin-top: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 
   /* ! addTaskSection */
@@ -469,8 +515,8 @@
     width: 239px;
     height: 44px;
     position: absolute;
-    top: 16px;
-    right: 0;
+    top: 64px;
+    right: 60px;
   }
   .btnAdd {
     position: relative;
@@ -478,12 +524,13 @@
   .btnAddIcon {
     position: absolute;
     top: -5px;
+    left: 0;
     right: -70px;
   }
   .addProjectText {
     display: inline-block;
     margin-top: 10px;
-    margin-left: 64px;
+    margin-left: 44px;
     font-weight: 500;
     font-size: 18px;
     line-height: 22px;
@@ -497,8 +544,8 @@
   }
   .btnGraph {
     position: fixed;
-    bottom: 60px;
-    left: 1160px;
+    bottom: 76px;
+    left: 1220px;
     z-index: 1;
     outline: none;
     border: none;
@@ -510,8 +557,8 @@
     transform: scale(1.1);
   }
   .btnGraphIcon {
-    width: 44px;
-    height: 44px;
+    width: 50px;
+    height: 50px;
   }
 
   .tasksList {
@@ -521,25 +568,41 @@
   }
 
   .tasks {
-    padding: 10px 10px 10px 0;
+    /* padding: 10px 10px 10px 0; */
+    padding: 0;
+    max-width: 1035px;
+    margin: 0 auto;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   .tasksTitle {
     margin-left: 70px;
-    width: 400px;
+    max-width: 400px;
     height: 75px;
     margin-bottom: 30px;
   }
   .tasksTitleText {
-    width: 337px;
+    max-width: 337px;
     height: 75px;
+    word-wrap: break-word;
   }
 
   .search {
     position: absolute;
-    top: 180px;
-    left: 880px;
+    top: 170px;
+    left: 800px;
     border-bottom: none;
+    width: 200px;
+  }
+
+  .searchInput {
+    width: 140px;
+    border-bottom: none;
+    margin-right: 10px;
   }
 
   /* ! tasksHeader */

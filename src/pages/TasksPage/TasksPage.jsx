@@ -14,9 +14,11 @@ import styles from './TasksPage.module.css';
 import TaskPageItem from 'pages/TasksPageItem/TasksPageItem';
 // import { nanoid } from '@reduxjs/toolkit';
 import { getTask } from 'redux/tasks/task-operation';
-import { getTasks } from 'redux/tasks/task-selectors';
+import { tasksSelector } from 'redux/tasks/task-selectors';
 import SprintForm from '../../components/SprintForm/SprintForm';
 import { getProject } from 'redux/projects/project-operations';
+import { getSprints } from 'redux/sprints/sprint-selectors';
+import { projectsSelector } from 'redux/projects/project-selectors';
 import ChartModal from '../../components/ChartModal/ChartModal';
 
 export default function TasksPage() {
@@ -25,10 +27,10 @@ export default function TasksPage() {
   const [diagramModal, setDiagramModal] = useState(false);
   const { sprintId } = useParams();
   const [modalAddSprint, setModalAddSprint] = useState(false);
-  const sprints = useSelector(state => state.sprints);
+  const sprints = useSelector(getSprints);
   const sprint = sprints.find(item => item._id === sprintId);
   const { projectId } = useParams();
-  const projects = useSelector(state => state.projects);
+  const projects = useSelector(projectsSelector);
   const project = projects.find(item => item._id === projectId);
   const { tasks } = useSelector(getTasks);
   //======================================================
@@ -68,8 +70,6 @@ export default function TasksPage() {
       setSprintDay(prev => prev + 1);
     }
   };
-
-  //==========================================================
 
   useEffect(() => {
     dispatch(getTask(sprintId));
@@ -188,17 +188,18 @@ export default function TasksPage() {
             </p>
           </div>
           <div className={styles.search}>
-            <svg className={styles.searchMagnify}>
-              <use href={sprite + '#magnify-glass'} />
-            </svg>
             <input
               name="filter"
               type="text"
               autoComplete="off"
+              placeholder="пошук..."
               className={styles.searchInput}
               onChange={event => null}
               // value={filter}
             />
+            <svg className={styles.searchMagnify}>
+              <use href={sprite + '#magnify-glass'} />
+            </svg>
           </div>
         </div>
         <div className={styles.tasks}>
@@ -214,9 +215,7 @@ export default function TasksPage() {
             <p className={styles.tasksHeaderTitle}>Задача </p>
             <p className={styles.tasksHeaderPlanned}>Заплановано годин</p>
             <p className={styles.tasksHeaderUsed}>Використано год / день </p>
-            <p className={styles.tasksHeaderTotal}>
-              Використано годин (загал.)
-            </p>
+            <p className={styles.tasksHeaderTotal}>Використано годин</p>
           </div>
           {!tasks.length ? (
             <h2 className={styles.tasksNone}>
