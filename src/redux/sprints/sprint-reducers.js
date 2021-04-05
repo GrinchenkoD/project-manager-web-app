@@ -11,8 +11,6 @@ import {
   deleteSprintSuccess,
   deleteSprintError,
   changeSprintTitleSuccess,
-  getCurrentDay,
-  setCurrentDay,
 } from './sprint-action';
 import {
   refreshTokenRequest,
