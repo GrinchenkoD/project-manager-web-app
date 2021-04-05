@@ -1,7 +1,12 @@
-import { createSelector } from '@reduxjs/toolkit';
+// import { createSelector } from '@reduxjs/toolkit';
 import db from '../../pages/TasksPage/db.json';
 
 const getToken = state => state;
+const getTasksHoursWasted = state => state.tasks;
+const tasksSelector = state => state.tasks.tasksItems;
+const tasksErrorSelector = state => state.sprints.tasksError;
+const tasksLoadingSelector = state => state.sprints.tasksLoading;
+const getNowDay = state => state.tasks.currentDay;
 const getTasks = state => state;
 // const getFilter = state => state.tasks.filter;
 
@@ -9,11 +14,7 @@ const getTasks = state => state;
 //   tasks.filter(item => item.title.toLowerCase().includes(filter.toLowerCase())),
 // );
 
-export const tasksSelector = state => state;
-export const itemsSelector = state => tasksSelector(state).items;
-
 const list = db.tasks.items;
-
 export const items = db.tasks.items;
 
 export const chartDaysSelector = list[0].hoursWastedPerDay.map(
@@ -35,10 +36,10 @@ export const sumHoursWastedSelector = list
 export const sprintDurationSelector = list[0].hoursWastedPerDay.length;
 
 // export const sprintDurationSelector = (state) =>
-//   itemsSelector(state)[0].hoursWastedPerDay.length;
+//   tasksSelector(state)[0].hoursWastedPerDay.length;
 
 // export const qwer = db.tasks.items;
-//  export const hoursPlannedSelector = createSelector([itemsSelector], (items) =>
+//  export const hoursPlannedSelector = createSelector([tasksSelector], (items) =>
 //   items
 //     .map((task) => Number(task.hoursPlanned))
 //     .reduce((acc, taskValue) => {
@@ -46,7 +47,7 @@ export const sprintDurationSelector = list[0].hoursWastedPerDay.length;
 //     }, 0)
 // );
 
-// export const sumHoursWastedSelector = createSelector([itemsSelector], (items) =>
+// export const sumHoursWastedSelector = createSelector([tasksSelector], (items) =>
 //   items
 //     .map((task) => Number(task.hoursWasted))
 //     .reduce((acc, taskValue) => {
@@ -54,8 +55,16 @@ export const sprintDurationSelector = list[0].hoursWastedPerDay.length;
 //     }, 0)
 // );
 
-// export const chartDaysSelector = createSelector([itemsSelector], (items) =>
+// export const chartDaysSelector = createSelector([tasksSelector], (items) =>
 //   items[0].hoursWastedPerDay.map((task) => task.currentDay)
 // );
 
-export { getToken, getTasks };
+export {
+  getToken,
+  tasksSelector,
+  tasksErrorSelector,
+  tasksLoadingSelector,
+  getTasksHoursWasted,
+  getNowDay,
+  getTasks,
+};

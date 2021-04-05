@@ -10,6 +10,9 @@ import {
   deleteSprintRequest,
   deleteSprintSuccess,
   deleteSprintError,
+  changeSprintTitleRequest,
+  changeSprintTitleSuccess,
+  changeSprintTitleError,
 } from './sprint-action';
 
 //  https://sbc-backend.goit.global
@@ -40,7 +43,7 @@ const addSprint = (projectId, sprint) => async (dispatch, getState) => {
     dispatch(addSprintSuccess({ ...data, _id: id }));
   } catch (error) {
     dispatch(addSprintError(error.message));
-     refreshTemplate(()=>addSprint(projectId, sprint), error, dispatch)
+    refreshTemplate(() => addSprint(projectId, sprint), error, dispatch);
   }
 };
 
@@ -55,10 +58,27 @@ const getSprint = projectId => async (dispatch, getState) => {
     dispatch(getSprintSuccess(data.sprints));
   } catch (error) {
     dispatch(getSprintError(error.message));
-    refreshTemplate(()=>getSprint(projectId), error, dispatch)
+    refreshTemplate(() => getSprint(projectId), error, dispatch);
   }
 };
 
+// ======== patch title ==========
+
+// /sprint/title/{sprintId}
+
+const patchTitle = (sprintId, title) => async (dispatch, getState) => {
+  dispatch(changeSprintTitleRequest());
+
+  try {
+    await axios.patch(`/sprint/title/${sprintId}`, { title });
+    dispatch(changeSprintTitleSuccess({ sprintId, title }));
+  } catch (error) {
+    dispatch(changeSprintTitleError(error.message));
+    refreshTemplate(() => patchTitle(sprintId, title), error, dispatch);
+  }
+};
+
+//========= delete sprint ==========
 const deleteSprint = id => async dispatch => {
   dispatch(deleteSprintRequest());
   try {
@@ -66,8 +86,8 @@ const deleteSprint = id => async dispatch => {
     dispatch(deleteSprintSuccess(id));
   } catch (error) {
     dispatch(deleteSprintError(error.message));
-    refreshTemplate(()=>deleteSprint(id), error, dispatch)
+    refreshTemplate(() => deleteSprint(id), error, dispatch);
   }
 };
 
-export { addSprint, getSprint, deleteSprint };
+export { addSprint, getSprint, deleteSprint, patchTitle };

@@ -73,6 +73,11 @@
   margin-left: 10px;
   background: transparent;
 }
+.navLeft:disabled,
+.navRight:disabled {
+  cursor: default;
+  color: #cdced3;
+}
 
 .navCurrentDay,
 .navTotalDays {
@@ -87,6 +92,8 @@
 
 .navCurrentDay {
   margin-left: 10px;
+  margin-right: 5px;
+  padding-bottom: 2px;
   font-size: 22px;
   line-height: 1.222;
   color: #181c27;
@@ -94,7 +101,6 @@
 
 /* ! search */
 .search {
-  border-bottom: 1px solid #181c271a;
   padding: 10px;
   width: 280px;
   height: 40px;
@@ -106,7 +112,6 @@
   height: 20px;
   transition: all 0.25s linear;
   background: transparent;
-  margin-left: 10px;
   margin-bottom: 10px;
   border-bottom: 1px solid rgba(24, 28, 39, 0.2);
 }
@@ -158,14 +163,43 @@
   width: 20px;
   height: 20px;
   transition: all 0.25s linear;
+  cursor: pointer;
 }
-
 .btnEdit:hover {
   transform: scale(1.1);
 }
 
 .tasksTitleEdit {
   margin-top: 5px;
+}
+
+.changeForm {
+  position: relative;
+  margin-top: 30px;
+}
+.changeFormInput {
+  width: 100%;
+  border: none;
+  box-shadow: 1px 2px 6px rgb(0 5 97 / 10%);
+  border-radius: 5px;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: #181c27;
+  padding: 3px;
+  outline: none;
+}
+.saveButtonIcon {
+  border: none;
+  outline: none;
+  background-image: url('../../icons/saveicon.svg');
+  width: 23px;
+  height: 23px;
+  background-size: contain;
+  background-color: transparent;
+  position: absolute;
+  right: -30px;
+  cursor: pointer;
 }
 
 /* ! tasksList  */
@@ -415,13 +449,10 @@
 
   /* ! search */
   .search {
-    position: relative;
     width: 300px;
   }
 
   .searchInput {
-    position: absolute;
-    left: 30px;
     width: 190px;
   }
 
@@ -447,7 +478,6 @@
     font-weight: 500;
     font-size: 36px;
     line-height: 44px;
-    margin-right: 30px;
     word-wrap: break-word;
   }
 
@@ -458,6 +488,15 @@
 
 /* ! ------------------DESKTOP ver.------------------ */
 @media screen and (min-width: 1280px) {
+  .container {
+    border-right: 1px solid #181c271a;
+    position: relative;
+  }
+
+  .tasksContainer {
+    padding-right: 0;
+  }
+
   .sprintsSideBar {
     width: 255px;
     margin-left: 35px;
@@ -478,9 +517,29 @@
   }
 
   /* ! navigation */
+  .navLeft {
+    margin-left: 0px;
+    padding-top: 1px;
+  }
+  .navRight {
+    margin-left: 20px;
+  }
+
+  .navCurrentDay {
+    margin-left: 20px;
+    margin-right: 5px;
+    padding-bottom: 3px;
+  }
+
+  .navigation {
+    margin-left: 50px;
+    height: 57px;
+  }
+
   .datePicker {
     margin-right: 50px;
-    margin-top: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 
   /* ! addTaskSection */
@@ -488,8 +547,8 @@
     width: 239px;
     height: 44px;
     position: absolute;
-    top: 16px;
-    right: 0;
+    top: 64px;
+    right: 60px;
   }
   .btnAdd {
     position: relative;
@@ -517,8 +576,8 @@
   }
   .btnGraph {
     position: fixed;
-    bottom: 60px;
-    left: 1160px;
+    bottom: 76px;
+    left: 1220px;
     z-index: 1;
     outline: none;
     border: none;
@@ -530,8 +589,8 @@
     transform: scale(1.1);
   }
   .btnGraphIcon {
-    width: 44px;
-    height: 44px;
+    width: 50px;
+    height: 50px;
   }
 
   .tasksList {
@@ -541,7 +600,8 @@
   }
 
   .tasks {
-    padding: 10px 10px 10px 0;
+    /* padding: 10px 10px 10px 0; */
+    padding: 0;
     max-width: 1035px;
     margin: 0 auto;
     top: 0;
@@ -560,15 +620,21 @@
   .tasksTitleText {
     max-width: 337px;
     height: 75px;
-    margin-right: 40px;
     word-wrap: break-word;
   }
 
   .search {
     position: absolute;
-    top: 180px;
-    left: 880px;
+    top: 170px;
+    left: 830px;
     border-bottom: none;
+    width: 200px;
+  }
+
+  .searchInput {
+    width: 120px;
+    border-bottom: none;
+    margin-right: 10px;
   }
 
   /* ! tasksHeader */

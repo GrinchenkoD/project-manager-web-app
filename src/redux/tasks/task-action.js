@@ -26,7 +26,8 @@ const getHoursWastedRequest = createAction('sprints/get-hours-wasted-request');
 const getHoursWastedSuccess = createAction('sprints/get-hours-wasted-success');
 const getHoursWastedError = createAction('sprints/get-hours-wasted-error');
 
-// const filtredTask = createAction('sprints/Filter');
+// =============== get current day ==================
+const getCurrentDay = createAction('sprints/getCurrentDay');
 
 export {
   addTaskRequest,
@@ -44,4 +45,5 @@ export {
   getHoursWastedRequest,
   getHoursWastedSuccess,
   getHoursWastedError,
+  getCurrentDay,
 };
