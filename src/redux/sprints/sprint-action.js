@@ -1,6 +1,6 @@
 import { createAction } from '@reduxjs/toolkit';
 
-// =========  add project  ========
+// =========  add sprint  ========
 const addSprintRequest = createAction('sprints/add-sprint-request');
 const addSprintSuccess = createAction('sprints/add-sprint-success');
 const addSprintError = createAction('sprints/add-sprint-error');
@@ -10,17 +10,17 @@ const addSprintError = createAction('sprints/add-sprint-error');
 // const addContributorSuccess = createAction('project/add-contributor-success');
 // const addContributorError = createAction('project/add-contributor-error');
 
-//=========== get project ==============
+//=========== get sprints ==============
 
 const getSprintRequest = createAction('sprints/get-sprint-request');
 const getSprintSuccess = createAction('sprints/get-sprint-success');
 const getSprintError = createAction('sprints/get-sprint-error');
 
-//=========== delete contact ==============
+//=========== delete sprint ==============
 const deleteSprintRequest = createAction('sprints/delete-sprint-request');
 const deleteSprintSuccess = createAction('sprints/delete-sprint-success');
 const deleteSprintError = createAction('sprints/delete-sprint-error');
-// =============== patch contact ==================
+// =============== patch sprint ==================
 
 // const changeProjectTitleRequest = createAction('project/patch-title-request');
 // const changeProjectTitleSuccess = createAction('project/patch-title-success');
