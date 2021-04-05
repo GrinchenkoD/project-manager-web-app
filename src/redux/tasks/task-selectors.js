@@ -6,7 +6,7 @@ const getTasksHoursWasted = state => state.tasks;
 const tasksSelector = state => state.tasks.tasksItems;
 const tasksErrorSelector = state => state.sprints.tasksError;
 const tasksLoadingSelector = state => state.sprints.tasksLoading;
-
+const getNowDay = state => state.tasks.currentDay;
 const list = db.tasks.items;
 
 export const items = db.tasks.items;
@@ -59,4 +59,5 @@ export {
   tasksErrorSelector,
   tasksLoadingSelector,
   getTasksHoursWasted,
+  getNowDay,
 };

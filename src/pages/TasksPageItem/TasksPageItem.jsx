@@ -11,6 +11,7 @@ import { getTasksHoursWasted } from '../../redux/tasks/task-selectors';
 import sprite from '../../icons/symbol-defs.svg';
 import styles from './TasksPageItem.module.css';
 import { current } from '@reduxjs/toolkit';
+
 export default function TaskPageItem(task) {
   const dispatch = useDispatch();
   const [input, setInput] = useState(0);
@@ -21,7 +22,7 @@ export default function TaskPageItem(task) {
           new Date(item.currentDay).getDate() ===
           new Date(task.currentDay).getDate()
         );
-      }).singleHoursWasted,
+      })?.singleHoursWasted,
     );
   }, [task]);
 
@@ -36,6 +37,7 @@ export default function TaskPageItem(task) {
     if (hours) {
       setInput(hours);
     }
+
     dispatch(addHoursWasted(id, hours, currentDay));
   };
 
@@ -54,6 +56,7 @@ export default function TaskPageItem(task) {
           onChange={onHandleChange}
           data-date={task.currentDay}
           id={task._id}
+          disabled={task.isDisabled}
         />
       </div>
       <div className={styles.total}>

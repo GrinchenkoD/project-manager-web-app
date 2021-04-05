@@ -25,6 +25,7 @@ import {
   getHoursWastedRequest,
   getHoursWastedSuccess,
   getHoursWastedError,
+  getCurrentDay,
 } from './task-action';
 
 const tasksItems = createReducer([], {
@@ -98,10 +99,15 @@ const tasksError = createReducer(false, {
   [refreshTokenError]: handleError,
 });
 
+const currentDay = createReducer(Date.now(), {
+  [getCurrentDay]: (_, { payload }) => payload,
+});
+
 const tasksReducer = combineReducers({
   tasksItems,
   tasksLoading,
   tasksError,
+  currentDay,
 });
 
 export default tasksReducer;

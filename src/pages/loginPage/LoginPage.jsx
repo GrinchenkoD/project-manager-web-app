@@ -24,11 +24,7 @@ export default function Login() {
       >
         <div className={styles.container}>
           <Form className={styles.registerForm}>
-<<<<<<< HEAD
-            <h2 className={styles.registerFormTitle}>Увійти</h2>
-=======
             <h2 className={styles.registerFormTitle}>Вхід</h2>
->>>>>>> 7a6389fb07f47abe86fdb3d84d4a2d2dbc59c532
             <Field
               autoComplete="on"
               className={styles.registerFormInput}
@@ -55,20 +51,12 @@ export default function Login() {
             />
 
             <button className={styles.registerPageButton} type="submit">
-<<<<<<< HEAD
-              Вхід
-=======
               Увійти
->>>>>>> 7a6389fb07f47abe86fdb3d84d4a2d2dbc59c532
             </button>
             <p className={styles.registerFormText}>
               Маєте аккаунт?{' '}
               <NavLink className={styles.registerFormText} to="/registration">
-<<<<<<< HEAD
-                Зареєструватися
-=======
                 Зареєструватись
->>>>>>> 7a6389fb07f47abe86fdb3d84d4a2d2dbc59c532
               </NavLink>
             </p>
           </Form>

@@ -23,6 +23,7 @@ import ChartModal from '../../components/ChartModal/ChartModal';
 import { CSSTransition } from 'react-transition-group';
 import alert from './alert.module.css';
 import { patchTitle } from 'redux/sprints/sprint-operation';
+import { getCurrentDay } from 'redux/tasks/task-action';
 
 export default function TasksPage() {
   const dispatch = useDispatch();
@@ -39,7 +40,7 @@ export default function TasksPage() {
   const [isUpdate, setUpdate] = useState(true);
   const [input, setInput] = useState();
   const [active, setActive] = useState(false);
-  
+
   const tasks = useSelector(tasksSelector);
   //======================================================
   const today = new Date().toJSON().slice(0, 10).split('-').reverse().join('.');
@@ -50,6 +51,7 @@ export default function TasksPage() {
 
   const _MS_PER_DAY = 1000 * 60 * 60 * 24;
 
+  const curDay = useSelector(state => state.tasks.currentDay);
   const [currentDay, setCurrentDay] = useState(Date.now());
   const [sprintDay, setSprintDay] = useState(0);
 
@@ -99,7 +101,6 @@ export default function TasksPage() {
     setModalAddSprint(false);
   };
 
-
   const onChangeTitle = e => {
     setUpdate(!isUpdate);
     setInput(sprint.title);
@@ -118,6 +119,17 @@ export default function TasksPage() {
     setSprintDay(Math.floor(result + 1));
   }, [startDate, _MS_PER_DAY]);
 
+  useEffect(() => {
+    const date = new Date(Date.now());
+    const currentDay = `${date.getFullYear()}-${(date.getMonth() + 1)
+      .toString()
+      .padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
+    dispatch(getCurrentDay(currentDay));
+  }, [dispatch]);
+
+  useEffect(() => {
+    setCurrentDay(Date.parse(new Date(curDay)));
+  }, [curDay]);
 
   return (
     <div className={styles.tasksContainer}>
@@ -174,35 +186,38 @@ export default function TasksPage() {
       <div className={styles.container}>
         <div className={styles.navigation}>
           <div className={styles.datePicker}>
-            {!!sprintDay && !!duration && (
-              <div className={styles.navDay}>
-                <button
-                  type="button"
-                  // className={styles.navLeft}
-                  onClick={onDecrement}
-                  disabled={
-                    new Date(startDate).getDate() ===
-                    new Date(currentDay).getDate()
-                  }
-                >
-                  &lt;
-                </button>
-                <p className={styles.navCurrentDay}> {sprintDay} </p>
-                <span> / </span>
-                <p className={styles.navTotalDays}>{duration} </p>
-                <button
-                  type="button"
-                  // className={styles.navRight}
-                  onClick={onIncrement}
-                  disabled={
-                    new Date(endDate).getDate() ===
-                    new Date(currentDay).getDate()
-                  }
-                >
-                  &gt;
-                </button>
-              </div>
-            )}
+            {!!sprintDay &&
+              !!duration &&
+              new Date(startDate).getDate() <=
+                new Date(currentDay).getDate() && (
+                <div className={styles.navDay}>
+                  <button
+                    type="button"
+                    // className={styles.navLeft}
+                    onClick={onDecrement}
+                    disabled={
+                      new Date(startDate).getDate() ===
+                      new Date(currentDay).getDate()
+                    }
+                  >
+                    &lt;
+                  </button>
+                  <p className={styles.navCurrentDay}> {sprintDay} </p>
+                  <span> / </span>
+                  <p className={styles.navTotalDays}>{duration} </p>
+                  <button
+                    type="button"
+                    // className={styles.navRight}
+                    onClick={onIncrement}
+                    disabled={
+                      new Date(endDate).getDate() ===
+                      new Date(currentDay).getDate()
+                    }
+                  >
+                    &gt;
+                  </button>
+                </div>
+              )}
             <p className={styles.navDate}>
               {new Date(currentDay)
                 .toJSON()
@@ -278,9 +293,7 @@ export default function TasksPage() {
             <p className={styles.tasksHeaderTitle}>Задача </p>
             <p className={styles.tasksHeaderPlanned}>Заплановано годин</p>
             <p className={styles.tasksHeaderUsed}>Використано год / день </p>
-            <p className={styles.tasksHeaderTotal}>
-              Використано годин (загал.)
-            </p>
+            <p className={styles.tasksHeaderTotal}>Використано годин</p>
           </div>
           {!tasks.length ? (
             <h2 className={styles.tasksNone}>
@@ -293,6 +306,10 @@ export default function TasksPage() {
                   {...task}
                   key={task._id}
                   currentDay={currentDay}
+                  isDisabled={
+                    new Date(startDate).getDate() >
+                    new Date(currentDay).getDate()
+                  }
                 />
               ))}
             </ul>
