@@ -13,7 +13,7 @@ const regSchema = Yup.object().shape({
     .required('* Обов’язкове поле')
     .email('Введіть корректну адресу'),
   password: Yup.string().required('* Обов’язкове поле'),
-  confirmPassword: Yup.string().required('* Обов’язкове поле'),
+  confirmPassword: Yup.string().required('* Обов’язкове поле').oneOf([Yup.ref("password"), null], "Паролi повиннi спiвпадати!"),
 });
 export default function Registration() {
   const dispatch = useDispatch();
@@ -26,12 +26,13 @@ export default function Registration() {
         validationSchema={regSchema}
         onSubmit={values => {
           const { email, password, confirmPassword } = values;
-          if (password === confirmPassword) {
+          // if (password === confirmPassword) {
             dispatch(register({ email, password }));
-          } else {
-            alert('Паролi не спiвпадають!');
-            return;
-          }
+          // } else {
+          //   alert('Паролi не спiвпадають!');
+          //   return;
+          // }
+          
         }}
       >
         <div className={styles.container}>
