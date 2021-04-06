@@ -1,6 +1,7 @@
 body {
   font-style: normal;
   font-family: 'Montserrat';
+  overflow-x: hidden;
 }
 
 ul {
@@ -11,4 +12,8 @@ ul {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+#root {
+  overflow-x: hidden;
 }

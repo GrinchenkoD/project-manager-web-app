@@ -10,7 +10,6 @@
   .pageHeader {
     position: static;
     z-index: 1000;
-    width: 100vw;
   }
 }
 @media (min-width: 320px) {
