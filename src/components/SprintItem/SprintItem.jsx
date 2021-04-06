@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useRouteMatch } from 'react-router';
 import { deleteSprint } from 'redux/sprints/sprint-operation';
-import { getSprints } from 'redux/sprints/sprint-selectors';
+import { getSprints, sprintsLoadingSelector } from 'redux/sprints/sprint-selectors';
 import styles from '../../pages/sprintsPage/SprintsPage.module.css';
 
 const SprintItem = () => {
@@ -10,6 +10,8 @@ const SprintItem = () => {
   const history = useHistory();
   const sprints = useSelector(getSprints);
   const dispatch = useDispatch();
+ const sprintsLoading = useSelector(sprintsLoadingSelector)
+
   const months = [
     'Янв',
     'Фев',
@@ -39,11 +41,17 @@ const SprintItem = () => {
       history.push(`${match.url}/sprints/${e.currentTarget.id}`);
     }
   };
+  
 
   return (
     <ul className={styles.sprintsCont}>
-      {sprints.length > 0 ? (
-        sprints.map(({ title, startDate, endDate, duration, _id }) => (
+      {!sprints.length && !sprintsLoading ? (
+         <p className={styles.messageNoSprints}>
+          В вашому проекті відстуні спринти, скористайтесь конпкою "Створити
+          спринт"{' '}
+        </p>  
+      ) : (
+          sprints.map(({ title, startDate, endDate, duration, _id }) => (
           <li
             className={styles.sprintsItem}
             key={_id}
@@ -73,11 +81,6 @@ const SprintItem = () => {
             ></button>
           </li>
         ))
-      ) : (
-        <p className={styles.messageNoSprints}>
-          В вашому проекті відстуні спринти, скористайтесь конпкою "Створити
-          спринт"{' '}
-        </p>
       )}
     </ul>
   );

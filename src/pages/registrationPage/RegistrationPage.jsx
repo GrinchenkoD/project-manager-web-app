@@ -1,10 +1,14 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { register } from '../../redux/auth/auth-operations';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import { NavLink } from 'react-router-dom';
 import styles from './RegisterPage.module.css';
+import { authSelectors } from "../../redux/auth/auth-selectors"
+import Loader from '../../shared/Loader/Loader';
+
+
 
 const regSchema = Yup.object().shape({
   email: Yup.string().required().email(),
@@ -13,6 +17,8 @@ const regSchema = Yup.object().shape({
 });
 export default function Registration() {
   const dispatch = useDispatch();
+  const loading = useSelector(authSelectors.authLoadingSelector)
+
 
   return (
     <main>
@@ -80,6 +86,8 @@ export default function Registration() {
           </Form>
         </div>
       </Formik>
+
+     {loading&&<Loader/>}
     </main>
   );
 }
