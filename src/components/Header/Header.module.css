@@ -1,6 +1,7 @@
 @media screen and (max-width: 768px) {
   .pageHeader {
     position: fixed;
+    top: 0;
     z-index: 1000;
     width: 100vw;
   }

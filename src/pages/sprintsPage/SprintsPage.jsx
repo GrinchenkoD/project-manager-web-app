@@ -225,7 +225,8 @@ export default function SprintsPage() {
         <SprintItem />
       </div>
       </div>
-      {sprintsLoading||projectsLoading? <Loader/>:''}
+      {sprintsLoading || projectsLoading
+        ? <Loader /> : ''}
  </>
   );
 }

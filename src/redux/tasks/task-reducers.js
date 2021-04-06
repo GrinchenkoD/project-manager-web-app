@@ -101,6 +101,8 @@ const tasksError = createReducer(false, {
 
 const currentDay = createReducer(Date.now(), {
   [getCurrentDay]: (_, { payload }) => payload,
+  [logoutSuccess]: () => null,
+  [logoutError]: () => null,
 });
 
 const tasksReducer = combineReducers({
