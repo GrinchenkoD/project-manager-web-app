@@ -1,4 +1,4 @@
-// import { createSelector } from '@reduxjs/toolkit';
+import { createSelector } from '@reduxjs/toolkit';
 import db from '../../pages/TasksPage/db.json';
 
 const getToken = state => state;
@@ -8,55 +8,36 @@ const tasksErrorSelector = state => state.tasks.tasksError;
 const tasksLoadingSelector = state => state.tasks.tasksLoading;
 const getNowDay = state => state.tasks.currentDay;
 const getTasks = state => state;
-// const getFilter = state => state.tasks.filter;
 
-// const getVisibleTasks = createSelector(getFilter, getTasks, (filter, tasks) =>
-//   tasks.filter(item => item.title.toLowerCase().includes(filter.toLowerCase())),
-// );
+export const sprintDurationSelector = (state) =>
+  tasksSelector(state)[0].hoursWastedPerDay.length;
 
-const list = db.tasks.items;
-export const items = db.tasks.items;
-
-export const chartDaysSelector = list[0].hoursWastedPerDay.map(
-  task => task.currentDay,
+ export const hoursPlannedSelector = createSelector([tasksSelector], (items) =>
+  items
+    .map((task) => Number(task.hoursPlanned))
+    .reduce((acc, taskValue) => {
+      return (acc += taskValue);
+    }, 0)
 );
 
-export const hoursPlannedSelector = list
-  .map(task => Number(task.hoursPlanned))
-  .reduce((acc, taskValue) => {
-    return (acc += taskValue);
-  }, 0);
+export const sumHoursWastedSelector = createSelector([tasksSelector], (items) =>
+  items
+    .map((task) => Number(task.hoursWasted))
+    .reduce((acc, taskValue) => {
+      return (acc += taskValue);
+    }, 0)
+);
 
-export const sumHoursWastedSelector = list
-  .map(task => Number(task.hoursWasted))
-  .reduce((acc, taskValue) => {
-    return (acc += taskValue);
-  }, 0);
+export const chartDaysSelector = createSelector([tasksSelector], (items) =>
+  items[0].hoursWastedPerDay.map((task) => task.currentDay)
+);
 
-export const sprintDurationSelector = list[0].hoursWastedPerDay.length;
+const sprintsSelector = (state) => state.sprints;
+const itemsSprintsSelector = (state) => sprintsSelector(state).sprintsItems;
 
-// export const sprintDurationSelector = (state) =>
-//   tasksSelector(state)[0].hoursWastedPerDay.length;
-
-// export const qwer = db.tasks.items;
-//  export const hoursPlannedSelector = createSelector([tasksSelector], (items) =>
-//   items
-//     .map((task) => Number(task.hoursPlanned))
-//     .reduce((acc, taskValue) => {
-//       return (acc += taskValue);
-//     }, 0)
-// );
-
-// export const sumHoursWastedSelector = createSelector([tasksSelector], (items) =>
-//   items
-//     .map((task) => Number(task.hoursWasted))
-//     .reduce((acc, taskValue) => {
-//       return (acc += taskValue);
-//     }, 0)
-// );
-
-// export const chartDaysSelector = createSelector([tasksSelector], (items) =>
-//   items[0].hoursWastedPerDay.map((task) => task.currentDay)
+// export const findCurrentSprint = createSelector(
+//   [(state, params) => params, itemsSprintsSelector],
+//   (params, sprints) => sprints.find((el) => el.id === params.sprintId)
 // );
 
 export {

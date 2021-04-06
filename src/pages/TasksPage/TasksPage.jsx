@@ -20,7 +20,7 @@ import ChartModal from '../../components/ChartModal/ChartModal';
 import { CSSTransition } from 'react-transition-group';
 import alert from './alert.module.css';
 import { patchTitle } from 'redux/sprints/sprint-operation';
-import { getCurrentDay } from 'redux/tasks/task-action';
+
 import Loader from '../../shared/Loader/Loader';
 import {tasksLoadingSelector} from "../../redux/tasks/task-selectors"
 
@@ -47,12 +47,9 @@ export default function TasksPage() {
   const [active, setActive] = useState(false);
 
   const tasks = useSelector(tasksSelector);
-  //======================================================
-  const today = new Date().toJSON().slice(0, 10).split('-').reverse().join('.');
   const startDate = sprints.find(item => item._id === sprintId)?.startDate;
   const duration = sprints.find(item => item._id === sprintId)?.duration;
   const endDate = sprints.find(item => item._id === sprintId)?.endDate;
-  const todayReverse = today.split('.').reverse().join('-');
   const [value, setValue] = useState('');
   const _MS_PER_DAY = 1000 * 60 * 60 * 24;
 
@@ -67,18 +64,6 @@ export default function TasksPage() {
   const onFilter = event => {
     return setValue(event.target.value);
   };
-
-  // a and b are javascript Date objects
-  function dateDiffInDays(a, b) {
-    const utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
-    const utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
-    return Math.floor((utc2 - utc1) / _MS_PER_DAY);
-  }
-  // test it
-  const a = new Date(todayReverse), //today
-    b = new Date(startDate), // startDate
-    difference = dateDiffInDays(a, b);
-  const positiveDifference = Math.abs(difference) + 1;
 
   const onDecrement = () => {
     if (new Date(startDate).getDate() !== new Date(currentDay).getDate()) {
@@ -133,16 +118,8 @@ export default function TasksPage() {
   }, [startDate, _MS_PER_DAY]);
 
   useEffect(() => {
-    const date = new Date(Date.now());
-    const currentDay = `${date.getFullYear()}-${(date.getMonth() + 1)
-      .toString()
-      .padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
-    dispatch(getCurrentDay(currentDay));
-  }, [dispatch]);
-
-  useEffect(() => {
-    setCurrentDay(Date.parse(new Date(curDay)));
-  }, [curDay]);
+    setCurrentDay(curDay);
+  }, [curDay, sprintId]);
 
   return (
     <>
@@ -183,7 +160,6 @@ export default function TasksPage() {
               className={styles.btnAddSprint}
               onClick={onOpenModalSprint}
             >
-              {/* <p className={styles.btnAddIcon}>+</p> */}
               <img src={addBtn} alt="" className={styles.btnAddSprintIcon} />
             </button>
             <p className={styles.addSprintText}>Створити спринт</p>
@@ -249,8 +225,6 @@ export default function TasksPage() {
               placeholder="пошук..."
               className={styles.searchInput}
               onChange={onFilter}
-              // value={filter}
-              
             />
             <svg className={styles.searchMagnify}>
               <use href={sprite + '#magnify-glass'} />
@@ -316,21 +290,18 @@ export default function TasksPage() {
             </h2>
           ) : (
             <ul className={styles.tasksList}>
-              {
-                filtredTask.length &&
-                  filtredTask.map(task => (
-                    <TaskPageItem
-                      {...task}
-                      key={task._id}
-                      currentDay={currentDay}
-                      isDisabled={
-                        new Date(startDate).getDate() >
-                        new Date(currentDay).getDate()
-                      }
-                    />
-                  ))
-                // : tasks.map(task => <TaskPageItem {...task} key={task._id} />)}
-              }
+              {filtredTask.length &&
+                filtredTask.map(task => (
+                  <TaskPageItem
+                    {...task}
+                    key={task._id}
+                    currentDay={currentDay}
+                    isDisabled={
+                      new Date(startDate).getDate() >
+                      new Date(currentDay).getDate()
+                    }
+                  />
+                ))}
             </ul>
           )}
           <div className={styles.addTaskSection}>
@@ -339,7 +310,6 @@ export default function TasksPage() {
               className={styles.btnAdd}
               onClick={onOpenModal}
             >
-              {/* <p className={styles.btnAddIcon}>+</p> */}
               <img src={addBtn} alt="" className={styles.btnAddIcon} />
             </button>
             <p className={styles.addProjectText}>Створити задачу</p>

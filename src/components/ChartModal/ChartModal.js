@@ -32,7 +32,6 @@ class Modal extends Component {
     return (
       <div className={styles.overlay} onClick={this.handleBackDrop}>
         <div className={styles.modal}>
-          {/* <Chart /> */}
           <Qwert params={this.props.params} />
           <button
             type="button"
