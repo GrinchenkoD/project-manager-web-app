@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Line } from 'react-chartjs-2';
-// import {hoursPlannedSelector} from '../../redux/tasks/task-selectors';
 import {
   chartDaysSelector,
   hoursPlannedSelector,
   sprintDurationSelector,
   items,
+  tasksSelector,
+  findCurrentSprint,
+  itemsSelector,
 } from '../../redux/tasks/task-selectors';
 import { formatDateChanger, getBlueLineArr, getRedLineArr } from './data';
 import styles from './analytics.module.css';
@@ -22,8 +24,7 @@ const Qwert = ({
 
   const chart = () => {
     setChartData({
-      // labels: formatDateChanger(chartDays),
-      labels: formatDateChanger(chartDaysSelector),
+      labels: formatDateChanger(chartDays),
       datasets: [
         {
           label: 'Запланований залишок трудовитрат',
@@ -31,8 +32,7 @@ const Qwert = ({
           lineTension: 0,
           borderColor: 'rgb(255, 0, 0)',
           backgroundColor: 'rgb(255, 0, 0)',
-          // data: getRedLineArr(hoursPlanned, sprintDuration),
-          data: getRedLineArr(hoursPlannedSelector, sprintDurationSelector),
+          data: getRedLineArr(hoursPlanned, sprintDuration),
         },
         {
           label: 'Актуальний залишок трудовитрат у годинах',
@@ -40,12 +40,7 @@ const Qwert = ({
           lineTension: 0.3,
           borderColor: 'rgb(0, 89, 255)',
           backgroundColor: 'rgb(0, 89, 255)',
-          // data: getBlueLineArr(hoursPlanned, sprintDuration, itemsArr),
-          data: getBlueLineArr(
-            hoursPlannedSelector,
-            sprintDurationSelector,
-            items,
-          ),
+          data: getBlueLineArr(hoursPlanned, sprintDuration, itemsArr),
         },
       ],
     });
@@ -161,10 +156,10 @@ const Qwert = ({
 };
 
 const mapStateToProps = (state, ownProps) => ({
-  // hoursPlanned: hoursPlannedSelector(state),
-  // sprintDuration: sprintDurationSelector(state),
-  // chartDays: chartDaysSelector(state),
-  // itemsArr: tasksSelector(state),
+  hoursPlanned: hoursPlannedSelector(state),
+  sprintDuration: sprintDurationSelector(state),
+  chartDays: chartDaysSelector(state),
+  itemsArr: tasksSelector(state),
   // sprint: findCurrentSprint(state, ownProps.params),
 });
 
