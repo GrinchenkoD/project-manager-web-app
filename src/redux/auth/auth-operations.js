@@ -57,8 +57,7 @@ const logout = () => async (dispatch, getState) => {
   try {
     await axios.post('/auth/logout');
     token.unset();
-    dispatch(logoutSuccess());
-    window.location.reload();
+    await dispatch(logoutSuccess());
   } catch (error) {
     dispatch(logoutError(error.message));
     refreshTemplate(logout, error, dispatch);

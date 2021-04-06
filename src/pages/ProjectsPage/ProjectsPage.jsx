@@ -48,15 +48,19 @@ export default function ProjectsPage() {
   }, [dispatch]);
 
   const onOpenModal = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
+    // window.scrollTo({
+    //   top: 0,
+    //   behavior: 'smooth',
+    // });
+   
+    document.body.style.overflow = 'hidden';
     setModalOpen(true);
   };
 
   const onCloseModal = () => {
     setModalOpen(false);
+    document.body.style.overflow = 'scroll';
+  
   };
 
   const onHandleClick = e => {

@@ -37,7 +37,7 @@
 }
 
 .formControlInput:valid {
-  border-bottom: 2px solid #ff6b08;
+  border-bottom: 2px solid green;
 }
 
 .formControlInput:valid ~ .label {

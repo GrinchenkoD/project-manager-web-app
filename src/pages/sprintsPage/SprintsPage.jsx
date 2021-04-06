@@ -63,26 +63,37 @@ export default function SprintsPage() {
 
   const onOpenModal = () => {
     setModalOpen(true);
+  
+    document.body.style.overflow = 'hidden';
   };
 
   const onCloseModal = () => {
     setModalOpen(false);
+    document.body.style.overflow = 'scroll';
   };
 
   const onOpenModalPeople = () => {
     setModalAddPeople(true);
+    document.body.style.overflow = 'hidden';
+
   };
 
   const onCloseModalPeople = () => {
     setModalAddPeople(false);
+    document.body.style.overflow = 'scroll';
+
   };
 
   const onOpenModalProject = () => {
     setModalAddProject(true);
+    document.body.style.overflow = 'hidden';
+
   };
 
   const onCloseModalProject = () => {
     setModalAddProject(false);
+    document.body.style.overflow = 'scroll';
+
   };
 
   const onChangeTitle = e => {

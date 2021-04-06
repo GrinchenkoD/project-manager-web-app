@@ -278,7 +278,7 @@
 
 /*============================================ Отступы ProjectList Item= ============================= */
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .projectsListItem:not(:nth-child(2n)) {
     margin-right: 10px;
   }
