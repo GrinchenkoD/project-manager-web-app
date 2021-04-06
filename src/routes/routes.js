@@ -1,15 +1,15 @@
-import ProjectsPage from '../pages/ProjectsPage/ProjectsPage';
-import SprintsPage from '../pages/sprintsPage/SprintsPage';
-import TasksPage from '../pages/TasksPage/TasksPage';
-import LoginPage from '../pages/loginPage/LoginPage';
-import RegistrationPage from '../pages/registrationPage/RegistrationPage';
+import { lazy } from 'react';
 
 const mainRoutes = [
   {
     name: 'registration',
     path: '/registration',
     exact: true,
-    component: RegistrationPage,
+    component: lazy(() =>
+      import(
+        '../pages/registrationPage/RegistrationPage' /*webpackChunkName: "registration-page" */
+      ),
+    ),
     private: false,
     restricted: true,
   },
@@ -17,7 +17,11 @@ const mainRoutes = [
     name: 'login',
     path: '/login',
     exact: true,
-    component: LoginPage,
+    component: lazy(() =>
+      import(
+        '../pages/loginPage/LoginPage' /*webpackChunkName: "login-page" */
+      ),
+    ),
     private: false,
     restricted: true,
   },
@@ -25,7 +29,11 @@ const mainRoutes = [
     name: 'projects',
     path: '/projects',
     exact: true,
-    component: ProjectsPage,
+    component: lazy(() =>
+      import(
+        '../pages/ProjectsPage/ProjectsPage' /*webpackChunkName: "projects-page" */
+      ),
+    ),
     private: true,
     restricted: false,
   },
@@ -33,7 +41,11 @@ const mainRoutes = [
     name: 'projects',
     path: '/projects/:projectId',
     exact: true,
-    component: SprintsPage,
+    component: lazy(() =>
+      import(
+        '../pages/sprintsPage/SprintsPage' /*webpackChunkName: "sprints-page" */
+      ),
+    ),
     private: true,
     restricted: false,
   },
@@ -41,10 +53,13 @@ const mainRoutes = [
     name: 'projects',
     path: '/projects/:projectId/sprints/:sprintId',
     exact: true,
-    component: TasksPage,
+    component: lazy(() =>
+      import(
+        '../pages/TasksPage/TasksPage' /*webpackChunkName: "tasks-page" */
+      ),
+    ),
     private: true,
     restricted: false,
   },
 ];
-
 export default mainRoutes;
