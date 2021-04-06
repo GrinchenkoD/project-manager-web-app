@@ -38,10 +38,6 @@ export default function TasksPage() {
   const tasksLoading = useSelector(tasksLoadingSelector);
   const sprintsLoading = useSelector(sprintsLoadingSelector);
 
-  console.log(tasksLoading, "tasks")
-  console.log(sprintsLoading, "sprint" )
-  
-
   const [isUpdate, setUpdate] = useState(true);
   const [input, setInput] = useState();
   const [active, setActive] = useState(false);
@@ -87,16 +83,23 @@ export default function TasksPage() {
 
   const onOpenModal = () => {
     setModalOpen(true);
+    document.body.style.overflow = 'hidden';
+
   };
   const onCloseModal = () => {
     setModalOpen(false);
+    document.body.style.overflow = 'scroll';
+
   };
 
   const onOpenModalSprint = () => {
     setModalAddSprint(true);
+    document.body.style.overflow = 'hidden';
+
   };
   const onCloseModalSprint = () => {
     setModalAddSprint(false);
+    document.body.style.overflow = 'scroll';
   };
 
   const onChangeTitle = e => {
