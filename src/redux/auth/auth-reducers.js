@@ -17,13 +17,13 @@ import {
   refreshTokenRequest,
 } from '../refreshToken/refreshToken-actions.js';
 
-const initialUserState = { email: null, id: null, projects: [] };
+const initialUserState = { email: null, id: null };
 const user = createReducer(initialUserState, {
   [registerSuccess]: (_, { payload }) => {
-    return payload;
+    return { email: payload.email, id: payload.id };
   },
   [loginSuccess]: (_, { payload }) => {
-    return payload.data;
+    return { email: payload.data.email, id: payload.data.id };
   },
   [logoutSuccess]: () => null,
   [refreshTokenError]: () => null,
@@ -43,16 +43,17 @@ const refreshToken = createReducer(null, {
   [loginSuccess]: (_, { payload }) => payload.refreshToken,
   [refreshTokenSuccess]: (_, { payload }) => payload.newRefreshToken,
   [refreshTokenError]: () => null,
+  [logoutSuccess]: () => null,
 });
 
 const sid = createReducer(null, {
   [loginSuccess]: (_, { payload }) => payload.sid,
   [refreshTokenSuccess]: (_, { payload }) => payload.newSid,
   [refreshTokenError]: () => null,
+  [logoutSuccess]: () => null,
 });
 
 const isAuthentificated = createReducer(false, {
-  [registerSuccess]: () => true,
   [loginSuccess]: () => true,
   [registerError]: () => false,
   [loginError]: () => false,

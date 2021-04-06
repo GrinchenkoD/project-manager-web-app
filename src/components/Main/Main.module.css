@@ -1,2 +1,10 @@
-.mainContainer {
+@media screen and (max-width: 768px) {
+  .mainContainer {
+    margin-top: 64px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .mainContainer {
+    margin-top: 0px;
+  }
 }
