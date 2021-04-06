@@ -13,8 +13,8 @@ const formatDate = (chartDays) =>
 
 export const convertFormToUppercase = (date) => {
   const newFormatDayMounth = moment(returnDayFormat(date))
-    .locale("en")
-    .format("DD MMM");
+    .locale("uk")
+    .format("DD MMMM");
   const result = newFormatDayMounth.split("");
   const firstLetterToUppercase = result[3].toUpperCase();
   result.splice(3, 1, firstLetterToUppercase);
