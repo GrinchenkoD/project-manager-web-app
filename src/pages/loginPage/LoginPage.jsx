@@ -6,16 +6,16 @@ import * as Yup from 'yup';
 import { NavLink } from 'react-router-dom';
 import styles from './LoginPage.module.css';
 import Loader from '../../shared/Loader/Loader';
-import {authSelectors} from  "../../redux/auth/auth-selectors"
-
+import { authSelectors } from '../../redux/auth/auth-selectors';
 
 const loginSchema = Yup.object().shape({
-  email: Yup.string().required().email(),
-  password: Yup.string().required(),
+  email: Yup.string()
+    .required('* Обов’язкове поле')
+    .email('Введіть корректну адресу'),
+  password: Yup.string().required('* Обов’язкове поле'),
 });
 export default function Login() {
-
-  const loading = useSelector(authSelectors.authLoadingSelector)
+  const loading = useSelector(authSelectors.authLoadingSelector);
 
   const dispatch = useDispatch();
   return (
@@ -27,7 +27,7 @@ export default function Login() {
           const { email, password } = values;
           dispatch(login({ email, password }));
         }}
-        >
+      >
         <div className={styles.container}>
           <Form className={styles.registerForm}>
             <h2 className={styles.registerFormTitle}>Вхід</h2>
@@ -69,7 +69,7 @@ export default function Login() {
         </div>
       </Formik>
 
-      {loading&&<Loader/>}
+      {loading && <Loader />}
     </main>
   );
 }
