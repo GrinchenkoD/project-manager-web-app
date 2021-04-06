@@ -6,9 +6,10 @@ import ProjectsPageItem from '../ProjectsPageItem/ProjectsPageItem';
 import TemporaryModal from 'components/TemporaryModal/TemporaryModal';
 import ProjectForm from 'components/ProjectForm/ProjectForm';
 import { getProject } from 'redux/projects/project-operations';
-import { projectsSelector } from 'redux/projects/project-selectors';
+import { projectsLoadingSelector, projectsSelector } from 'redux/projects/project-selectors';
 import popTransition from './transitions/pop.module.css';
 import styles from './ProjectsPage.module.css';
+import Loader from '../../shared/Loader/Loader';
 
 const colors = [
   '#8c72df',
@@ -40,6 +41,7 @@ export default function ProjectsPage() {
   const history = useHistory();
   const dispatch = useDispatch();
   const match = useRouteMatch();
+  const loading = useSelector(projectsLoadingSelector);
 
   useEffect(() => {
     dispatch(getProject());
@@ -69,11 +71,12 @@ export default function ProjectsPage() {
   const projects = useSelector(projectsSelector);
 
   return (
+    <>
     <div className={styles.container}>
       <div className="projects">
         <h2 className={styles.title}>Проекти</h2>
 
-        {!projects.length ? (
+        {!projects.length&&!loading ? (
           <p className={styles.projectsNone}>
             Ваша колекція проектів порожня, скористайтесь кнопкою "Створити
             проект"
@@ -125,6 +128,8 @@ export default function ProjectsPage() {
         </TemporaryModal>
         {/* )} */}
       </div>
-    </div>
+      </div>
+      {loading&&<Loader/>}
+      </>
   );
 }

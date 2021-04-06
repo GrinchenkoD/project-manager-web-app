@@ -14,12 +14,15 @@ import { getTask } from 'redux/tasks/task-operation';
 import { tasksSelector } from 'redux/tasks/task-selectors';
 import SprintForm from '../../components/SprintForm/SprintForm';
 import { getProject } from 'redux/projects/project-operations';
-import { getSprints } from 'redux/sprints/sprint-selectors';
+import { getSprints, sprintsLoadingSelector } from 'redux/sprints/sprint-selectors';
 import { projectsSelector } from 'redux/projects/project-selectors';
 import ChartModal from '../../components/ChartModal/ChartModal';
 import { CSSTransition } from 'react-transition-group';
 import alert from './alert.module.css';
 import { patchTitle } from 'redux/sprints/sprint-operation';
+
+import Loader from '../../shared/Loader/Loader';
+import {tasksLoadingSelector} from "../../redux/tasks/task-selectors"
 
 export default function TasksPage() {
   const dispatch = useDispatch();
@@ -32,6 +35,12 @@ export default function TasksPage() {
   const { projectId } = useParams();
   const projects = useSelector(projectsSelector);
   const project = projects.find(item => item._id === projectId);
+  const tasksLoading = useSelector(tasksLoadingSelector);
+  const sprintsLoading = useSelector(sprintsLoadingSelector);
+
+  console.log(tasksLoading, "tasks")
+  console.log(sprintsLoading, "sprint" )
+  
 
   const [isUpdate, setUpdate] = useState(true);
   const [input, setInput] = useState();
@@ -113,6 +122,7 @@ export default function TasksPage() {
   }, [curDay, sprintId]);
 
   return (
+    <>
     <div className={styles.tasksContainer}>
       <div className={styles.sprintsSideBar}>
         <div className={styles.showSprints}>
@@ -274,7 +284,7 @@ export default function TasksPage() {
             <p className={styles.tasksHeaderUsed}>Використано год / день </p>
             <p className={styles.tasksHeaderTotal}>Використано годин</p>
           </div>
-          {!tasks.length ? (
+          {!tasks.length&&!tasksLoading ? (
             <h2 className={styles.tasksNone}>
               В спринті відсутні задачі, скористайтеся кнопкою "Створити задачу"
             </h2>
@@ -325,6 +335,8 @@ export default function TasksPage() {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+      {tasksLoading||sprintsLoading?<Loader/>:'' }
+      </>
   );
 }

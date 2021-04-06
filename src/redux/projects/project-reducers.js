@@ -61,7 +61,6 @@ const projectsLoading = createReducer(false, {
   [changeProjectTitleRequest]: () => true,
   [refreshTokenRequest]: () => true,
   [logoutRequest]: () => true,
-
   [addProjectSuccess]: () => false,
   [addProjectError]: () => false,
   [addContributorSuccess]: () => false,
@@ -72,7 +71,6 @@ const projectsLoading = createReducer(false, {
   [deleteProjectError]: () => false,
   [changeProjectTitleSuccess]: () => false,
   [changeProjectTitleError]: () => false,
-
   [refreshTokenSuccess]: () => false,
   [refreshTokenError]: () => false,
   [logoutSuccess]: () => false,

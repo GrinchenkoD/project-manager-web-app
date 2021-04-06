@@ -4,8 +4,8 @@ import db from '../../pages/TasksPage/db.json';
 const getToken = state => state;
 const getTasksHoursWasted = state => state.tasks;
 const tasksSelector = state => state.tasks.tasksItems;
-const tasksErrorSelector = state => state.sprints.tasksError;
-const tasksLoadingSelector = state => state.sprints.tasksLoading;
+const tasksErrorSelector = state => state.tasks.tasksError;
+const tasksLoadingSelector = state => state.tasks.tasksLoading;
 const getNowDay = state => state.tasks.currentDay;
 const getTasks = state => state;
 

@@ -1,16 +1,22 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../redux/auth/auth-operations';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { NavLink } from 'react-router-dom';
 import styles from './LoginPage.module.css';
+import Loader from '../../shared/Loader/Loader';
+import {authSelectors} from  "../../redux/auth/auth-selectors"
+
 
 const loginSchema = Yup.object().shape({
   email: Yup.string().required().email(),
   password: Yup.string().required(),
 });
 export default function Login() {
+
+  const loading = useSelector(authSelectors.authLoadingSelector)
+
   const dispatch = useDispatch();
   return (
     <main>
@@ -21,7 +27,7 @@ export default function Login() {
           const { email, password } = values;
           dispatch(login({ email, password }));
         }}
-      >
+        >
         <div className={styles.container}>
           <Form className={styles.registerForm}>
             <h2 className={styles.registerFormTitle}>Вхід</h2>
@@ -62,6 +68,8 @@ export default function Login() {
           </Form>
         </div>
       </Formik>
+
+      {loading&&<Loader/>}
     </main>
   );
 }

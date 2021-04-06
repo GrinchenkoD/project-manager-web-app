@@ -12,7 +12,10 @@ import SprintFormPeople from '../../components/SprintFormPeople/SprintFormPeople
 import ProjectForm from 'components/ProjectForm/ProjectForm';
 import { CSSTransition } from 'react-transition-group';
 import alert from './alert.module.css';
-import { projectsSelector } from 'redux/projects/project-selectors';
+import { projectsLoadingSelector, projectsSelector } from 'redux/projects/project-selectors';
+import {sprintsLoadingSelector} from "../../redux/sprints/sprint-selectors"
+import Loader from '../../shared/Loader/Loader';
+
 
 export default function SprintsPage() {
   const dispatch = useDispatch();
@@ -25,6 +28,8 @@ export default function SprintsPage() {
   const { projectId } = useParams();
   const projects = useSelector(projectsSelector);
   const project = projects.find(item => item._id === projectId);
+  const sprintsLoading = useSelector(sprintsLoadingSelector);
+  const projectsLoading = useSelector(projectsLoadingSelector);
 
   const colors = [
     '#8c72df',
@@ -94,6 +99,7 @@ export default function SprintsPage() {
   };
 
   return (
+    <>
     <div className={styles.sprintsContainer}>
       <div className={styles.sprintsSideBar}>
         <div className={styles.sprintsBackContainer}>
@@ -207,6 +213,8 @@ export default function SprintsPage() {
         </TemporaryModal>
         <SprintItem />
       </div>
-    </div>
+      </div>
+      {sprintsLoading||projectsLoading? <Loader/>:''}
+ </>
   );
 }
