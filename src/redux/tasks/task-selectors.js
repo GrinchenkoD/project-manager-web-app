@@ -1,5 +1,4 @@
 import { createSelector } from '@reduxjs/toolkit';
-import db from '../../pages/TasksPage/db.json';
 
 const getToken = state => state;
 const getTasksHoursWasted = state => state.tasks;
@@ -34,11 +33,12 @@ export const chartDaysSelector = createSelector([tasksSelector], (items) =>
 
 const sprintsSelector = (state) => state.sprints;
 const itemsSprintsSelector = (state) => sprintsSelector(state).sprintsItems;
+export const titleSprintsSelector = (state) => itemsSprintsSelector(state)[0].title;
 
-// export const findCurrentSprint = createSelector(
-//   [(state, params) => params, itemsSprintsSelector],
-//   (params, sprints) => sprints.find((el) => el.id === params.sprintId)
-// );
+export const findCurrentSprint = createSelector(
+  [(state, params) => params, itemsSprintsSelector],
+  (params, sprints) => sprints.find((el) => el._id === params.sprintId)
+);
 
 export {
   getToken,

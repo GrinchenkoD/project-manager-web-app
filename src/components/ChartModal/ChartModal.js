@@ -1,47 +1,52 @@
-import React, { Component } from 'react';
-import Qwert from '../Chart/Qwert';
+import React, { Component, useEffect, useState } from 'react';
+import Chart from '../Chart/Chart';
 import styles from './ChartModal.module.css';
+import { useParams } from 'react-router';
 
-class Modal extends Component {
-  componentDidMount() {
-    window.addEventListener('keydown', this.handleKeyDown);
-  }
-  componentWillUnmount() {
-    window.removeEventListener('keydown', this.handleKeyDown);
-  }
-  handleKeyDown = e => {
+
+const Modal = ({onClose}) => {
+
+  const params = useParams();
+  
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    }
+  })
+
+  const handleKeyDown = e => {
     if (e.code === 'Escape') {
-      this.props.onClose();
-      this.changeScrollStyle();
+      console.log(e.code);
+      onClose();
+      changeScrollStyle();
     }
   };
-  handleBackDrop = e => {
+  const handleBackDrop = e => {
     if (e.currentTarget === e.target) {
-      this.props.onClose();
-      this.changeScrollStyle();
+      onClose();
+      changeScrollStyle();
     }
   };
-  handleClickOnCloseBtn = e => {
-    e.target.nodeName === 'BUTTON' && this.props.onClose();
-    this.changeScrollStyle();
+  const handleClickOnCloseBtn = e => {
+    e.target.nodeName === 'BUTTON' && onClose();
+    changeScrollStyle();
   };
-  changeScrollStyle = () => {
+  const changeScrollStyle = () => {
     document.querySelector('body').style.overflow = 'unset';
   };
-  render() {
-    return (
-      <div className={styles.overlay} onClick={this.handleBackDrop}>
-        <div className={styles.modal}>
-          <Qwert params={this.props.params} />
-          <button
-            type="button"
-            className={styles.closeGraphicBtn}
-            onClick={this.handleClickOnCloseBtn}
-          ></button>
-        </div>
+  return (
+    <div className={styles.overlay} onClick={handleBackDrop}>
+      <div className={styles.modal}>
+        <Chart params={ params }/>
+        <button
+          type="button"
+          className={styles.closeGraphicBtn}
+          onClick={handleClickOnCloseBtn}
+        ></button>
       </div>
-    );
-  }
+    </div>
+  );
 }
-
 export default Modal;
+
