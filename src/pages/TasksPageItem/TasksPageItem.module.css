@@ -72,10 +72,6 @@
   letter-spacing: 0.04em;
   color: #000000;
 }
-/* .usedHours::before {
-  width: 30px;
-  height: 1px;
-} */
 
 .btnCont {
   margin-left: 230px;
@@ -178,9 +174,7 @@
     margin-right: 20px;
     margin-top: 10px;
     display: flex;
-    /* flex-direction: row; */
     align-items: center;
-    justify-content: space-between;
   }
   .usedTitle,
   .plannedTitle,
@@ -188,7 +182,6 @@
     display: none;
   }
   .taskTitle {
-    /* border: none; */
     margin: 0;
     width: 170px;
     margin-left: 30px;
@@ -199,13 +192,11 @@
   .total {
     display: flex;
     align-items: center;
-    margin-top: 10px;
+    margin-top: 0px;
   }
   .btnCont {
     margin: 0;
     margin-right: 30px;
-    /* margin-top: 36px;
-  margin-bottom: 39px; */
   }
 
   .tasksListItem {
@@ -215,14 +206,16 @@
   .plannedHours,
   .usedHours,
   .totalHours {
-    margin-right: 93px;
+    margin-left: 45px;
+    margin-right: 52px;
 
     display: flex;
-    /* flex-direction: column; */
     align-items: center;
   }
 
   .hoursWastedInput {
     width: 105px;
+    margin-left: 58px;
+    margin-right: 58px;
   }
 }

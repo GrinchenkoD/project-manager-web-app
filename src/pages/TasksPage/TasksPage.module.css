@@ -170,7 +170,7 @@
 }
 
 .tasksTitleEdit {
-  margin-top: 5px;
+  margin-top: 20px;
 }
 
 .changeForm {
@@ -221,14 +221,15 @@
   border: none;
   cursor: pointer;
   background-color: transparent;
-  /* transition: all 0.25s linear; */
 }
-/* .btnAdd:hover {
-  transform: scale(1.1);
-} */
+
 .btnAddIcon {
   width: 44px;
   height: 44px;
+  transition: all 0.25s linear;
+}
+.btnAddIcon:hover {
+  transform: scale(1.1);
 }
 
 /* ! btnGraphIcon */
@@ -314,9 +315,9 @@
     display: flex;
     align-content: flex-start;
     flex-wrap: wrap;
-    overflow-y: hidden;
+    overflow-y: auto;
     overflow-x: hidden;
-    width: 200px;
+    width: 190px;
     height: 360px;
   }
 
@@ -435,12 +436,6 @@
     margin-top: 20px;
   }
 
-  /* ! tasks */
-  .tasks {
-    top: 60px;
-    left: 225px;
-  }
-
   .btnAddIcon {
     position: fixed;
     top: 176px;
@@ -459,6 +454,8 @@
   /* ! tasks */
 
   .tasks {
+    top: 60px;
+    left: 225px;
     padding-left: 20px;
   }
 
@@ -479,6 +476,9 @@
     font-size: 36px;
     line-height: 44px;
     word-wrap: break-word;
+  }
+  .tasksTitleEdit {
+    margin-top: 32px;
   }
 
   .showGraphSection {
@@ -583,11 +583,8 @@
     border: none;
     cursor: pointer;
     background-color: transparent;
-    transition: all 0.25s linear;
   }
-  .btnGraph:hover {
-    transform: scale(1.1);
-  }
+
   .btnGraphIcon {
     width: 50px;
     height: 50px;
@@ -621,6 +618,9 @@
     max-width: 337px;
     height: 75px;
     word-wrap: break-word;
+  }
+  .tasksTitleEdit {
+    margin-top: 26px;
   }
 
   .search {
@@ -659,20 +659,8 @@
     line-height: 17px;
     letter-spacing: 0.04em;
     color: #181c27;
-  }
-
-  .tasksHeaderTitle,
-  .tasksHeaderPlanned {
+    text-align: center;
     width: 107px;
-  }
-
-  .tasksHeaderUsed,
-  .tasksHeaderTotal {
-    width: 100px;
-  }
-
-  .tasksHeaderUsed {
-    padding-right: 10px;
   }
 
   .tasksNone {

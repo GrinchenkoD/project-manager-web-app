@@ -24,6 +24,11 @@
   outline: none;
 }
 
+/* .registerFormInputError {
+  composes: registerFormInput;
+  color: red;
+} */
+
 .registerFormTitle {
   font-family: Montserrat;
   font-weight: 500;

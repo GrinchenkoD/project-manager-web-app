@@ -277,7 +277,7 @@
   }
 
   .sprintsBackButton::before {
-    top: 13px;
+    top: 5px;
   }
   .projectsLink {
     display: flex;
@@ -428,4 +428,8 @@
     margin-right: 30px;
     margin-top: 30px;
   }
+
+  /* .sprintsBackContainer {
+    margin-left: 106px;
+  } */
 }

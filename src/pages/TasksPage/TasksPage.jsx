@@ -14,7 +14,10 @@ import { getTask } from 'redux/tasks/task-operation';
 import { tasksSelector } from 'redux/tasks/task-selectors';
 import SprintForm from '../../components/SprintForm/SprintForm';
 import { getProject } from 'redux/projects/project-operations';
-import { getSprints, sprintsLoadingSelector } from 'redux/sprints/sprint-selectors';
+import {
+  getSprints,
+  sprintsLoadingSelector,
+} from 'redux/sprints/sprint-selectors';
 import { projectsSelector } from 'redux/projects/project-selectors';
 import ChartModal from '../../components/ChartModal/ChartModal';
 import { CSSTransition } from 'react-transition-group';
@@ -22,7 +25,7 @@ import alert from './alert.module.css';
 import { patchTitle } from 'redux/sprints/sprint-operation';
 
 import Loader from '../../shared/Loader/Loader';
-import {tasksLoadingSelector} from "../../redux/tasks/task-selectors"
+import { tasksLoadingSelector } from '../../redux/tasks/task-selectors';
 
 export default function TasksPage() {
   const dispatch = useDispatch();
@@ -84,18 +87,15 @@ export default function TasksPage() {
   const onOpenModal = () => {
     setModalOpen(true);
     document.body.style.overflow = 'hidden';
-
   };
   const onCloseModal = () => {
     setModalOpen(false);
     document.body.style.overflow = 'scroll';
-
   };
 
   const onOpenModalSprint = () => {
     setModalAddSprint(true);
     document.body.style.overflow = 'hidden';
-
   };
   const onCloseModalSprint = () => {
     setModalAddSprint(false);
@@ -126,222 +126,225 @@ export default function TasksPage() {
 
   return (
     <>
-    <div className={styles.tasksContainer}>
-      <div className={styles.sprintsSideBar}>
-        <div className={styles.showSprints}>
-          <NavLink
-            to={`/projects/${project?._id}`}
-            className={styles.sprintsLink}
-            activeClassName={styles.sprintLinkActive}
-          >
-            <svg className={styles.sprintsBackArrow}>
-              <use href={sprite + '#arrow-left'} />
-            </svg>
-            <div className={styles.sprintsBack}>
-              <p className={styles.sprintsBackText}>Показати спринти</p>
-            </div>
-          </NavLink>
-        </div>
-        <div className={styles.sprintsListSection}>
-          <ul className={styles.sprintsList}>
-            {sprints.map(sprint => (
-              <li className={styles.sprintListItem} key={sprint._id}>
-                <NavLink
-                  to={`/projects/${project._id}/sprints/${sprint._id}`}
-                  className={styles.sprintsLink}
-                  activeClassName={styles.sprintLinkActive}
-                >
-                  <img src={sprintBox} alt="" className={styles.sprintBox} />
-                  <span className={styles.sprintTitle}>{sprint.title}</span>
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-          <div className={styles.addSprint}>
-            <button
-              type="button"
-              className={styles.btnAddSprint}
-              onClick={onOpenModalSprint}
+      <div className={styles.tasksContainer}>
+        <div className={styles.sprintsSideBar}>
+          <div className={styles.showSprints}>
+            <NavLink
+              to={`/projects/${project?._id}`}
+              className={styles.sprintsLink}
+              activeClassName={styles.sprintLinkActive}
             >
-              <img src={addBtn} alt="" className={styles.btnAddSprintIcon} />
-            </button>
-            <p className={styles.addSprintText}>Створити спринт</p>
+              <svg className={styles.sprintsBackArrow}>
+                <use href={sprite + '#arrow-left'} />
+              </svg>
+              <div className={styles.sprintsBack}>
+                <p className={styles.sprintsBackText}>Показати спринти</p>
+              </div>
+            </NavLink>
           </div>
-          <TemporaryModal
-            onClose={onCloseModalSprint}
-            onOpen={modalAddSprint}
-            title="Створення проекту"
-          >
-            <SprintForm onClose={onCloseModalSprint} />
-          </TemporaryModal>
-        </div>
-      </div>
-      <div className={styles.container}>
-        <div className={styles.navigation}>
-          <div className={styles.datePicker}>
-            {!!sprintDay &&
-              !!duration &&
-              new Date(startDate).getDate() <=
-                new Date(currentDay).getDate() && (
-                <div className={styles.navDay}>
-                  <button
-                    type="button"
-                    className={styles.navLeft}
-                    onClick={onDecrement}
-                    disabled={
-                      new Date(startDate).getDate() ===
-                      new Date(currentDay).getDate()
-                    }
+          <div className={styles.sprintsListSection}>
+            <ul className={styles.sprintsList}>
+              {sprints.map(sprint => (
+                <li className={styles.sprintListItem} key={sprint._id}>
+                  <NavLink
+                    to={`/projects/${project._id}/sprints/${sprint._id}`}
+                    className={styles.sprintsLink}
+                    activeClassName={styles.sprintLinkActive}
                   >
-                    &lt;
-                  </button>
-                  <p className={styles.navCurrentDay}> {sprintDay} </p>
-                  <span> / </span>
-                  <p className={styles.navTotalDays}>{duration} </p>
-                  <button
-                    type="button"
-                    className={styles.navRight}
-                    onClick={onIncrement}
-                    disabled={
-                      new Date(endDate).getDate() ===
-                      new Date(currentDay).getDate()
-                    }
-                  >
-                    &gt;
-                  </button>
-                </div>
-              )}
-            <p className={styles.navDate}>
-              {new Date(currentDay)
-                .toJSON()
-                .slice(0, 10)
-                .split('-')
-                .reverse()
-                .join('.')}
-            </p>
-          </div>
-          <div className={styles.search}>
-            <input
-              name="filter"
-              type="text"
-              autoComplete="off"
-              placeholder="пошук..."
-              className={styles.searchInput}
-              onChange={onFilter}
-            />
-            <svg className={styles.searchMagnify}>
-              <use href={sprite + '#magnify-glass'} />
-            </svg>
-          </div>
-        </div>
-        <div className={styles.tasks}>
-          <div className={styles.tasksTitle}>
-            <CSSTransition
-              in={active}
-              unmountOnExit
-              mountOnEnter
-              timeout={200}
-              classNames={alert}
-            >
-              <form onSubmit={onFormSubmit} className={styles.changeForm}>
-                <input
-                  type="text"
-                  name="edit"
-                  autoComplete="off"
-                  value={input}
-                  onChange={onHandleChange}
-                  className={styles.changeFormInput}
-                />
-                <button
-                  type="submit"
-                  className={styles.saveButtonIcon}
-                ></button>
-              </form>
-            </CSSTransition>
-            <CSSTransition
-              classNames={alert}
-              in={isUpdate}
-              timeout={200}
-              unmountOnExit
-              mountOnEnter
-              onExited={() => setActive(true)}
-              onEnter={() => setActive(false)}
-            >
-              <>
-                <p className={styles.tasksTitleText}>{sprint?.title}</p>
-                <button
-                  type="button"
-                  className={styles.tasksTitleEdit}
-                  onClick={onChangeTitle}
-                >
-                  <svg className={styles.btnEdit}>
-                    <use href={sprite + '#icon-edit'} />
-                  </svg>
-                </button>
-              </>
-            </CSSTransition>
-          </div>
-          <div className={styles.tasksHeader}>
-            <p className={styles.tasksHeaderTitle}>Задача </p>
-            <p className={styles.tasksHeaderPlanned}>Заплановано годин</p>
-            <p className={styles.tasksHeaderUsed}>Використано год / день </p>
-            <p className={styles.tasksHeaderTotal}>Використано годин</p>
-          </div>
-          {!tasks.length&&!tasksLoading ? (
-            <h2 className={styles.tasksNone}>
-              В спринті відсутні задачі, скористайтеся кнопкою "Створити задачу"
-            </h2>
-          ) : (
-            <ul className={styles.tasksList}>
-              {filtredTask.length &&
-                filtredTask.map(task => (
-                  <TaskPageItem
-                    {...task}
-                    key={task._id}
-                    currentDay={currentDay}
-                    isDisabled={
-                      new Date(startDate).getDate() >
-                      new Date(currentDay).getDate()
-                    }
-                  />
-                ))}
+                    <img src={sprintBox} alt="" className={styles.sprintBox} />
+                    <span className={styles.sprintTitle}>{sprint.title}</span>
+                  </NavLink>
+                </li>
+              ))}
             </ul>
-          )}
-          <div className={styles.addTaskSection}>
-            <button
-              type="button"
-              className={styles.btnAdd}
-              onClick={onOpenModal}
-            >
-              <img src={addBtn} alt="" className={styles.btnAddIcon} />
-            </button>
-            <p className={styles.addProjectText}>Створити задачу</p>
-          </div>
-          <TemporaryModal
-            onClose={onCloseModal}
-            onOpen={modalOpen}
-            title="Створення задачi"
-          >
-            <TaskForm onClose={onCloseModal} />
-          </TemporaryModal>
-          <div className={styles.showGraphSection}>
-            {tasks.length > 2 &&
+            <div className={styles.addSprint}>
               <button
                 type="button"
-                onClick={() => setDiagramModal(true)}
-                className={styles.btnGraph}
+                className={styles.btnAddSprint}
+                onClick={onOpenModalSprint}
               >
-                <img src={analytics} alt="" className={styles.btnGraphIcon} />
+                <img src={addBtn} alt="" className={styles.btnAddSprintIcon} />
               </button>
-            }
-            {diagramModal && (
-              <ChartModal onClose={() => setDiagramModal(false)} />
+              <p className={styles.addSprintText}>Створити спринт</p>
+            </div>
+            <TemporaryModal
+              onClose={onCloseModalSprint}
+              onOpen={modalAddSprint}
+              title="Створення проекту"
+            >
+              <SprintForm onClose={onCloseModalSprint} />
+            </TemporaryModal>
+          </div>
+        </div>
+        <div className={styles.container}>
+          <div className={styles.navigation}>
+            <div className={styles.datePicker}>
+              {!!sprintDay &&
+                !!duration &&
+                new Date(startDate).getDate() <=
+                  new Date(currentDay).getDate() && (
+                  <div className={styles.navDay}>
+                    <button
+                      type="button"
+                      className={styles.navLeft}
+                      onClick={onDecrement}
+                      disabled={
+                        new Date(startDate).getDate() ===
+                        new Date(currentDay).getDate()
+                      }
+                    >
+                      &#5176;
+                    </button>
+                    <p className={styles.navCurrentDay}> {sprintDay} </p>
+                    <span> / </span>
+                    <p className={styles.navTotalDays}>{duration} </p>
+                    <button
+                      type="button"
+                      className={styles.navRight}
+                      onClick={onIncrement}
+                      disabled={
+                        new Date(endDate).getDate() ===
+                        new Date(currentDay).getDate()
+                      }
+                    >
+                      &#5171;
+                    </button>
+                  </div>
+                )}
+              <p className={styles.navDate}>
+                {new Date(currentDay)
+                  .toJSON()
+                  .slice(0, 10)
+                  .split('-')
+                  .reverse()
+                  .join('.')}
+              </p>
+            </div>
+            <div className={styles.search}>
+              <input
+                name="filter"
+                type="text"
+                autoComplete="off"
+                placeholder="пошук..."
+                className={styles.searchInput}
+                onChange={onFilter}
+              />
+              <svg className={styles.searchMagnify}>
+                <use href={sprite + '#magnify-glass'} />
+              </svg>
+            </div>
+          </div>
+          <div className={styles.tasks}>
+            <div className={styles.tasksTitle}>
+              <CSSTransition
+                in={active}
+                unmountOnExit
+                mountOnEnter
+                timeout={200}
+                classNames={alert}
+              >
+                <form onSubmit={onFormSubmit} className={styles.changeForm}>
+                  <input
+                    type="text"
+                    name="edit"
+                    autoComplete="off"
+                    value={input}
+                    onChange={onHandleChange}
+                    className={styles.changeFormInput}
+                  />
+                  <button
+                    type="submit"
+                    className={styles.saveButtonIcon}
+                  ></button>
+                </form>
+              </CSSTransition>
+              <CSSTransition
+                classNames={alert}
+                in={isUpdate}
+                timeout={200}
+                unmountOnExit
+                mountOnEnter
+                onExited={() => setActive(true)}
+                onEnter={() => setActive(false)}
+              >
+                <>
+                  <p className={styles.tasksTitleText}>{sprint?.title}</p>
+                  <button
+                    type="button"
+                    className={styles.tasksTitleEdit}
+                    onClick={onChangeTitle}
+                  >
+                    <svg className={styles.btnEdit}>
+                      <use href={sprite + '#icon-edit'} />
+                    </svg>
+                  </button>
+                </>
+              </CSSTransition>
+            </div>
+            <div className={styles.tasksHeader}>
+              <p className={styles.tasksHeaderTitle}>Задача </p>
+              <p className={styles.tasksHeaderPlanned}>Заплановано годин</p>
+              <p className={styles.tasksHeaderUsed}>Використано год/день </p>
+              <p className={styles.tasksHeaderTotal}>
+                Використано годин (загал.)
+              </p>
+            </div>
+            {!tasks.length && !tasksLoading ? (
+              <h2 className={styles.tasksNone}>
+                У спринті відсутні задачі, скористайтеся кнопкою "Створити
+                задачу"
+              </h2>
+            ) : (
+              <ul className={styles.tasksList}>
+                {filtredTask.length &&
+                  filtredTask.map(task => (
+                    <TaskPageItem
+                      {...task}
+                      key={task._id}
+                      currentDay={currentDay}
+                      isDisabled={
+                        new Date(startDate).getDate() >
+                        new Date(currentDay).getDate()
+                      }
+                    />
+                  ))}
+              </ul>
             )}
+            <div className={styles.addTaskSection}>
+              <button
+                type="button"
+                className={styles.btnAdd}
+                onClick={onOpenModal}
+              >
+                <img src={addBtn} alt="" className={styles.btnAddIcon} />
+              </button>
+              <p className={styles.addProjectText}>Створити задачу</p>
+            </div>
+            <TemporaryModal
+              onClose={onCloseModal}
+              onOpen={modalOpen}
+              title="Створення задачi"
+            >
+              <TaskForm onClose={onCloseModal} />
+            </TemporaryModal>
+            <div className={styles.showGraphSection}>
+              {tasks.length > 2 && (
+                <button
+                  type="button"
+                  onClick={() => setDiagramModal(true)}
+                  className={styles.btnGraph}
+                >
+                  <img src={analytics} alt="" className={styles.btnGraphIcon} />
+                </button>
+              )}
+              {diagramModal && (
+                <ChartModal onClose={() => setDiagramModal(false)} />
+              )}
+            </div>
           </div>
         </div>
       </div>
-      </div>
-      {tasksLoading||sprintsLoading?<Loader/>:'' }
-      </>
+      {tasksLoading || sprintsLoading ? <Loader /> : ''}
+    </>
   );
 }
