@@ -84,7 +84,7 @@ const SprintForm = ({ onClose }) => {
               }
               filterDate={isWeekday}
               locale={uk}
-              minDate={checkedBeforeDay ? new Date() : ''}
+              minDate={!checkedBeforeDay ? new Date() : ''}
               showDisabledMonthNavigation
             />
           </div>
