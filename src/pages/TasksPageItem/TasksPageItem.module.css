@@ -14,7 +14,13 @@
 .tasksListItem:hover {
   transform: scale(1.05);
 }
-
+.zero {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  color: #181c27;
+}
 .taskTitle {
   font-weight: 500;
   font-size: 18px;
@@ -102,6 +108,7 @@
   text-align: center;
   border: none;
   border-bottom: 1px solid rgba(24, 28, 39, 0.2);
+  cursor: pointer;
 }
 .hoursWastedInput:focus {
   outline: none;
