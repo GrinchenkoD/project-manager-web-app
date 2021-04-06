@@ -124,6 +124,9 @@ export default function TasksPage() {
     setCurrentDay(curDay);
   }, [curDay, sprintId]);
 
+  console.log(Date.parse(startDate));
+  console.log(currentDay);
+
   return (
     <>
       <div className={styles.tasksContainer}>
@@ -181,8 +184,7 @@ export default function TasksPage() {
             <div className={styles.datePicker}>
               {!!sprintDay &&
                 !!duration &&
-                new Date(startDate).getDate() <=
-                  new Date(currentDay).getDate() && (
+                Date.parse(startDate) <= new Date(currentDay) && (
                   <div className={styles.navDay}>
                     <button
                       type="button"

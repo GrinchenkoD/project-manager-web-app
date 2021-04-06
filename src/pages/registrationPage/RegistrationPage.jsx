@@ -9,9 +9,11 @@ import { authSelectors } from '../../redux/auth/auth-selectors';
 import Loader from '../../shared/Loader/Loader';
 
 const regSchema = Yup.object().shape({
-  email: Yup.string().required().email(),
-  password: Yup.string().required(),
-  confirmPassword: Yup.string().required(),
+  email: Yup.string()
+    .required('* Обов’язкове поле')
+    .email('Введіть корректну адресу'),
+  password: Yup.string().required('* Обов’язкове поле'),
+  confirmPassword: Yup.string().required('* Обов’язкове поле'),
 });
 export default function Registration() {
   const dispatch = useDispatch();
