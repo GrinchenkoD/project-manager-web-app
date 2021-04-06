@@ -195,7 +195,7 @@ export default function TasksPage() {
                         new Date(currentDay).getDate()
                       }
                     >
-                      &lt;
+                      &#5176;
                     </button>
                     <p className={styles.navCurrentDay}> {sprintDay} </p>
                     <span> / </span>
@@ -209,7 +209,7 @@ export default function TasksPage() {
                         new Date(currentDay).getDate()
                       }
                     >
-                      &gt;
+                      &#5171;
                     </button>
                   </div>
                 )}
@@ -286,12 +286,14 @@ export default function TasksPage() {
             <div className={styles.tasksHeader}>
               <p className={styles.tasksHeaderTitle}>Задача </p>
               <p className={styles.tasksHeaderPlanned}>Заплановано годин</p>
-              <p className={styles.tasksHeaderUsed}>Використано год / день </p>
-              <p className={styles.tasksHeaderTotal}>Використано годин</p>
+              <p className={styles.tasksHeaderUsed}>Використано год/день </p>
+              <p className={styles.tasksHeaderTotal}>
+                Використано годин (загал.)
+              </p>
             </div>
             {!tasks.length && !tasksLoading ? (
               <h2 className={styles.tasksNone}>
-                В спринті відсутні задачі, скористайтеся кнопкою "Створити
+                У спринті відсутні задачі, скористайтеся кнопкою "Створити
                 задачу"
               </h2>
             ) : (

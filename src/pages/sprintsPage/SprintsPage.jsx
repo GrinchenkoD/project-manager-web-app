@@ -12,10 +12,12 @@ import SprintFormPeople from '../../components/SprintFormPeople/SprintFormPeople
 import ProjectForm from 'components/ProjectForm/ProjectForm';
 import { CSSTransition } from 'react-transition-group';
 import alert from './alert.module.css';
-import { projectsLoadingSelector, projectsSelector } from 'redux/projects/project-selectors';
-import {sprintsLoadingSelector} from "../../redux/sprints/sprint-selectors"
+import {
+  projectsLoadingSelector,
+  projectsSelector,
+} from 'redux/projects/project-selectors';
+import { sprintsLoadingSelector } from '../../redux/sprints/sprint-selectors';
 import Loader from '../../shared/Loader/Loader';
-
 
 export default function SprintsPage() {
   const dispatch = useDispatch();
@@ -63,7 +65,7 @@ export default function SprintsPage() {
 
   const onOpenModal = () => {
     setModalOpen(true);
-  
+
     document.body.style.overflow = 'hidden';
   };
 
@@ -75,25 +77,21 @@ export default function SprintsPage() {
   const onOpenModalPeople = () => {
     setModalAddPeople(true);
     document.body.style.overflow = 'hidden';
-
   };
 
   const onCloseModalPeople = () => {
     setModalAddPeople(false);
     document.body.style.overflow = 'scroll';
-
   };
 
   const onOpenModalProject = () => {
     setModalAddProject(true);
     document.body.style.overflow = 'hidden';
-
   };
 
   const onCloseModalProject = () => {
     setModalAddProject(false);
     document.body.style.overflow = 'scroll';
-
   };
 
   const onChangeTitle = e => {
@@ -111,121 +109,124 @@ export default function SprintsPage() {
 
   return (
     <>
-    <div className={styles.sprintsContainer}>
-      <div className={styles.sprintsSideBar}>
-        <div className={styles.sprintsBackContainer}>
-          <a href="/" className={styles.sprintsBackButton}>
-            Показати проекти
-          </a>
-        </div>
-        <ul className={styles.sprintsProjectList}>
-          {projects.map(project => (
-            <li className={styles.sprintsProjectItem} key={project._id}>
-              <NavLink
-                to={`/projects/${project._id}`}
-                className={styles.projectsLink}
-                activeClassName={styles.projectsLinkActive}
-              >
-                <div
-                  className={styles.sideBarImage}
-                  style={{ backgroundColor: getCurrentColor() }}
-                ></div>
-                <span className={styles.projTitleText}> {project.title}</span>
-              </NavLink>
-            </li>
-          ))}
-        </ul>
-        <div className={styles.buttonCont}>
-          <button className={styles.sprintsButton} onClick={onOpenModalProject}>
-            <img src={sideBarButton} alt="" />
-          </button>
-          <p className={styles.buttonText}>Створити проект</p>
-        </div>
-      </div>
-      <div className={styles.sprintMainCont}>
-        <div className={styles.sprintUpperCont}>
-          <div className={styles.firstBlockLeft}>
-            <CSSTransition
-              in={active}
-              unmountOnExit
-              mountOnEnter
-              timeout={300}
-              classNames={alert}
-            >
-              <form onSubmit={onFormSubmit} className={styles.changeForm}>
-                <input
-                  type="text"
-                  name="edit"
-                  value={input}
-                  onChange={onHandleChange}
-                  className={styles.changeFormInput}
-                />{' '}
-                <button
-                  type="submit"
-                  className={styles.saveButtonIcon}
-                ></button>{' '}
-              </form>
-            </CSSTransition>
-            <CSSTransition
-              classNames={alert}
-              in={isUpdate}
-              timeout={300}
-              unmountOnExit
-              mountOnEnter
-              onExited={() => setActive(true)}
-              onEnter={() => setActive(false)}
-            >
-              <>
-                <h2 className={styles.mainblockTitle}>{project?.title}</h2>
-                <button
-                  type="button"
-                  className={styles.changeNameButton}
-                  onClick={onChangeTitle}
-                ></button>
-              </>
-            </CSSTransition>
+      <div className={styles.sprintsContainer}>
+        <div className={styles.sprintsSideBar}>
+          <div className={styles.sprintsBackContainer}>
+            <a href="/" className={styles.sprintsBackButton}>
+              Показати проекти
+            </a>
           </div>
-          <div className={styles.sprintSecondBlock}>
-            <button className={styles.sprintsButton} onClick={onOpenModal}>
-              <img className="sprintsButtonImg" src={sideBarButton} alt="" />
+          <ul className={styles.sprintsProjectList}>
+            {projects.map(project => (
+              <li className={styles.sprintsProjectItem} key={project._id}>
+                <NavLink
+                  to={`/projects/${project._id}`}
+                  className={styles.projectsLink}
+                  activeClassName={styles.projectsLinkActive}
+                >
+                  <div
+                    className={styles.sideBarImage}
+                    style={{ backgroundColor: getCurrentColor() }}
+                  ></div>
+                  <span className={styles.projTitleText}> {project.title}</span>
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+          <div className={styles.buttonCont}>
+            <button
+              className={styles.sprintsButton}
+              onClick={onOpenModalProject}
+            >
+              <img src={sideBarButton} alt="" />
             </button>
-            <p className={styles.sprintUpperText}>Створити спринт</p>
+            <p className={styles.buttonText}>Створити проект</p>
           </div>
         </div>
-        <div className={styles.addPeopleCont}>
-          <button
-            type="button"
-            className={styles.addButon}
-            onClick={onOpenModalPeople}
+        <div className={styles.sprintMainCont}>
+          <div className={styles.sprintUpperCont}>
+            <div className={styles.firstBlockLeft}>
+              <CSSTransition
+                in={active}
+                unmountOnExit
+                mountOnEnter
+                timeout={300}
+                classNames={alert}
+              >
+                <form onSubmit={onFormSubmit} className={styles.changeForm}>
+                  <input
+                    type="text"
+                    name="edit"
+                    value={input}
+                    onChange={onHandleChange}
+                    className={styles.changeFormInput}
+                  />{' '}
+                  <button
+                    type="submit"
+                    className={styles.saveButtonIcon}
+                  ></button>{' '}
+                </form>
+              </CSSTransition>
+              <CSSTransition
+                classNames={alert}
+                in={isUpdate}
+                timeout={300}
+                unmountOnExit
+                mountOnEnter
+                onExited={() => setActive(true)}
+                onEnter={() => setActive(false)}
+              >
+                <>
+                  <h2 className={styles.mainblockTitle}>{project?.title}</h2>
+                  <button
+                    type="button"
+                    className={styles.changeNameButton}
+                    onClick={onChangeTitle}
+                  ></button>
+                </>
+              </CSSTransition>
+            </div>
+            <div className={styles.sprintSecondBlock}>
+              <button className={styles.sprintsButton} onClick={onOpenModal}>
+                <img className="sprintsButtonImg" src={sideBarButton} alt="" />
+              </button>
+              <p className={styles.sprintUpperText}>Створити спринт</p>
+            </div>
+          </div>
+          <div className={styles.addPeopleCont}>
+            <button
+              type="button"
+              className={styles.addButon}
+              onClick={onOpenModalPeople}
+            >
+              Додати людей
+            </button>
+          </div>
+          <TemporaryModal
+            onClose={onCloseModal}
+            onOpen={modalOpen}
+            title="Створення спринта"
           >
-            Додати людей
-          </button>
+            <SprintForm onClose={onCloseModal} />
+          </TemporaryModal>
+          <TemporaryModal
+            onClose={onCloseModalPeople}
+            onOpen={modalAddPeople}
+            title="Додати людей"
+          >
+            <SprintFormPeople onClose={onCloseModalPeople} />
+          </TemporaryModal>
+          <TemporaryModal
+            onClose={onCloseModalProject}
+            onOpen={modalAddProject}
+            title="Створення проекту"
+          >
+            <ProjectForm onClose={onCloseModalProject} />
+          </TemporaryModal>
+          <SprintItem />
         </div>
-        <TemporaryModal
-          onClose={onCloseModal}
-          onOpen={modalOpen}
-          title="Створення спринта"
-        >
-          <SprintForm onClose={onCloseModal} />
-        </TemporaryModal>
-        <TemporaryModal
-          onClose={onCloseModalPeople}
-          onOpen={modalAddPeople}
-          title="Додати людей"
-        >
-          <SprintFormPeople onClose={onCloseModalPeople} />
-        </TemporaryModal>
-        <TemporaryModal
-          onClose={onCloseModalProject}
-          onOpen={modalAddProject}
-          title="Створення проекту"
-        >
-          <ProjectForm onClose={onCloseModalProject} />
-        </TemporaryModal>
-        <SprintItem />
       </div>
-      </div>
-      {sprintsLoading||projectsLoading? <Loader/>:''}
- </>
+      {sprintsLoading || projectsLoading ? <Loader /> : ''}
+    </>
   );
 }
