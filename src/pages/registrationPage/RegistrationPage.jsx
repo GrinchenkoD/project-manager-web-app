@@ -32,6 +32,7 @@ export default function Registration() {
           //   alert('Паролi не спiвпадають!');
           //   return;
           // }
+          
         }}
       >
         <div className={styles.container}>
