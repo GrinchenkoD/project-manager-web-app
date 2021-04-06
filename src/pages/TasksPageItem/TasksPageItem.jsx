@@ -41,7 +41,7 @@ export default function TaskPageItem(task) {
         <p className={styles.plannedHours}>{task.hoursPlanned}</p>
       </div>
       <div className={styles.used}>
-        <p className={styles.usedTitle}>Витрачено год / день </p>
+        <p className={styles.usedTitle}>Витрачено год/день </p>
         {task.isDisabled ? (
           <p className={styles.hoursWastedInput}>
             <span className={styles.zero}> 0 </span>

@@ -66,7 +66,7 @@ export default function Registration() {
               className={styles.registerFormInput}
               type="password"
               name="confirmPassword"
-              placeholder="Повторите пароль"
+              placeholder="Повторіть пароль"
             />
             <ErrorMessage
               name="confirmPassword"
