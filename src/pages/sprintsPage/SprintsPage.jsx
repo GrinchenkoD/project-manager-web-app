@@ -62,37 +62,37 @@ export default function SprintsPage() {
   }, [dispatch, projectId]);
 
   const onOpenModal = () => {
+    document.body.style.overflow = 'hidden';
     setModalOpen(true);
   
-    document.body.style.overflow = 'hidden';
   };
 
   const onCloseModal = () => {
-    setModalOpen(false);
     document.body.style.overflow = 'scroll';
+    setModalOpen(false);
   };
 
   const onOpenModalPeople = () => {
-    setModalAddPeople(true);
     document.body.style.overflow = 'hidden';
+    setModalAddPeople(true);
 
   };
 
   const onCloseModalPeople = () => {
-    setModalAddPeople(false);
     document.body.style.overflow = 'scroll';
+    setModalAddPeople(false);
 
   };
 
   const onOpenModalProject = () => {
-    setModalAddProject(true);
     document.body.style.overflow = 'hidden';
+    setModalAddProject(true);
 
   };
 
   const onCloseModalProject = () => {
-    setModalAddProject(false);
     document.body.style.overflow = 'scroll';
+    setModalAddProject(false);
 
   };
 
