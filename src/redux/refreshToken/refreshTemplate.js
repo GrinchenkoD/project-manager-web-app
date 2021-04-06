@@ -1,14 +1,14 @@
 import axios from 'axios';
 import { refreshCurrentToken } from './refreshToken-operations';
 
-const token = {
+export const token = {
   unset() {
     axios.defaults.headers.common.Authorization = '';
   },
 };
 
 const refreshTemplate = async (callback, error, dispatch) => {
-  if (error.response?.status >= 400 && error.response?.status <= 500) {
+  if (error.response?.status === 401 || error.response?.status === 404) {
     try {
       await dispatch(refreshCurrentToken());
       dispatch(callback());
