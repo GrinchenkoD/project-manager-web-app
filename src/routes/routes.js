@@ -62,5 +62,4 @@ const mainRoutes = [
     restricted: false,
   },
 ];
-
 export default mainRoutes;
