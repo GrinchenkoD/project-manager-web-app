@@ -90,7 +90,7 @@ export default function TasksPage() {
   };
   const onCloseModal = () => {
     setModalOpen(false);
-    document.body.style.overflow = 'scroll';
+    document.body.style.overflow = '';
   };
 
   const onOpenModalSprint = () => {
@@ -99,7 +99,7 @@ export default function TasksPage() {
   };
   const onCloseModalSprint = () => {
     setModalAddSprint(false);
-    document.body.style.overflow = 'scroll';
+    document.body.style.overflow = '';
   };
 
   const onChangeTitle = e => {
@@ -298,7 +298,10 @@ export default function TasksPage() {
               </h2>
             ) : (
               <ul className={styles.tasksList}>
-                {filtredTask.length &&
+                {tasksLoading || sprintsLoading ? (
+                  <Loader />
+                ) : (
+                  filtredTask.length &&
                   filtredTask.map(task => (
                     <TaskPageItem
                       {...task}
@@ -309,7 +312,8 @@ export default function TasksPage() {
                         new Date(currentDay).getDate()
                       }
                     />
-                  ))}
+                  ))
+                )}
               </ul>
             )}
             <div className={styles.addTaskSection}>
@@ -346,7 +350,6 @@ export default function TasksPage() {
           </div>
         </div>
       </div>
-      {tasksLoading || sprintsLoading ? <Loader /> : ''}
     </>
   );
 }
