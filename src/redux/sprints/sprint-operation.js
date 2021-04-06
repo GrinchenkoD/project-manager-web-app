@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { logoutSuccess } from 'redux/auth/auth-actions';
 import { refreshTemplate } from 'redux/refreshToken/refreshTemplate';
 import {
   addSprintRequest,
@@ -43,6 +44,11 @@ const addSprint = (projectId, sprint) => async (dispatch, getState) => {
     dispatch(addSprintSuccess({ ...data, _id: id }));
   } catch (error) {
     dispatch(addSprintError(error.message));
+    if (error.response?.status === 404) {
+      token.unset();
+      dispatch(logoutSuccess());
+      return;
+    }
     refreshTemplate(() => addSprint(projectId, sprint), error, dispatch);
   }
 };

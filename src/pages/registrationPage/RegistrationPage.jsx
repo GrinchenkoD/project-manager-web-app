@@ -5,20 +5,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import { NavLink } from 'react-router-dom';
 import styles from './RegisterPage.module.css';
-import { authSelectors } from "../../redux/auth/auth-selectors"
+import { authSelectors } from '../../redux/auth/auth-selectors';
 import Loader from '../../shared/Loader/Loader';
 
-
-
 const regSchema = Yup.object().shape({
-  email: Yup.string().required().email(),
-  password: Yup.string().required(),
-  confirmPassword: Yup.string().required(),
+  email: Yup.string()
+    .required('* Обов’язкове поле')
+    .email('Введіть корректну адресу'),
+  password: Yup.string().required('* Обов’язкове поле'),
+  confirmPassword: Yup.string().required('* Обов’язкове поле'),
 });
 export default function Registration() {
   const dispatch = useDispatch();
-  const loading = useSelector(authSelectors.authLoadingSelector)
-
+  const loading = useSelector(authSelectors.authLoadingSelector);
 
   return (
     <main>
@@ -87,7 +86,7 @@ export default function Registration() {
         </div>
       </Formik>
 
-     {loading&&<Loader/>}
+      {loading && <Loader />}
     </main>
   );
 }
