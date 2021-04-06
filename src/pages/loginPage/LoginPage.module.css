@@ -1,7 +1,7 @@
 .container {
   min-width: 320px;
-  padding-left: 20px;
-  padding-right: 20px;
+  height: 100vh;
+  padding: 70px 20px 0 20px;
 }
 .registerForm {
   display: flex;
@@ -70,7 +70,7 @@
 }
 @media (min-width: 768px) {
   .container {
-    height: calc(100vh - 90px);
+    height: calc(100vh - 74px);
     padding: 0;
     background-color: #e5e5e5;
     position: relative;
@@ -79,7 +79,7 @@
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -61%);
+    transform: translate(-50%, -52%);
     width: 570px;
     height: 455px;
     background: #fafafa;
