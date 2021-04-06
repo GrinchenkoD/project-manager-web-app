@@ -1,79 +1,164 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 import { Line } from 'react-chartjs-2';
-// import db from '../../pages/TasksPage/db.json';
+import {
+  chartDaysSelector,
+  hoursPlannedSelector,
+  sprintDurationSelector,
+  tasksSelector,
+  findCurrentSprint,
+} from '../../redux/tasks/task-selectors';
+import { formatDateChanger, getBlueLineArr, getRedLineArr } from './data';
+import styles from './analytics.module.css';
 
-const data = {
-  labels: ['Планування', '31 Бер', '01 Квіт', '02 Квіт'],
-  datasets: [
-    {
-      label: 'Запланований залишок трудовитрат',
-      fill: false,
-      lineTension: 0.5,
-      backgroundColor: 'rgba(75,192,192,0.4)',
-      borderColor: 'rgba(255,0,0,1)',
-      borderCapStyle: 'butt',
-      borderDash: [],
-      borderDashOffset: 0.0,
-      borderJoinStyle: 'miter',
-      pointBorderColor: 'rgba(255,0,0,1)',
-      pointBackgroundColor: '#fff',
-      pointBorderWidth: 1,
-      pointHoverRadius: 5,
-      pointHoverBackgroundColor: 'rgba(255,0,0,1)',
-      pointHoverBorderColor: 'rgba(220,220,220,1)',
-      pointHoverBorderWidth: 2,
-      pointRadius: 3,
-      pointHitRadius: 10,
-      data: [65, 59, 80, 81, 56, 55, 40],
+const Chart = ({
+  hoursPlanned,
+  sprintDuration,
+  chartDays,
+  itemsArr,
+  sprint,
+}) => {
+  const [chartData, setChartData] = useState({});
+
+
+  const chart = () => {
+    setChartData({
+      labels: formatDateChanger(chartDays),
+      datasets: [
+        {
+          label: 'Запланований залишок трудовитрат',
+          fill: false,
+          lineTension: 0,
+          borderColor: 'rgb(255, 0, 0)',
+          backgroundColor: 'rgb(255, 0, 0)',
+          data: getRedLineArr(hoursPlanned, sprintDuration),
+        },
+        {
+          label: 'Актуальний залишок трудовитрат у годинах',
+          fill: false,
+          lineTension: 0.3,
+          borderColor: 'rgb(0, 89, 255)',
+          backgroundColor: 'rgb(0, 89, 255)',
+          data: getBlueLineArr(hoursPlanned, sprintDuration, itemsArr),
+        },
+      ],
+    });
+  };
+
+  const chartOptions = {
+    layout: {
+      padding: {
+        left: 0,
+        right: 10,
+        top: 20,
+        bottom: 10,
+      },
     },
-    {
-      label: 'Актуальний залишок трудовитрат',
-      fill: false,
-      lineTension: 0.5,
-      backgroundColor: 'rgba(75,192,192,0.4)',
-      borderColor: 'rgba(18,47,170,1)',
-      borderCapStyle: 'butt',
-      borderDash: [],
-      borderDashOffset: 0.0,
-      borderJoinStyle: 'miter',
-      pointBorderColor: 'rgba(18,47,170,1)',
-      pointBackgroundColor: '#fff',
-      pointBorderWidth: 1,
-      pointHoverRadius: 5,
-      pointHoverBackgroundColor: 'rgba(18,47,170,1)',
-      pointHoverBorderColor: 'rgba(220,220,220,1)',
-      pointHoverBorderWidth: 2,
-      pointRadius: 3,
-      pointHitRadius: 10,
-      data: [55, 100, 300, 200, 150, 89, 190],
+    responsive: true,
+    title: {
+      display: true,
+      text: sprint.title,
+      fontColor: '#181C27',
+      fontFamily: "'Montserrat', 'sans-serif'",
+      fontSize: 20,
+      padding: 0,
     },
-  ],
+    elements: {
+      line: {
+        borderWidth: 2,
+      },
+      point: {
+        pointStyle: 'circle',
+        borderWidth: 2,
+        hoverRadius: 5,
+        hoverBackgroundColor: 'rgba(255, 255, 255, 0.2)',
+        hoverBorderWidth: 2,
+        radius: 2,
+        hitRadius: 10,
+      },
+    },
+    tooltips: {
+      mode: 'index',
+      titleFontSize: 14,
+      titleMarginBottom: 10,
+      bodyFontFamily: "'Montserrat', 'sans-serif'",
+      bodyFontSize: 14,
+      bodySpacing: 5,
+      bodyAlign: 'center',
+      xPadding: 8,
+      yPadding: 8,
+      caretPadding: 5,
+      caretSize: 10,
+      cornerRadius: 5,
+      callbacks: {
+        label: tooltipItem => {
+          let label = tooltipItem.value;
+          label = '  ' + label;
+          return label;
+        },
+      },
+    },
+    scales: {
+      yAxes: [
+        {
+          scaleLabel: {
+            display: true,
+            labelString: 'Людино-години',
+            fontFamily: "'Montserrat', 'sans-serif'",
+            fontSize: 14,
+            fontColor: '#181C27',
+          },
+          ticks: {
+            beginAtZero: true,
+            fontSize: 14,
+            fontColor: '#181C27',
+          },
+          gridLines: {
+            display: true,
+          },
+        },
+      ],
+      xAxes: [
+        {
+          gridLines: {
+            display: false,
+          },
+          ticks: {
+            beginAtZero: false,
+            fontSize: 14,
+            fontColor: '#181C27',
+          },
+        },
+      ],
+    },
+    legend: {
+      display: true,
+      fullWidth: false,
+      labels: {
+        fontColor: '#181C27',
+        fontFamily: "'Montserrat', 'sans-serif'",
+        fontSize: 14,
+        boxWidth: 5,
+        usePointStyle: true,
+        padding: 20,
+      },
+    },
+  };
+
+  useEffect(() => chart(), []);
+
+  return (
+    <div className={styles.graphicWrapper}>
+      <Line options={chartOptions} data={chartData} />
+    </div>
+  );
 };
-// const getFilteredData = () => {
-//   console.log(db);
-//   const hoursPlaned = db.map(item => item.hoursPlanned).reduce((acc, item) => {
-//     acc += item;
-//     return acc;
-//     console.log( acc);
-//   }, 0);
+const mapStateToProps = (state, ownProps) => ({
+  hoursPlanned: hoursPlannedSelector(state),
+  sprintDuration: sprintDurationSelector(state),
+  chartDays: chartDaysSelector(state),
+  itemsArr: tasksSelector(state),
+  sprint: findCurrentSprint(state, ownProps.params),
+});
 
-//   console.log(hoursPlaned);
-//   console.log(db.map(item => item));
-// }
-// getFilteredData();
-
-export default class Chart extends Component {
-  render() {
-    return (
-      <div>
-        <h2>1-st Sprint of 1-st project</h2>
-        <button>x</button>
-        <Line ref="chart" data={data} />
-      </div>
-    );
-  }
-  componentDidMount() {
-    const { datasets } = this.refs.chart.chartInstance.data;
-    console.log(datasets[0].data);
-  }
-}
+export default connect(mapStateToProps)(Chart);
