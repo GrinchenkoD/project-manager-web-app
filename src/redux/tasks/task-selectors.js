@@ -8,35 +8,6 @@ const tasksErrorSelector = state => state.sprints.tasksError;
 const tasksLoadingSelector = state => state.sprints.tasksLoading;
 const getNowDay = state => state.tasks.currentDay;
 const getTasks = state => state;
-// const getFilter = state => state.tasks.filter;
-
-// const getVisibleTasks = createSelector(getFilter, getTasks, (filter, tasks) =>
-//   tasks.filter(item => item.title.toLowerCase().includes(filter.toLowerCase())),
-// );
-
-//From db.json
-//========================================================================
-// const list = db.tasks.items;
-// export const items = db.tasks.items;
-
-// export const chartDaysSelector = list[0].hoursWastedPerDay.map(
-//   task => task.currentDay,
-// );
-
-// export const hoursPlannedSelector = list
-//   .map(task => Number(task.hoursPlanned))
-//   .reduce((acc, taskValue) => {
-//     return (acc += taskValue);
-//   }, 0);
-
-// export const sumHoursWastedSelector = list
-//   .map(task => Number(task.hoursWasted))
-//   .reduce((acc, taskValue) => {
-//     return (acc += taskValue);
-//   }, 0);
-
-// export const sprintDurationSelector = list[0].hoursWastedPerDay.length;
-//==========================================================================
 
 export const sprintDurationSelector = (state) =>
   tasksSelector(state)[0].hoursWastedPerDay.length;
