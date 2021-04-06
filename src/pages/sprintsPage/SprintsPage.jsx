@@ -31,6 +31,7 @@ export default function SprintsPage() {
   const projects = useSelector(projectsSelector);
   const project = projects.find(item => item._id === projectId);
   const sprintsLoading = useSelector(sprintsLoadingSelector);
+  
   const projectsLoading = useSelector(projectsLoadingSelector);
 
   const colors = [
