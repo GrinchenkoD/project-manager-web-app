@@ -485,6 +485,7 @@
 /* ! ------------------DESKTOP ver.------------------ */
 @media screen and (min-width: 1280px) {
   .container {
+    margin: 0;
     border-right: 1px solid #181c271a;
     position: relative;
   }
