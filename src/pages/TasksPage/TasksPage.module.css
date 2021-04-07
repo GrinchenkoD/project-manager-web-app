@@ -16,10 +16,6 @@
   position: relative;
 }
 
-.container {
-  margin-left: calc(100vw -300px);
-}
-
 .sprintsBackArrow {
   width: 30px;
   height: 8px;
