@@ -4,8 +4,14 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.5.0",
     "axios": "^0.21.1",
+    "chart.js": "^2.9.4",
+    "date-fns": "^2.19.0",
     "formik": "^2.2.6",
+    "moment": "^2.29.1",
+    "node-sass": "^5.0.0",
     "react": "^17.0.1",
+    "react-chartjs-2": "^2.11.1",
+    "react-datepicker": "^3.7.0",
     "react-dom": "^17.0.1",
     "react-hook-form": "^6.14.2",
     "react-lazy": "^1.1.0",
@@ -15,6 +21,7 @@
     "react-scripts": "4.0.1",
     "react-slick": "^0.28.0",
     "react-spinners": "^0.10.4",
+    "react-transition-group": "^4.4.1",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
     "redux-persist": "^6.0.0",
@@ -54,6 +61,9 @@
     ]
   },
   "devDependencies": {
+    "moment": "^2.29.1",
+    "prettier": "^2.2.1",
+    "react-redux-modal-flex": "^2.0.2",
     "redux-devtools-extension": "^2.13.9"
   }
 }

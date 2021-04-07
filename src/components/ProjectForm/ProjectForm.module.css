@@ -1,0 +1,20 @@
+.acceptBtn {
+  padding: 11px 44px;
+  background-color: #ff6b08;
+  box-shadow: 0px 3px 4px rgba(255, 107, 8, 0.3);
+  border-radius: 25px;
+  color: #fff;
+  border: none;
+  outline: none;
+  margin-top: 51px;
+  /* margin: 0 100px; */
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.22;
+}
+.btnThumb {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,435 @@
+.sprintsProjectList {
+  display: none;
+}
+.buttonCont {
+  display: none;
+}
+.sprintsBackContainer {
+  background-color: #e5e5e5e5;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  border-bottom: 1px solid rgba(24, 28, 39, 0.1);
+}
+.sprintsBackButton {
+  text-decoration: none;
+  width: 500px;
+  color: #181c27;
+  position: relative;
+}
+.changeForm {
+  position: relative;
+}
+.changeFormInput {
+  width: 100%;
+  border: none;
+  box-shadow: 2px 4px 8px rgb(0 5 97 / 10%);
+  border-radius: 5px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: #181c27;
+  padding: 3px 3px;
+  outline: none;
+}
+.saveButtonIcon {
+  border: none;
+  outline: none;
+  background-image: url('../../icons/saveicon.svg');
+  width: 23px;
+  height: 23px;
+  background-size: contain;
+  background-color: transparent;
+  position: absolute;
+  right: -30px;
+  cursor: pointer;
+}
+
+.sprintsBackButton::before {
+  content: '';
+  background-image: url('../../icons/Buttons/Arrow1.svg');
+  width: 30px;
+  height: 10px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: -40px;
+  top: 5px;
+}
+.projectText {
+  display: none;
+}
+@media screen and (min-width: 320px) and (max-width: 768px) {
+  .sprintsButton {
+    position: fixed;
+    bottom: 3vh;
+    right: 3vw;
+    z-index: 1;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+  }
+}
+
+.sprintMainCont {
+  background-color: #e5e5e5e5;
+  padding: 20px;
+}
+
+.mainblockTitle {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 32px;
+  letter-spacing: 0.04em;
+  color: #181c27;
+  margin-right: 8px;
+}
+.changeNameButton {
+  background-image: url('../../icons/Buttons/changeicon.svg');
+  width: 20px;
+  height: 20px;
+  border: none;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+}
+@media screen and (min-width: 320px) and (max-width: 768px) {
+  .firstBlockLeft {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+  .addPeopleCont {
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+}
+.sprintUpperText {
+  display: none;
+}
+
+.addPeopleCont {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.addButon {
+  border: none;
+  cursor: pointer;
+  position: relative;
+  margin-left: 30px;
+  font-family: Montserrat;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+  text-decoration-line: underline;
+  outline: none;
+  color: #181c27;
+  background-color: transparent;
+}
+
+.addButon::before {
+  content: '';
+  background-image: url('../../icons/Buttons/addpeopleicon.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 20px;
+  height: 20px;
+  display: block;
+  position: absolute;
+  left: -30px;
+  bottom: 2.5px;
+}
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .sprintsCont {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.sprintsItem {
+  position: relative;
+  width: 280px;
+  height: 170px;
+  background: #ffffff;
+  box-shadow: 0px 6px 26px rgba(0, 5, 97, 0.1);
+  border-radius: 5px;
+  padding-left: 30px;
+  padding-top: 18px;
+  padding-bottom: 10px;
+  padding-right: 30px;
+  margin-bottom: 10px;
+}
+
+.sprintTitle {
+  font-family: Montserrat;
+  width: 240px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.04em;
+  color: #181c27;
+  margin-bottom: 20px;
+}
+
+.textCont {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: Montserrat;
+  font-size: 12px;
+  line-height: 12px;
+  letter-spacing: 0.04em;
+  color: #000000;
+  margin-bottom: 13px;
+}
+
+.deleteButton {
+  cursor: pointer;
+  background-image: url('../../icons/Buttons/deleteicon.svg');
+  width: 23px;
+  height: 23px;
+  background-size: contain;
+  border: none;
+  outline: none;
+  background-color: #ffffff;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
+.deleteButton:hover {
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+@media screen and (min-width: 768px) {
+  .sprintsContainer {
+    display: flex;
+    background-color: #e5e5e5e5;
+    height: calc(100vh - 74px);
+  }
+  .projTitleText {
+    width: 115px;
+    overflow-wrap: break-word;
+  }
+  .sideBarImage {
+    width: 36px;
+    height: 36px;
+    display: inline-block;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+
+  .messageNoSprints {
+    font-size: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .sprintsSideBar {
+    background-color: #e5e5e5e5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.04em;
+    color: #181c27;
+    border-right: 1px solid rgba(24, 28, 39, 0.1);
+    width: 255px;
+  }
+  .sprintsButton {
+    outline: none;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s;
+    background-color: transparent;
+  }
+  .sprintsButton:hover {
+    -webkit-transform: scale(1.15);
+    -ms-transform: scale(1.15);
+    transform: scale(1.15);
+  }
+  .sprintsBackContainer {
+    width: 119px;
+    margin-top: 20px;
+    border-bottom: none;
+  }
+
+  .sprintsBackButton::before {
+    top: 5px;
+  }
+  .projectsLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.04em;
+    color: #181c27;
+  }
+  .projectsLinkActive {
+    color: black;
+    font-weight: bold;
+  }
+  .sprintsProjectList {
+    display: block;
+    list-style: none;
+    font-size: 14px;
+    margin-top: 150px;
+  }
+
+  .sprintsProjectItem {
+    margin-bottom: 30px;
+  }
+  .sprintsItemBox {
+    width: 20px;
+    height: 20px;
+    background-color: tomato;
+  }
+
+  .buttonCont {
+    position: fixed;
+    bottom: 50px;
+    text-align: center;
+    display: block;
+    background-color: transparent;
+  }
+
+  .buttonText {
+    margin-top: 5px;
+  }
+
+  .sprintMainCont {
+    background-color: #e5e5e5e5;
+    width: calc(100vw - 40px);
+    padding-top: 40px;
+    padding-left: 20px;
+    padding-right: 40px;
+    position: relative;
+  }
+
+  .sprintUpperCont {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .sprintSecondBlock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .sprintUpperText {
+    margin-left: 20px;
+    font-family: Montserrat;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0.04em;
+    color: #181c27;
+  }
+
+  .mainblockTitle {
+    font-size: 36px;
+    line-height: 44px;
+    margin-right: 20px;
+  }
+
+  .firstBlockLeft {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .addPeopleCont {
+    margin-bottom: 0px;
+    padding-top: 0px;
+    padding-bottom: 30px;
+  }
+
+  .sprintsCont {
+    width: 455px;
+    margin-top: 30px;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .sprintsItem {
+    position: relative;
+    width: 216px;
+    height: 255px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .sprintsItem:hover {
+    box-shadow: 0 7px 15px rgba(0, 0, 0, 0.452);
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+  .sprintTitle {
+    font-family: Montserrat;
+    width: 210px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 20px;
+  }
+
+  .textCont {
+    font-size: 14px;
+    line-height: 17px;
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .sprintMainCont {
+    background-color: #e5e5e5e5;
+    padding-top: 40px;
+    padding-left: 70px;
+    padding-right: 85px;
+    padding-bottom: 40px;
+  }
+  .sprintsCont {
+    width: 900px;
+    margin-top: -30px;
+  }
+  .sprintUpperText {
+    display: block;
+  }
+
+  .sprintsItem {
+    position: relative;
+    width: 270px;
+    height: 224px;
+    margin-right: 30px;
+    margin-top: 30px;
+  }
+
+  /* .sprintsBackContainer {
+    margin-left: 106px;
+  } */
+}
