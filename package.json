@@ -39,6 +39,7 @@
   "bugs": {
     "url": "https://github.com/MikeYef96/project-manager-web-app"
   },
+  "homepage": "https://mikeyef96.github.io/goit-react-hw-09-phonebook/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
