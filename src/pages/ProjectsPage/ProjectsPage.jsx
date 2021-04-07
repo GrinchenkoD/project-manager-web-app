@@ -6,7 +6,10 @@ import ProjectsPageItem from '../ProjectsPageItem/ProjectsPageItem';
 import TemporaryModal from 'components/TemporaryModal/TemporaryModal';
 import ProjectForm from 'components/ProjectForm/ProjectForm';
 import { getProject } from 'redux/projects/project-operations';
-import { projectsLoadingSelector, projectsSelector } from 'redux/projects/project-selectors';
+import {
+  projectsLoadingSelector,
+  projectsSelector,
+} from 'redux/projects/project-selectors';
 import popTransition from './transitions/pop.module.css';
 import styles from './ProjectsPage.module.css';
 import Loader from '../../shared/Loader/Loader';
@@ -52,15 +55,14 @@ export default function ProjectsPage() {
     //   top: 0,
     //   behavior: 'smooth',
     // });
-   
+
     document.body.style.overflow = 'hidden';
     setModalOpen(true);
   };
 
   const onCloseModal = () => {
     setModalOpen(false);
-    document.body.style.overflow = 'scroll';
-  
+    document.body.style.overflow = '';
   };
 
   const onHandleClick = e => {
@@ -76,64 +78,68 @@ export default function ProjectsPage() {
 
   return (
     <>
-    <div className={styles.container}>
-      <div className="projects">
-        <h2 className={styles.title}>Проекти</h2>
+      <div className={styles.container}>
+        <div className="projects">
+          <h2 className={styles.title}>Проекти</h2>
 
-        {!projects.length&&!loading ? (
-          <p className={styles.projectsNone}>
-            Ваша колекція проектів порожня, скористайтесь кнопкою "Створити
-            проект"
-          </p>
-        ) : (
-          <TransitionGroup component="ul" className={styles.projectsList}>
-            {projects.map(project => (
-              <CSSTransition
-                key={project._id}
-                timeout={200}
-                classNames={popTransition}
-              >
-                <li
-                  className={styles.projectsListItem}
-                  id={project._id ? project._id : project.id}
+          {!projects.length && !loading ? (
+            <p className={styles.projectsNone}>
+              Ваша колекція проектів порожня, скористайтесь кнопкою "Створити
+              проект"
+            </p>
+          ) : (
+            <TransitionGroup component="ul" className={styles.projectsList}>
+              {projects.map(project => (
+                <CSSTransition
                   key={project._id}
-                  style={{ backgroundColor: getCurrentColor() }}
-                  onClick={onHandleClick}
+                  timeout={200}
+                  classNames={popTransition}
                 >
-                  <ProjectsPageItem {...project} color={currentColor}>
-                    <span className={styles.projectDescription}>
-                      {project.description}
-                    </span>
-                  </ProjectsPageItem>
-                </li>
-              </CSSTransition>
-            ))}
-          </TransitionGroup>
-        )}
-        <div className="addProjectSection">
-          <button type="button" className={styles.btnAdd} onClick={onOpenModal}>
-            <p className={styles.btnAddIcon}>+</p>
+                  <li
+                    className={styles.projectsListItem}
+                    id={project._id ? project._id : project.id}
+                    key={project._id}
+                    style={{ backgroundColor: getCurrentColor() }}
+                    onClick={onHandleClick}
+                  >
+                    <ProjectsPageItem {...project} color={currentColor}>
+                      <span className={styles.projectDescription}>
+                        {project.description}
+                      </span>
+                    </ProjectsPageItem>
+                  </li>
+                </CSSTransition>
+              ))}
+            </TransitionGroup>
+          )}
+          <div className="addProjectSection">
+            <button
+              type="button"
+              className={styles.btnAdd}
+              onClick={onOpenModal}
+            >
+              <p className={styles.btnAddIcon}>+</p>
 
-            {/* <img src={sideBarButton} alt="" /> */}
+              {/* <img src={sideBarButton} alt="" /> */}
 
-            {/* <svg className={styles.btnAddIcon} >
+              {/* <svg className={styles.btnAddIcon} >
                <use href={sprite + '#icon-add'} />
               </svg> */}
-          </button>
-          <p className={styles.addProjectText}>Створити проект</p>
+            </button>
+            <p className={styles.addProjectText}>Створити проект</p>
+          </div>
+          {/* {modalOpen && ( */}
+          <TemporaryModal
+            onClose={onCloseModal}
+            onOpen={modalOpen}
+            title="Створення проекту"
+          >
+            <ProjectForm onClose={onCloseModal} />
+          </TemporaryModal>
+          {/* )} */}
         </div>
-        {/* {modalOpen && ( */}
-        <TemporaryModal
-          onClose={onCloseModal}
-          onOpen={modalOpen}
-          title="Створення проекту"
-        >
-          <ProjectForm onClose={onCloseModal} />
-        </TemporaryModal>
-        {/* )} */}
       </div>
-      </div>
-      {loading&&<Loader/>}
-      </>
+      {loading && <Loader />}
+    </>
   );
 }

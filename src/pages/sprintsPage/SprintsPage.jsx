@@ -31,7 +31,7 @@ export default function SprintsPage() {
   const projects = useSelector(projectsSelector);
   const project = projects.find(item => item._id === projectId);
   const sprintsLoading = useSelector(sprintsLoadingSelector);
-  
+
   const projectsLoading = useSelector(projectsLoadingSelector);
 
   const colors = [
@@ -70,32 +70,28 @@ export default function SprintsPage() {
   };
 
   const onCloseModal = () => {
-    document.body.style.overflow = 'scroll';
+    document.body.style.overflow = '';
     setModalOpen(false);
   };
 
   const onOpenModalPeople = () => {
     document.body.style.overflow = 'hidden';
     setModalAddPeople(true);
-
   };
 
   const onCloseModalPeople = () => {
-    document.body.style.overflow = 'scroll';
+    document.body.style.overflow = '';
     setModalAddPeople(false);
-
   };
 
   const onOpenModalProject = () => {
     document.body.style.overflow = 'hidden';
     setModalAddProject(true);
-
   };
 
   const onCloseModalProject = () => {
-    document.body.style.overflow = 'scroll';
+    document.body.style.overflow = '';
     setModalAddProject(false);
-
   };
 
   const onChangeTitle = e => {
@@ -227,10 +223,9 @@ export default function SprintsPage() {
           >
             <ProjectForm onClose={onCloseModalProject} />
           </TemporaryModal>
-          <SprintItem />
+          {sprintsLoading || projectsLoading ? <Loader /> : <SprintItem />}
         </div>
       </div>
-      {sprintsLoading || projectsLoading ? <Loader /> : ''}
     </>
   );
 }
