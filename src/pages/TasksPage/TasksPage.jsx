@@ -91,6 +91,7 @@ export default function TasksPage() {
   const onCloseModal = () => {
     setModalOpen(false);
     document.body.style.overflow = '';
+    
   };
 
   const onOpenModalSprint = () => {
