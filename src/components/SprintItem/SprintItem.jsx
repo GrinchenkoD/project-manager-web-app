@@ -47,11 +47,12 @@ const SprintItem = () => {
 
   return (
     <ul className={styles.sprintsCont}>
-      {!sprints.length && !sprintsLoading ? (
+      {sprints !== null && !sprints.length ? (
         <p className={styles.messageNoSprints}>
           У проекті відсутні спринти, скористайтесь кнопкою "Створити спринт"
         </p>
       ) : (
+        sprints &&
         sprints.map(({ title, startDate, endDate, duration, _id }) => (
           <li
             className={styles.sprintsItem}
